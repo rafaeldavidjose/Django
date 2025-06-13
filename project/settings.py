@@ -39,18 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_extensions",
-    # Django Allauth apps
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
-    # APIs
-    "ninja",
     # My apps
-    "pessoas",
-    "bandas",
-    "artigos",
-    "noobsite",
     "portfolio",
 ]
 
@@ -69,34 +58,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    # Add the account middleware:
-    "allauth.account.middleware.AccountMiddleware",
 ]
-
-AUTHENTICATION_BACKENDS = [
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by email
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
-
-SITE_ID = 1  # Required for django-allauth
-
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
-    }
-}
-
-LOGIN_REDIRECT_URL = '/portfolio/'
-LOGOUT_REDIRECT_URL = '/portfolio/'
 
 ROOT_URLCONF = "project.urls"
 
@@ -121,13 +83,6 @@ WSGI_APPLICATION = "project.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-'''DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}'''
 
 DB_ENGINE = config('DB_ENGINE', default='sqlite')
 
@@ -212,12 +167,4 @@ GRAPH_MODES = {
     "group_models": True,
 }
 
-LOGIN_URL = 'portfolio:login'
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-
-EMAIL_HOST_USER = 'rafaeldavidjose.dev@gmail.com'
-EMAIL_HOST_PASSWORD = 'ymxm lsyg rvqk wtge'
+LOGIN_URL = '/admin/login/'

@@ -19,14 +19,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from bandas.api import api
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("noobsite/", include("noobsite.urls")),
     path("portfolio/", include("portfolio.urls")),
-    path('accounts/', include('allauth.urls')),
-    path('api/', api.urls),
 ]
 
 urlpatterns += static(

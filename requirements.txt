@@ -2,10 +2,5 @@ django
 Pillow
 python-decouple
 django_extensions
-django-allauth
-django-ninja
-requests
-PyJWT
-cryptography
 whitenoise
 gunicorn
