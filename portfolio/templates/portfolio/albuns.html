@@ -1,0 +1,107 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/apis.css' %}">
+<link rel="stylesheet" href="{% static 'css_portfolio/form.css' %}">
+{% endblock %}
+
+{% block main %}
+<h2>Albums Management</h2>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="error-message" style="background-color: {% if message.tags == 'success' %}#2d5a2d{% else %}#5a2d2d{% endif %}; margin-bottom: 20px;">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div class="external-api-info">
+    <p>This section demonstrates album management through external API calls. Albums are linked to bands through foreign key relationships.</p>
+    <p><strong>API Endpoint:</strong> <a href="https://a22202884.pw.deisi.ulusofona.pt/bandas/api/albuns/" target="_blank"><code>https://a22202884.pw.deisi.ulusofona.pt/bandas/api/albuns/</code></a></p>
+    <p><strong>API Documentation:</strong> <a href="https://a22202884.pw.deisi.ulusofona.pt/bandas/api/docs" target="_blank">View Complete API Documentation</a></p>
+</div>
+
+<!-- Navigation Links -->
+<div class="api-nav">
+    <a href="{% url 'portfolio:bandas_externas' %}" class="custom-button">Manage Bands</a>
+    <a href="{% url 'portfolio:albuns_externos' %}" class="custom-button active">Manage Albums</a>
+    <a href="{% url 'portfolio:musicas_externas' %}" class="custom-button">Manage Songs</a>
+</div>
+
+<!-- Create Album Form -->
+<div class="create-form">
+    <h4>Create New Album</h4>
+    <form method="post" action="{% url 'portfolio:criar_album_externo' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ album_form.as_p }}
+        <input type="submit" value="Create Album" class="custom-button">
+    </form>
+</div>
+
+{% if dados %}
+    <h4 class="items-count">Current Albums from External API ({{ dados|length }} found)</h4>
+    
+    <div class="api-grid">
+        {% for album in dados %}
+            <div class="api-card">
+                <div class="music-icon">💿</div>
+                
+                <div class="api-card-content">
+                    <h4>{{ album.nome }}</h4>
+                    
+                    {% if album.capa %}
+                        <div class="image-section">
+                            <p><strong>Cover Art:</strong></p>
+                            <img src="{{ album.capa }}" alt="{{ album.nome }} cover" class="card-image">
+                        </div>
+                    {% endif %}
+                    
+                    <p><strong>Number of Songs:</strong> {{ album.nr_musicas }}</p>
+                    <p><strong>Band:</strong> {{ album.band.nome }}</p>
+                    <p><strong>Album ID:</strong> {{ album.id }}</p>
+                    
+                    {% if album.spotify_link %}
+                        <p><strong>Spotify:</strong> 
+                            {% if 'http' in album.spotify_link %}
+                                <a href="{{ album.spotify_link }}" target="_blank" class="spotify-link">Listen on Spotify</a>
+                            {% else %}
+                                <a href="https://{{ album.spotify_link }}" target="_blank" class="spotify-link">Listen on Spotify</a>
+                            {% endif %}
+                        </p>
+                    {% endif %}
+                </div>
+                
+                <div class="api-endpoint">
+                    <strong>API Endpoint:</strong> /api/albuns/{{ album.id }}/
+                </div>
+                
+                <div class="api-actions">
+                    <a href="{% url 'portfolio:albuns_externos_id' album.id %}" class="custom-button">View Details</a>
+                    <a href="{% url 'portfolio:editar_album_externo' album.id %}" class="custom-button">Edit (PUT)</a>
+                    <a href="{% url 'portfolio:apagar_album_externo' album.id %}" class="custom-button danger-button" onclick="return confirm('Delete this album?')">Delete</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <div style="margin-top: 30px; padding: 20px; background-color: #1f1f1f; border-radius: 15px; border-left: 4px solid #bb86fc;">
+        <h4 style="color: #bb86fc; margin-bottom: 15px;">Album API Integration Details</h4>
+        <p><strong>Data Structure:</strong> Each album contains name, song count, band relationship, and optional media links</p>
+        <p><strong>File Handling:</strong> Supports cover image uploads through multipart/form-data requests</p>
+        <p><strong>External Integration:</strong> Spotify links enable direct streaming platform connectivity</p>
+        <p><strong>Relational Data:</strong> Band ID creates foreign key relationship demonstrating normalized database design</p>
+        <p><strong>CRUD Operations:</strong> Complete Create, Read, Update, Delete functionality with proper HTTP status handling</p>
+    </div>
+{% else %}
+    <div class="no-data">
+        <h4>No Albums Found</h4>
+        <p>Create a band first, then add albums.</p>
+        <a href="{% url 'portfolio:bandas_externas' %}" class="custom-button">Create a Band First</a>
+    </div>
+{% endif %}
+<div style="margin-top: 40px; text-align: center;">
+    <a href="{% url 'portfolio:apis' %}" class="custom-button">Back to APIs Overview</a>
+</div>
+{% endblock %}

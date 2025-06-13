@@ -1,0 +1,72 @@
+[
+  {
+    "nome": "Queen",
+    "foto_banda": null,
+    "ano_criacao": 1970,
+    "nacionalidade": "Britânica",
+    "descricao": "Banda de rock formada em Londres, conhecida por suas composições épicas e performances teatrais."
+  },
+  {
+    "nome": "Nirvana",
+    "foto_banda": null,
+    "ano_criacao": 1987,
+    "nacionalidade": "Estadunidense",
+    "descricao": "Pioneira do grunge, a banda marcou os anos 90 com seu som cru e introspectivo."
+  },
+  {
+    "nome": "AC/DC",
+    "foto_banda": null,
+    "ano_criacao": 1973,
+    "nacionalidade": "Australiana",
+    "descricao": "Banda de hard rock formada por irmãos escoceses na Austrália, com riffs marcantes e muita energia."
+  },
+  {
+    "nome": "The Rolling Stones",
+    "foto_banda": null,
+    "ano_criacao": 1962,
+    "nacionalidade": "Britânica",
+    "descricao": "Um dos maiores ícones do rock'n'roll, conhecidos por sua longevidade e atitude rebelde."
+  },
+  {
+    "nome": "Foo Fighters",
+    "foto_banda": null,
+    "ano_criacao": 1994,
+    "nacionalidade": "Estadunidense",
+    "descricao": "Banda fundada por Dave Grohl após o fim do Nirvana, com forte presença no rock alternativo."
+  },
+  {
+    "nome": "Led Zeppelin",
+    "foto_banda": null,
+    "ano_criacao": 1968,
+    "nacionalidade": "Britânica",
+    "descricao": "Lendária banda britânica, precursora do heavy metal e do hard rock."
+  },
+  {
+    "nome": "Red Hot Chili Peppers",
+    "foto_banda": null,
+    "ano_criacao": 1983,
+    "nacionalidade": "Estadunidense",
+    "descricao": "Mistura de rock, funk e punk, famosa por suas performances energéticas."
+  },
+  {
+    "nome": "Pink Floyd",
+    "foto_banda": null,
+    "ano_criacao": 1965,
+    "nacionalidade": "Britânica",
+    "descricao": "Reconhecida por suas composições progressivas e conceituais."
+  },
+  {
+    "nome": "The Beatles",
+    "foto_banda": null,
+    "ano_criacao": 1960,
+    "nacionalidade": "Britânica",
+    "descricao": "Possivelmente a banda mais influente da história da música."
+  },
+  {
+    "nome": "Green Day",
+    "foto_banda": null,
+    "ano_criacao": 1987,
+    "nacionalidade": "Estadunidense",
+    "descricao": "Banda de punk rock californiana que estourou com o álbum *Dookie*."
+  }
+]

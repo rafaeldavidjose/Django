@@ -1,0 +1,37 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/cv.css' %}">
+{% endblock %}
+
+{% block main %}
+<div class="cv-container">
+    <div class="cv-header">
+        <h2>Curriculum Vitae</h2>
+        <p>Here you can find information about my professional background, projects, and technical skills.</p>
+    </div>
+
+    <div class="main-cv-section">
+        <div class="main-cv-icon">📄</div>
+        <p>View or download my complete CV to learn more about my skills, education, and experience.</p>
+        <a href="{% static 'files/Profile.pdf' %}" target="_blank" class="custom-button">View CV</a>
+    </div>
+
+    <div class="cv-sections">
+        <div class="cv-section-card">
+            <div class="cv-icon">🎮</div>
+            <h3>My Projects</h3>
+            <p>Explore the various game development projects I've worked on throughout my journey, featuring gameplay mechanics, AI systems, and interactive experiences.</p>
+            <a href="{% url 'portfolio:projetos' %}" class="custom-button">View Projects</a>
+        </div>
+
+        <div class="cv-section-card">
+            <div class="cv-icon">🛠️</div>
+            <h3>Technologies I Use</h3>
+            <p>Discover the tools, frameworks, and technologies I've mastered to create responsive, efficient, and engaging gameplay systems.</p>
+            <a href="{% url 'portfolio:tecnologias' %}" class="custom-button">View Tools</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

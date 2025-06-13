@@ -1,0 +1,45 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/interesses.css' %}">
+{% endblock %}
+
+{% block main %}
+<section class="interests-section">
+    <h2>My Interests</h2>
+    <p>These are some of the areas that drive my curiosity and keep me motivated to grow as a developer:</p>
+
+    <div class="interests-list">
+        <div class="interest-item">
+            <strong>Gameplay Programming</strong>
+            Crafting logic that feels good to play
+        </div>
+
+        <div class="interest-item">
+            <strong>Game AI</strong>
+            Designing behaviors that challenge and surprise players
+        </div>
+
+        <div class="interest-item">
+            <strong>System Design</strong>
+            Connecting mechanics in meaningful ways
+        </div>
+
+        <div class="interest-item">
+            <strong>UI/UX</strong>
+            Making sure the player always knows what's going on
+        </div>
+
+        <div class="interest-item">
+            <strong>Technical Problem-Solving</strong>
+            I enjoy debugging and optimizing code
+        </div>
+
+        <div class="interest-item">
+            <strong>Collaborative Development</strong>
+            Working with creative people to make great games
+        </div>
+    </div>
+</section>
+{% endblock %}

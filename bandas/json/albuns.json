@@ -1,0 +1,62 @@
+[
+  {
+    "nome": "A Night at the Opera",
+    "banda": "Queen",
+    "capa": null,
+    "ano_lancamento": 1975
+  },
+  {
+    "nome": "Nevermind",
+    "banda": "Nirvana",
+    "capa": null,
+    "ano_lancamento": 1991
+  },
+  {
+    "nome": "Back in Black",
+    "banda": "AC/DC",
+    "capa": null,
+    "ano_lancamento": 1980
+  },
+  {
+    "nome": "Let It Bleed",
+    "banda": "The Rolling Stones",
+    "capa": null,
+    "ano_lancamento": 1969
+  },
+  {
+    "nome": "Wasting Light",
+    "banda": "Foo Fighters",
+    "capa": null,
+    "ano_lancamento": 2011
+  },
+  {
+    "nome": "Led Zeppelin IV",
+    "banda": "Led Zeppelin",
+    "capa": null,
+    "ano_lancamento": 1971
+  },
+  {
+    "nome": "Californication",
+    "banda": "Red Hot Chili Peppers",
+    "capa": null,
+    "ano_lancamento": 1999
+  },
+  {
+    "nome": "The Dark Side of the Moon",
+    "banda": "Pink Floyd",
+    "capa": null,
+    "ano_lancamento": 1973
+  },
+  {
+    "nome": "Abbey Road",
+    "banda": "The Beatles",
+    "capa": null,
+    "ano_lancamento": 1969
+  },
+  {
+    "nome": "American Idiot",
+    "banda": "Green Day",
+    "capa": null,
+    "ano_lancamento": 2004
+  }
+]

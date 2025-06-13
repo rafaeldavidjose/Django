@@ -1,0 +1,15 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/index.css' %}">
+{% endblock %}
+
+{% block main %}
+<div class="landing-wrapper">
+    <h2>🎮 Hi! I'm Rafael José. 🎮</h2>
+    <p>Gameplay Programmer passionate about designing responsive systems that feel great to play.</p>
+    <p>Here you'll find a collection of projects that reflect my journey in game development. Focused on crafting AI, UI/UX systems, and gameplay logic that puts the player first.</p>
+    <a href="{% url 'portfolio:projetos' %}" class="custom-button">See My Projects</a>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/tecnologias.css' %}">
+{% endblock %}
+
+{% block main %}
+<h2>Technologies Used</h2>
+
+<div class="grid">
+    {% for tecnologia in tecnologias %}
+        <div class="card tech-card">
+            <div class="tech-card-image-wrapper">
+                {% if tecnologia.logotipo %}
+                    <img src="{{ tecnologia.logotipo.url }}" alt="{{ tecnologia.nome }}">
+                {% else %}
+                    <img src="{% static 'images/default_project.png' %}" alt="No Image">
+                {% endif %}
+            </div>
+            <h2>{{ tecnologia.nome }}</h2>
+            <p>{{ tecnologia.descricao|truncatechars:80 }}</p>
+            <a href="{% url 'portfolio:tecnologia_path' tecnologia_id=tecnologia.id %}" class="custom-button view-details-button">View Details</a>
+        </div>
+    {% empty %}
+        <p>No technologies available at this time.</p>
+    {% endfor %}
+</div>
+
+{% if request.user.is_authenticated %}
+    <div class="button-wrapper" style="margin-bottom: 0;">
+        <a href="{% url 'portfolio:nova_tecnologia' %}" class="custom-button">Add New Technology</a>
+    </div>
+{% endif %}
+{% endblock %}

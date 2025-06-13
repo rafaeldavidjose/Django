@@ -1,0 +1,94 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/projeto.css' %}">
+<link rel="stylesheet" href="{% static 'css_portfolio/apis.css' %}">
+{% endblock %}
+
+{% block main %}
+<section class="project-section">
+    <h2 class="project-title">{{ dados.nome }}</h2>
+    
+    <div class="external-api-info" style="margin-bottom: 30px;">
+        <p><strong>Data Source:</strong> External RESTful API</p>
+        <p><strong>API Endpoint:</strong> <a href="https://a22202884.pw.deisi.ulusofona.pt/bandas/api/albuns/{{ dados.id }}/" target="_blank"><code>GET /api/albuns/{{ dados.id }}/</code></a></p>
+        <p>This page demonstrates fetching detailed information about a specific album from an external API using individual resource endpoints. The album data includes band relationships and streaming platform integration.</p>
+    </div>
+    
+    {% if dados.capa %}
+        <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+            <div style="position: relative; max-width: 350px;">
+                <img src="{{ dados.capa }}" alt="{{ dados.nome }} cover" style="width: 100%; max-height: 350px; object-fit: cover; border-radius: 15px; border: 2px solid #bb86fc;">
+                <div style="position: absolute; bottom: 10px; right: 10px; background-color: rgba(31, 27, 36, 0.9); padding: 5px 10px; border-radius: 8px; font-size: 0.8em;">
+                    <span style="color: #bb86fc;">🎨 Album Cover</span>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    
+    <div style="max-width: 800px; margin: 0 auto;">
+        <div class="project-final-box">
+            <div class="project-info-item">
+                <p><strong>Album Name:</strong> {{ dados.nome }}</p>
+            </div>
+            <div class="project-info-item">
+                <p><strong>Number of Songs:</strong> {{ dados.nr_musicas }}</p>
+            </div>
+            
+            <div class="project-info-item">
+                {% if dados.band.nome %}
+                    <p><strong>Band:</strong> {{ dados.band.nome }}</p>
+                {% else %}
+                    <p><strong>Band ID:</strong> {{ dados.band }}</p>
+                {% endif %}
+            </div>
+            
+            {% if dados.band.nome %}
+                <div class="project-info-item">
+                    <p><strong>Band ID:</strong> {{ dados.band.id }}</p>
+                </div>
+                <div class="project-info-item">
+                    <p><strong>Band Members:</strong> {{ dados.band.nr_elementos }}</p>
+                </div>
+                <div class="project-info-item">
+                    <p><strong>Band Created:</strong> {{ dados.band.ano_criacao }}</p>
+                </div>
+                {% if dados.band.foto %}
+                    <div class="project-info-item">
+                        <p><strong>Band Photo:</strong> <a href="{{ dados.band.foto }}" target="_blank" style="color: #bb86fc;">View Band Photo</a></p>
+                    </div>
+                {% endif %}
+            {% endif %}
+            
+            <div class="project-info-item">
+                <p><strong>Album ID:</strong> {{ dados.id }}</p>
+            </div>
+            
+            {% if dados.spotify_link %}
+                <div class="project-info-item">
+                    <p><strong>Spotify:</strong> 
+                        {% if 'http' in dados.spotify_link %}
+                            <a href="{{ dados.spotify_link }}" target="_blank" style="color: #1db954;">Listen on Spotify</a>
+                        {% else %}
+                            <a href="https://{{ dados.spotify_link }}" target="_blank" style="color: #1db954;">Listen on Spotify</a>
+                        {% endif %}
+                    </p>
+                </div>
+            {% endif %}
+            
+            {% if dados.capa %}
+                <div class="project-info-item">
+                    <p><strong>Cover Image:</strong> <a href="{{ dados.capa }}" target="_blank" style="color: #bb86fc;">View Full Size</a></p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="button-wrapper" style="margin-top: 30px; gap: 15px;">
+        <a href="{% url 'portfolio:albuns_externos' %}" class="custom-button">Back to Albums</a>
+        <a href="{% url 'portfolio:editar_album_externo' dados.id %}" class="custom-button">Edit Album</a>
+        <a href="{% url 'portfolio:apagar_album_externo' dados.id %}" class="custom-button danger-button" onclick="return confirm('Delete this album?')">Delete Album</a>
+    </div>
+</section>
+{% endblock %}

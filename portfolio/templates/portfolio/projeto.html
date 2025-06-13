@@ -1,0 +1,113 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/projeto.css' %}">
+{% endblock %}
+
+{% block main %}
+<section class="project-section">
+    <h2 class="project-title">{{ projeto.titulo }}</h2>
+
+    {% if projeto.link_itch or projeto.link_video or projeto.link_github %}
+        <div class="project-links">
+            {% if projeto.link_itch %}
+                <a href="{{ projeto.link_itch }}" target="_blank" class="project-link">
+                    Play on Itch.io
+                </a>
+            {% endif %}
+            {% if projeto.link_github %}
+                <a href="{{ projeto.link_github }}" target="_blank" class="project-link">
+                    View on GitHub
+                </a>
+            {% endif %}
+            {% if projeto.link_video and not projeto.link_video|cut:"https://www.youtube.com/watch?v=" %}
+                <a href="{{ projeto.link_video }}" target="_blank" class="project-link">
+                    Watch Video
+                </a>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if projeto.link_video %}
+        {% with projeto.link_video|cut:"https://www.youtube.com/watch?v=" as video_id %}
+            <div class="project-video-wrapper">
+                <iframe width="720" height="405"
+                        src="https://www.youtube.com/embed/{{ video_id }}"
+                        title="Trailer"
+                        frameborder="0"
+                        allowfullscreen
+                        class="project-video">
+                </iframe>
+            </div>
+        {% endwith %}
+    {% endif %}
+
+    <p class="project-description">{{ projeto.descricao }}</p>
+
+    {% if projeto.imagens.all %}
+        <div class="project-gallery">
+            {% for imagem in projeto.imagens.all %}
+                <div>
+                    <img src="{{ imagem.imagem.url }}" alt="{{ imagem.legenda }}">
+                    {% if imagem.legenda %}
+                        <p>{{ imagem.legenda }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <h3>Core Concepts</h3>
+    <p>{{ projeto.conceitos_aplicados }}</p>
+
+    {% if projeto.aspetos_tecnicos %}
+        <h3>Technical Aspects</h3>
+        <p>{{ projeto.aspetos_tecnicos }}</p>
+    {% endif %}
+
+    <div class="project-final-box">
+        <div class="project-info-item">
+            <p><strong>Course:</strong> "{{ projeto.disciplina.nome }}" – Universidade Lusófona ({{ projeto.disciplina.ano }}º year, {{ projeto.disciplina.semestre }}º semester)</p>
+        </div>
+
+        {% if projeto.ficha_tecnica %}
+            <div class="project-info-item">
+                <p><strong>Platform:</strong> {{ projeto.ficha_tecnica.plataforma }}</p>
+            </div>
+            <div class="project-info-item">
+                <p><strong>Development Duration:</strong> {{ projeto.ficha_tecnica.duracao_desenvolvimento }}</p>
+            </div>
+            <div class="project-info-item">
+                <p><strong>Team Size:</strong> {{ projeto.ficha_tecnica.equipa }}</p>
+            </div>
+        {% endif %}
+
+        {% if projeto.tecnologias.all %}
+            <div class="project-info-item">
+                <p class="tech-section-title"><strong>Technologies Used:</strong></p>
+                <ul>
+                    {% for tech in projeto.tecnologias.all %}
+                        <li>
+                            <a href="{% url 'portfolio:tecnologia_path' tecnologia_id=tech.id %}" class="tech-link">
+                                {% if tech.logotipo %}
+                                    <div class="tech-logo">
+                                        <img src="{{ tech.logotipo.url }}" alt="{{ tech.nome }}">
+                                    </div>
+                                {% endif %}
+                                <span class="tech-text">{{ tech.nome }}</span>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+{% if request.user.is_authenticated %}
+    <div class="button-wrapper" style="margin-top: 40px;">
+        <a href="{% url 'portfolio:edita_projeto' projeto.id %}" class="custom-button">Edit Project</a>
+    </div>
+{% endif %}
+{% endblock %}

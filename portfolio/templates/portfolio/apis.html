@@ -1,0 +1,90 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/sobre.css' %}">
+{% endblock %}
+
+{% block main %}
+<section class="architecture-section">
+    <h2>APIs RESTful</h2>
+    <div class="intro-text">
+        <p>This page presents information about RESTful APIs, including the API I developed and how to consume external APIs.</p>
+    </div>
+
+    <h3>What is a RESTful API?</h3>
+    <div class="tech-list">
+        <p><strong>API (Application Programming Interface)</strong> is a set of rules that allows different software applications to communicate with each other. It defines how applications can request and exchange information.</p>
+        
+        <p><strong>REST (Representational State Transfer)</strong> is an architectural style for designing web services that uses standard HTTP methods:</p>
+        <ul>
+            <li><strong>GET:</strong> Retrieve data from the server</li>
+            <li><strong>POST:</strong> Create new resources</li>
+            <li><strong>PUT:</strong> Update existing resources</li>
+            <li><strong>DELETE:</strong> Remove resources</li>
+        </ul>
+
+        <p><strong>Key Benefits:</strong></p>
+        <ul>
+            <li><strong>Integration:</strong> Connects different systems seamlessly</li>
+            <li><strong>Scalability:</strong> Enables systems to grow independently</li>
+            <li><strong>Reusability:</strong> Allows functionality to be shared across projects</li>
+        </ul>
+    </div>
+
+    <h3>My RESTful Bands API</h3>
+    <div class="tech-list">
+        <p>I developed a comprehensive RESTful API for managing music bands, albums, and songs using Django REST Framework.</p>
+        
+        <p><strong>API Features:</strong></p>
+        <ul>
+            <li><strong>Bands Management:</strong> Full CRUD operations for band information</li>
+            <li><strong>Albums Management:</strong> Handle album data with cover images and Spotify links</li>
+            <li><strong>Songs Management:</strong> Manage song details, lyrics, and duration</li>
+            <li><strong>File Uploads:</strong> Support for band photos and album covers</li>
+            <li><strong>Data Relationships:</strong> Proper linking between bands, albums, and songs</li>
+        </ul>
+
+        <p><strong>Technical Implementation:</strong></p>
+        <ul>
+            <li>Built with Django REST Framework</li>
+            <li>Uses ModelSerializer for data serialization</li>
+            <li>Implements ViewSets for automatic CRUD operations</li>
+            <li>Returns JSON responses with appropriate HTTP status codes</li>
+        </ul>
+
+        <div class="button-wrapper">
+            <a href="https://a22202078.pw.deisi.ulusofona.pt/api/docs" target="_blank" class="custom-button">
+                View API Documentation (Swagger)
+            </a>
+        </div>
+    </div>
+
+    <h3>Consuming External APIs</h3>
+    <div class="tech-list">
+        <p>I implemented a complete system to consume an external Bands API, demonstrating how to interact with RESTful services from a Django application.</p>
+        
+        <p><strong>Implementation Features:</strong></p>
+        <ul>
+            <li><strong>Data Retrieval:</strong> Fetch bands, albums, and songs from external API</li>
+            <li><strong>Full CRUD Operations:</strong> Create, read, update, and delete records via API calls</li>
+            <li><strong>File Uploads:</strong> Support for uploading images through the API</li>
+            <li><strong>Error Handling:</strong> Proper handling of API errors with user feedback</li>
+        </ul>
+
+        <p><strong>Technical Implementation:</strong></p>
+        <ul>
+            <li>Uses Python's <code>requests</code> library for HTTP calls</li>
+            <li>Handles different HTTP status codes appropriately</li>
+            <li>Supports multipart/form-data for file uploads</li>
+            <li>Provides user feedback through Django messages framework</li>
+        </ul>
+
+        <div class="button-wrapper">
+            <a href="{% url 'portfolio:bandas_externas' %}" class="custom-button">
+                Explore External API Integration
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

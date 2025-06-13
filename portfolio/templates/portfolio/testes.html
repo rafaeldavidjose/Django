@@ -1,0 +1,129 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/sobre.css' %}">
+{% endblock %}
+
+{% block main %}
+<section class="architecture-section">
+    <h2>Test Types</h2>
+    <div class="intro-text">
+        <p>This application uses three main types of tests to ensure quality and stability:</p>
+    </div>
+    <div class="tech-list">
+        <ul>
+            <li><strong>Unit Tests:</strong> Validate individual methods or model behavior in isolation.</li>
+            <li><strong>Integration Tests:</strong> Verify how different components (models, views, URLs) work together.</li>
+            <li><strong>Template Tests:</strong> Ensure correct rendering of HTML pages and expected content.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="architecture-section">
+    <h3>Integration Tests</h3>
+    <p>Integration tests were written to confirm that the application's routing and views return the correct responses and templates. For example:</p>
+    <div class="tech-list">
+        <ul>
+            <li>Views respond with status 200 and use the correct HTML templates.</li>
+            <li>URLs resolve to the expected view functions.</li>
+            <li>Models are loaded properly from the database fixture and have correct relationships.</li>
+        </ul>
+    </div>
+    <p>All tests were executed using Django's test runner.</p>
+</section>
+
+<section class="architecture-section">
+    <h3>Example Test</h3>
+    <pre><code>def test_tecnologias_view(self):
+response = self.client.get(reverse('portfolio:tecnologias'))
+self.assertEqual(response.status_code, 200)
+self.assertTemplateUsed(response, 'portfolio/tecnologias.html')</code></pre>
+    <p>This test checks that the page for viewing technologies is available and rendered with the correct template.</p>
+</section>
+
+<section class="architecture-section">
+    <h3>Selenium Functional Tests</h3>
+    <div class="intro-text">
+        <p>To validate the behavior of the application in a real browser environment, Selenium was used to simulate user interaction across different features of the site. Below are three recorded demonstrations:</p>
+    </div>
+
+    <div class="test-section">
+        <h4>1. Navigation Test</h4>
+
+        <iframe width="720" height="405"
+                src="https://www.youtube.com/embed/gJgq0ctJkCU"
+                title="Navigation Test"
+                frameborder="0"
+                allowfullscreen>
+        </iframe>
+
+        <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <p><strong>Test Steps:</strong></p>
+            <div class="tech-list" style="text-align: left; display: inline-block;">
+                <ul>
+                    <li>Visit the homepage.</li>
+                    <li>Navigate through several public pages.</li>
+                    <li>Validate specific titles and content on each page.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h4>2. Authentication Test</h4>
+
+        <iframe width="720" height="405"
+                src="https://www.youtube.com/embed/Nz7WF1F1rJc"
+                title="Authentication Test"
+                frameborder="0"
+                allowfullscreen>
+        </iframe>
+
+        <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <p><strong>Test Steps:</strong></p>
+            <div class="tech-list" style="text-align: left; display: inline-block;">
+                <ul>
+                    <li>Register a new user.</li>
+                    <li>Login with the registered credentials.</li>
+                    <li>Create and publish a new article.</li>
+                    <li>Delete the created article.</li>
+                    <li>Logout the user.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h4>3. Project Lifecycle Test</h4>
+
+        <iframe width="720" height="405"
+                src="https://www.youtube.com/embed/xKmz-f8RR0g"
+                title="Project Lifecycle Test"
+                frameborder="0"
+                allowfullscreen>
+        </iframe>
+
+        <div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+            <p><strong>Test Steps:</strong></p>
+            <div class="tech-list" style="text-align: left; display: inline-block;">
+                <ul>
+                    <li>Register a new user.</li>
+                    <li>Login with the registered credentials.</li>
+                    <li>Create a new course project.</li>
+                    <li>Edit the project's information.</li>
+                    <li>Delete the created project.</li>
+                    <li>Logout the user.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <p>These tests demonstrate how Selenium automates browser actions to ensure the main features of the application behave correctly under real usage scenarios.</p>
+</section>
+
+<section class="architecture-section">
+    <h3>Coverage Report</h3>
+    <p>The tests achieved an overall coverage of <strong>75%</strong>. Key modules such as <code>portfolio.models</code>, <code>portfolio.forms</code>, and <code>portfolio.tests</code> reached full coverage, while the view logic had lower coverage due to its complexity and interaction with the database and templates.</p>
+</section>
+{% endblock %}

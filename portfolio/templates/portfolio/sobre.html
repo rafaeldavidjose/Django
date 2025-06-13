@@ -1,0 +1,124 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/sobre.css' %}">
+{% endblock %}
+
+{% block main %}
+<section class="architecture-section">
+    <h2>Technical Presentation</h2>
+    <div class="intro-text">
+        <p>This page presents the technical details of the Django web application that powers this portfolio site.</p>
+    </div>
+
+    <h3>Main Technologies Used</h3>
+    <div class="tech-list">
+        <ul>
+            <li><strong>Backend:</strong> Django 5 + Django Ninja</li>
+            <li><strong>Frontend:</strong> HTML5, CSS3, Django Templates</li>
+            <li><strong>Database:</strong> MySQL</li>
+            <li><strong>Version Control:</strong> Git + GitHub</li>
+            <li><strong>Deployment:</strong> PythonAnywhere</li>
+        </ul>
+    </div>
+
+    <h3>Application Architecture (MVT)</h3>
+    <div class="tech-list">
+        <ul>
+            <li><strong>Model:</strong> Defines the structure of the database, including fields and relationships.</li>
+            <li><strong>View:</strong> Handles HTTP requests, processes data via models, and passes context to templates.</li>
+            <li><strong>Template:</strong> Generates the HTML presentation layer using the context provided by views.</li>
+        </ul>
+    </div>
+    <img src="{% static 'images/MVT_pw.png' %}" alt="MVT Architecture Diagram">
+
+    <h3>RESTful API Implementation with Django Ninja</h3>
+    <p>This application includes a RESTful API that enables external systems or developers to interact programmatically with the data stored in the site. The API follows REST (Representational State Transfer) principles and is implemented using <strong>Django Ninja</strong>, a lightweight framework built on top of Django and Pydantic.</p>
+
+    <div class="tech-list">
+        <ul>
+            <li><strong>Consistency:</strong> All endpoints follow RESTful patterns like <code>/api/bands</code> (GET, POST), <code>/api/bands/{id}/</code> (GET, PUT, DELETE).</li>
+            <li><strong>Schemas:</strong> Data validation and serialization are handled using Pydantic schemas (e.g., <code>BandaIn</code>, <code>MusicaOut</code>).</li>
+            <li><strong>Auto Documentation:</strong> The API is fully documented using Swagger/OpenAPI, accessible at <a href="/api/docs" target="_blank">/api/docs</a>.</li>
+            <li><strong>Models exposed:</strong> Bands, Albums, and Songs are available through structured endpoints, allowing full CRUD operations.</li>
+        </ul>
+    </div>
+
+    <p>This allows integration with external clients (e.g., mobile apps, dashboards) and supports automated testing and frontend decoupling.</p>
+
+    <h3>Data Modeling (Entity-Relationship Diagram)</h3>
+    <p>The data is organized using Django models. Below is a summary of the key entities and their relationships:</p>
+
+    <div class="tech-list">
+        <ul>
+            <li>
+                <strong>Project</strong> – Represents a student-developed game or experience. Each project includes:
+                <ul>
+                    <li>A title and description</li>
+                    <li>Optional links (Itch.io, GitHub, YouTube)</li>
+                    <li>Technical aspects and core concepts</li>
+                    <li>A <strong>ForeignKey</strong> to one <em>Discipline</em></li>
+                    <li>A <strong>ManyToMany</strong> relation with <em>Technology</em></li>
+                    <li>A <strong>OneToOne</strong> relation with <em>TechnicalSheet</em></li>
+                    <li>A <strong>OneToMany</strong> relation with <em>ProjectImage</em></li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Discipline</strong> – Represents a course from the university. It has:
+                <ul>
+                    <li>Name, year, semester, and optional Moodle/ULusófona page links</li>
+                    <li>A <strong>ManyToMany</strong> relation with <em>Professor</em></li>
+                    <li>A <strong>OneToMany</strong> relation with <em>Project</em></li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Technology</strong> – Each technology used (e.g., Unity, Blender). Includes:
+                <ul>
+                    <li>Name, logo, link, and description</li>
+                    <li>A <strong>ManyToMany</strong> relation with <em>Project</em></li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>Professor</strong> – Teachers associated with each discipline.
+                <ul>
+                    <li>A <strong>ManyToMany</strong> relation with <em>Discipline</em></li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>ProjectImage</strong> – Images illustrating the project.
+                <ul>
+                    <li>Each has a <strong>ForeignKey</strong> to one <em>Project</em></li>
+                </ul>
+            </li>
+
+            <li>
+                <strong>TechnicalSheet</strong> – Holds extra metadata (platform, team size, dev duration).
+                <ul>
+                    <li>Each is linked via a <strong>OneToOne</strong> to one <em>Project</em></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <p>The diagram below visually represents these relationships:</p>
+    <img src="{% static 'images/portfolio.png' %}" alt="Entity-Relationship Diagram (ERD)">
+
+    <h3>Application Structure</h3>
+    <p>The following diagram shows the navigation and structure of the pages in the app:</p>
+    <img src="{% static 'images/site_map_pw.png' %}" alt="Page Map">
+
+    <h3> Test Coverage</h3>
+    <a href="/portfolio/testes/" class="custom-button">Open Test Page</a>
+
+    <h3>GitHub Repository</h3>
+    <p>You can check out the full project source code here:</p>
+    <a href="https://github.com/ManfelDev/Django" target="_blank" class="github-link">
+        https://github.com/ManfelDev/Django
+    </a>
+</section>
+{% endblock %}

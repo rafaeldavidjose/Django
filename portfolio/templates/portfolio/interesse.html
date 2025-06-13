@@ -1,0 +1,37 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/tecnologia.css' %}">
+{% endblock %}
+
+{% block main %}
+<section class="tech-section">
+    <h2>{{ interesse.nome }}</h2>
+
+    <p class="tech-description">{{ interesse.descricao }}</p>
+
+    {% if interesse.projetos.all %}
+        <h3>Podia usar em:</h3>
+        <div class="projects-grid">
+            {% for projeto in interesse.projetos.all %}
+                <a href="{% url 'portfolio:projeto_path' projeto_id=projeto.id %}" class="card project-card">
+                    {% if projeto.imagens.first %}
+                        <img src="{{ projeto.imagens.first.imagem.url }}" alt="{{ projeto.titulo }}">
+                    {% else %}
+                        <img src="{% static 'images/default_project.png' %}" alt="No Image">
+                    {% endif %}
+                    <div class="overlay"></div>
+                    <div class="project-card-title">{{ projeto.titulo }}</div>
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+</section>
+
+{% if request.user.is_authenticated %}
+    <div class="button-wrapper" style="margin-top: 40px;">
+        <a href="{% url 'portfolio:edita_interesse' interesse.id %}" class="custom-button">Edita Interesse</a>
+    </div>
+{% endif %}
+{% endblock %}

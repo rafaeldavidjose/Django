@@ -1,0 +1,36 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/projetos.css' %}">
+{% endblock %}
+
+{% block main %}
+<h2>My Projects</h2>
+
+<div class="grid">
+    {% for projeto in projetos %}
+        <div class="card project-card">
+            <div class="project-image-wrapper">
+                {% if projeto.imagens.first %}
+                    <img src="{{ projeto.imagens.first.imagem.url }}" alt="{{ projeto.titulo }}">
+                {% else %}
+                    <img src="{% static 'images/default_project.png' %}" alt="No Image">
+                {% endif %}
+            </div>
+            <div class="project-card-content">
+                <div class="project-card-title">{{ projeto.titulo }}</div>
+                <a href="{% url 'portfolio:projeto_path' projeto_id=projeto.id %}" class="custom-button view-details-button">View Details</a>
+            </div>
+        </div>
+    {% empty %}
+        <p>No projects available at this time.</p>
+    {% endfor %}
+</div>
+
+{% if request.user.is_authenticated %}
+    <div class="button-wrapper" style="margin-bottom: 0;">
+        <a href="{% url 'portfolio:novo_projeto' %}" class="custom-button">Add New Project</a>
+    </div>
+{% endif %}
+{% endblock %}

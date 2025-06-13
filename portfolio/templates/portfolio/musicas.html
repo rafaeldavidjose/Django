@@ -1,0 +1,106 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/apis.css' %}">
+<link rel="stylesheet" href="{% static 'css_portfolio/form.css' %}">
+{% endblock %}
+
+{% block main %}
+<h2>Songs Management</h2>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="error-message" style="background-color: {% if message.tags == 'success' %}#2d5a2d{% else %}#5a2d2d{% endif %}; margin-bottom: 20px;">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div class="external-api-info">
+    <p>This section manages individual songs through the external API. Songs belong to albums and contain detailed musical information.</p>
+    <p><strong>API Endpoint:</strong> <a href="https://a22202884.pw.deisi.ulusofona.pt/bandas/api/musicas/" target="_blank"><code>https://a22202884.pw.deisi.ulusofona.pt/bandas/api/musicas/</code></a></p>
+    <p><strong>API Documentation:</strong> <a href="https://a22202884.pw.deisi.ulusofona.pt/bandas/api/docs" target="_blank">View Complete API Documentation</a></p>
+</div>
+
+<div class="api-nav">
+    <a href="{% url 'portfolio:bandas_externas' %}" class="custom-button">Manage Bands</a>
+    <a href="{% url 'portfolio:albuns_externos' %}" class="custom-button">Manage Albums</a>
+    <a href="{% url 'portfolio:musicas_externas' %}" class="custom-button active">Manage Songs</a>
+</div>
+
+<div class="create-form">
+    <h4>Create New Song</h4>
+    <form method="post" action="{% url 'portfolio:criar_musica_externa' %}">
+        {% csrf_token %}
+        {{ musica_form.as_p }}
+        <input type="submit" value="Create Song" class="custom-button">
+    </form>
+</div>
+
+{% if dados %}
+    <h4 class="items-count">Current Songs from External API ({{ dados|length }} found)</h4>
+    
+    <div class="api-grid">
+        {% for musica in dados %}
+            <div class="api-card">
+                <div class="music-icon">🎵</div>
+                
+                <div class="api-card-content">
+                    <h4>{{ musica.nome }}</h4>
+                    <p><strong>Duration:</strong> {{ musica.duration }} seconds</p>
+                    <p><strong>Album:</strong> {{ musica.album.nome }}</p>
+                    <p><strong>Song ID:</strong> {{ musica.id }}</p>
+                    
+                    {% if musica.spotify_link %}
+                        <p><strong>Spotify:</strong> 
+                            <a href="{{ musica.spotify_link }}" target="_blank" class="spotify-link">Listen on Spotify</a>
+                        </p>
+                    {% endif %}
+                    
+                    {% if musica.lyrics %}
+                        <div class="lyrics-preview">
+                            <p><strong>Lyrics Preview:</strong></p>
+                            <div class="lyrics-preview-box">
+                                {{ musica.lyrics|truncatewords:25 }}
+                                {% if musica.lyrics|length > 150 %}
+                                    <div class="lyrics-fade">...</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div class="api-endpoint">
+                    <strong>API Endpoint:</strong> /api/musicas/{{ musica.id }}/
+                </div>
+                
+                <div class="api-actions">
+                    <a href="{% url 'portfolio:musicas_externas_id' musica.id %}" class="custom-button">View Details</a>
+                    <a href="{% url 'portfolio:editar_musica_externa' musica.id %}" class="custom-button">Edit (PUT)</a>
+                    <a href="{% url 'portfolio:apagar_musica_externa' musica.id %}" class="custom-button danger-button" onclick="return confirm('Delete this song?')">Delete</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <div style="margin-top: 30px; padding: 20px; background-color: #1f1f1f; border-radius: 15px; border-left: 4px solid #bb86fc;">
+        <h4 style="color: #bb86fc; margin-bottom: 15px;">Songs API Integration Details</h4>
+        <p><strong>Musical Metadata:</strong> Comprehensive song information including duration, lyrics, and streaming links</p>
+        <p><strong>Album Relationships:</strong> Each song is linked to a parent album through foreign key association</p>
+        <p><strong>Text Content:</strong> Full lyrics support with text field handling for large content</p>
+        <p><strong>Duration Format:</strong> Standardized time format for consistent musical timing</p>
+        <p><strong>Streaming Integration:</strong> Direct Spotify links for immediate music access</p>
+    </div>
+{% else %}
+    <div class="no-data">
+        <h4>No Songs Found</h4>
+        <p>Create an album first, then add songs.</p>
+        <a href="{% url 'portfolio:albuns_externos' %}" class="custom-button">Manage Albums</a>
+    </div>
+{% endif %}
+
+<div style="margin-top: 40px; text-align: center;">
+    <a href="{% url 'portfolio:apis' %}" class="custom-button">Back to APIs Overview</a>
+</div>
+{% endblock %}
