@@ -22,7 +22,7 @@
             <h1>Rafael José</h1>
             <nav>
                 <a href="{% url 'portfolio:index' %}">Home</a>
-                <a href="{% url 'portfolio:sobre' %}">Architecture</a>
+                <a href="{% url 'portfolio:sobre' %}">About</a>
                 <a href="{% url 'portfolio:interesses' %}">Interests</a>
                 <a href="{% url 'portfolio:projetos' %}">Projects</a>
                 <a href="{% url 'portfolio:tecnologias' %}">Tools</a>
@@ -30,6 +30,8 @@
                 <a href="{% url 'portfolio:posts' %}">Articles</a>
                 <a href="{% url 'portfolio:testes' %}">Tests</a>
                 <a href="{% url 'portfolio:apis' %}">APIs RESTful</a>
+                <a href="https://a22202078.pw.deisi.ulusofona.pt/api/docs" target="_blank">My API</a>
+                <a href="{% url 'portfolio:bandas_externas' %}">External API</a>
                 <a href="{% url 'portfolio:interessesdefesa' %}">Interesses defesa</a>
                 {% if request.user.is_authenticated %}
                     <a href="{% url 'portfolio:logout' %}">Logout 👤{{request.user.username}}</a>

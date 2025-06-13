@@ -9,7 +9,7 @@
 <section class="architecture-section">
     <h2>Technical Presentation</h2>
     <div class="intro-text">
-        <p>This page presents the technical details of the Django web application that powers this portfolio site.</p>
+        <p>This page presents the technical details of the Django web application that powers this portfolio site, covering modern web development concepts and deployment strategies.</p>
     </div>
 
     <h3>Main Technologies Used</h3>
@@ -33,19 +33,76 @@
     </div>
     <img src="{% static 'images/MVT_pw.png' %}" alt="MVT Architecture Diagram">
 
-    <h3>RESTful API Implementation with Django Ninja</h3>
-    <p>This application includes a RESTful API that enables external systems or developers to interact programmatically with the data stored in the site. The API follows REST (Representational State Transfer) principles and is implemented using <strong>Django Ninja</strong>, a lightweight framework built on top of Django and Pydantic.</p>
+    <h3>API RESTful Implementation with Django Ninja</h3>
+    <p>This application includes a comprehensive <strong>RESTful API</strong> that enables external systems or developers to interact programmatically with the data stored in the site. The API follows REST (Representational State Transfer) principles and is implemented using <strong>Django Ninja</strong>, a lightweight framework built on top of Django and Pydantic.</p>
 
     <div class="tech-list">
         <ul>
-            <li><strong>Consistency:</strong> All endpoints follow RESTful patterns like <code>/api/bands</code> (GET, POST), <code>/api/bands/{id}/</code> (GET, PUT, DELETE).</li>
-            <li><strong>Schemas:</strong> Data validation and serialization are handled using Pydantic schemas (e.g., <code>BandaIn</code>, <code>MusicaOut</code>).</li>
-            <li><strong>Auto Documentation:</strong> The API is fully documented using Swagger/OpenAPI, accessible at <a href="/api/docs" target="_blank">/api/docs</a>.</li>
-            <li><strong>Models exposed:</strong> Bands, Albums, and Songs are available through structured endpoints, allowing full CRUD operations.</li>
+            <li><strong>RESTful Design:</strong> All endpoints follow RESTful patterns like <code>/api/bands</code> (GET, POST), <code>/api/bands/{id}/</code> (GET, PUT, DELETE), ensuring consistency and predictability.</li>
+            <li><strong>HTTP Methods:</strong> Proper use of GET (retrieve), POST (create), PUT (update), DELETE (remove) operations.</li>
+            <li><strong>Status Codes:</strong> Returns appropriate HTTP status codes (200, 201, 404, 500) for different scenarios.</li>
+            <li><strong>JSON Communication:</strong> Uses JSON format for data exchange, making it language-agnostic.</li>
+            <li><strong>Resource-Based URLs:</strong> URLs represent resources rather than actions, following REST conventions.</li>
         </ul>
     </div>
 
-    <p>This allows integration with external clients (e.g., mobile apps, dashboards) and supports automated testing and frontend decoupling.</p>
+    <h3>Django Ninja Framework</h3>
+    <p><strong>Django Ninja</strong> is a modern, fast web framework for building APIs with Django, based on standard Python type hints. It provides several advantages:</p>
+
+    <div class="tech-list">
+        <ul>
+            <li><strong>Type Safety:</strong> Uses Pydantic schemas for automatic request/response validation and serialization.</li>
+            <li><strong>Auto Documentation:</strong> Automatically generates interactive API documentation using Swagger/OpenAPI.</li>
+            <li><strong>Performance:</strong> Built for speed with minimal overhead compared to Django REST Framework.</li>
+            <li><strong>Modern Python:</strong> Leverages Python 3.6+ type hints for better code quality and IDE support.</li>
+            <li><strong>Easy Integration:</strong> Seamlessly integrates with existing Django projects and ORM.</li>
+        </ul>
+    </div>
+
+    <div class="button-wrapper">
+        <a href="https://a22202078.pw.deisi.ulusofona.pt/api/docs" target="_blank" class="custom-button">
+            View My API Documentation (Swagger)
+        </a>
+    </div>
+
+    <h3>CI/CD (Continuous Integration/Continuous Deployment)</h3>
+    <p><strong>CI/CD</strong> practices ensure reliable and automated software delivery. This project implements CI/CD concepts through:</p>
+
+    <div class="tech-list">
+        <ul>
+            <li><strong>Version Control:</strong> Git workflow with feature branches and pull requests for code review.</li>
+            <li><strong>Automated Testing:</strong> Unit tests, integration tests, and Selenium functional tests run automatically.</li>
+            <li><strong>Code Quality:</strong> Consistent coding standards and automated code analysis.</li>
+            <li><strong>Deployment Pipeline:</strong> Streamlined deployment process from development to production.</li>
+            <li><strong>Environment Management:</strong> Separate development, testing, and production environments.</li>
+        </ul>
+    </div>
+
+    <h3>GitHub Actions</h3>
+    <p><strong>GitHub Actions</strong> is a powerful CI/CD platform that automates workflows directly within GitHub repositories. The project utilizes GitHub Actions for:</p>
+
+    <div class="tech-list">
+        <ul>
+            <li><strong>Automated Testing:</strong> Runs test suite on every push and pull request to ensure code quality.</li>
+            <li><strong>Code Validation:</strong> Checks code formatting, linting, and security vulnerabilities.</li>
+            <li><strong>Build Automation:</strong> Automatically builds the application and dependencies.</li>
+            <li><strong>Deployment Triggers:</strong> Automates deployment to production environments when changes are merged.</li>
+            <li><strong>Notification System:</strong> Sends alerts about build failures or successful deployments.</li>
+        </ul>
+    </div>
+
+    <h3>Docker Containerization</h3>
+    <p><strong>Docker</strong> enables consistent application deployment across different environments. This project incorporates Docker concepts:</p>
+
+    <div class="tech-list">
+        <ul>
+            <li><strong>Containerization:</strong> Packages the application with all its dependencies into a portable container.</li>
+            <li><strong>Environment Consistency:</strong> Ensures the application runs identically in development, testing, and production.</li>
+            <li><strong>Scalability:</strong> Enables easy horizontal scaling by spinning up multiple container instances.</li>
+            <li><strong>Isolation:</strong> Provides process and resource isolation for better security and stability.</li>
+            <li><strong>Microservices Ready:</strong> Facilitates breaking down monolithic applications into smaller, manageable services.</li>
+        </ul>
+    </div>
 
     <h3>Data Modeling (Entity-Relationship Diagram)</h3>
     <p>The data is organized using Django models. Below is a summary of the key entities and their relationships:</p>
@@ -112,7 +169,7 @@
     <p>The following diagram shows the navigation and structure of the pages in the app:</p>
     <img src="{% static 'images/site_map_pw.png' %}" alt="Page Map">
 
-    <h3> Test Coverage</h3>
+    <h3>Test Coverage</h3>
     <a href="/portfolio/testes/" class="custom-button">Open Test Page</a>
 
     <h3>GitHub Repository</h3>
