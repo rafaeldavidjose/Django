@@ -395,6 +395,7 @@ p {
     transition: all 0.3s;
     max-width: 350px;
     margin: 0 auto;
+    cursor: auto; /* Remove pointer cursor - only buttons should be clickable */
 }
 
 .project-image-wrapper {
@@ -410,8 +411,16 @@ p {
     transition: transform 0.3s;
 }
 
+/* Project card hover effect - border changes to orange like tech cards */
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border-color: var(--primary-gold);
+}
+
+/* FIXED: Removed image zoom effect on hover - only border should change to orange */
 .project-card:hover img {
-    transform: scale(1.1);
+    /* Images should not scale on hover */
 }
 
 .project-card-content {
@@ -435,6 +444,7 @@ p {
     transition: all 0.3s;
     max-width: 300px;
     margin: 0 auto;
+    cursor: auto; /* Remove pointer cursor - only buttons should be clickable */
 }
 
 .tech-card-image-wrapper {
