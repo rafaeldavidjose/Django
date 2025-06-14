@@ -13,10 +13,21 @@
 
 .tech-tags {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 5px;
     margin-bottom: 15px;
     justify-content: center;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.tech-tags::-webkit-scrollbar {
+    display: none;
+}
+
+.tech-tags {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .no-data-icon {
