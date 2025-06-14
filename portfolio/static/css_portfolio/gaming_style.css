@@ -61,6 +61,9 @@ body {
     overflow-x: hidden;
     cursor: auto;
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Animated starfield background */
@@ -131,11 +134,11 @@ body::before {
     100% { width: 100%; }
 }
 
-/* Header and Navigation */
+/* Header and Navigation - CORRIGIDO */
 header {
     background-color: #1f1b24;
     color: var(--primary-gold);
-    padding: 15px 0;
+    padding: 8px 0;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -150,15 +153,41 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    min-height: 40px;
+}
+
+/* Classe específica para o título do header - TEXTO FLAT LARANJA */
+.header-title {
+    font-family: 'Orbitron', monospace !important;
+    font-size: clamp(1.2rem, 2vw, 1.8rem) !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    color: #f39c12 !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    filter: none !important;
+    transform: none !important;
+    animation: none !important;
 }
 
 header h1 {
+    font-family: 'Orbitron', monospace;
     font-size: clamp(1.2rem, 2vw, 1.8rem);
     font-weight: 600;
     text-shadow: 
         3px 3px 0 #c87f0a,
         6px 6px 0 #000,
         6px 6px 20px rgba(243, 156, 18, 0.5);
+    margin: 0;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
 }
 
 @keyframes float {
@@ -170,6 +199,7 @@ nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
+    align-items: center;
     gap: 8px;
 }
 
@@ -179,14 +209,17 @@ nav a {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 8px 12px;
+    padding: 10px 12px;
     position: relative;
     transition: all 0.3s;
     text-decoration: none;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     background-color: #2b2b2b;
     border-radius: 8px;
     margin: 2px;
+    line-height: 1.2;
 }
 
 nav a:hover {
@@ -478,10 +511,21 @@ form input:focus, form textarea:focus, form select:focus {
 footer {
     background-color: #1f1b24;
     color: var(--primary-gold);
-    padding: 20px;
+    padding: 8px 15px;
     text-align: center;
-    font-size: clamp(0.6rem, 0.9vw, 0.8rem);
+    font-size: clamp(0.5rem, 0.7vw, 0.65rem);
     margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-height: 32px;
+}
+
+footer p {
+    margin: 0;
+    line-height: 1.2;
 }
 
 /* Power-ups / Easter Eggs */
@@ -566,24 +610,24 @@ footer {
     margin-top: 20px;
 }
 
-/* Responsive Design */
+/* Responsive Design - CORRIGIDO */
 @media (max-width: 768px) {
     .header-content {
         flex-direction: column;
         gap: 15px;
-        position: relative;
+        padding: 15px 10px;
+        text-align: center;
     }
     
     header h1 {
-        position: static;
-        transform: none;
         margin-bottom: 10px;
+        justify-content: center;
     }
     
     nav {
         justify-content: center;
         width: 100%;
-        margin-left: 0;
+        margin: 0;
     }
     
     .grid {

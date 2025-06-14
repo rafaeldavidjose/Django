@@ -43,12 +43,6 @@ INSTALLED_APPS = [
     "portfolio",
 ]
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'portfolio' / 'static',
-]
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -141,18 +135,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if 'RAILWAY_ENVIRONMENT' in os.environ:
-    # Produção no Railway
-    STATIC_ROOT = BASE_DIR / 'staticfiles'
-    STATICFILES_DIRS = [
-        BASE_DIR / 'portfolio' / 'static',
-    ]
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-else:
-    # Desenvolvimento local
-    STATICFILES_DIRS = [
-        BASE_DIR / 'portfolio' / 'static',
-    ]
+# STATIC_ROOT sempre definido (necessário para collectstatic)
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Diretórios onde o Django procura ficheiros estáticos
+STATICFILES_DIRS = [
+    BASE_DIR / 'portfolio' / 'static',
+]
+
+# Storage para ficheiros estáticos
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media files
 MEDIA_URL = '/media/'
