@@ -40,7 +40,7 @@
     max-width: 350px;
     margin: 0 auto;
     position: relative;
-    cursor: pointer;
+    cursor: auto !important; /* FORÇAR cursor normal */
 }
 
 .tech-card::before {
@@ -117,28 +117,29 @@
 }
 
 .tech-external-link {
-    font-size: clamp(0.7rem, 1vw, 0.9rem);
+    font-size: clamp(0.6rem, 0.9vw, 0.8rem);
     color: var(--primary-blue);
-    background: #2b2b2b;
-    border: 2px solid var(--primary-blue);
-    cursor: pointer;
-    padding: 12px 20px;
-    position: relative;
-    transition: all 0.3s;
     text-decoration: none;
+    padding: 8px 15px;
+    border: 1px solid var(--primary-blue);
+    border-radius: 5px;
+    transition: all 0.3s;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
-    font-family: 'Orbitron', monospace;
+    margin: 5px;
     text-align: center;
     line-height: 1;
+    background: transparent;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 10;
 }
 
 .tech-external-link:hover {
     background: var(--primary-blue);
     color: #fff;
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
     text-decoration: none;
+    transform: none !important;
 }

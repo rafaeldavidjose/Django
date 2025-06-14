@@ -309,7 +309,6 @@ p {
     transition: all 0.3s;
     position: relative;
     overflow: hidden;
-    cursor: pointer;
 }
 
 .card::before {
