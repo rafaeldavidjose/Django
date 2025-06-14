@@ -35,7 +35,7 @@ body {
     min-height: 100vh;
 }
 
-/* Animated starfield background */
+/* Animated starfield background - SEAMLESS */
 body::before {
     content: '';
     position: fixed;
@@ -50,14 +50,38 @@ body::before {
         radial-gradient(1px 1px at 130px 40px, #fff, transparent),
         radial-gradient(2px 2px at 200px 10px, #ddd, transparent);
     background-repeat: repeat;
-    background-size: 250px 250px;
-    animation: stars 200s linear infinite;
+    background-size: 300px 300px;
+    animation: stars 100s linear infinite;
+    z-index: -1;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(1px 1px at 80px 120px, #fff, transparent),
+        radial-gradient(2px 2px at 150px 50px, #ddd, transparent),
+        radial-gradient(1px 1px at 30px 200px, #eee, transparent),
+        radial-gradient(1px 1px at 180px 180px, #fff, transparent),
+        radial-gradient(2px 2px at 100px 80px, #ddd, transparent);
+    background-repeat: repeat;
+    background-size: 300px 300px;
+    animation: stars2 120s linear infinite;
     z-index: -1;
 }
 
 @keyframes stars {
     0% { transform: translateY(0); }
-    100% { transform: translateY(-2000px); }
+    100% { transform: translateY(-300px); }
+}
+
+@keyframes stars2 {
+    0% { transform: translateY(-150px); }
+    100% { transform: translateY(-450px); }
 }
 
 /* Loading Screen */

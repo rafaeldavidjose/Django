@@ -48,9 +48,9 @@
         </div>
     </main>
 
-    <!-- Power-ups / Easter Eggs -->
-    <div class="power-up" style="top: 100px; right: 50px;" onclick="collectPowerUp(this)">⭐</div>
-    <div class="power-up" style="bottom: 100px; left: 50px;" onclick="collectPowerUp(this)">💎</div>
+    <!-- Power-ups / Easter Eggs - POSICIONAMENTO AJUSTADO -->
+    <div class="power-up" id="powerup1" onclick="collectPowerUp(this)">⭐</div>
+    <div class="power-up" id="powerup2" onclick="collectPowerUp(this)">💎</div>
 
     <!-- Achievement Popup -->
     <div class="achievement" id="achievement">
@@ -85,6 +85,41 @@
                 achievement.classList.remove('show');
             }, 4000);
         }
+
+        // POWER-UP POSICIONAMENTO AJUSTADO
+        function getUsableScreenArea() {
+            const header = document.querySelector('header');
+            const footer = document.querySelector('footer');
+            const headerHeight = header ? header.offsetHeight : 60;
+            const footerHeight = footer ? footer.offsetHeight : 40;
+            
+            return {
+                top: headerHeight + 20,
+                bottom: window.innerHeight - footerHeight - 60,
+                left: 20,
+                right: window.innerWidth - 80
+            };
+        }
+
+        function positionPowerUps() {
+            const area = getUsableScreenArea();
+            const powerup1 = document.getElementById('powerup1');
+            const powerup2 = document.getElementById('powerup2');
+            
+            if (powerup1) {
+                powerup1.style.top = Math.random() * (area.bottom - area.top) + area.top + 'px';
+                powerup1.style.right = Math.random() * 100 + 50 + 'px';
+            }
+            
+            if (powerup2) {
+                powerup2.style.bottom = Math.random() * (area.bottom - area.top - 100) + 100 + 'px';
+                powerup2.style.left = Math.random() * 100 + 50 + 'px';
+            }
+        }
+
+        // Inicializar posicionamento
+        document.addEventListener('DOMContentLoaded', positionPowerUps);
+        window.addEventListener('resize', positionPowerUps);
 
         // Power-up collection
         let score = parseInt(localStorage.getItem('portfolioScore') || '0');
