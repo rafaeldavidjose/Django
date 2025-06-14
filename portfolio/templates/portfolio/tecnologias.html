@@ -2,87 +2,68 @@
 
 {% load static %}
 {% block extra_styles %}
-<link rel="stylesheet" href="{% static 'css_portfolio/tecnologias.css' %}">
+<link rel="stylesheet" href="{% static 'css_portfolio/tecnologia.css' %}">
 {% endblock %}
 
 {% block main %}
-<div class="section-header">
-    <h2>TECHNOLOGIES & TOOLS</h2>
-    <p>The arsenal of tools and technologies I use to bring games to life.</p>
-</div>
+<section class="tech-section">
+    <div class="tech-back-button">
+        <a href="{% url 'portfolio:tecnologias' %}" class="custom-button back-button">< BACK TO TOOLS</a>
+    </div>
 
-<div class="grid">
-    {% for tecnologia in tecnologias %}
-        <div class="tech-card">
-            <div class="tech-card-image-wrapper">
-                {% if tecnologia.logotipo %}
-                    <img src="{{ tecnologia.logotipo.url }}" alt="{{ tecnologia.nome }}">
-                {% else %}
-                    <div class="tech-placeholder">🛠️</div>
-                {% endif %}
-            </div>
-            <h3 class="tech-card-title">{{ tecnologia.nome }}</h3>
-            <p>{{ tecnologia.descricao|truncatechars:120 }}</p>
-            
-            {% if tecnologia.projetos.count > 0 %}
-                <div class="tech-count-wrapper">
-                    <span class="tech-count">
-                        Used in {{ tecnologia.projetos.count }} project{{ tecnologia.projetos.count|pluralize }}
-                    </span>
-                </div>
+    <h2 class="tech-title">{{ tecnologia.nome }}</h2>
+
+    <div class="tech-logo-container">
+        <div class="tech-logo-wrapper">
+            {% if tecnologia.logotipo %}
+                <img src="{{ tecnologia.logotipo.url }}" alt="{{ tecnologia.nome }}">
+            {% else %}
+                <div class="tech-logo-placeholder">🛠️</div>
             {% endif %}
-            
-            <div class="card-buttons">
-                <a href="{% url 'portfolio:tecnologia_path' tecnologia_id=tecnologia.id %}" class="custom-button">VIEW DETAILS</a>
-                {% if tecnologia.link %}
-                    <a href="{{ tecnologia.link }}" target="_blank" class="tech-external-link">OFFICIAL SITE</a>
-                {% endif %}
+        </div>
+    </div>
+
+    <div class="tech-description-box">
+        <h3>ABOUT THIS TECHNOLOGY</h3>
+        <p>{{ tecnologia.descricao }}</p>
+    </div>
+
+    {% if tecnologia.link %}
+        <div class="tech-website-button">
+            <a href="{{ tecnologia.link }}" target="_blank" class="custom-button website-button">VISIT OFFICIAL WEBSITE</a>
+        </div>
+    {% endif %}
+
+    {% if tecnologia.projetos.all %}
+        <div class="tech-projects-section">
+            <h3>PROJECTS USING {{ tecnologia.nome|upper }}</h3>
+            <div class="tech-projects-grid">
+                {% for projeto in tecnologia.projetos.all %}
+                    <a href="{% url 'portfolio:projeto_path' projeto_id=projeto.id %}" class="tech-project-card">
+                        {% if projeto.imagens.first %}
+                            <img src="{{ projeto.imagens.first.imagem.url }}" alt="{{ projeto.titulo }}">
+                        {% else %}
+                            <div class="tech-project-placeholder">🎮</div>
+                        {% endif %}
+                        
+                        <div class="tech-project-title">{{ projeto.titulo }}</div>
+                        <div class="tech-project-overlay"></div>
+                    </a>
+                {% endfor %}
             </div>
         </div>
-    {% empty %}
-        <div class="no-data">
-            <h3>NO TECHNOLOGIES YET</h3>
-            <p>The toolbox is being prepared! Check back soon for the tools of the trade.</p>
-            <div class="no-data-icon">🛠️</div>
+    {% else %}
+        <div class="tech-no-projects">
+            <h3>NO PROJECTS YET</h3>
+            <p>This technology hasn't been used in any projects yet, but stay tuned!</p>
+            <div class="tech-no-projects-icon">🚧</div>
         </div>
-    {% endfor %}
-</div>
+    {% endif %}
+</section>
 
 {% if request.user.is_authenticated %}
     <div class="button-wrapper">
-        <a href="{% url 'portfolio:nova_tecnologia' %}" class="custom-button add-button">+ ADD NEW TECHNOLOGY</a>
+        <a href="{% url 'portfolio:edita_tecnologia' tecnologia.id %}" class="custom-button edit-button">EDIT TECHNOLOGY</a>
     </div>
 {% endif %}
-{% endblock %}
-{% endblock %}
-    border-radius: 5px;
-    transition: all 0.3s;
-    background: transparent;
-}
-
-.tech-external-link:hover {
-    background: var(--primary-blue);
-    color: #fff;
-    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
-    text-decoration: none;
-    transform: translateY(-2px);
-}
-
-@media (max-width: 768px) {
-    .grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .tech-card {
-        max-width: 100%;
-        min-height: 320px;
-    }
-    
-    .tech-card-image-wrapper {
-        width: 100px;
-        height: 100px;
-    }
-}
-</style>
 {% endblock %}
