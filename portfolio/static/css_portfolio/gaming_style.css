@@ -127,15 +127,17 @@ body::after {
     100% { width: 100%; }
 }
 
-/* Header and Navigation */
+/* Header and Navigation - TAMANHOS CONSISTENTES */
 header {
     background-color: #1f1b24;
     color: var(--primary-gold);
-    padding: 8px 0;
+    padding: 12px 0; /* Padding fixo e consistente */
     position: sticky;
     top: 0;
     z-index: 100;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    min-height: 60px; /* Altura mínima fixa */
+    max-height: 60px; /* Altura máxima fixa */
 }
 
 .header-content {
@@ -146,7 +148,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 40px;
+    height: 100%; /* Ocupa toda a altura do header */
+    min-height: 36px; /* Altura mínima do conteúdo */
 }
 
 /* Classe específica para o título do header - TEXTO FLAT LARANJA */
@@ -309,19 +312,12 @@ p {
     transition: all 0.3s;
     position: relative;
     overflow: hidden;
+    /* cursor: pointer; <- REMOVIDO - só botões devem ter cursor pointer */
 }
 
 .card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-    transform: rotate(45deg);
-    transition: all 0.5s;
-    opacity: 0;
+    /* REMOVIDO: efeito de brilho completamente */
+    display: none !important;
 }
 
 .card:hover {
@@ -331,7 +327,9 @@ p {
 }
 
 .card:hover::before {
-    animation: shine 0.5s ease-in-out;
+    /* REMOVIDO: animação de brilho completamente */
+    display: none !important;
+    animation: none !important;
 }
 
 .card h3 {
@@ -533,25 +531,27 @@ form input:focus, form textarea:focus, form select:focus {
     box-shadow: 0 0 10px rgba(243, 156, 18, 0.3);
 }
 
-/* Footer */
+/* Footer - LIGEIRAMENTE MAIS PEQUENO */
 footer {
     background-color: #1f1b24;
     color: var(--primary-gold);
-    padding: 8px 15px;
+    padding: 4px 20px; /* Padding ainda mais pequeno */
     text-align: center;
-    font-size: clamp(0.5rem, 0.7vw, 0.65rem);
+    font-size: clamp(0.6rem, 0.8vw, 0.75rem) !important; /* Letras um pouco menores */
     margin-top: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 8px;
-    min-height: 32px;
+    gap: 6px;
+    min-height: 35px; /* Altura ainda mais pequena */
+    max-height: 35px; /* Altura ainda mais pequena */
 }
 
 footer p {
     margin: 0;
     line-height: 1.2;
+    font-size: clamp(0.6rem, 0.8vw, 0.75rem) !important; /* Força tamanho nos parágrafos */
 }
 
 /* Power-ups / Easter Eggs */
@@ -612,7 +612,6 @@ footer p {
     color: #fff;
     box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
     text-decoration: none;
-    transform: translateY(-2px);
 }
 
 .no-data {
@@ -640,17 +639,38 @@ footer p {
     margin-top: 20px;
 }
 
-/* Responsive Design */
+/* Responsive Design - MANTER CONSISTÊNCIA EM MOBILE */
 @media (max-width: 768px) {
+    header {
+        padding: 10px 0;
+        min-height: 70px; /* Altura maior em mobile para acomodar menu em duas linhas */
+        max-height: 70px;
+    }
+    
     .header-content {
         flex-direction: column;
-        gap: 15px;
-        padding: 15px 10px;
+        gap: 8px;
+        padding: 8px 10px;
         text-align: center;
+        justify-content: center;
+    }
+    
+    footer {
+        padding: 3px 15px; /* Padding ainda mais pequeno em mobile */
+        min-height: 30px; /* Altura ainda mais pequena em mobile */
+        max-height: 30px;
+        flex-direction: column;
+        text-align: center;
+        gap: 2px;
+        font-size: clamp(0.55rem, 0.7vw, 0.65rem) !important; /* Fonte um pouco menor em mobile */
+    }
+    
+    footer p {
+        font-size: clamp(0.55rem, 0.7vw, 0.65rem) !important; /* Força tamanho nos parágrafos em mobile */
     }
     
     header h1 {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         justify-content: center;
     }
     
@@ -691,6 +711,11 @@ footer p {
     .power-up {
         font-size: 20px;
     }
+}
+
+/* DESABILITAR QUALQUER ANIMAÇÃO SHINE */
+@keyframes shine {
+    0%, 100% { opacity: 0; }
 }
 
 /* Animation utilities */
