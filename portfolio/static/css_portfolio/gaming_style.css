@@ -304,6 +304,7 @@ p {
     margin: 40px auto;
 }
 
+/* ========== CORRIGIDO: CARDS SEM EFEITO DE BRILHO ========== */
 .card {
     background: var(--card-bg);
     border: 3px solid #34495e;
@@ -312,12 +313,17 @@ p {
     transition: all 0.3s;
     position: relative;
     overflow: hidden;
-    /* cursor: pointer; <- REMOVIDO - só botões devem ter cursor pointer */
 }
 
-.card::before {
-    /* REMOVIDO: efeito de brilho completamente */
+/* ❌ EFEITO DE BRILHO COMPLETAMENTE REMOVIDO */
+.card::before,
+.card::after {
     display: none !important;
+    content: none !important;
+    animation: none !important;
+    background: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
 }
 
 .card:hover {
@@ -326,10 +332,13 @@ p {
     border-color: var(--primary-gold);
 }
 
-.card:hover::before {
-    /* REMOVIDO: animação de brilho completamente */
+/* ❌ REMOVE QUALQUER ANIMAÇÃO NO HOVER */
+.card:hover::before,
+.card:hover::after {
     display: none !important;
     animation: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
 }
 
 .card h3 {
@@ -639,6 +648,14 @@ footer p {
     margin-top: 20px;
 }
 
+/* ========== ANIMAÇÕES SHINE COMPLETAMENTE DESABILITADAS ========== */
+@keyframes shine {
+    0%, 100% { 
+        opacity: 0 !important; 
+        display: none !important;
+    }
+}
+
 /* Responsive Design - MANTER CONSISTÊNCIA EM MOBILE */
 @media (max-width: 768px) {
     header {
@@ -711,11 +728,6 @@ footer p {
     .power-up {
         font-size: 20px;
     }
-}
-
-/* DESABILITAR QUALQUER ANIMAÇÃO SHINE */
-@keyframes shine {
-    0%, 100% { opacity: 0; }
 }
 
 /* Animation utilities */

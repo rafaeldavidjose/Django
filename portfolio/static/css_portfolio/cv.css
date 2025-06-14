@@ -1,159 +1,205 @@
-/* CV page specific styles */
+/* CV page specific styles - MAXIMUM SPECIFICITY OVERRIDES */
 
+/* FORÇA O TAMANHO CORRETO DOS CARTÕES CV */
 .cv-container {
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
 }
 
 .cv-header {
-    text-align: center;
-    margin-bottom: 50px;
+    text-align: center !important;
+    margin-bottom: 50px !important;
+}
+
+.cv-header h2 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem) !important;
+    color: #f39c12 !important;
+    text-shadow: 3px 3px 0 #c87f0a, 6px 6px 0 #000, 6px 6px 20px rgba(243, 156, 18, 0.5) !important;
+    margin-bottom: 20px !important;
 }
 
 .cv-header p {
-    font-size: 1rem;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.8;
+    font-size: 1rem !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    line-height: 1.8 !important;
+    color: #ecf0f1 !important;
 }
 
+/* ========== CARTÃO PRINCIPAL - TAMANHO REFERÊNCIA ========== */
 .main-cv-section {
-    background: linear-gradient(135deg, var(--card-bg), #1f2937);
-    padding: 40px;
-    border-radius: 15px;
-    border: 3px solid var(--primary-gold);
-    margin-bottom: 40px;
-    text-align: center;
+    background: linear-gradient(135deg, #2c3e50, #1f2937) !important;
+    padding: 40px !important;
+    border-radius: 15px !important;
+    border: 3px solid #f39c12 !important;
+    margin-bottom: 40px !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 1000px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    position: relative !important;
+    overflow: hidden !important;
 }
 
 .main-cv-icon {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    color: var(--primary-gold);
+    font-size: 4rem !important;
+    margin-bottom: 20px !important;
+    color: #f39c12 !important;
 }
 
 .main-cv-section h3 {
-    color: var(--primary-gold);
-    margin-bottom: 20px;
-    font-size: 1.5rem;
+    color: #f39c12 !important;
+    margin-bottom: 20px !important;
+    font-size: 1.5rem !important;
 }
 
 .main-cv-section p {
-    margin-bottom: 25px;
-    font-size: 1rem;
-    line-height: 1.6;
+    margin-bottom: 25px !important;
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    color: #ecf0f1 !important;
 }
 
 .download-button {
-    background: var(--primary-green) !important;
+    background: #27ae60 !important;
     font-size: 1rem !important;
     padding: 15px 30px !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    transition: all 0.3s !important;
+    display: inline-block !important;
 }
 
 .download-button:hover {
     background: #229954 !important;
+    color: white !important;
+    text-decoration: none !important;
+    transform: scale(1.05) !important;
 }
 
+/* ========== SEÇÕES DE BAIXO - FORÇAR MESMO TAMANHO QUE O CARTÃO PRINCIPAL ========== */
 .cv-sections-top {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    margin-top: 40px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+    margin-top: 30px !important;
+    width: 100% !important;
+    max-width: 1000px !important; /* ← ESTE É O TAMANHO QUE FALTAVA FORÇAR */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+}
+
+/* ========== CADA CARTÃO INDIVIDUAL OCUPA METADE DO ESPAÇO ========== */
+.cv-section-card {
+    background: #2c3e50 !important;
+    border: 3px solid #34495e !important;
+    border-radius: 15px !important;
+    padding: 30px !important;
+    text-align: center !important;
+    transition: all 0.3s !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 300px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    width: 100% !important; /* ← FORÇA CADA CARTÃO A OCUPAR TODO O ESPAÇO DISPONÍVEL */
+    box-sizing: border-box !important;
 }
 
 .cv-sections-bottom {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
+    display: flex !important;
+    justify-content: center !important;
+    margin-top: 30px !important;
+    max-width: 1000px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
-.cv-section-card {
-    background: var(--card-bg);
-    border: 3px solid #34495e;
-    border-radius: 15px;
-    padding: 30px;
-    text-align: center;
-    transition: all 0.3s;
-    display: flex;
-    flex-direction: column;
-    min-height: 300px;
-    position: relative;
-    overflow: hidden;
-}
-
-.cv-section-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-    transition: left 0.5s;
-    z-index: 1;
-}
-
+/* ========== HOVER SEM EFEITO DE BRILHO ========== */
 .cv-section-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    border-color: var(--primary-gold);
-}
-
-.cv-section-card:hover::before {
-    left: 100%;
+    transform: translateY(-8px) !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4) !important;
+    border-color: #f39c12 !important;
 }
 
 .cv-section-card h3 {
-    font-size: 1.2rem;
-    color: var(--primary-gold);
-    margin-bottom: 15px;
+    font-size: 1.2rem !important;
+    color: #f39c12 !important;
+    margin-bottom: 15px !important;
 }
 
 .cv-section-card p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    flex-grow: 1;
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 20px !important;
+    flex-grow: 1 !important;
+    color: #ecf0f1 !important;
 }
 
 .cv-icon {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    color: var(--primary-gold);
+    font-size: 3rem !important;
+    margin-bottom: 20px !important;
+    color: #f39c12 !important;
 }
 
 .cv-button-wrapper {
-    margin-top: auto;
+    margin-top: auto !important;
 }
 
 .centered-card {
-    max-width: 400px;
+    max-width: 400px !important;
 }
 
-/* Remove old shine animation from CV */
+/* ========== BOTÕES ESTILO CORRETO ========== */
+.cv-container .custom-button {
+    background: #2b2b2b !important;
+    color: white !important;
+    padding: 12px 20px !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    font-weight: normal !important;
+    transition: 0.3s !important;
+    display: inline-block !important;
+    border: none !important;
+    font-family: 'Orbitron', monospace !important;
+}
 
+.cv-container .custom-button:hover {
+    background: #3498db !important;
+    color: white !important;
+    text-decoration: none !important;
+    transform: scale(1.05) !important;
+    box-shadow: 0 0 20px rgba(52, 152, 219, 0.5) !important;
+}
+
+/* ========== RESPONSIVIDADE ========== */
 @media (max-width: 768px) {
     .cv-container {
-        padding: 0 15px;
+        padding: 0 15px !important;
     }
     
     .cv-section-card {
-        min-height: 250px;
-        padding: 25px;
+        min-height: 250px !important;
+        padding: 25px !important;
     }
     
     .cv-sections-top {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
+        max-width: 100% !important;
+        gap: 15px !important;
     }
     
     .main-cv-section {
-        padding: 25px;
+        padding: 25px !important;
+        max-width: 100% !important;
     }
     
     .main-cv-icon {
-        font-size: 3rem;
+        font-size: 3rem !important;
     }
 }
