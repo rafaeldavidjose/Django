@@ -174,12 +174,15 @@
                 }, index * 100);
             });
 
-            // Center odd items in grids
+            // CORRIGIDO: Não centrar itens ímpares nas tecnologias
             const grids = document.querySelectorAll('.grid');
             grids.forEach(grid => {
                 const items = grid.children;
-                if (items.length % 2 === 1) {
-                    // If odd number of items, center the last one
+                // Só centrar itens ímpares se NÃO tiver tech-card
+                const hasTechCards = grid.querySelector('.tech-card');
+                
+                if (items.length % 2 === 1 && !hasTechCards) {
+                    // If odd number of items, center the last one (só para projetos)
                     const lastItem = items[items.length - 1];
                     lastItem.style.gridColumn = '1 / -1';
                     lastItem.style.justifySelf = 'center';

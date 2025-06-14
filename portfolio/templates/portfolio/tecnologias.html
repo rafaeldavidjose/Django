@@ -21,16 +21,18 @@
                     <div class="tech-placeholder">🛠️</div>
                 {% endif %}
             </div>
-            <h3 class="tech-card-title">{{ tecnologia.nome }}</h3>
-            <p>{{ tecnologia.descricao|truncatechars:120 }}</p>
-            
-            {% if tecnologia.projetos.count > 0 %}
-                <div class="tech-count-wrapper">
-                    <span class="tech-count">
-                        Used in {{ tecnologia.projetos.count }} project{{ tecnologia.projetos.count|pluralize }}
-                    </span>
-                </div>
-            {% endif %}
+            <div class="tech-card-content">
+                <h3 class="tech-card-title">{{ tecnologia.nome }}</h3>
+                <p>{{ tecnologia.descricao|truncatechars:120 }}</p>
+                
+                {% if tecnologia.projetos.count > 0 %}
+                    <div class="tech-count-wrapper">
+                        <span class="tech-count">
+                            Used in {{ tecnologia.projetos.count }} project{{ tecnologia.projetos.count|pluralize }}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
             
             <div class="card-buttons">
                 <a href="{% url 'portfolio:tecnologia_path' tecnologia_id=tecnologia.id %}" class="custom-button">VIEW DETAILS</a>
