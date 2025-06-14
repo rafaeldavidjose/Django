@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.db.models import Count
 from datetime import date
 from .models import Projeto, Tecnologia
 from .forms import *
@@ -32,9 +33,14 @@ def projeto_view(request, projeto_id):
     return render(request, 'portfolio/projeto.html', context)
 
 def tecnologias_view(request):
+    # Ordena tecnologias por número de projetos (descendente) e depois por nome
+    tecnologias_ordenadas = Tecnologia.objects.annotate(
+        num_projetos=Count('projetos')
+    ).order_by('-num_projetos', 'nome')
+    
     context = {
         'data' : date.today().year,
-        'tecnologias' : Tecnologia.objects.all().order_by('id'),
+        'tecnologias' : tecnologias_ordenadas,
     }
     return render(request, 'portfolio/tecnologias.html', context)
 
