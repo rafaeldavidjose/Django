@@ -1,113 +1,180 @@
 {% extends 'portfolio/base.html' %}
 
 {% load static %}
-{% block extra_styles %}
-<link rel="stylesheet" href="{% static 'css_portfolio/projeto.css' %}">
-{% endblock %}
 
 {% block main %}
-<section class="project-section">
-    <h2 class="project-title">{{ projeto.titulo }}</h2>
+<section class="project-section" style="max-width: 1000px; margin: 0 auto; text-align: left;">
+    <!-- Back Button -->
+    <div style="margin-bottom: 30px;">
+        <a href="{% url 'portfolio:projetos' %}" class="custom-button" style="background: var(--primary-red);">< BACK TO PROJECTS</a>
+    </div>
 
+    <!-- Project Title -->
+    <h2 style="text-align: center; font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 30px; text-shadow: 3px 3px 0 #000;">{{ projeto.titulo }}</h2>
+
+    <!-- Project Links -->
     {% if projeto.link_itch or projeto.link_video or projeto.link_github %}
-        <div class="project-links">
+        <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;">
             {% if projeto.link_itch %}
-                <a href="{{ projeto.link_itch }}" target="_blank" class="project-link">
-                    Play on Itch.io
-                </a>
+                <a href="{{ projeto.link_itch }}" target="_blank" class="project-link" style="background: var(--primary-green);">PLAY ON ITCH.IO</a>
             {% endif %}
             {% if projeto.link_github %}
-                <a href="{{ projeto.link_github }}" target="_blank" class="project-link">
-                    View on GitHub
-                </a>
+                <a href="{{ projeto.link_github }}" target="_blank" class="project-link" style="background: #333;">VIEW ON GITHUB</a>
             {% endif %}
-            {% if projeto.link_video and not projeto.link_video|cut:"https://www.youtube.com/watch?v=" %}
-                <a href="{{ projeto.link_video }}" target="_blank" class="project-link">
-                    Watch Video
-                </a>
+            {% if projeto.link_video %}
+                <a href="{{ projeto.link_video }}" target="_blank" class="project-link" style="background: var(--primary-red);">WATCH VIDEO</a>
             {% endif %}
         </div>
     {% endif %}
 
+    <!-- Project Video -->
     {% if projeto.link_video %}
         {% with projeto.link_video|cut:"https://www.youtube.com/watch?v=" as video_id %}
-            <div class="project-video-wrapper">
-                <iframe width="720" height="405"
+            <div style="display: flex; justify-content: center; margin-bottom: 30px;">
+                <iframe width="100%" height="400" style="max-width: 720px; border-radius: 10px; border: 3px solid var(--primary-gold);"
                         src="https://www.youtube.com/embed/{{ video_id }}"
-                        title="Trailer"
+                        title="Project Video"
                         frameborder="0"
-                        allowfullscreen
-                        class="project-video">
+                        allowfullscreen>
                 </iframe>
             </div>
         {% endwith %}
     {% endif %}
 
-    <p class="project-description">{{ projeto.descricao }}</p>
+    <!-- Project Description -->
+    <div style="background: var(--card-bg); padding: 25px; border-radius: 15px; border: 2px solid var(--primary-gold); margin-bottom: 30px;">
+        <h3 style="color: var(--primary-gold); margin-bottom: 15px; font-size: 1.2rem;">GAME DESCRIPTION</h3>
+        <p style="font-size: 0.9rem; line-height: 1.8;">{{ projeto.descricao }}</p>
+    </div>
 
+    <!-- Project Gallery -->
     {% if projeto.imagens.all %}
-        <div class="project-gallery">
-            {% for imagem in projeto.imagens.all %}
-                <div>
-                    <img src="{{ imagem.imagem.url }}" alt="{{ imagem.legenda }}">
-                    {% if imagem.legenda %}
-                        <p>{{ imagem.legenda }}</p>
-                    {% endif %}
-                </div>
-            {% endfor %}
+        <div style="margin-bottom: 30px;">
+            <h3 style="color: var(--primary-gold); margin-bottom: 20px; font-size: 1.2rem;">SCREENSHOTS</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                {% for imagem in projeto.imagens.all %}
+                    <div style="background: var(--card-bg); border-radius: 10px; overflow: hidden; border: 2px solid #444;">
+                        <img src="{{ imagem.imagem.url }}" alt="{{ imagem.legenda }}" 
+                             style="width: 100%; height: 200px; object-fit: cover; transition: transform 0.3s;"
+                             onmouseover="this.style.transform='scale(1.05)'" 
+                             onmouseout="this.style.transform='scale(1)'">
+                        {% if imagem.legenda %}
+                            <div style="padding: 10px; text-align: center; font-size: 0.8rem; color: var(--text-light);">
+                                {{ imagem.legenda }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     {% endif %}
 
-    <h3>Core Concepts</h3>
-    <p>{{ projeto.conceitos_aplicados }}</p>
+    <!-- Core Concepts -->
+    <div style="background: var(--card-bg); padding: 25px; border-radius: 15px; border: 2px solid var(--primary-blue); margin-bottom: 30px;">
+        <h3 style="color: var(--primary-blue); margin-bottom: 15px; font-size: 1.2rem;">CORE CONCEPTS</h3>
+        <p style="font-size: 0.9rem; line-height: 1.8;">{{ projeto.conceitos_aplicados }}</p>
+    </div>
 
+    <!-- Technical Aspects -->
     {% if projeto.aspetos_tecnicos %}
-        <h3>Technical Aspects</h3>
-        <p>{{ projeto.aspetos_tecnicos }}</p>
+        <div style="background: var(--card-bg); padding: 25px; border-radius: 15px; border: 2px solid var(--accent-teal); margin-bottom: 30px;">
+            <h3 style="color: var(--accent-teal); margin-bottom: 15px; font-size: 1.2rem;">TECHNICAL ASPECTS</h3>
+            <p style="font-size: 0.9rem; line-height: 1.8;">{{ projeto.aspetos_tecnicos }}</p>
+        </div>
     {% endif %}
 
-    <div class="project-final-box">
-        <div class="project-info-item">
-            <p><strong>Course:</strong> "{{ projeto.disciplina.nome }}" – Universidade Lusófona ({{ projeto.disciplina.ano }}º year, {{ projeto.disciplina.semestre }}º semester)</p>
-        </div>
-
-        {% if projeto.ficha_tecnica %}
-            <div class="project-info-item">
-                <p><strong>Platform:</strong> {{ projeto.ficha_tecnica.plataforma }}</p>
-            </div>
-            <div class="project-info-item">
-                <p><strong>Development Duration:</strong> {{ projeto.ficha_tecnica.duracao_desenvolvimento }}</p>
-            </div>
-            <div class="project-info-item">
-                <p><strong>Team Size:</strong> {{ projeto.ficha_tecnica.equipa }}</p>
+    <!-- Project Information Panel -->
+    <div style="background: linear-gradient(135deg, var(--card-bg), #1f2937); padding: 30px; border-radius: 15px; border: 3px solid var(--primary-gold);">
+        <!-- Course Information -->
+        {% if projeto.disciplina %}
+            <div style="margin-bottom: 20px;">
+                <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">COURSE:</strong> "{{ projeto.disciplina.nome }}" – Universidade Lusófona ({{ projeto.disciplina.ano }}º year, {{ projeto.disciplina.semestre }}º semester)</p>
             </div>
         {% endif %}
 
+        <!-- Technical Details -->
+        {% if projeto.ficha_tecnica %}
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px;">
+                {% if projeto.ficha_tecnica.plataforma %}
+                    <div>
+                        <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">PLATFORM:</strong> {{ projeto.ficha_tecnica.plataforma }}</p>
+                    </div>
+                {% endif %}
+                {% if projeto.ficha_tecnica.duracao_desenvolvimento %}
+                    <div>
+                        <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">DEVELOPMENT TIME:</strong> {{ projeto.ficha_tecnica.duracao_desenvolvimento }}</p>
+                    </div>
+                {% endif %}
+                {% if projeto.ficha_tecnica.equipa %}
+                    <div>
+                        <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">TEAM SIZE:</strong> {{ projeto.ficha_tecnica.equipa }} developer{{ projeto.ficha_tecnica.equipa|pluralize }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <!-- Technologies Used -->
         {% if projeto.tecnologias.all %}
-            <div class="project-info-item">
-                <p class="tech-section-title"><strong>Technologies Used:</strong></p>
-                <ul>
+            <div>
+                <p style="font-size: 1rem; color: var(--primary-gold); margin-bottom: 15px;"><strong>TECHNOLOGIES USED:</strong></p>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
                     {% for tech in projeto.tecnologias.all %}
-                        <li>
-                            <a href="{% url 'portfolio:tecnologia_path' tecnologia_id=tech.id %}" class="tech-link">
-                                {% if tech.logotipo %}
-                                    <div class="tech-logo">
-                                        <img src="{{ tech.logotipo.url }}" alt="{{ tech.nome }}">
-                                    </div>
-                                {% endif %}
-                                <span class="tech-text">{{ tech.nome }}</span>
-                            </a>
-                        </li>
+                        <a href="{% url 'portfolio:tecnologia_path' tecnologia_id=tech.id %}" 
+                           style="display: flex; align-items: center; background: #2b2b2b; border: 1px solid #444; border-radius: 8px; padding: 10px 15px; text-decoration: none; color: var(--text-light); transition: all 0.3s;"
+                           onmouseover="this.style.background='#3a3a3a'; this.style.borderColor='var(--primary-gold)'; this.style.transform='translateY(-3px)'; this.style.color='var(--primary-gold)'"
+                           onmouseout="this.style.background='#2b2b2b'; this.style.borderColor='#444'; this.style.transform='translateY(0)'; this.style.color='var(--text-light)'">
+                            {% if tech.logotipo %}
+                                <div style="width: 30px; height: 30px; background: white; border-radius: 5px; display: flex; justify-content: center; align-items: center; margin-right: 10px; overflow: hidden;">
+                                    <img src="{{ tech.logotipo.url }}" alt="{{ tech.nome }}" style="max-width: 90%; max-height: 90%; object-fit: contain;">
+                                </div>
+                            {% endif %}
+                            <span style="font-size: 0.8rem; font-weight: 500;">{{ tech.nome }}</span>
+                        </a>
                     {% endfor %}
-                </ul>
+                </div>
             </div>
         {% endif %}
     </div>
 </section>
 
+<!-- Admin Edit Button -->
 {% if request.user.is_authenticated %}
-    <div class="button-wrapper" style="margin-top: 40px;">
-        <a href="{% url 'portfolio:edita_projeto' projeto.id %}" class="custom-button">Edit Project</a>
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="{% url 'portfolio:edita_projeto' projeto.id %}" class="custom-button" style="background: var(--accent-teal);">EDIT PROJECT</a>
     </div>
 {% endif %}
+
+<style>
+.project-link {
+    font-size: 0.8rem;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: all 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.project-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-decoration: none;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .project-section {
+        padding: 0 15px;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    iframe {
+        height: 250px;
+    }
+}
+</style>
 {% endblock %}

@@ -1,45 +1,108 @@
 {% extends 'portfolio/base.html' %}
 
 {% load static %}
-{% block extra_styles %}
-<link rel="stylesheet" href="{% static 'css_portfolio/interesses.css' %}">
-{% endblock %}
 
 {% block main %}
-<section class="interests-section">
-    <h2>My Interests</h2>
-    <p>These are some of the areas that drive my curiosity and keep me motivated to grow as a developer:</p>
+<div class="section-header" style="text-align: center; margin-bottom: 50px;">
+    <h2>MY INTERESTS</h2>
+    <p style="font-size: 1rem; max-width: 600px; margin: 0 auto;">These are the areas that drive my curiosity and keep me motivated to grow as a developer.</p>
+</div>
 
-    <div class="interests-list">
-        <div class="interest-item">
-            <strong>Gameplay Programming</strong>
-            Crafting logic that feels good to play
-        </div>
-
-        <div class="interest-item">
-            <strong>Game AI</strong>
-            Designing behaviors that challenge and surprise players
-        </div>
-
-        <div class="interest-item">
-            <strong>System Design</strong>
-            Connecting mechanics in meaningful ways
-        </div>
-
-        <div class="interest-item">
-            <strong>UI/UX</strong>
-            Making sure the player always knows what's going on
-        </div>
-
-        <div class="interest-item">
-            <strong>Technical Problem-Solving</strong>
-            I enjoy debugging and optimizing code
-        </div>
-
-        <div class="interest-item">
-            <strong>Collaborative Development</strong>
-            Working with creative people to make great games
-        </div>
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(2, auto); gap: 25px; max-width: 1000px; margin: 0 auto;">
+    <div class="interest-item">
+        <div style="font-size: 2.5rem; margin-bottom: 15px; text-align: center;">🎮</div>
+        <strong>Gameplay Programming</strong>
+        <p style="margin-top: 10px; font-size: 0.8rem; line-height: 1.6;">Crafting responsive systems and mechanics that feel great to play. From player controllers to game state management.</p>
     </div>
-</section>
+
+    <div class="interest-item">
+        <div style="font-size: 2.5rem; margin-bottom: 15px; text-align: center;">🤖</div>
+        <strong>Game AI</strong>
+        <p style="margin-top: 10px; font-size: 0.8rem; line-height: 1.6;">Designing intelligent behaviors that challenge and surprise players. State machines, pathfinding, and decision trees.</p>
+    </div>
+
+    <div class="interest-item">
+        <div style="font-size: 2.5rem; margin-bottom: 15px; text-align: center;">⚙️</div>
+        <strong>System Design</strong>
+        <p style="margin-top: 10px; font-size: 0.8rem; line-height: 1.6;">Connecting game mechanics in meaningful ways. Creating emergent gameplay through well-designed systems.</p>
+    </div>
+
+    <div class="interest-item">
+        <div style="font-size: 2.5rem; margin-bottom: 15px; text-align: center;">🖥️</div>
+        <strong>UI/UX Design</strong>
+        <p style="margin-top: 10px; font-size: 0.8rem; line-height: 1.6;">Making sure players always know what's happening. Intuitive interfaces and clear visual feedback.</p>
+    </div>
+
+    <div class="interest-item">
+        <div style="font-size: 2.5rem; margin-bottom: 15px; text-align: center;">🔧</div>
+        <strong>Technical Problem-Solving</strong>
+        <p style="margin-top: 10px; font-size: 0.8rem; line-height: 1.6;">I enjoy debugging complex issues and optimizing code for better performance and maintainability.</p>
+    </div>
+
+    <div class="interest-item">
+        <div style="font-size: 2.5rem; margin-bottom: 15px; text-align: center;">👥</div>
+        <strong>Collaborative Development</strong>
+        <p style="margin-top: 10px; font-size: 0.8rem; line-height: 1.6;">Working with creative teams to bring amazing game concepts to life. Communication and teamwork are key.</p>
+    </div>
+</div>
+
+<style>
+.interest-item {
+    background: var(--card-bg);
+    border: 3px solid #34495e;
+    border-radius: 15px;
+    padding: 25px;
+    transition: all 0.3s;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.interest-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.5s;
+    opacity: 0;
+}
+
+.interest-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    border-color: var(--primary-gold);
+}
+
+.interest-item:hover::before {
+    animation: shine 0.5s ease-in-out;
+}
+
+.interest-item strong {
+    color: var(--primary-gold);
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: auto !important;
+    }
+    
+    .interest-item {
+        padding: 20px;
+    }
+}
+</style>
 {% endblock %}

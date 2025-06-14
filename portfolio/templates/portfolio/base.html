@@ -3,34 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rafael José | Portfolio</title>
+    <title>Rafael José | Game Developer Portfolio</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
     {% load static %}
-    <link rel = "stylesheet" href = "{% static 'css_portfolio/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css_portfolio/gaming_style.css' %}">
 
     {% block extra_styles %}
     {% endblock %}
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen" style="display: none;">
+        <div class="loading-text">LOADING...</div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
     <header>
         <div class="header-content">
-            <h1>Rafael José</h1>
+            <h1>RAFAEL JOSÉ</h1>
             <nav>
-                <a href="{% url 'portfolio:index' %}">Home</a>
-                <a href="{% url 'portfolio:interesses' %}">Interests</a>
-                <a href="{% url 'portfolio:projetos' %}">Projects</a>
-                <a href="{% url 'portfolio:tecnologias' %}">Tools</a>
+                <a href="{% url 'portfolio:index' %}">HOME</a>
+                <a href="{% url 'portfolio:interesses' %}">INTERESTS</a>
+                <a href="{% url 'portfolio:projetos' %}">PROJECTS</a>
+                <a href="{% url 'portfolio:tecnologias' %}">TOOLS</a>
                 <a href="{% url 'portfolio:cv' %}">CV</a>
                 {% if request.user.is_authenticated %}
-                    <a href="{% url 'admin:index' %}">Admin</a>
-                    <a href="{% url 'admin:logout' %}">Logout 👤{{request.user.username}}</a>
+                    <a href="{% url 'admin:index' %}">ADMIN</a>
+                    <a href="{% url 'admin:logout' %}">LOGOUT 👤{{request.user.username}}</a>
                 {% else %}
-                    <a href="{% url 'admin:index' %}">Admin</a>
+                    <a href="{% url 'admin:index' %}">ADMIN</a>
                 {% endif %}
             </nav>
         </div>
@@ -43,8 +51,125 @@
         </div>
     </main>
 
-    <footer style="display: flex; justify-content: space-between; align-items: center;">
-        <p style="margin: 0;">&copy; {{ data }} Rafael José, ManfelDev.</p>
+    <!-- Power-ups / Easter Eggs -->
+    <div class="power-up" style="top: 100px; right: 50px;" onclick="collectPowerUp(this)">⭐</div>
+    <div class="power-up" style="bottom: 100px; left: 50px;" onclick="collectPowerUp(this)">💎</div>
+
+    <!-- Achievement Popup -->
+    <div class="achievement" id="achievement">
+        🏆 ACHIEVEMENT UNLOCKED!<br>
+        "Portfolio Explorer"
+    </div>
+
+    <footer>
+        <p>&copy; {{ data }} Rafael José, Game Developer Portfolio.</p>
+        <p>Score: <span id="score">0</span> points</p>
     </footer>
+
+    <script>
+        // Show loading screen on first visit
+        if (!sessionStorage.getItem('visited')) {
+            document.getElementById('loadingScreen').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('loadingScreen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loadingScreen').style.display = 'none';
+                }, 500);
+            }, 2000);
+            sessionStorage.setItem('visited', 'true');
+        }
+
+        // Achievement system
+        function showAchievement(text = "Portfolio Explorer") {
+            const achievement = document.getElementById('achievement');
+            achievement.innerHTML = `🏆 ACHIEVEMENT UNLOCKED!<br>"${text}"`;
+            achievement.classList.add('show');
+            setTimeout(() => {
+                achievement.classList.remove('show');
+            }, 3000);
+        }
+
+        // Power-up collection
+        let score = parseInt(localStorage.getItem('portfolioScore') || '0');
+        document.getElementById('score').textContent = score;
+
+        function collectPowerUp(element) {
+            score += 100;
+            localStorage.setItem('portfolioScore', score);
+            document.getElementById('score').textContent = score;
+            element.style.display = 'none';
+            
+            // Show achievement for collecting power-ups
+            if (score === 100) {
+                showAchievement("First Power-up!");
+            } else if (score >= 500) {
+                showAchievement("Power-up Master!");
+            }
+            
+            // Respawn power-up
+            setTimeout(() => {
+                element.style.display = 'block';
+                element.style.top = Math.random() * (window.innerHeight - 100) + 'px';
+                element.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+            }, 5000);
+        }
+
+        // Konami code easter egg
+        let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+        let konamiIndex = 0;
+
+        document.addEventListener('keydown', (e) => {
+            if (e.code === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    showAchievement("Konami Code Master!");
+                    score += 1000;
+                    localStorage.setItem('portfolioScore', score);
+                    document.getElementById('score').textContent = score;
+                    konamiIndex = 0;
+                    
+                    // Add special visual effect
+                    document.body.style.filter = 'hue-rotate(360deg)';
+                    setTimeout(() => {
+                        document.body.style.filter = 'none';
+                    }, 2000);
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+
+        // Add hover effects to power-ups
+        document.addEventListener('mousemove', (e) => {
+            const powerUps = document.querySelectorAll('.power-up');
+            powerUps.forEach(powerUp => {
+                const rect = powerUp.getBoundingClientRect();
+                const distance = Math.sqrt(
+                    Math.pow(e.clientX - (rect.left + rect.width / 2), 2) +
+                    Math.pow(e.clientY - (rect.top + rect.height / 2), 2)
+                );
+                
+                if (distance < 100) {
+                    powerUp.style.transform = `scale(${1.5 - distance / 100})`;
+                } else {
+                    powerUp.style.transform = 'scale(1)';
+                }
+            });
+        });
+
+        // Add fade-in animation to content
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.card, .project-card, .tech-card');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    el.style.transition = 'all 0.6s ease';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
 </body>
 </html>
