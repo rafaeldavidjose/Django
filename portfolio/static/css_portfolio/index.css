@@ -57,16 +57,26 @@
     50% { transform: translateY(-20px); }
 }
 
+/* Animações sequenciais para os elementos */
 .slide-up {
     animation-delay: 0.3s;
 }
 
-.slide-up:nth-child(3) {
+.slide-up:nth-child(2) {
     animation-delay: 0.6s;
 }
 
-.slide-up:nth-child(4) {
+.slide-up:nth-child(3) {
     animation-delay: 0.9s;
+}
+
+.slide-up:nth-child(4) {
+    animation-delay: 1.2s;
+}
+
+/* Delay específico para os botões (último elemento) */
+.landing-buttons.slide-up {
+    animation-delay: 1.2s;
 }
 
 @media (max-width: 768px) {
