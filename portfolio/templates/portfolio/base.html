@@ -88,6 +88,7 @@
 
         // Power-up collection
         let score = parseInt(localStorage.getItem('portfolioScore') || '0');
+        let achievementShown2000 = localStorage.getItem('achievement2000') === 'true';
         document.getElementById('score').textContent = score;
 
         function collectPowerUp(element) {
@@ -103,8 +104,10 @@
                 showAchievement("Power-up Collector!");
             } else if (score === 1000) {
                 showAchievement("Power-up Master!");
-            } else if (score >= 2000) {
+            } else if (score >= 2000 && !achievementShown2000) {
                 showAchievement("Ultimate Gamer!");
+                localStorage.setItem('achievement2000', 'true');
+                achievementShown2000 = true;
             }
             
             // Respawn power-up
@@ -169,18 +172,6 @@
                     el.style.opacity = '1';
                     el.style.transform = 'translateY(0)';
                 }, index * 100);
-            });
-
-            // Center odd items in grids
-            const grids = document.querySelectorAll('.grid');
-            grids.forEach(grid => {
-                const items = grid.children;
-                if (items.length % 2 === 1) {
-                    // If odd number of items, center the last one
-                    const lastItem = items[items.length - 1];
-                    lastItem.style.gridColumn = '1 / -1';
-                    lastItem.style.justifySelf = 'center';
-                }
             });
         });
     </script>

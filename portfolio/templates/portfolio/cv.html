@@ -18,7 +18,7 @@
     </div>
 
     <!-- CV Sections Grid -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 40px;">
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
         <!-- Projects Section -->
         <div class="cv-section-card">
             <div style="font-size: 3rem; margin-bottom: 20px; color: var(--primary-gold);">🎮</div>
@@ -38,9 +38,11 @@
                 <a href="{% url 'portfolio:tecnologias' %}" class="custom-button">VIEW TOOLS</a>
             </div>
         </div>
+    </div>
 
-        <!-- Contact/Portfolio Section -->
-        <div class="cv-section-card">
+    <!-- Centered Interest Section -->
+    <div style="display: flex; justify-content: center; margin-top: 30px;">
+        <div class="cv-section-card" style="max-width: 400px;">
             <div style="font-size: 3rem; margin-bottom: 20px; color: var(--primary-gold);">🌟</div>
             <h3>INTERESTS & SKILLS</h3>
             <p>Learn about my core interests in game development and the specific areas where I focus my learning and expertise.</p>
@@ -118,7 +120,7 @@
         padding: 25px;
     }
     
-    div[style*="grid-template-columns"] {
+    div[style*="grid-template-columns: repeat(2, 1fr)"] {
         grid-template-columns: 1fr !important;
     }
 }
