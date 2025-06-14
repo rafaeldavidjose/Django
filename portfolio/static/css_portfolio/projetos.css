@@ -1,40 +1,33 @@
-.project-card {
-    width: 350px;
-    display: flex;
-    flex-direction: column;
-}
+/* Projects page specific styles */
 
-.project-image-wrapper {
+.project-placeholder {
     width: 100%;
     height: 200px;
-    overflow: hidden;
-    border-radius: 12px 12px 0 0;
-}
-
-.project-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: 0.5s ease;
-}
-
-.project-card-content {
-    padding: 15px;
-    text-align: center;
-    flex-grow: 1;
+    background: linear-gradient(45deg, #2c3e50, #34495e);
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-gold);
+    font-size: 2rem;
 }
 
-.project-card-title {
-    font-size: 1.6em;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #bb86fc;
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 15px;
+    justify-content: center;
 }
 
-.view-details-button {
-    margin-top: auto !important;
-    align-self: center;
+.no-data-icon {
+    font-size: 3rem;
+    margin: 20px 0;
+}
+
+.add-button {
+    background: var(--primary-green) !important;
+}
+
+.add-button:hover {
+    background: #229954 !important;
 }

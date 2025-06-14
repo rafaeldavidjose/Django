@@ -1,95 +1,164 @@
+/* CV page specific styles */
+
 .cv-container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 20px;
 }
 
 .cv-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .cv-header p {
-    font-size: 1.2em;
-    max-width: 700px;
+    font-size: 1rem;
+    max-width: 600px;
     margin: 0 auto;
+    line-height: 1.8;
 }
 
-.cv-sections {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.main-cv-section {
+    background: linear-gradient(135deg, var(--card-bg), #1f2937);
+    padding: 40px;
+    border-radius: 15px;
+    border: 3px solid var(--primary-gold);
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.main-cv-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: var(--primary-gold);
+}
+
+.main-cv-section h3 {
+    color: var(--primary-gold);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.main-cv-section p {
+    margin-bottom: 25px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.download-button {
+    background: var(--primary-green) !important;
+    font-size: 1rem !important;
+    padding: 15px 30px !important;
+}
+
+.download-button:hover {
+    background: #229954 !important;
+}
+
+.cv-sections-top {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
+    margin-top: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cv-sections-bottom {
+    display: flex;
+    justify-content: center;
     margin-top: 30px;
 }
 
 .cv-section-card {
-    background-color: #1f1f1f;
-    border: 2px solid #bb86fc;
+    background: var(--card-bg);
+    border: 3px solid #34495e;
     border-radius: 15px;
-    padding: 25px;
-    width: 100%;
-    max-width: 400px;
+    padding: 30px;
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cv-section-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.5s;
+    opacity: 0;
 }
 
 .cv-section-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 10px 20px rgba(187, 134, 252, 0.3);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    border-color: var(--primary-gold);
+}
+
+.cv-section-card:hover::before {
+    animation: shine 0.5s ease-in-out;
 }
 
 .cv-section-card h3 {
-    font-size: 1.6em;
-    color: #bb86fc;
+    font-size: 1.2rem;
+    color: var(--primary-gold);
     margin-bottom: 15px;
 }
 
 .cv-section-card p {
-    font-size: 1.1em;
+    font-size: 0.9rem;
+    line-height: 1.6;
     margin-bottom: 20px;
-    line-height: 1.5;
+    flex-grow: 1;
 }
 
 .cv-icon {
-    font-size: 2.5em;
-    margin-bottom: 15px;
-    color: #bb86fc;
-}
-
-.main-cv-section {
-    width: 100%;
-    max-width: 900px;
-    background-color: #1f1b24;
-    border: 2px solid #bb86fc;
-    border-radius: 15px;
-    padding: 30px;
-    margin-bottom: 40px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.main-cv-section p {
-    font-size: 1.2em;
+    font-size: 3rem;
     margin-bottom: 20px;
+    color: var(--primary-gold);
 }
 
-.main-cv-icon {
-    font-size: 3em;
-    margin-bottom: 20px;
-    color: #bb86fc;
+.cv-button-wrapper {
+    margin-top: auto;
 }
 
-.cv-sections {
-    max-width: 768px
-    flex-direction: column;
-    align-items: center;
+.centered-card {
+    max-width: 400px;
 }
 
-.cv-section-card {
-    max-width: 768px
-    max-width: 100%;
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    .cv-container {
+        padding: 0 15px;
+    }
+    
+    .cv-section-card {
+        min-height: 250px;
+        padding: 25px;
+    }
+    
+    .cv-sections-top {
+        grid-template-columns: 1fr;
+    }
+    
+    .main-cv-section {
+        padding: 25px;
+    }
+    
+    .main-cv-icon {
+        font-size: 3rem;
+    }
 }

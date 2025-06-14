@@ -1,128 +1,53 @@
 {% extends 'portfolio/base.html' %}
 
 {% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/cv.css' %}">
+{% endblock %}
 
 {% block main %}
-<div class="cv-container" style="max-width: 1000px; margin: 0 auto;">
-    <div class="cv-header" style="text-align: center; margin-bottom: 50px;">
+<div class="cv-container">
+    <div class="cv-header">
         <h2>CURRICULUM VITAE</h2>
-        <p style="font-size: 1rem; max-width: 600px; margin: 0 auto; line-height: 1.8;">Here you can find information about my professional background, projects, and technical skills in game development.</p>
+        <p>Here you can find information about my professional background, projects, and technical skills in game development.</p>
     </div>
 
-    <!-- Main CV Download Section -->
-    <div style="background: linear-gradient(135deg, var(--card-bg), #1f2937); padding: 40px; border-radius: 15px; border: 3px solid var(--primary-gold); margin-bottom: 40px; text-align: center;">
-        <div style="font-size: 4rem; margin-bottom: 20px; color: var(--primary-gold);">📄</div>
-        <h3 style="color: var(--primary-gold); margin-bottom: 20px; font-size: 1.5rem;">DOWNLOAD MY CV</h3>
-        <p style="margin-bottom: 25px; font-size: 1rem; line-height: 1.6;">View or download my complete CV to learn more about my skills, education, and experience in game development.</p>
-        <a href="{% static 'files/Profile.pdf' %}" target="_blank" class="custom-button" style="background: var(--primary-green); font-size: 1rem; padding: 15px 30px;">📥 DOWNLOAD CV</a>
+    <div class="main-cv-section">
+        <div class="main-cv-icon">📄</div>
+        <h3>DOWNLOAD MY CV</h3>
+        <p>View or download my complete CV to learn more about my skills, education, and experience in game development.</p>
+        <a href="{% static 'files/Profile.pdf' %}" target="_blank" class="custom-button download-button">📥 DOWNLOAD CV</a>
     </div>
 
-    <!-- CV Sections Grid -->
-    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-top: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
-        <!-- Projects Section -->
+    <div class="cv-sections-top">
         <div class="cv-section-card">
-            <div style="font-size: 3rem; margin-bottom: 20px; color: var(--primary-gold);">🎮</div>
+            <div class="cv-icon">🎮</div>
             <h3>MY PROJECTS</h3>
             <p>Explore the various game development projects I've worked on throughout my journey, featuring gameplay mechanics, AI systems, and interactive experiences.</p>
-            <div style="margin-top: auto;">
+            <div class="cv-button-wrapper">
                 <a href="{% url 'portfolio:projetos' %}" class="custom-button">VIEW PROJECTS</a>
             </div>
         </div>
 
-        <!-- Technologies Section -->
         <div class="cv-section-card">
-            <div style="font-size: 3rem; margin-bottom: 20px; color: var(--primary-gold);">🛠️</div>
+            <div class="cv-icon">🛠️</div>
             <h3>TECHNOLOGIES I USE</h3>
             <p>Discover the tools, frameworks, and technologies I've mastered to create responsive, efficient, and engaging gameplay systems.</p>
-            <div style="margin-top: auto;">
+            <div class="cv-button-wrapper">
                 <a href="{% url 'portfolio:tecnologias' %}" class="custom-button">VIEW TOOLS</a>
             </div>
         </div>
     </div>
 
-    <!-- Centered Interest Section -->
-    <div style="display: flex; justify-content: center; margin-top: 30px;">
-        <div class="cv-section-card" style="max-width: 400px;">
-            <div style="font-size: 3rem; margin-bottom: 20px; color: var(--primary-gold);">🌟</div>
+    <div class="cv-sections-bottom">
+        <div class="cv-section-card centered-card">
+            <div class="cv-icon">🌟</div>
             <h3>INTERESTS & SKILLS</h3>
             <p>Learn about my core interests in game development and the specific areas where I focus my learning and expertise.</p>
-            <div style="margin-top: auto;">
+            <div class="cv-button-wrapper">
                 <a href="{% url 'portfolio:interesses' %}" class="custom-button">VIEW INTERESTS</a>
             </div>
         </div>
     </div>
 </div>
-
-<style>
-.cv-section-card {
-    background: var(--card-bg);
-    border: 3px solid #34495e;
-    border-radius: 15px;
-    padding: 30px;
-    text-align: center;
-    transition: all 0.3s;
-    display: flex;
-    flex-direction: column;
-    min-height: 300px;
-    position: relative;
-    overflow: hidden;
-}
-
-.cv-section-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-    transform: rotate(45deg);
-    transition: all 0.5s;
-    opacity: 0;
-}
-
-.cv-section-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    border-color: var(--primary-gold);
-}
-
-.cv-section-card:hover::before {
-    animation: shine 0.5s ease-in-out;
-}
-
-.cv-section-card h3 {
-    font-size: 1.2rem;
-    color: var(--primary-gold);
-    margin-bottom: 15px;
-}
-
-.cv-section-card p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    flex-grow: 1;
-}
-
-@keyframes shine {
-    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
-}
-
-@media (max-width: 768px) {
-    .cv-container {
-        padding: 0 15px;
-    }
-    
-    .cv-section-card {
-        min-height: 250px;
-        padding: 25px;
-    }
-    
-    div[style*="grid-template-columns: repeat(2, 1fr)"] {
-        grid-template-columns: 1fr !important;
-    }
-}
-</style>
 {% endblock %}

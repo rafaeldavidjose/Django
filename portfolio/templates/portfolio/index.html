@@ -1,6 +1,9 @@
 {% extends 'portfolio/base.html' %}
 
 {% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/index.css' %}">
+{% endblock %}
 
 {% block main %}
 <div class="landing-wrapper fade-in">
@@ -9,69 +12,29 @@
     <p class="slide-up">Specialized in gameplay programming, AI systems, and VR experiences. I love creating games that blend creativity with technical innovation, from puzzle adventures to action-packed survival games.</p>
     <p class="slide-up">When I'm not coding, you'll find me exploring new game mechanics or working on prototypes. I believe great games come from understanding both the technical and creative sides of development!</p>
     
-    <div style="margin: 20px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+    <div class="landing-buttons">
         <a href="{% url 'portfolio:projetos' %}" class="custom-button interactive">VIEW PROJECTS</a>
         <a href="{% url 'portfolio:tecnologias' %}" class="custom-button interactive">VIEW TOOLS</a>
         <a href="{% url 'portfolio:cv' %}" class="custom-button interactive">DOWNLOAD CV</a>
     </div>
 
-    <div class="stats" style="display: flex; justify-content: center; gap: 40px; margin-top: 25px; flex-wrap: wrap;">
-        <div class="stat-item" style="text-align: center;">
-            <span class="stat-value" style="font-size: 1.5rem; color: var(--primary-gold); display: block; margin-bottom: 5px;">10+</span>
-            <span class="stat-label" style="font-size: 0.7rem; color: #95a5a6;">GAMES MADE</span>
+    <div class="stats">
+        <div class="stat-item">
+            <span class="stat-value">10+</span>
+            <span class="stat-label">GAMES MADE</span>
         </div>
-        <div class="stat-item" style="text-align: center;">
-            <span class="stat-value" style="font-size: 1.5rem; color: var(--primary-gold); display: block; margin-bottom: 5px;">2025</span>
-            <span class="stat-label" style="font-size: 0.7rem; color: #95a5a6;">GRADUATE</span>
+        <div class="stat-item">
+            <span class="stat-value">2025</span>
+            <span class="stat-label">GRADUATE</span>
         </div>
-        <div class="stat-item" style="text-align: center;">
-            <span class="stat-value" style="font-size: 1.5rem; color: var(--primary-gold); display: block; margin-bottom: 5px;">8+</span>
-            <span class="stat-label" style="font-size: 0.7rem; color: #95a5a6;">TECHNOLOGIES</span>
+        <div class="stat-item">
+            <span class="stat-value">8+</span>
+            <span class="stat-label">TECHNOLOGIES</span>
         </div>
     </div>
 
-    <!-- Avatar with gaming style -->
-    <div class="avatar" style="width: 150px; height: 150px; background: #34495e; border: 5px solid var(--primary-gold); margin: 25px auto; position: relative; animation: bounce 2s infinite; border-radius: 15px;">
-        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 80px;">👾</div>
+    <div class="avatar">
+        <div class="avatar-emoji">👾</div>
     </div>
 </div>
-
-<style>
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-}
-
-.slide-up {
-    animation-delay: 0.3s;
-}
-
-.slide-up:nth-child(3) {
-    animation-delay: 0.6s;
-}
-
-.slide-up:nth-child(4) {
-    animation-delay: 0.9s;
-}
-
-@media (max-width: 768px) {
-    .stats {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .landing-wrapper h2 {
-        font-size: 2rem;
-    }
-    
-    .avatar {
-        width: 120px;
-        height: 120px;
-    }
-    
-    .avatar div {
-        font-size: 60px;
-    }
-}
-</style>
 {% endblock %}

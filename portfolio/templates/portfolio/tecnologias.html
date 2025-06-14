@@ -1,11 +1,14 @@
 {% extends 'portfolio/base.html' %}
 
 {% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/tecnologias.css' %}">
+{% endblock %}
 
 {% block main %}
-<div class="section-header" style="text-align: center; margin-bottom: 25px;">
+<div class="section-header">
     <h2>TECHNOLOGIES & TOOLS</h2>
-    <p style="font-size: 1rem; max-width: 600px; margin: 0 auto;">The arsenal of tools and technologies I use to bring games to life.</p>
+    <p>The arsenal of tools and technologies I use to bring games to life.</p>
 </div>
 
 <div class="grid">
@@ -15,111 +18,42 @@
                 {% if tecnologia.logotipo %}
                     <img src="{{ tecnologia.logotipo.url }}" alt="{{ tecnologia.nome }}">
                 {% else %}
-                    <div style="font-size: 3rem; color: var(--primary-gold);">🛠️</div>
+                    <div class="tech-placeholder">🛠️</div>
                 {% endif %}
             </div>
-            <h3 style="font-size: 1.1rem; color: var(--primary-gold); margin-bottom: 15px;">{{ tecnologia.nome }}</h3>
-            <p style="font-size: 0.8rem; line-height: 1.6; margin-bottom: 20px; flex-grow: 1;">{{ tecnologia.descricao|truncatechars:120 }}</p>
+            <h3 class="tech-card-title">{{ tecnologia.nome }}</h3>
+            <p>{{ tecnologia.descricao|truncatechars:120 }}</p>
             
-            <!-- Project count -->
             {% if tecnologia.projetos.count > 0 %}
-                <div style="margin-bottom: 15px;">
-                    <span style="font-size: 0.7rem; background: var(--accent-teal); padding: 4px 8px; border-radius: 4px; color: white;">
+                <div class="tech-count-wrapper">
+                    <span class="tech-count">
                         Used in {{ tecnologia.projetos.count }} project{{ tecnologia.projetos.count|pluralize }}
                     </span>
                 </div>
             {% endif %}
             
-            <div style="display: flex; gap: 10px; justify-content: center; margin-top: auto;">
-                <a href="{% url 'portfolio:tecnologia_path' tecnologia_id=tecnologia.id %}" class="custom-button" style="z-index: 10; position: relative;">VIEW DETAILS</a>
+            <div class="card-buttons">
+                <a href="{% url 'portfolio:tecnologia_path' tecnologia_id=tecnologia.id %}" class="custom-button">VIEW DETAILS</a>
                 {% if tecnologia.link %}
-                    <a href="{{ tecnologia.link }}" target="_blank" rel="noopener noreferrer" class="tech-external-link" style="z-index: 10; position: relative;">OFFICIAL SITE</a>
+                    <a href="{{ tecnologia.link }}" target="_blank" class="tech-external-link">OFFICIAL SITE</a>
                 {% endif %}
             </div>
         </div>
     {% empty %}
-        <div class="no-data" style="text-align: center; padding: 50px; background: var(--card-bg); border-radius: 15px; border: 2px solid var(--primary-gold); grid-column: 1 / -1;">
-            <h3 style="color: var(--primary-gold); margin-bottom: 15px; font-size: 1.5rem;">NO TECHNOLOGIES YET</h3>
-            <p style="margin-bottom: 20px; font-size: 1rem;">The toolbox is being prepared! Check back soon for the tools of the trade.</p>
-            <div style="font-size: 3rem; margin: 20px 0;">🛠️</div>
+        <div class="no-data">
+            <h3>NO TECHNOLOGIES YET</h3>
+            <p>The toolbox is being prepared! Check back soon for the tools of the trade.</p>
+            <div class="no-data-icon">🛠️</div>
         </div>
     {% endfor %}
 </div>
 
 {% if request.user.is_authenticated %}
-    <div style="text-align: center; margin-top: 40px;">
-        <a href="{% url 'portfolio:nova_tecnologia' %}" class="custom-button" style="background: var(--primary-green);">+ ADD NEW TECHNOLOGY</a>
+    <div class="button-wrapper">
+        <a href="{% url 'portfolio:nova_tecnologia' %}" class="custom-button add-button">+ ADD NEW TECHNOLOGY</a>
     </div>
 {% endif %}
-
-<style>
-.tech-card {
-    background: var(--card-bg);
-    border: 3px solid #34495e;
-    border-radius: 15px;
-    padding: 25px;
-    text-align: center;
-    transition: all 0.3s;
-    max-width: 300px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    min-height: 350px;
-}
-
-.tech-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-    transform: rotate(45deg);
-    transition: all 0.5s;
-    opacity: 0;
-}
-
-.tech-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border-color: var(--primary-gold);
-}
-
-.tech-card:hover::before {
-    animation: shine 0.5s ease-in-out;
-}
-
-@keyframes shine {
-    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
-}
-
-.tech-card-image-wrapper {
-    background-color: white;
-    border-radius: 10px;
-    width: 120px;
-    height: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto 20px;
-    border: 2px solid #ddd;
-}
-
-.tech-card img {
-    max-width: 80%;
-    max-height: 80%;
-    object-fit: contain;
-}
-
-.tech-external-link {
-    font-size: 0.7rem;
-    color: var(--primary-blue);
-    text-decoration: none;
-    padding: 8px 12px;
-    border: 1px solid var(--primary-blue);
+{% endblock %}
     border-radius: 5px;
     transition: all 0.3s;
     background: transparent;
