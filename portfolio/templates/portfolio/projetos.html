@@ -33,13 +33,13 @@
                     </div>
                 {% endif %}
                 
-                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-                    <a href="{% url 'portfolio:projeto_path' projeto_id=projeto.id %}" class="custom-button">VIEW</a>
+                <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: auto;">
+                    <a href="{% url 'portfolio:projeto_path' projeto_id=projeto.id %}" class="custom-button" style="min-width: 60px;">VIEW</a>
                     {% if projeto.link_itch %}
-                        <a href="{{ projeto.link_itch }}" target="_blank" class="project-link">PLAY</a>
+                        <a href="{{ projeto.link_itch }}" target="_blank" class="project-link" style="min-width: 60px;">PLAY</a>
                     {% endif %}
                     {% if projeto.link_github %}
-                        <a href="{{ projeto.link_github }}" target="_blank" class="project-link">CODE</a>
+                        <a href="{{ projeto.link_github }}" target="_blank" class="project-link" style="min-width: 60px;">CODE</a>
                     {% endif %}
                 </div>
             </div>
