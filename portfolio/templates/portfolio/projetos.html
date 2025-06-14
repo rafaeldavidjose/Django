@@ -27,13 +27,16 @@
                 
                 {% if projeto.tecnologias.all %}
                     <div class="tech-tags">
-                        {% for tech in projeto.tecnologias.all %}
-                            {% if forloop.counter <= 3 %}
+                        {% if projeto.tecnologias.count <= 4 %}
+                            {% for tech in projeto.tecnologias.all %}
                                 <span class="tech-tag">{{ tech.nome }}</span>
-                            {% elif forloop.counter == 4 %}
-                                <span class="tech-tag">+{{ projeto.tecnologias.count|add:"-3" }}</span>
-                            {% endif %}
-                        {% endfor %}
+                            {% endfor %}
+                        {% else %}
+                            {% for tech in projeto.tecnologias.all|slice:":3" %}
+                                <span class="tech-tag">{{ tech.nome }}</span>
+                            {% endfor %}
+                            <span class="tech-tag">+{{ projeto.tecnologias.count|add:"-3" }}</span>
+                        {% endif %}
                     </div>
                 {% endif %}
                 

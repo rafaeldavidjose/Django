@@ -18,6 +18,12 @@
     margin-bottom: 15px;
     justify-content: center;
     overflow: hidden;
+    max-width: 100%;
+}
+
+.tech-tag {
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .no-data-icon {

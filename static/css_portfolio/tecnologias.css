@@ -29,3 +29,22 @@
 .add-button:hover {
     background: #229954 !important;
 }
+
+/* Ensure buttons are side by side in tech cards */
+.tech-card .card-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin-top: auto;
+}
+
+.tech-card .custom-button,
+.tech-card .tech-external-link {
+    flex: 1;
+    min-width: 80px;
+    max-width: 120px;
+    font-size: 0.65rem;
+    padding: 8px 10px;
+    text-align: center;
+}
