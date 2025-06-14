@@ -1,4 +1,12 @@
-/* Landing page specific */
+/* Custom button and external link sizing */
+.custom-button, .tech-external-link {
+    min-width: 90px;
+    font-size: 0.7rem;
+    padding: 8px 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}/* Landing page specific */
 .landing-wrapper {
     text-align: center;
     max-width: 900px;
@@ -276,11 +284,7 @@ p {
     animation: shine 0.5s ease-in-out;
 }
 
-@keyframes shine {
-    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
-}
+/* Remove old shine animation */
 
 .card h3 {
     font-size: clamp(0.9rem, 1.5vw, 1.2rem);
