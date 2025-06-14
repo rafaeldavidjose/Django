@@ -48,3 +48,9 @@
     padding: 8px 10px;
     text-align: center;
 }
+
+/* Make tech cards same width as project cards */
+.tech-card {
+    max-width: 350px;
+    min-height: 350px;
+}

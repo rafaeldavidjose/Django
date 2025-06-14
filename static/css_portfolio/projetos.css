@@ -14,16 +14,19 @@
 .tech-tags {
     display: flex;
     flex-wrap: nowrap;
-    gap: 5px;
+    gap: 4px;
     margin-bottom: 15px;
     justify-content: center;
     overflow: hidden;
     max-width: 100%;
+    padding: 0 5px;
 }
 
 .tech-tag {
     flex-shrink: 0;
     white-space: nowrap;
+    font-size: 0.55rem;
+    padding: 2px 6px;
 }
 
 .no-data-icon {

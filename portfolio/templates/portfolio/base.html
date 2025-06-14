@@ -173,6 +173,18 @@
                     el.style.transform = 'translateY(0)';
                 }, index * 100);
             });
+
+            // Center odd items in grids
+            const grids = document.querySelectorAll('.grid');
+            grids.forEach(grid => {
+                const items = grid.children;
+                if (items.length % 2 === 1) {
+                    // If odd number of items, center the last one
+                    const lastItem = items[items.length - 1];
+                    lastItem.style.gridColumn = '1 / -1';
+                    lastItem.style.justifySelf = 'center';
+                }
+            });
         });
     </script>
 </body>

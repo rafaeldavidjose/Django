@@ -4,11 +4,6 @@
 
 {% block main %}
 <section class="project-section" style="max-width: 1000px; margin: 0 auto; text-align: left;">
-    <!-- Back Button -->
-    <div style="margin-bottom: 30px;">
-        <a href="{% url 'portfolio:projetos' %}" class="custom-button" style="background: var(--primary-red);">< BACK TO PROJECTS</a>
-    </div>
-
     <!-- Project Title -->
     <h2 style="text-align: center; font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 30px; text-shadow: 3px 3px 0 #000;">{{ projeto.titulo }}</h2>
 
@@ -20,9 +15,6 @@
             {% endif %}
             {% if projeto.link_github %}
                 <a href="{{ projeto.link_github }}" target="_blank" class="project-link" style="background: #333;">VIEW ON GITHUB</a>
-            {% endif %}
-            {% if projeto.link_video %}
-                <a href="{{ projeto.link_video }}" target="_blank" class="project-link" style="background: var(--primary-red);">WATCH VIDEO</a>
             {% endif %}
         </div>
     {% endif %}
