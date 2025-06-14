@@ -135,10 +135,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# STATIC_ROOT sempre definido (necessário para collectstatic)
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+# STATIC_ROOT - onde o Django coleta os ficheiros (mudado para 'static')
+STATIC_ROOT = BASE_DIR / 'static'
 
-# Diretórios onde o Django procura ficheiros estáticos
+# Diretórios onde o Django procura ficheiros estáticos originais
 STATICFILES_DIRS = [
     BASE_DIR / 'portfolio' / 'static',
 ]

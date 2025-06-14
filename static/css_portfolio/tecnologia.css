@@ -1,0 +1,241 @@
+/* Individual Technology page styles */
+
+.tech-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.tech-title {
+    font-size: 2.5rem;
+    color: var(--primary-gold);
+    margin-bottom: 30px;
+    text-shadow: 3px 3px 0 #000;
+}
+
+.tech-logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+/* LOGO MAIOR */
+.tech-logo-wrapper {
+    background: white !important;
+    border-radius: 15px !important;
+    padding: 50px !important;
+    border: 3px solid var(--primary-gold) !important;
+    width: 300px !important;
+    height: 300px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.tech-logo-wrapper img {
+    max-width: 90% !important;
+    max-height: 90% !important;
+    object-fit: contain !important;
+}
+
+.tech-logo-placeholder {
+    font-size: 5rem !important;
+    color: var(--primary-gold) !important;
+}
+
+.tech-description-box {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid var(--primary-gold);
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.tech-description-box h3 {
+    color: var(--primary-gold);
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.tech-description-box p {
+    font-size: 1rem;
+    line-height: 1.8;
+    text-align: center;
+}
+
+.tech-website-button {
+    margin-bottom: 40px;
+}
+
+.website-button {
+    background: var(--primary-blue) !important;
+    font-size: 1rem !important;
+    padding: 15px 30px !important;
+}
+
+.website-button:hover {
+    background: #2980b9 !important;
+}
+
+.tech-projects-section {
+    margin-top: 50px;
+}
+
+.tech-projects-section h3 {
+    color: var(--primary-red);
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+/* CARDS DOS PROJETOS 16:9 */
+.tech-projects-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 30px !important;
+    margin-top: 30px !important;
+}
+
+.tech-project-card {
+    position: relative !important;
+    background: var(--card-bg) !important;
+    border-radius: 15px !important;
+    overflow: hidden !important;
+    border: 3px solid #444 !important;
+    text-decoration: none !important;
+    transition: all 0.3s !important;
+    display: block !important;
+    aspect-ratio: 16 / 9 !important;
+    min-height: 180px !important;
+}
+
+.tech-project-card:hover {
+    border-color: var(--primary-gold) !important;
+    transform: translateY(-8px) !important;
+    text-decoration: none !important;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5) !important;
+}
+
+.tech-project-card img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.3s !important;
+}
+
+.tech-project-card:hover img {
+    transform: scale(1.1) !important;
+}
+
+.tech-project-placeholder {
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(45deg, var(--card-bg), #1f2937) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: var(--primary-gold) !important;
+    font-size: 4rem !important;
+}
+
+.tech-project-title {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9)) !important;
+    padding: 30px 20px 15px !important;
+    color: var(--primary-gold) !important;
+    font-size: 1.1rem !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;
+}
+
+.tech-project-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0,0,0,0.3) !important;
+    opacity: 1 !important;
+    transition: opacity 0.3s !important;
+}
+
+.tech-project-card:hover .tech-project-overlay {
+    opacity: 0 !important;
+}
+
+.tech-no-projects {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 15px;
+    border: 2px solid #444;
+    margin-top: 40px;
+}
+
+.tech-no-projects h3 {
+    color: var(--primary-gold);
+    margin-bottom: 15px;
+}
+
+.tech-no-projects p {
+    font-size: 1rem;
+}
+
+.tech-no-projects-icon {
+    font-size: 3rem;
+    margin-top: 20px;
+}
+
+.edit-button {
+    background: var(--accent-teal) !important;
+}
+
+.edit-button:hover {
+    background: #138f7a !important;
+}
+
+@media (max-width: 768px) {
+    .tech-section {
+        padding: 0 15px;
+    }
+    
+    .tech-title {
+        font-size: 1.8rem;
+    }
+    
+    .tech-logo-wrapper {
+        width: 220px !important;
+        height: 220px !important;
+        padding: 35px !important;
+    }
+    
+    .tech-logo-placeholder {
+        font-size: 3rem !important;
+    }
+    
+    .tech-description-box {
+        padding: 20px;
+    }
+    
+    .tech-projects-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+    
+    .tech-project-card {
+        min-height: 160px !important;
+    }
+    
+    .tech-project-title {
+        font-size: 1rem !important;
+        padding: 25px 15px 12px !important;
+    }
+    
+    .tech-project-placeholder {
+        font-size: 3rem !important;
+    }
+}
