@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block main %}
-<div class="section-header" style="text-align: center; margin-bottom: 50px;">
+<div class="section-header" style="text-align: center; margin-bottom: 25px;">
     <h2>TECHNOLOGIES & TOOLS</h2>
     <p style="font-size: 1rem; max-width: 600px; margin: 0 auto;">The arsenal of tools and technologies I use to bring games to life.</p>
 </div>
@@ -31,9 +31,9 @@
             {% endif %}
             
             <div style="display: flex; gap: 10px; justify-content: center; margin-top: auto;">
-                <a href="{% url 'portfolio:tecnologia_path' tecnologia_id=tecnologia.id %}" class="custom-button">VIEW DETAILS</a>
+                <a href="{% url 'portfolio:tecnologia_path' tecnologia_id=tecnologia.id %}" class="custom-button" style="z-index: 10; position: relative;">VIEW DETAILS</a>
                 {% if tecnologia.link %}
-                    <a href="{{ tecnologia.link }}" target="_blank" class="tech-external-link">OFFICIAL SITE</a>
+                    <a href="{{ tecnologia.link }}" target="_blank" rel="noopener noreferrer" class="tech-external-link" style="z-index: 10; position: relative;">OFFICIAL SITE</a>
                 {% endif %}
             </div>
         </div>

@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block main %}
-<div class="section-header" style="text-align: center; margin-bottom: 50px;">
+<div class="section-header" style="text-align: center; margin-bottom: 25px;">
     <h2>MY PROJECTS</h2>
     <p style="font-size: 1rem; max-width: 600px; margin: 0 auto;">A collection of games and interactive experiences that showcase my journey in game development.</p>
 </div>
@@ -34,12 +34,12 @@
                 {% endif %}
                 
                 <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: auto;">
-                    <a href="{% url 'portfolio:projeto_path' projeto_id=projeto.id %}" class="custom-button" style="min-width: 60px;">VIEW</a>
+                    <a href="{% url 'portfolio:projeto_path' projeto_id=projeto.id %}" class="custom-button" style="min-width: 60px; z-index: 10; position: relative;">VIEW</a>
                     {% if projeto.link_itch %}
-                        <a href="{{ projeto.link_itch }}" target="_blank" class="project-link" style="min-width: 60px;">PLAY</a>
+                        <a href="{{ projeto.link_itch }}" target="_blank" rel="noopener noreferrer" class="project-link" style="min-width: 60px; z-index: 10; position: relative; background: var(--primary-green); color: white; border-color: var(--primary-green);">PLAY</a>
                     {% endif %}
                     {% if projeto.link_github %}
-                        <a href="{{ projeto.link_github }}" target="_blank" class="project-link" style="min-width: 60px;">CODE</a>
+                        <a href="{{ projeto.link_github }}" target="_blank" rel="noopener noreferrer" class="project-link" style="min-width: 60px; z-index: 10; position: relative; background: #333; color: white; border-color: #333;">CODE</a>
                     {% endif %}
                 </div>
             </div>
