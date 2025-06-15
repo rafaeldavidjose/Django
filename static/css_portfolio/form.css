@@ -1,22 +1,56 @@
+/* Gaming Style Forms CSS - Updated to match theme */
+
+:root {
+    --primary-purple: #bb86fc;
+    --primary-gold: #f39c12;
+    --primary-blue: #3498db;
+    --primary-red: #e74c3c;
+    --primary-green: #27ae60;
+    --dark-bg: #1a1a2e;
+    --card-bg: #2c3e50;
+    --text-light: #ecf0f1;
+    --accent-teal: #16a085;
+}
+
 form {
-    max-width: 1200px;
-    width: 80%;
-    margin: 10px auto;
-    background-color: #1f1b24;
-    padding: 30px 50px;
-    border-radius: 20px;
+    max-width: 1000px;
+    width: 90%;
+    margin: 20px auto;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 15px;
+    border: 3px solid var(--primary-gold);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    position: relative;
+    overflow: hidden;
 }
+
+/* Form header styling */
+form h2, form h3 {
+    color: var(--primary-gold);
+    text-align: center;
+    margin-bottom: 10px;
+    font-family: 'Rajdhani', 'Inter', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Label styling - gaming theme */
 form label {
     font-weight: 600;
-    color: #bb86fc;
-    font-size: 1.2em;
-    margin-bottom: 10px;
+    color: var(--primary-gold);
+    font-size: 1rem;
+    margin-bottom: 8px;
     display: block;
     text-align: left;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
+
+/* Input fields - gaming style */
 form input[type="text"],
 form input[type="email"],
 form input[type="password"],
@@ -26,87 +60,142 @@ form input[type="number"],
 form select,
 form textarea {
     width: 100%;
-    padding: 18px 20px;
-    background-color: #2b2b2b;
-    border: 1px solid #444;
-    border-radius: 12px;
-    color: #e0e0e0;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.05em;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    padding: 15px 20px;
+    background: #1a1a2e;
+    border: 2px solid #444;
+    border-radius: 8px;
+    color: var(--text-light);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
     text-align: left;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
 }
+
+/* Focus states - gaming glow effect */
+form input:focus,
+form textarea:focus,
+form select:focus {
+    border-color: var(--primary-gold);
+    outline: none;
+    box-shadow: 0 0 15px rgba(243, 156, 18, 0.3);
+    background: #2c3e50;
+    transform: translateY(-2px);
+}
+
+/* File input special styling */
 form input[type="file"] {
     display: block;
     width: 100%;
     padding: 12px;
     text-align: left;
+    background: var(--card-bg);
+    border: 2px dashed var(--primary-blue);
 }
+
 form input[type="file"]::file-selector-button {
-    background-color: #bb86fc;
-    color: #121212;
+    background: var(--primary-blue);
+    color: white;
     border: none;
     border-radius: 8px;
-    padding: 8px 12px;
+    padding: 10px 15px;
     margin-right: 15px;
     cursor: pointer;
     font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s;
 }
+
+form input[type="file"]::file-selector-button:hover {
+    background: #2980b9;
+    transform: scale(1.05);
+}
+
+/* Textarea styling */
 form textarea {
-    min-height: 180px;
+    min-height: 150px;
     resize: vertical;
+    line-height: 1.6;
 }
-form input:focus,
-form textarea:focus,
-form select:focus {
-    border-color: #bb86fc;
-    outline: none;
-    box-shadow: 0 0 5px #bb86fc55;
-}
+
+/* Checkbox and radio lists */
 form ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px 20px;
+    gap: 15px;
     text-align: left;
 }
+
 form ul li {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 1em;
-    color: #e0e0e0;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    background: rgba(255,255,255,0.05);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    transition: all 0.3s;
 }
+
+form ul li:hover {
+    border-color: var(--primary-gold);
+    background: rgba(243, 156, 18, 0.1);
+}
+
+/* Submit button - gaming style */
 input[type="submit"] {
-    align-self: flex-start;
-    background-color: #bb86fc;
-    color: #121212;
-    padding: 16px 32px;
-    border: none;
-    border-radius: 12px;
-    font-family: 'Oswald', sans-serif;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    align-self: center;
+    background: var(--primary-green) !important;
+    color: white !important;
+    padding: 15px 35px !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3) !important;
 }
+
 input[type="submit"]:hover {
-    background-color: #a274e1;
+    background: #229954 !important;
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 8px 25px rgba(39, 174, 96, 0.5) !important;
 }
+
+/* Error messages - gaming style */
 .error-message {
-    background-color: #2b2b2b;
-    border: 1px solid #c74c4c;
-    padding: 10px 10px;
-    margin-bottom: 0px;
+    background: linear-gradient(135deg, var(--primary-red), #c0392b);
+    border: 2px solid #a93226;
+    padding: 20px;
+    margin-bottom: 20px;
     border-radius: 12px;
-    color: #ffb3b3;
+    color: white;
     width: 100%;
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
 }
+
 .error-message p {
-    margin: 5px 0;
-    font-size: 1.05em;
+    margin: 8px 0;
+    font-size: 0.9rem;
+    font-weight: 500;
 }
+
+.error-message strong {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Form row styling */
 .form-row {
     width: 100%;
     text-align: left;
@@ -115,16 +204,115 @@ input[type="submit"]:hover {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    position: relative;
 }
 
+/* Image form blocks */
 .image-form-block {
     width: 100%;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #444;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: rgba(255,255,255,0.02);
+    border: 2px solid #444;
+    border-radius: 12px;
+    transition: all 0.3s;
 }
 
+.image-form-block:hover {
+    border-color: var(--primary-blue);
+    background: rgba(52, 152, 219, 0.05);
+}
+
+/* Button variations */
 .danger-button {
-    background-color: #c74c4c !important;
+    background: var(--primary-red) !important;
     color: white !important;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3) !important;
+}
+
+.danger-button:hover {
+    background: #c0392b !important;
+    box-shadow: 0 8px 25px rgba(231, 76, 60, 0.5) !important;
+}
+
+/* Custom buttons following gaming theme */
+.custom-button {
+    font-size: 0.9rem !important;
+    color: var(--text-light) !important;
+    background: #2b2b2b !important;
+    border: 2px solid #444 !important;
+    cursor: pointer !important;
+    padding: 12px 25px !important;
+    position: relative !important;
+    transition: all 0.3s !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 8px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.custom-button:hover {
+    background: var(--primary-blue) !important;
+    color: white !important;
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.5) !important;
+    text-decoration: none !important;
+}
+
+/* Button wrapper */
+.button-wrapper {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    form {
+        width: 95%;
+        padding: 25px;
+        gap: 20px;
+    }
+    
+    form label {
+        font-size: 0.9rem;
+    }
+    
+    form input, form textarea, form select {
+        padding: 12px 15px;
+        font-size: 0.85rem;
+    }
+    
+    input[type="submit"] {
+        padding: 12px 25px !important;
+        font-size: 0.9rem !important;
+    }
+    
+    .button-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .custom-button {
+        width: 100% !important;
+        max-width: 250px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    form {
+        padding: 20px;
+    }
+    
+    .image-form-block {
+        padding: 15px;
+    }
 }
