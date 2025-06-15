@@ -28,14 +28,18 @@
     <!-- Project Video -->
     {% if projeto.link_video %}
         {% with projeto.link_video|cut:"https://www.youtube.com/watch?v=" as video_id %}
-            <div style="display: flex; justify-content: center; margin-bottom: 30px;">
-                <iframe width="100%" height="400" style="max-width: 720px; border-radius: 10px; border: 3px solid var(--primary-gold);"
-                        src="https://www.youtube.com/embed/{{ video_id }}"
-                        title="Project Video"
-                        frameborder="0"
-                        allowfullscreen>
+            <div style="position: relative; width: 100%; max-width: 720px; margin: 0 auto 30px; border: 3px solid var(--primary-gold); border-radius: 10px; overflow: hidden;">
+            <div style="padding-top: 56.25%; position: relative;">
+                <iframe
+                src="https://www.youtube.com/embed/{{ video_id }}"
+                title="Project Video"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+                allowfullscreen
+                frameborder="0">
                 </iframe>
             </div>
+            </div>
+
         {% endwith %}
     {% endif %}
 
