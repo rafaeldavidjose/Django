@@ -78,14 +78,15 @@ body {
     min-height: 100vh;
 }
 
-/* Animated starfield background - SEAMLESS */
-body::before {
+/* ========== FUNDO DE ESTRELAS INFINITO CORRIGIDO ========== */
+body::before,
+body::after {
     content: '';
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 200%; /* ← ALTURA DUPLA para cobrir sempre o ecrã */
     background: 
         radial-gradient(2px 2px at 20px 30px, #eee, transparent),
         radial-gradient(2px 2px at 40px 70px, #ddd, transparent),
@@ -94,17 +95,16 @@ body::before {
         radial-gradient(2px 2px at 200px 10px, #ddd, transparent);
     background-repeat: repeat;
     background-size: 300px 300px;
-    animation: stars 100s linear infinite;
     z-index: -1;
 }
 
+/* PRIMEIRA CAMADA DE ESTRELAS */
+body::before {
+    animation: starsMove1 80s linear infinite;
+}
+
+/* SEGUNDA CAMADA DE ESTRELAS (diferente) */
 body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     background: 
         radial-gradient(1px 1px at 80px 120px, #fff, transparent),
         radial-gradient(2px 2px at 150px 50px, #ddd, transparent),
@@ -113,18 +113,26 @@ body::after {
         radial-gradient(2px 2px at 100px 80px, #ddd, transparent);
     background-repeat: repeat;
     background-size: 300px 300px;
-    animation: stars2 120s linear infinite;
-    z-index: -1;
+    animation: starsMove2 100s linear infinite;
 }
 
-@keyframes stars {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-300px); }
+/* ========== ANIMAÇÕES INFINITAS CORRIGIDAS ========== */
+@keyframes starsMove1 {
+    0% { 
+        transform: translateY(0); 
+    }
+    100% { 
+        transform: translateY(-300px); /* ← Move exatamente o tamanho do tile */
+    }
 }
 
-@keyframes stars2 {
-    0% { transform: translateY(-150px); }
-    100% { transform: translateY(-450px); }
+@keyframes starsMove2 {
+    0% { 
+        transform: translateY(-150px); /* ← Começa numa posição diferente */
+    }
+    100% { 
+        transform: translateY(-450px); /* ← Move o mesmo valor + offset inicial */
+    }
 }
 
 /* Loading Screen */
@@ -819,6 +827,3 @@ footer p {
 ::-webkit-scrollbar-thumb:hover {
     background: #e67e22;
 }
-
-/* ========== SCRIPT JAVASCRIPT PARA FORÇAR RENDERIZAÇÃO SUAVE ========== */
-/* Este script deve ser adicionado ao base.html */
