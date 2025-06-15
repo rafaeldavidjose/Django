@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Docente, Disciplina, Tecnologia, Projeto, ImagemProjeto, FichaTecnica
+from .models import *
 
 # Register your models here.
 
@@ -60,3 +60,24 @@ class TecnologiaAdmin(admin.ModelAdmin):
     search_fields = ('nome',)
 
 admin.site.register(Tecnologia, TecnologiaAdmin)
+
+class ContactoAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'email', 'assunto', 'data_envio', 'respondido')
+    list_filter = ('respondido', 'data_envio')
+    search_fields = ('nome', 'email', 'assunto')
+    readonly_fields = ('data_envio',)
+    ordering = ('-data_envio',)
+    
+    fieldsets = (
+        ('Contact Information', {
+            'fields': ('nome', 'email', 'assunto')
+        }),
+        ('Message', {
+            'fields': ('mensagem',)
+        }),
+        ('Status', {
+            'fields': ('respondido', 'data_envio')
+        }),
+    )
+
+admin.site.register(Contacto, ContactoAdmin)

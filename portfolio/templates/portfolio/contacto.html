@@ -1,0 +1,181 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/form.css' %}">
+<style>
+.contact-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-header {
+    margin-bottom: 40px;
+}
+
+.contact-header h2 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    color: var(--primary-gold);
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 0 #000;
+}
+
+.contact-intro {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.contact-form {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 15px;
+    border: 3px solid var(--primary-gold);
+    text-align: left;
+}
+
+.success-message {
+    background-color: var(--primary-green);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.error-message {
+    background-color: var(--primary-red);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.contact-info {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid var(--primary-blue);
+    margin-top: 40px;
+    text-align: center;
+}
+
+.contact-methods {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.contact-method a {
+    color: var(--primary-blue);
+    text-decoration: none;
+}
+
+.contact-method a:hover {
+    color: var(--primary-gold);
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 25px;
+    }
+    
+    .contact-methods {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="contact-wrapper">
+    <div class="contact-header">
+        <h2>GET IN TOUCH</h2>
+        <p class="contact-intro">
+            Have a project in mind? Want to collaborate? Or just want to say hi? 
+            I'd love to hear from you! Drop me a message and I'll get back to you as soon as possible.
+        </p>
+    </div>
+
+    <!-- Success/Error Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+                <div class="success-message">
+                    {{ message }}
+                </div>
+            {% elif message.tags == 'error' %}
+                <div class="error-message">
+                    {{ message }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
+    <!-- Contact Form -->
+    <form method="post" class="contact-form">
+        {% csrf_token %}
+        
+        {% if form.errors %}
+            <div class="error-message">
+                <p><strong>Please correct the following errors:</strong></p>
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <p>{{ field.label }}: {{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% for field in form %}
+            <div class="form-row">
+                {{ field.label_tag }}
+                {{ field }}
+            </div>
+        {% endfor %}
+
+        <div class="button-wrapper">
+            <input type="submit" value="🚀 SEND MESSAGE" class="custom-button">
+        </div>
+    </form>
+
+    <!-- Alternative Contact Methods -->
+    <div class="contact-info">
+        <h3 style="color: var(--primary-blue); margin-bottom: 15px;">Other Ways to Reach Me</h3>
+        <div class="contact-methods">
+            <div class="contact-method">
+                <span>📧</span>
+                <a href="mailto:rafaeldavidjose.dev@gmail.com">rafaeldavidjose.dev@gmail.com</a>
+            </div>
+            <div class="contact-method">
+                <span>💼</span>
+                <a href="https://www.linkedin.com/in/manfeldev/" target="_blank">LinkedIn</a>
+            </div>
+            <div class="contact-method">
+                <span>💻</span>
+                <a href="https://github.com/ManfelDev" target="_blank">GitHub</a>
+            </div>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-light);">
+            I usually respond within 24-48 hours. Looking forward to connecting with you!
+        </p>
+    </div>
+</div>
+{% endblock %}

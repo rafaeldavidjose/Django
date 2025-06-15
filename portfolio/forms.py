@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import inlineformset_factory
-from .models import Projeto, FichaTecnica, ImagemProjeto, Tecnologia, Disciplina, Docente
+from .models import *
 
 class ProjetoForm(forms.ModelForm):
     class Meta:
@@ -81,4 +81,36 @@ class DocenteForm(forms.ModelForm):
 
         labels = {
             'nome': 'Name',
+        }
+        
+class ContactoForm(forms.ModelForm):
+    class Meta:
+        model = Contacto
+        fields = ['nome', 'email', 'assunto', 'mensagem']
+        
+        labels = {
+            'nome': 'Your Name',
+            'email': 'Your Email',
+            'assunto': 'Subject',
+            'mensagem': 'Message',
+        }
+        
+        widgets = {
+            'nome': forms.TextInput(attrs={
+                'placeholder': 'Enter your full name...',
+                'class': 'form-control'
+            }),
+            'email': forms.EmailInput(attrs={
+                'placeholder': 'your.email@example.com',
+                'class': 'form-control'
+            }),
+            'assunto': forms.TextInput(attrs={
+                'placeholder': 'What would you like to discuss?',
+                'class': 'form-control'
+            }),
+            'mensagem': forms.Textarea(attrs={
+                'placeholder': 'Write your message here...',
+                'rows': 6,
+                'class': 'form-control'
+            }),
         }

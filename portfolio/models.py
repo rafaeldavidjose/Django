@@ -142,3 +142,19 @@ class FichaTecnica(models.Model):
 
     def __str__(self):
         return f"Ficha Técnica de {self.projeto.titulo}"
+    
+class Contacto(models.Model):
+    nome = models.CharField(max_length=100)
+    email = models.EmailField()
+    assunto = models.CharField(max_length=200)
+    mensagem = models.TextField()
+    data_envio = models.DateTimeField(auto_now_add=True)
+    respondido = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-data_envio']
+        verbose_name = 'Contacto'
+        verbose_name_plural = 'Contactos'
+
+    def __str__(self):
+        return f"{self.nome} - {self.assunto}"

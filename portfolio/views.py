@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from datetime import date
-from .models import Projeto, Tecnologia
+from .models import *
 from .forms import *
+from django.core.mail import send_mail
+from django.contrib import messages
 
 # Create your views here.
 def index_view(request):
@@ -206,3 +208,54 @@ def apaga_tecnologia_view(request, tecnologia_id):
     tecnologia = Tecnologia.objects.get(id=tecnologia_id)
     tecnologia.delete()
     return redirect('portfolio:tecnologias')
+
+def contacto_view(request):
+    if request.method == 'POST':
+        form = ContactoForm(request.POST)
+        if form.is_valid():
+            # Guardar na base de dados
+            contacto = form.save()
+            
+            # Preparar email
+            nome = form.cleaned_data['nome']
+            email = form.cleaned_data['email']
+            assunto = form.cleaned_data['assunto']
+            mensagem = form.cleaned_data['mensagem']
+            
+            # Enviar email para ti
+            email_subject = f"[PORTFOLIO CONTACT] {assunto}"
+            email_message = f"""
+Nova mensagem de contacto recebida:
+
+Nome: {nome}
+Email: {email}
+Assunto: {assunto}
+
+Mensagem:
+{mensagem}
+
+---
+Enviado através do portfolio: https://rafaeljose.pythonanywhere.com/
+Data: {contacto.data_envio.strftime('%d/%m/%Y às %H:%M')}
+"""
+            
+            try:
+                send_mail(
+                    subject=email_subject,
+                    message=email_message,
+                    from_email='noreply@rafaeljose.pythonanywhere.com',
+                    recipient_list=['rafaeldavidjose.dev@gmail.com'],
+                    fail_silently=False,
+                )
+                messages.success(request, 'Message sent successfully! I\'ll get back to you soon.')
+                return redirect('portfolio:contacto')
+            except Exception as e:
+                messages.error(request, 'Sorry, there was an error sending your message. Please try again.')
+    else:
+        form = ContactoForm()
+    
+    context = {
+        'form': form,
+        'data': date.today().year,
+    }
+    return render(request, 'portfolio/contacto.html', context)
