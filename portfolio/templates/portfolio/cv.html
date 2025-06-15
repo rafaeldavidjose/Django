@@ -8,44 +8,137 @@
 {% block main %}
 <div class="cv-container">
     <div class="cv-header">
-        <h2>CURRICULUM VITAE</h2>
+        <!-- ← TÍTULO COM ESTILO IGUAL AOS PROJECTS/TECHNOLOGIES -->
+        <h2 style="font-size: clamp(1.5rem, 3vw, 2.5rem) !important; color: #e74c3c !important; text-shadow: 3px 3px 0 #000 !important; margin-bottom: 30px !important;">CURRICULUM VITAE</h2>
         <p>Here you can find information about my professional background, projects, and technical skills in game development.</p>
     </div>
 
-    <div class="main-cv-section">
+    <!-- ← CARTÃO PRINCIPAL COM ESTILOS INLINE FORÇADOS -->
+    <div class="main-cv-section" style="background: linear-gradient(135deg, #2c3e50, #1f2937) !important; padding: 40px !important; border-radius: 15px !important; border: 3px solid #f39c12 !important; margin-bottom: 40px !important; text-align: center !important; width: 100% !important; max-width: 1000px !important; margin-left: auto !important; margin-right: auto !important;">
         <div class="main-cv-icon">📄</div>
         <h3>DOWNLOAD MY CV</h3>
         <p>View or download my complete CV to learn more about my skills, education, and experience in game development.</p>
-        <a href="{% static 'files/Profile.pdf' %}" target="_blank" class="custom-button download-button">📥 DOWNLOAD CV</a>
+        <!-- ← BOTÃO DOWNLOAD COM ESTILO GAMING FORÇADO -->
+        <a href="{% static 'files/Profile.pdf' %}" target="_blank" 
+           style="font-size: clamp(0.7rem, 1vw, 0.9rem) !important; 
+                  color: #ecf0f1 !important; 
+                  background: #27ae60 !important; 
+                  border: 2px solid #27ae60 !important; 
+                  cursor: pointer !important;
+                  padding: 12px 20px !important; 
+                  position: relative !important;
+                  transition: all 0.3s !important;
+                  text-decoration: none !important;
+                  display: inline-flex !important;
+                  align-items: center !important;
+                  justify-content: center !important;
+                  border-radius: 8px !important;
+                  font-family: 'Orbitron', monospace !important;
+                  text-align: center !important;
+                  line-height: 1 !important;
+                  min-width: 90px !important;"
+           onmouseover="this.style.background='#229954'; this.style.color='#fff'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 20px rgba(39, 174, 96, 0.5)';"
+           onmouseout="this.style.background='#27ae60'; this.style.color='#ecf0f1'; this.style.transform='scale(1)'; this.style.boxShadow='none';">📥 DOWNLOAD CV</a>
     </div>
 
-    <div class="cv-sections-top">
-        <div class="cv-section-card">
+    <!-- ← SEÇÕES DE BAIXO COM GRID FORÇADO -->
+    <div class="cv-sections-top" style="display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 20px !important; margin-top: 30px !important; width: 100% !important; max-width: 1000px !important; margin-left: auto !important; margin-right: auto !important; box-sizing: border-box !important;">
+        
+        <!-- CARTÃO MY PROJECTS -->
+        <div class="cv-section-card" style="background: #2c3e50 !important; border: 3px solid #34495e !important; border-radius: 15px !important; padding: 30px !important; text-align: center !important; transition: all 0.3s !important; display: flex !important; flex-direction: column !important; min-height: 300px !important; position: relative !important; overflow: hidden !important; width: 100% !important; box-sizing: border-box !important;"
+             onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.4)'; this.style.borderColor='#f39c12';"
+             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='#34495e';">
             <div class="cv-icon">🎮</div>
             <h3>MY PROJECTS</h3>
             <p>Explore the various game development projects I've worked on throughout my journey, featuring gameplay mechanics, AI systems, and interactive experiences.</p>
             <div class="cv-button-wrapper">
-                <a href="{% url 'portfolio:projetos' %}" class="custom-button">VIEW PROJECTS</a>
+                <!-- ← BOTÃO COM ESTILO GAMING FORÇADO -->
+                <a href="{% url 'portfolio:projetos' %}" 
+                   style="font-size: clamp(0.7rem, 1vw, 0.9rem) !important; 
+                          color: #ecf0f1 !important; 
+                          background: #2b2b2b !important; 
+                          border: 2px solid #444 !important; 
+                          cursor: pointer !important;
+                          padding: 12px 20px !important; 
+                          position: relative !important;
+                          transition: all 0.3s !important;
+                          text-decoration: none !important;
+                          display: inline-flex !important;
+                          align-items: center !important;
+                          justify-content: center !important;
+                          border-radius: 8px !important;
+                          font-family: 'Orbitron', monospace !important;
+                          text-align: center !important;
+                          line-height: 1 !important;
+                          min-width: 90px !important;"
+                   onmouseover="this.style.background='#3498db'; this.style.color='#fff'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 20px rgba(52, 152, 219, 0.5)';"
+                   onmouseout="this.style.background='#2b2b2b'; this.style.color='#ecf0f1'; this.style.transform='scale(1)'; this.style.boxShadow='none';">VIEW PROJECTS</a>
             </div>
         </div>
 
-        <div class="cv-section-card">
+        <!-- CARTÃO TECHNOLOGIES I USE -->
+        <div class="cv-section-card" style="background: #2c3e50 !important; border: 3px solid #34495e !important; border-radius: 15px !important; padding: 30px !important; text-align: center !important; transition: all 0.3s !important; display: flex !important; flex-direction: column !important; min-height: 300px !important; position: relative !important; overflow: hidden !important; width: 100% !important; box-sizing: border-box !important;"
+             onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.4)'; this.style.borderColor='#f39c12';"
+             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='#34495e';">
             <div class="cv-icon">🛠️</div>
             <h3>TECHNOLOGIES I USE</h3>
             <p>Discover the tools, frameworks, and technologies I've mastered to create responsive, efficient, and engaging gameplay systems.</p>
             <div class="cv-button-wrapper">
-                <a href="{% url 'portfolio:tecnologias' %}" class="custom-button">VIEW TOOLS</a>
+                <!-- ← BOTÃO COM ESTILO GAMING FORÇADO -->
+                <a href="{% url 'portfolio:tecnologias' %}" 
+                   style="font-size: clamp(0.7rem, 1vw, 0.9rem) !important; 
+                          color: #ecf0f1 !important; 
+                          background: #2b2b2b !important; 
+                          border: 2px solid #444 !important; 
+                          cursor: pointer !important;
+                          padding: 12px 20px !important; 
+                          position: relative !important;
+                          transition: all 0.3s !important;
+                          text-decoration: none !important;
+                          display: inline-flex !important;
+                          align-items: center !important;
+                          justify-content: center !important;
+                          border-radius: 8px !important;
+                          font-family: 'Orbitron', monospace !important;
+                          text-align: center !important;
+                          line-height: 1 !important;
+                          min-width: 90px !important;"
+                   onmouseover="this.style.background='#3498db'; this.style.color='#fff'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 20px rgba(52, 152, 219, 0.5)';"
+                   onmouseout="this.style.background='#2b2b2b'; this.style.color='#ecf0f1'; this.style.transform='scale(1)'; this.style.boxShadow='none';">VIEW TOOLS</a>
             </div>
         </div>
     </div>
 
+    <!-- SEÇÃO DE BAIXO (INTERESTS) -->
     <div class="cv-sections-bottom">
-        <div class="cv-section-card centered-card">
+        <div class="cv-section-card centered-card" style="background: #2c3e50 !important; border: 3px solid #34495e !important; border-radius: 15px !important; padding: 30px !important; text-align: center !important; transition: all 0.3s !important; display: flex !important; flex-direction: column !important; min-height: 300px !important; position: relative !important; overflow: hidden !important; max-width: 400px !important;"
+             onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.4)'; this.style.borderColor='#f39c12';"
+             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='#34495e';">
             <div class="cv-icon">🌟</div>
             <h3>INTERESTS & SKILLS</h3>
             <p>Learn about my core interests in game development and the specific areas where I focus my learning and expertise.</p>
             <div class="cv-button-wrapper">
-                <a href="{% url 'portfolio:interesses' %}" class="custom-button">VIEW INTERESTS</a>
+                <!-- ← BOTÃO COM ESTILO GAMING FORÇADO -->
+                <a href="{% url 'portfolio:interesses' %}" 
+                   style="font-size: clamp(0.7rem, 1vw, 0.9rem) !important; 
+                          color: #ecf0f1 !important; 
+                          background: #2b2b2b !important; 
+                          border: 2px solid #444 !important; 
+                          cursor: pointer !important;
+                          padding: 12px 20px !important; 
+                          position: relative !important;
+                          transition: all 0.3s !important;
+                          text-decoration: none !important;
+                          display: inline-flex !important;
+                          align-items: center !important;
+                          justify-content: center !important;
+                          border-radius: 8px !important;
+                          font-family: 'Orbitron', monospace !important;
+                          text-align: center !important;
+                          line-height: 1 !important;
+                          min-width: 90px !important;"
+                   onmouseover="this.style.background='#3498db'; this.style.color='#fff'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 20px rgba(52, 152, 219, 0.5)';"
+                   onmouseout="this.style.background='#2b2b2b'; this.style.color='#ecf0f1'; this.style.transform='scale(1)'; this.style.boxShadow='none';">VIEW INTERESTS</a>
             </div>
         </div>
     </div>
