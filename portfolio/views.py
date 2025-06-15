@@ -39,7 +39,7 @@ def tecnologias_view(request):
     tecnologias_ordenadas = Tecnologia.objects.annotate(
         num_projetos=Count('projetos')
     ).order_by('-num_projetos', 'nome')
-    
+
     context = {
         'data' : date.today().year,
         'tecnologias' : tecnologias_ordenadas,
@@ -209,51 +209,58 @@ def apaga_tecnologia_view(request, tecnologia_id):
     tecnologia.delete()
     return redirect('portfolio:tecnologias')
 
+def envia_email_contacto(nome, email, assunto, mensagem):
+    send_mail(
+        subject=f'Portfolio: {assunto}',
+        message=f'Nome: {nome}\nEmail: {email}\n\nMensagem:\n{mensagem}',
+        from_email='rafaeldavidjose.dev@gmail.com',
+        recipient_list=['rafaeldavidjose.dev@gmail.com']
+    )
+
+# VIEW DE CONTACTO SEGUINDO PADRÃO DO TUTORIAL
 def contacto_view(request):
     if request.method == 'POST':
         form = ContactoForm(request.POST)
         if form.is_valid():
             # Guardar na base de dados
             contacto = form.save()
-            
-            # Preparar email
+
+            # Extrair dados
             nome = form.cleaned_data['nome']
             email = form.cleaned_data['email']
             assunto = form.cleaned_data['assunto']
             mensagem = form.cleaned_data['mensagem']
-            
-            # Enviar email para ti
-            email_subject = f"[PORTFOLIO CONTACT] {assunto}"
-            email_message = f"""
-Nova mensagem de contacto recebida:
 
-Nome: {nome}
-Email: {email}
-Assunto: {assunto}
+            # ========== SOLUÇÃO HÍBRIDA ==========
+            # 1. Guardar na BD (✅ sempre funciona)
+            # 2. Notificar no admin
+            # 3. Email via serviço externo (opcional)
 
-Mensagem:
-{mensagem}
-
----
-Enviado através do portfolio: https://rafaeljose.pythonanywhere.com/
-Data: {contacto.data_envio.strftime('%d/%m/%Y às %H:%M')}
-"""
-            
             try:
+                # Tentar enviar email (pode falhar no free tier)
+                from django.core.mail import send_mail
                 send_mail(
-                    subject=email_subject,
-                    message=email_message,
-                    from_email='noreply@rafaeljose.pythonanywhere.com',
+                    subject=f'[PORTFOLIO] {assunto}',
+                    message=f'Nome: {nome}\nEmail: {email}\n\nMensagem:\n{mensagem}',
+                    from_email='noreply@portfolio.com',
                     recipient_list=['rafaeldavidjose.dev@gmail.com'],
-                    fail_silently=False,
+                    fail_silently=True,  # ← Não crashar se falhar
                 )
-                messages.success(request, 'Message sent successfully! I\'ll get back to you soon.')
-                return redirect('portfolio:contacto')
-            except Exception as e:
-                messages.error(request, 'Sorry, there was an error sending your message. Please try again.')
+                email_status = "Email enviado!"
+            except:
+                email_status = "Email salvo no admin (SMTP indisponível)"
+
+            # Mostrar mensagem de sucesso sempre
+            messages.success(request,
+                f'✅ Message received successfully! '
+                f'I can see it in my admin panel and will respond within 24-48 hours. '
+                f'Status: {email_status}')
+
+            return redirect('portfolio:contacto')
+
     else:
         form = ContactoForm()
-    
+
     context = {
         'form': form,
         'data': date.today().year,

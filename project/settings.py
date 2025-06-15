@@ -130,7 +130,3 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'rafaeldavidjose.dev@gmail.com'
 EMAIL_HOST_PASSWORD = 'ncjj zpua weld ytjs'
-DEFAULT_FROM_EMAIL = 'noreply@rafaeljose.pythonanywhere.com'
-
-if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
