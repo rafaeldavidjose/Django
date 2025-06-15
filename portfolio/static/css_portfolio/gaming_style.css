@@ -6,9 +6,52 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
+    /* ❌ REMOVIDO: image-rendering que estava pixelizando todas as imagens */
+}
+
+/* ========== FORÇA RENDERIZAÇÃO SUAVE EM TODAS AS IMAGENS ========== */
+img,
+.tech-logo-wrapper img,
+.project-card img,
+.tech-card img,
+.card img,
+*[src*=".jpg"],
+*[src*=".jpeg"], 
+*[src*=".png"],
+*[src*=".gif"],
+*[src*=".webp"],
+*[src*=".svg"] {
+    image-rendering: auto !important;
+    image-rendering: smooth !important;
+    image-rendering: -webkit-optimize-contrast !important;
+    -ms-interpolation-mode: bicubic !important;
+}
+
+/* FORÇA RENDERIZAÇÃO SUAVE TAMBÉM EM BACKGROUNDS */
+*[style*="background-image"] {
+    image-rendering: auto !important;
+    image-rendering: smooth !important;
+}
+
+/* ========== OVERRIDE ABSOLUTO PARA QUALQUER PIXELIZAÇÃO ========== */
+* {
+    image-rendering: auto !important;
+}
+
+img {
+    image-rendering: smooth !important;
+    image-rendering: -webkit-optimize-contrast !important;
+    -ms-interpolation-mode: bicubic !important;
+}
+
+/* REMOVE QUALQUER PIXELIZAÇÃO HERDADA */
+html img,
+body img,
+div img,
+section img,
+article img {
+    image-rendering: auto !important;
+    image-rendering: smooth !important;
 }
 
 :root {
@@ -776,3 +819,6 @@ footer p {
 ::-webkit-scrollbar-thumb:hover {
     background: #e67e22;
 }
+
+/* ========== SCRIPT JAVASCRIPT PARA FORÇAR RENDERIZAÇÃO SUAVE ========== */
+/* Este script deve ser adicionado ao base.html */

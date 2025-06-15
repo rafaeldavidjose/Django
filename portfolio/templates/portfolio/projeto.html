@@ -3,6 +3,12 @@
 {% load static %}
 
 {% block main %}
+<!-- MODAL PARA AMPLIAR IMAGENS -->
+<div id="imageModal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); cursor: pointer;">
+    <span id="closeModal" style="position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer; z-index: 10000;">&times;</span>
+    <img id="modalImage" style="margin: auto; display: block; width: 90%; max-width: 1200px; max-height: 90%; object-fit: contain; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+</div>
+
 <section class="project-section" style="max-width: 1000px; margin: 0 auto; text-align: left;">
     <!-- Project Title -->
     <h2 style="text-align: center; font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 30px; text-shadow: 3px 3px 0 #000;">{{ projeto.titulo }}</h2>
@@ -11,10 +17,10 @@
     {% if projeto.link_itch or projeto.link_video or projeto.link_github %}
         <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;">
             {% if projeto.link_itch %}
-                <a href="{{ projeto.link_itch }}" target="_blank" class="project-link" style="background: var(--primary-green);">PLAY ON ITCH.IO</a>
+                <a href="{{ projeto.link_itch }}" target="_blank" class="project-link" style="background: var(--primary-green);">VIEW ON ITCH.IO</a>
             {% endif %}
             {% if projeto.link_github %}
-                <a href="{{ projeto.link_github }}" target="_blank" class="project-link" style="background: #333;">VIEW ON GITHUB</a>
+                <a href="{{ projeto.link_github }}" target="_blank" class="project-link" style="background: #333;">SOURCE CODE</a>
             {% endif %}
         </div>
     {% endif %}
@@ -39,23 +45,26 @@
         <p style="font-size: 0.9rem; line-height: 1.8;">{{ projeto.descricao }}</p>
     </div>
 
-    <!-- Project Gallery -->
+    <!-- ========== PROJECT GALLERY - SEM LEGENDAS + COM MODAL ========== -->
     {% if projeto.imagens.all %}
         <div style="margin-bottom: 30px;">
             <h3 style="color: var(--primary-gold); margin-bottom: 20px; font-size: 1.2rem;">SCREENSHOTS</h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
                 {% for imagem in projeto.imagens.all %}
-                    <div style="background: var(--card-bg); border-radius: 10px; overflow: hidden; border: 2px solid #444;">
-                        <img src="{{ imagem.imagem.url }}" alt="{{ imagem.legenda }}" 
-                             style="width: 100%; height: 200px; object-fit: cover; transition: transform 0.3s;"
-                             onmouseover="this.style.transform='scale(1.05)'" 
-                             onmouseout="this.style.transform='scale(1)'">
-                        {% if imagem.legenda %}
-                            <div style="padding: 10px; text-align: center; font-size: 0.8rem; color: var(--text-light);">
-                                {{ imagem.legenda }}
-                            </div>
-                        {% endif %}
-                    </div>
+                    <!-- ❌ REMOVIDO: div com legenda em baixo -->
+                    <!-- ✅ ADICIONADO: onclick para abrir modal + cursor pointer -->
+                    <img src="{{ imagem.imagem.url }}" 
+                         alt="{{ imagem.legenda|default:'Screenshot' }}" 
+                         style="width: 100%; 
+                                height: 200px; 
+                                object-fit: cover; 
+                                transition: transform 0.3s, box-shadow 0.3s;
+                                border-radius: 10px;
+                                border: 2px solid #444;
+                                cursor: pointer;"
+                         onclick="openModal('{{ imagem.imagem.url }}')"
+                         onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.4)'; this.style.borderColor='var(--primary-gold)';" 
+                         onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'; this.style.borderColor='#444';">
                 {% endfor %}
             </div>
         </div>
@@ -75,37 +84,38 @@
         </div>
     {% endif %}
 
-    <!-- Project Information Panel -->
+    <!-- Project Information Panel - ORDEM SEQUENCIAL -->
     <div style="background: linear-gradient(135deg, var(--card-bg), #1f2937); padding: 30px; border-radius: 15px; border: 3px solid var(--primary-gold);">
-        <!-- Course Information -->
+        
+        <!-- 1. COURSE -->
         {% if projeto.disciplina %}
-            <div style="margin-bottom: 20px;">
+            <div style="margin-bottom: 15px;">
                 <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">COURSE:</strong> "{{ projeto.disciplina.nome }}" – Universidade Lusófona ({{ projeto.disciplina.ano }}º year, {{ projeto.disciplina.semestre }}º semester)</p>
             </div>
         {% endif %}
 
-        <!-- Technical Details -->
-        {% if projeto.ficha_tecnica %}
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px;">
-                {% if projeto.ficha_tecnica.plataforma %}
-                    <div>
-                        <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">PLATFORM:</strong> {{ projeto.ficha_tecnica.plataforma }}</p>
-                    </div>
-                {% endif %}
-                {% if projeto.ficha_tecnica.duracao_desenvolvimento %}
-                    <div>
-                        <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">DEVELOPMENT TIME:</strong> {{ projeto.ficha_tecnica.duracao_desenvolvimento }}</p>
-                    </div>
-                {% endif %}
-                {% if projeto.ficha_tecnica.equipa %}
-                    <div>
-                        <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">TEAM SIZE:</strong> {{ projeto.ficha_tecnica.equipa }} developer{{ projeto.ficha_tecnica.equipa|pluralize }}</p>
-                    </div>
-                {% endif %}
+        <!-- 2. PLATFORM -->
+        {% if projeto.ficha_tecnica.plataforma %}
+            <div style="margin-bottom: 15px;">
+                <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">PLATFORM:</strong> {{ projeto.ficha_tecnica.plataforma }}</p>
             </div>
         {% endif %}
 
-        <!-- Technologies Used -->
+        <!-- 3. DEVELOPMENT TIME -->
+        {% if projeto.ficha_tecnica.duracao_desenvolvimento %}
+            <div style="margin-bottom: 15px;">
+                <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">DEVELOPMENT TIME:</strong> {{ projeto.ficha_tecnica.duracao_desenvolvimento }}</p>
+            </div>
+        {% endif %}
+
+        <!-- 4. TEAM SIZE -->
+        {% if projeto.ficha_tecnica.equipa %}
+            <div style="margin-bottom: 20px;">
+                <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">TEAM SIZE:</strong> {{ projeto.ficha_tecnica.equipa }} developer{{ projeto.ficha_tecnica.equipa|pluralize }}</p>
+            </div>
+        {% endif %}
+
+        <!-- 5. TECHNOLOGIES USED -->
         {% if projeto.tecnologias.all %}
             <div>
                 <p style="font-size: 1rem; color: var(--primary-gold); margin-bottom: 15px;"><strong>TECHNOLOGIES USED:</strong></p>
@@ -136,6 +146,47 @@
     </div>
 {% endif %}
 
+<!-- ========== JAVASCRIPT PARA O MODAL ========== -->
+<script>
+function openModal(imageSrc) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    
+    modal.style.display = 'block';
+    modalImg.src = imageSrc;
+    
+    // Previne scroll do body quando modal está aberto
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.style.display = 'none';
+    
+    // Reativa scroll do body
+    document.body.style.overflow = 'auto';
+}
+
+// Event listeners
+document.getElementById('closeModal').onclick = closeModal;
+document.getElementById('imageModal').onclick = function(event) {
+    // Fecha modal se clicar fora da imagem
+    if (event.target === this) {
+        closeModal();
+    }
+};
+
+// Fecha modal com ESC
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+});
+
+// Adiciona animação de fade-in ao modal
+document.getElementById('imageModal').style.transition = 'opacity 0.3s ease-in-out';
+</script>
+
 <style>
 .project-link {
     font-size: 0.8rem;
@@ -155,6 +206,22 @@
     color: white;
 }
 
+/* Animação do modal */
+#imageModal {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Hover effect no botão de fechar */
+#closeModal:hover {
+    color: #f39c12 !important;
+    transform: scale(1.1);
+}
+
 @media (max-width: 768px) {
     .project-section {
         padding: 0 15px;
@@ -166,6 +233,17 @@
     
     iframe {
         height: 250px;
+    }
+    
+    #modalImage {
+        width: 95% !important;
+        max-height: 85% !important;
+    }
+    
+    #closeModal {
+        font-size: 30px !important;
+        top: 10px !important;
+        right: 20px !important;
     }
 }
 </style>

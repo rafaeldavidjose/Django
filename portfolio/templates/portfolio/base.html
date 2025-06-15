@@ -225,5 +225,56 @@
             });
         });
     </script>
+    <script>
+        function forceImageRenderingSmooth() {
+            // Encontra TODAS as imagens na página
+            const allImages = document.querySelectorAll('img, [src], [style*="background-image"]');
+            
+            allImages.forEach(function(element) {
+                // Remove qualquer image-rendering pixelated
+                element.style.imageRendering = 'auto';
+                element.style.imageRendering = 'smooth';
+                element.style.setProperty('image-rendering', 'auto', 'important');
+                element.style.setProperty('image-rendering', 'smooth', 'important');
+                element.style.setProperty('-ms-interpolation-mode', 'bicubic', 'important');
+                element.style.setProperty('-webkit-image-rendering', 'smooth', 'important');
+            });
+            
+            // Também aplica a todos os elementos que podem ter background-image
+            const allElements = document.querySelectorAll('*');
+            allElements.forEach(function(element) {
+                const computedStyle = window.getComputedStyle(element);
+                if (computedStyle.backgroundImage && computedStyle.backgroundImage !== 'none') {
+                    element.style.setProperty('image-rendering', 'auto', 'important');
+                    element.style.setProperty('image-rendering', 'smooth', 'important');
+                }
+            });
+            
+            console.log('✅ Image rendering forçado para smooth em todas as imagens');
+        }
+
+        // Executa quando a página carrega
+        document.addEventListener('DOMContentLoaded', forceImageRenderingSmooth);
+
+        // Executa novamente quando o conteúdo muda (para imagens carregadas dinamicamente)
+        window.addEventListener('load', forceImageRenderingSmooth);
+
+        // Executa periodicamente para capturar qualquer imagem nova
+        setInterval(forceImageRenderingSmooth, 2000);
+
+        // Observer para mudanças no DOM
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.addedNodes.length > 0) {
+                    forceImageRenderingSmooth();
+                }
+            });
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+        </script>
 </body>
 </html>
