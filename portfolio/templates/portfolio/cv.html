@@ -7,7 +7,7 @@
 
 {% block main %}
 <div class="cv-container">
-    <div class="cv-header">
+    <div class="cv-header section-header">
         <!-- ← TÍTULO COM ESTILO IGUAL AOS PROJECTS/TECHNOLOGIES -->
         <h2 style="font-size: clamp(1.5rem, 3vw, 2.5rem) !important; color: #e74c3c !important; text-shadow: 3px 3px 0 #000 !important; margin-bottom: 30px !important;">CURRICULUM VITAE</h2>
         <p>Here you can find information about my professional background, projects, and technical skills in game development.</p>
@@ -18,14 +18,14 @@
         <div class="main-cv-icon">📄</div>
         <h3>DOWNLOAD MY CV</h3>
         <p>View or download my complete CV to learn more about my skills, education, and experience in game development.</p>
-        <!-- ← BOTÃO DOWNLOAD COM ESTILO GAMING FORÇADO -->
+        <!-- ← BOTÃO DOWNLOAD COM FONT CORRIGIDA MAS COR VERDE MANTIDA -->
         <a href="{% static 'files/Profile.pdf' %}" target="_blank" 
            style="font-size: clamp(0.7rem, 1vw, 0.9rem) !important; 
-                  color: #ecf0f1 !important; 
+                  color: white !important; 
                   background: #27ae60 !important; 
-                  border: 2px solid #27ae60 !important; 
+                  border: none !important; 
                   cursor: pointer !important;
-                  padding: 12px 20px !important; 
+                  padding: 15px 30px !important; 
                   position: relative !important;
                   transition: all 0.3s !important;
                   text-decoration: none !important;
@@ -33,12 +33,13 @@
                   align-items: center !important;
                   justify-content: center !important;
                   border-radius: 8px !important;
-                  font-family: 'Orbitron', monospace !important;
+                  font-family: 'Inter', sans-serif !important;
+                  font-weight: 500 !important;
                   text-align: center !important;
                   line-height: 1 !important;
                   min-width: 90px !important;"
-           onmouseover="this.style.background='#229954'; this.style.color='#fff'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 20px rgba(39, 174, 96, 0.5)';"
-           onmouseout="this.style.background='#27ae60'; this.style.color='#ecf0f1'; this.style.transform='scale(1)'; this.style.boxShadow='none';">📥 DOWNLOAD CV</a>
+           onmouseover="this.style.background='#229954'; this.style.color='white'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 20px rgba(39, 174, 96, 0.5)';"
+           onmouseout="this.style.background='#27ae60'; this.style.color='white'; this.style.transform='scale(1)'; this.style.boxShadow='none';">📥 DOWNLOAD CV</a>
     </div>
 
     <!-- ← SEÇÕES DE BAIXO COM GRID FORÇADO -->
@@ -52,7 +53,7 @@
             <h3>MY PROJECTS</h3>
             <p>Explore the various game development projects I've worked on throughout my journey, featuring gameplay mechanics, AI systems, and interactive experiences.</p>
             <div class="cv-button-wrapper">
-                <!-- ← BOTÃO COM ESTILO GAMING FORÇADO -->
+                <!-- ← BOTÃO COM FONT CORRIGIDA - ESTILO PADRÃO -->
                 <a href="{% url 'portfolio:projetos' %}" 
                    style="font-size: clamp(0.7rem, 1vw, 0.9rem) !important; 
                           color: #ecf0f1 !important; 
@@ -67,7 +68,8 @@
                           align-items: center !important;
                           justify-content: center !important;
                           border-radius: 8px !important;
-                          font-family: 'Orbitron', monospace !important;
+                          font-family: 'Inter', sans-serif !important;
+                          font-weight: 500 !important;
                           text-align: center !important;
                           line-height: 1 !important;
                           min-width: 90px !important;"
@@ -84,7 +86,7 @@
             <h3>TECHNOLOGIES I USE</h3>
             <p>Discover the tools, frameworks, and technologies I've mastered to create responsive, efficient, and engaging gameplay systems.</p>
             <div class="cv-button-wrapper">
-                <!-- ← BOTÃO COM ESTILO GAMING FORÇADO -->
+                <!-- ← BOTÃO COM FONT CORRIGIDA - ESTILO PADRÃO -->
                 <a href="{% url 'portfolio:tecnologias' %}" 
                    style="font-size: clamp(0.7rem, 1vw, 0.9rem) !important; 
                           color: #ecf0f1 !important; 
@@ -99,7 +101,8 @@
                           align-items: center !important;
                           justify-content: center !important;
                           border-radius: 8px !important;
-                          font-family: 'Orbitron', monospace !important;
+                          font-family: 'Inter', sans-serif !important;
+                          font-weight: 500 !important;
                           text-align: center !important;
                           line-height: 1 !important;
                           min-width: 90px !important;"
@@ -118,7 +121,7 @@
             <h3>INTERESTS & SKILLS</h3>
             <p>Learn about my core interests in game development and the specific areas where I focus my learning and expertise.</p>
             <div class="cv-button-wrapper">
-                <!-- ← BOTÃO COM ESTILO GAMING FORÇADO -->
+                <!-- ← BOTÃO COM FONT CORRIGIDA - ESTILO PADRÃO -->
                 <a href="{% url 'portfolio:interesses' %}" 
                    style="font-size: clamp(0.7rem, 1vw, 0.9rem) !important; 
                           color: #ecf0f1 !important; 
@@ -133,7 +136,8 @@
                           align-items: center !important;
                           justify-content: center !important;
                           border-radius: 8px !important;
-                          font-family: 'Orbitron', monospace !important;
+                          font-family: 'Inter', sans-serif !important;
+                          font-weight: 500 !important;
                           text-align: center !important;
                           line-height: 1 !important;
                           min-width: 90px !important;"

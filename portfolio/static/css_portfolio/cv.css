@@ -1,3 +1,19 @@
+/* CV page specific styles - GAMING THEME with CORRECT FONTS */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-purple: #bb86fc;
+    --primary-gold: #f39c12;
+    --primary-blue: #3498db;
+    --primary-red: #e74c3c;
+    --primary-green: #27ae60;
+    --dark-bg: #1a1a2e;
+    --card-bg: #2c3e50;
+    --text-light: #ecf0f1;
+    --accent-teal: #16a085;
+}
+
 /* CV page specific styles - MAXIMUM SPECIFICITY OVERRIDES */
 
 /* FORÇA O TAMANHO CORRETO DOS CARTÕES CV */
@@ -5,6 +21,7 @@
     max-width: 1000px !important;
     margin: 0 auto !important;
     padding: 0 20px !important;
+    font-family: 'Inter', sans-serif !important;
 }
 
 .cv-header {
@@ -14,17 +31,24 @@
 
 .cv-header h2 {
     font-size: clamp(1.5rem, 3vw, 2.5rem) !important;
-    color: #f39c12 !important;
-    text-shadow: 3px 3px 0 #c87f0a, 6px 6px 0 #000, 6px 6px 20px rgba(243, 156, 18, 0.5) !important;
+    color: var(--primary-red) !important;
+    text-shadow: 3px 3px 0 #000 !important;
     margin-bottom: 20px !important;
+    font-family: 'Rajdhani', 'Inter', sans-serif !important;
+    font-weight: 600 !important;
 }
 
+/* CV header text - EXACT SAME SIZE as gaming_style.css p */
+.cv-header.section-header p,
 .cv-header p {
-    font-size: 1rem !important;
-    max-width: 600px !important;
-    margin: 0 auto !important;
+    font-size: clamp(0.7rem, 1vw, 0.9rem) !important;
+    margin-bottom: 15px !important;
     line-height: 1.8 !important;
-    color: #ecf0f1 !important;
+    color: var(--text-light) !important;
+    font-family: 'Inter', sans-serif !important;
+    max-width: 600px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 /* ========== CARTÃO PRINCIPAL - TAMANHO REFERÊNCIA ========== */
@@ -32,7 +56,7 @@
     background: linear-gradient(135deg, #2c3e50, #1f2937) !important;
     padding: 40px !important;
     border-radius: 15px !important;
-    border: 3px solid #f39c12 !important;
+    border: 3px solid var(--primary-gold) !important;
     margin-bottom: 40px !important;
     text-align: center !important;
     width: 100% !important;
@@ -41,30 +65,34 @@
     margin-right: auto !important;
     position: relative !important;
     overflow: hidden !important;
+    font-family: 'Inter', sans-serif !important;
 }
 
 .main-cv-icon {
     font-size: 4rem !important;
     margin-bottom: 20px !important;
-    color: #f39c12 !important;
+    color: var(--primary-gold) !important;
 }
 
 .main-cv-section h3 {
-    color: #f39c12 !important;
+    color: var(--primary-gold) !important;
     margin-bottom: 20px !important;
-    font-size: 1.5rem !important;
+    font-size: clamp(1rem, 2vw, 1.5rem) !important;
+    font-family: 'Rajdhani', 'Inter', sans-serif !important;
+    font-weight: 600 !important;
 }
 
 .main-cv-section p {
     margin-bottom: 25px !important;
-    font-size: 1rem !important;
+    font-size: clamp(0.8rem, 1.2vw, 1.1rem) !important;
     line-height: 1.6 !important;
-    color: #ecf0f1 !important;
+    color: var(--text-light) !important;
+    font-family: 'Inter', sans-serif !important;
 }
 
 .download-button {
-    background: #27ae60 !important;
-    font-size: 1rem !important;
+    background: var(--primary-green) !important;
+    font-size: clamp(0.7rem, 1vw, 0.9rem) !important;
     padding: 15px 30px !important;
     color: white !important;
     border: none !important;
@@ -72,6 +100,8 @@
     text-decoration: none !important;
     transition: all 0.3s !important;
     display: inline-block !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
 }
 
 .download-button:hover {
@@ -88,7 +118,7 @@
     gap: 20px !important;
     margin-top: 30px !important;
     width: 100% !important;
-    max-width: 1000px !important; /* ← ESTE É O TAMANHO QUE FALTAVA FORÇAR */
+    max-width: 1000px !important;
     margin-left: auto !important;
     margin-right: auto !important;
     box-sizing: border-box !important;
@@ -96,7 +126,7 @@
 
 /* ========== CADA CARTÃO INDIVIDUAL OCUPA METADE DO ESPAÇO ========== */
 .cv-section-card {
-    background: #2c3e50 !important;
+    background: var(--card-bg) !important;
     border: 3px solid #34495e !important;
     border-radius: 15px !important;
     padding: 30px !important;
@@ -107,8 +137,9 @@
     min-height: 300px !important;
     position: relative !important;
     overflow: hidden !important;
-    width: 100% !important; /* ← FORÇA CADA CARTÃO A OCUPAR TODO O ESPAÇO DISPONÍVEL */
+    width: 100% !important;
     box-sizing: border-box !important;
+    font-family: 'Inter', sans-serif !important;
 }
 
 .cv-sections-bottom {
@@ -124,27 +155,30 @@
 .cv-section-card:hover {
     transform: translateY(-8px) !important;
     box-shadow: 0 10px 25px rgba(0,0,0,0.4) !important;
-    border-color: #f39c12 !important;
+    border-color: var(--primary-gold) !important;
 }
 
 .cv-section-card h3 {
-    font-size: 1.2rem !important;
-    color: #f39c12 !important;
+    font-size: clamp(1rem, 2vw, 1.5rem) !important;
+    color: var(--primary-gold) !important;
     margin-bottom: 15px !important;
+    font-family: 'Rajdhani', 'Inter', sans-serif !important;
+    font-weight: 600 !important;
 }
 
 .cv-section-card p {
-    font-size: 0.9rem !important;
+    font-size: clamp(0.8rem, 1.2vw, 1.1rem) !important;
     line-height: 1.6 !important;
     margin-bottom: 20px !important;
     flex-grow: 1 !important;
-    color: #ecf0f1 !important;
+    color: var(--text-light) !important;
+    font-family: 'Inter', sans-serif !important;
 }
 
 .cv-icon {
     font-size: 3rem !important;
     margin-bottom: 20px !important;
-    color: #f39c12 !important;
+    color: var(--primary-gold) !important;
 }
 
 .cv-button-wrapper {
@@ -155,32 +189,54 @@
     max-width: 400px !important;
 }
 
-/* ========== BOTÕES ESTILO CORRETO ========== */
+/* ========== BOTÕES ESTILO CORRETO - EXACT COPY from gaming_style.css ========== */
 .cv-container .custom-button {
+    font-size: clamp(0.7rem, 1vw, 0.9rem) !important;
+    color: var(--text-light) !important;
     background: #2b2b2b !important;
-    color: white !important;
+    border: 2px solid #444 !important;
+    cursor: pointer !important;
     padding: 12px 20px !important;
-    border-radius: 8px !important;
+    position: relative !important;
+    transition: all 0.3s !important;
     text-decoration: none !important;
-    font-weight: normal !important;
-    transition: 0.3s !important;
-    display: inline-block !important;
-    border: none !important;
-    font-family: 'Orbitron', monospace !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 8px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    line-height: 1 !important;
+    min-width: 90px !important;
 }
 
 .cv-container .custom-button:hover {
-    background: #3498db !important;
-    color: white !important;
-    text-decoration: none !important;
+    background: var(--primary-blue) !important;
+    color: #fff !important;
     transform: scale(1.05) !important;
     box-shadow: 0 0 20px rgba(52, 152, 219, 0.5) !important;
+    text-decoration: none !important;
 }
 
-/* ========== RESPONSIVIDADE ========== */
+/* ========== RESPONSIVIDADE MELHORADA ========== */
 @media (max-width: 768px) {
     .cv-container {
         padding: 0 15px !important;
+    }
+    
+    .cv-header {
+        margin-bottom: 40px !important;
+    }
+    
+    .cv-header h2 {
+        font-size: 2rem !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .cv-header p {
+        font-size: 0.9rem !important;
+        padding: 0 10px !important;
     }
     
     .cv-section-card {
@@ -192,14 +248,127 @@
         grid-template-columns: 1fr !important;
         max-width: 100% !important;
         gap: 15px !important;
+        margin-top: 20px !important;
     }
     
     .main-cv-section {
-        padding: 25px !important;
+        padding: 30px 20px !important;
         max-width: 100% !important;
+        margin-bottom: 30px !important;
     }
     
     .main-cv-icon {
         font-size: 3rem !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .main-cv-section h3 {
+        font-size: 1.3rem !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .main-cv-section p {
+        font-size: 0.9rem !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .cv-section-card h3 {
+        font-size: 1.2rem !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .cv-section-card p {
+        font-size: 0.85rem !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .cv-icon {
+        font-size: 2.5rem !important;
+        margin-bottom: 15px !important;
+    }
+    
+    .download-button {
+        font-size: clamp(0.6rem, 0.9vw, 0.8rem) !important;
+        padding: 10px 18px !important;
+        font-family: 'Inter', sans-serif !important;
+        font-weight: 500 !important;
+    }
+    
+    .cv-container .custom-button {
+        font-size: clamp(0.6rem, 0.9vw, 0.8rem) !important;
+        padding: 10px 18px !important;
+        font-family: 'Inter', sans-serif !important;
+        font-weight: 500 !important;
+    }
+    
+    .cv-sections-bottom {
+        margin-top: 20px !important;
+    }
+    
+    .centered-card {
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .cv-container {
+        padding: 0 10px !important;
+    }
+    
+    .cv-header h2 {
+        font-size: 1.8rem !important;
+    }
+    
+    .cv-header p {
+        font-size: 0.85rem !important;
+    }
+    
+    .main-cv-section {
+        padding: 25px 15px !important;
+    }
+    
+    .cv-section-card {
+        padding: 20px !important;
+        min-height: 220px !important;
+    }
+    
+    .main-cv-icon {
+        font-size: 2.5rem !important;
+    }
+    
+    .cv-icon {
+        font-size: 2rem !important;
+    }
+    
+    .cv-section-card h3 {
+        font-size: 1.1rem !important;
+    }
+    
+    .cv-section-card p {
+        font-size: 0.8rem !important;
+    }
+    
+    .main-cv-section h3 {
+        font-size: 1.2rem !important;
+    }
+    
+    .main-cv-section p {
+        font-size: 0.85rem !important;
+    }
+    
+    .download-button {
+        font-size: clamp(0.55rem, 0.8vw, 0.75rem) !important;
+        padding: 8px 15px !important;
+        font-family: 'Inter', sans-serif !important;
+        font-weight: 500 !important;
+        min-width: 80px !important;
+    }
+    
+    .cv-container .custom-button {
+        font-size: clamp(0.55rem, 0.8vw, 0.75rem) !important;
+        padding: 8px 15px !important;
+        font-family: 'Inter', sans-serif !important;
+        font-weight: 500 !important;
+        min-width: 80px !important;
     }
 }
