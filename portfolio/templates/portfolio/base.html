@@ -121,9 +121,25 @@
         document.addEventListener('DOMContentLoaded', positionPowerUps);
         window.addEventListener('resize', positionPowerUps);
 
-        // Power-up collection
+        // ========== SISTEMA DE ACHIEVEMENTS EXPANDIDO ========== 
         let score = parseInt(localStorage.getItem('portfolioScore') || '0');
-        let achievementShown2000 = localStorage.getItem('achievement2000') === 'true';
+        
+        // Tracking de achievements já mostrados
+        const achievementFlags = {
+            achievement100: localStorage.getItem('achievement100') === 'true',
+            achievement300: localStorage.getItem('achievement300') === 'true',
+            achievement500: localStorage.getItem('achievement500') === 'true',
+            achievement750: localStorage.getItem('achievement750') === 'true',
+            achievement1000: localStorage.getItem('achievement1000') === 'true',
+            achievement1500: localStorage.getItem('achievement1500') === 'true',
+            achievement2000: localStorage.getItem('achievement2000') === 'true',
+            achievement3000: localStorage.getItem('achievement3000') === 'true',
+            achievement5000: localStorage.getItem('achievement5000') === 'true',
+            achievement7500: localStorage.getItem('achievement7500') === 'true',
+            achievement10000: localStorage.getItem('achievement10000') === 'true',
+            konamiMaster: localStorage.getItem('konamiMaster') === 'true'
+        };
+
         document.getElementById('score').textContent = score;
 
         function collectPowerUp(element) {
@@ -132,17 +148,61 @@
             document.getElementById('score').textContent = score;
             element.style.display = 'none';
             
-            // Show achievement for collecting power-ups based on score
-            if (score === 100) {
-                showAchievement("First Power-up!");
-            } else if (score === 500) {
+            // ========== ACHIEVEMENTS BASEADOS NO SCORE ========== 
+            if (score === 100 && !achievementFlags.achievement100) {
+                showAchievement("First Steps!");
+                localStorage.setItem('achievement100', 'true');
+                achievementFlags.achievement100 = true;
+            } 
+            else if (score === 300 && !achievementFlags.achievement300) {
+                showAchievement("Getting Started!");
+                localStorage.setItem('achievement300', 'true');
+                achievementFlags.achievement300 = true;
+            }
+            else if (score === 500 && !achievementFlags.achievement500) {
                 showAchievement("Power-up Collector!");
-            } else if (score === 1000) {
+                localStorage.setItem('achievement500', 'true');
+                achievementFlags.achievement500 = true;
+            }
+            else if (score === 750 && !achievementFlags.achievement750) {
+                showAchievement("Rising Star!");
+                localStorage.setItem('achievement750', 'true');
+                achievementFlags.achievement750 = true;
+            }
+            else if (score === 1000 && !achievementFlags.achievement1000) {
                 showAchievement("Power-up Master!");
-            } else if (score >= 2000 && !achievementShown2000) {
-                showAchievement("Ultimate Gamer!");
+                localStorage.setItem('achievement1000', 'true');
+                achievementFlags.achievement1000 = true;
+            }
+            else if (score === 1500 && !achievementFlags.achievement1500) {
+                showAchievement("Dedicated Explorer!");
+                localStorage.setItem('achievement1500', 'true');
+                achievementFlags.achievement1500 = true;
+            }
+            else if (score === 2000 && !achievementFlags.achievement2000) {
+                showAchievement("Portfolio Veteran!");
                 localStorage.setItem('achievement2000', 'true');
-                achievementShown2000 = true;
+                achievementFlags.achievement2000 = true;
+            }
+            else if (score === 3000 && !achievementFlags.achievement3000) {
+                showAchievement("Click Champion!");
+                localStorage.setItem('achievement3000', 'true');
+                achievementFlags.achievement3000 = true;
+            }
+            else if (score === 5000 && !achievementFlags.achievement5000) {
+                showAchievement("Ultimate Gamer!");
+                localStorage.setItem('achievement5000', 'true');
+                achievementFlags.achievement5000 = true;
+            }
+            else if (score === 7500 && !achievementFlags.achievement7500) {
+                showAchievement("Score Destroyer!");
+                localStorage.setItem('achievement7500', 'true');
+                achievementFlags.achievement7500 = true;
+            }
+            else if (score >= 10000 && !achievementFlags.achievement10000) {
+                showAchievement("LEGENDARY MASTER!");
+                localStorage.setItem('achievement10000', 'true');
+                achievementFlags.achievement10000 = true;
             }
             
             // Respawn power-up
@@ -161,7 +221,12 @@
             if (e.code === konamiCode[konamiIndex]) {
                 konamiIndex++;
                 if (konamiIndex === konamiCode.length) {
-                    showAchievement("Konami Code Master!");
+                    if (!achievementFlags.konamiMaster) {
+                        showAchievement("Konami Code Master!");
+                        localStorage.setItem('konamiMaster', 'true');
+                        achievementFlags.konamiMaster = true;
+                    }
+                    
                     score += 1000;
                     localStorage.setItem('portfolioScore', score);
                     document.getElementById('score').textContent = score;
