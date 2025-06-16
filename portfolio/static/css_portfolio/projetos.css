@@ -1,4 +1,4 @@
-/* Projects page specific styles */
+/* Projects page specific styles - ✅ FONTS E TAMANHOS UNIFICADOS */
 
 .project-placeholder {
     width: 100%;
@@ -9,8 +9,10 @@
     justify-content: center;
     color: var(--primary-gold);
     font-size: 2rem;
+    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
 }
 
+/* ✅ RESET COMPLETO PARA TECH TAGS */
 .tech-tags {
     display: flex;
     flex-wrap: nowrap;
@@ -22,11 +24,31 @@
     padding: 0 5px;
 }
 
-.tech-tag {
-    flex-shrink: 0;
-    white-space: nowrap;
-    font-size: 0.55rem;
-    padding: 2px 6px;
+/* ✅ TECH TAG - FORÇA BRUTA PARA IGUALAR TECH-COUNT */
+.tech-tags .tech-tag,
+.project-card .tech-tag,
+.project-card-content .tech-tag {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    font-size: 0.7rem !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    background: var(--accent-teal) !important;
+    background-color: var(--accent-teal) !important;
+    padding: 4px 8px !important;
+    margin: 2px !important;
+    border-radius: 4px !important;
+    color: white !important;
+    font-family: 'Inter', sans-serif !important;
+    display: inline-block !important;
+    text-decoration: none !important;
+    border: none !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    line-height: normal !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    vertical-align: baseline !important;
 }
 
 .no-data-icon {
@@ -36,8 +58,35 @@
 
 .add-button {
     background: var(--primary-green) !important;
+    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
 }
 
 .add-button:hover {
     background: #229954 !important;
+}
+
+/* ✅ PROJECT CARDS FONTS */
+.project-card h3 {
+    font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ UNIFIED TITLES */
+}
+
+.project-card p {
+    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED TEXT */
+}
+
+.project-card-title {
+    font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ UNIFIED TITLES */
+}
+
+.project-card-content {
+    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
+}
+
+/* ✅ NO DATA SECTION FONTS */
+.no-data h3 {
+    font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ UNIFIED TITLES */
+}
+
+.no-data p {
+    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED TEXT */
 }

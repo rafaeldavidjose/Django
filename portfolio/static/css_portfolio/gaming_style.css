@@ -1,4 +1,4 @@
-/* Gaming Style Portfolio CSS */
+/* Gaming Style Portfolio CSS - VERSÃO COMPLETA E SEGURA */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap');
 
@@ -6,7 +6,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* ❌ REMOVIDO: image-rendering que estava pixelizando todas as imagens */
 }
 
 /* ========== FORÇA RENDERIZAÇÃO SUAVE EM TODAS AS IMAGENS ========== */
@@ -399,10 +398,15 @@ p {
 }
 
 .card p {
-    font-size: clamp(0.6rem, 1vw, 0.8rem);
-    line-height: 1.6;
+    font-size: clamp(0.6rem, 1vw, 0.8rem); /* ✅ IGUAL AOS TECH CARDS */
+    line-height: 1.7 !important; /* ✅ LINHA MAIS ESPAÇADA */
     color: var(--text-light);
     margin-bottom: 15px;
+    text-align: center !important; /* ✅ CENTRALIZADO */
+    max-width: 280px !important; /* ✅ LARGURA CONTROLADA */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    word-spacing: 0.05em !important; /* ✅ ESPAÇAMENTO SUTIL */
 }
 
 /* Buttons */
@@ -484,12 +488,30 @@ p {
 .project-card-content {
     padding: 20px;
     text-align: center;
+    max-width: 100%; /* ✅ CONTROLA LARGURA MÁXIMA */
+    margin: 0 auto; /* ✅ CENTRALIZA CONTEÚDO */
 }
 
+/* ✅ PROJECT CARD TITLE - MESMO TAMANHO DOS TECH CARDS */
 .project-card-title {
-    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem); /* ✅ IGUAL AOS TECH CARDS */
     color: var(--primary-gold);
     margin-bottom: 15px;
+    font-family: 'Rajdhani', 'Inter', sans-serif;
+}
+
+/* ✅ PROJECT CARD DESCRIPTION - TEXTO CENTRALIZADO E BALANCEADO */
+.project-card-content p {
+    font-size: clamp(0.6rem, 1vw, 0.8rem); /* ✅ IGUAL AOS TECH CARDS */
+    line-height: 1.7 !important; /* ✅ LINHA MAIS ESPAÇADA PARA MELHOR DISTRIBUIÇÃO */
+    color: var(--text-light);
+    margin-bottom: 15px;
+    font-family: 'Inter', sans-serif;
+    text-align: center !important; /* ✅ MANTÉM CENTRALIZADO */
+    max-width: 280px !important; /* ✅ LIMITA LARGURA PARA FORÇAR QUEBRAS MELHORES */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    word-spacing: 0.05em !important; /* ✅ ESPAÇAMENTO SUTIL ENTRE PALAVRAS */
 }
 
 /* Technology specific styles - REMOVIDAS AS REGRAS QUE CONFLITAM */
@@ -503,6 +525,7 @@ p {
     max-width: 300px;
     margin: 0 auto;
     cursor: auto; /* Remove pointer cursor - only buttons should be clickable */
+    min-height: 280px; /* ✅ ALTURA MÍNIMA PARA CONSISTÊNCIA */
 }
 
 .tech-card-image-wrapper {
@@ -522,15 +545,38 @@ p {
     object-fit: contain;
 }
 
+/* ✅ TECH CARD TITLE - TAMANHO DE REFERÊNCIA */
+.tech-card h3 {
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+    color: var(--primary-gold);
+    margin-bottom: 15px;
+    font-family: 'Rajdhani', 'Inter', sans-serif;
+}
+
+/* ✅ TECH CARD DESCRIPTION - TEXTO CENTRALIZADO E BALANCEADO */
+.tech-card p {
+    font-size: clamp(0.6rem, 1vw, 0.8rem);
+    line-height: 1.7 !important; /* ✅ LINHA MAIS ESPAÇADA PARA MELHOR DISTRIBUIÇÃO */
+    color: var(--text-light);
+    margin-bottom: 15px;
+    font-family: 'Inter', sans-serif;
+    text-align: center !important; /* ✅ MANTÉM CENTRALIZADO */
+    max-width: 260px !important; /* ✅ LIMITA LARGURA PARA FORÇAR QUEBRAS MELHORES */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    word-spacing: 0.05em !important; /* ✅ ESPAÇAMENTO SUTIL ENTRE PALAVRAS */
+}
+
 /* Tech tags */
 .tech-tag {
-    font-size: clamp(0.5rem, 0.8vw, 0.6rem);
+    font-size: clamp(0.7rem, 1vw, 0.9rem); /* ✅ MESMO TAMANHO QUE "Used in X projects" */
     background: var(--accent-teal);
     padding: 5px 10px;
     border-radius: 5px;
     color: #fff;
     display: inline-block;
     margin: 2px;
+    font-family: 'Inter', sans-serif;
 }
 
 /* Links */
@@ -673,6 +719,16 @@ footer p {
     color: #fff;
     box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
     text-decoration: none;
+}
+
+/* ✅ TECH COUNT - "Used in X projects" - TAMANHO DE REFERÊNCIA */
+.tech-count {
+    font-size: 0.7rem !important; /* ✅ TAMANHO FIXO PARA REFERÊNCIA */
+    background: var(--accent-teal);
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: white;
+    font-family: 'Inter', sans-serif;
 }
 
 .no-data {

@@ -1,3 +1,5 @@
+/* ✅ FONTS UNIFICADAS - Individual project page */
+
 .content {
     text-align: left;
     display: block;
@@ -8,6 +10,7 @@
     font-size: 2.8em;
     margin-bottom: 20px;
     color: #bb86fc;
+    font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ UNIFIED */
 }
 
 .project-links {
@@ -28,6 +31,7 @@
     display: inline-flex;
     align-items: center;
     font-weight: 500;
+    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
 }
 
 .project-link:hover {
@@ -55,6 +59,7 @@
     text-align: center;
     font-size: 1.1em;
     line-height: 1.6;
+    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
 }
 
 .project-gallery {
@@ -89,6 +94,7 @@
     font-size: 0.85em;
     margin-top: 5px;
     color: #e0e0e0;
+    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
 }
 
 .project-section h3 {
@@ -98,11 +104,13 @@
     color: #bb86fc;
     border-bottom: 1px solid #bb86fc;
     padding-bottom: 8px;
+    font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ UNIFIED */
 }
 
 .project-section p {
     margin-bottom: 20px;
     line-height: 1.6;
+    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
 }
 
 .project-final-box {
@@ -141,6 +149,7 @@
     transition: all 0.3s;
     display: flex;
     align-items: center;
+    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
 }
 
 .tech-link:hover {
@@ -175,17 +184,22 @@
 .tech-text {
     line-height: 1.4;
     font-weight: 500;
+    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
 }
 
 .project-info-item p {
     margin-bottom: 8px;
+    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
 }
 
 .project-info-item strong {
     color: #bb86fc;
+    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
+    font-weight: 600;
 }
 
 .tech-section-title {
     margin-bottom: 15px;
     font-size: 1.1em;
+    font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ UNIFIED */
 }

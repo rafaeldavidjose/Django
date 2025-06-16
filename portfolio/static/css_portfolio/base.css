@@ -1,3 +1,6 @@
+/* ✅ FONTS UNIFICADAS - INTER + RAJDHANI EM TODO O PROJETO */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +8,7 @@
 }
 
 body {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* ✅ UNIFIED */
     background-color: #121212;
     color: #e0e0e0;
     display: flex;
@@ -34,7 +37,7 @@ header {
 }
 
 header h1 {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Rajdhani', 'Inter', sans-serif; /* ✅ UNIFIED */
     font-size: clamp(1.5rem, 2vw, 2rem);
     font-weight: 600;
     white-space: nowrap;
@@ -58,6 +61,7 @@ nav a {
     font-size: clamp(0.75rem, 1vw, 1rem);
     transition: background-color 0.3s, color 0.3s;
     white-space: nowrap;
+    font-family: 'Inter', sans-serif; /* ✅ UNIFIED */
 }
 
 nav a:hover {
@@ -102,7 +106,7 @@ main {
 }
 
 .content h2, .content h3 {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Rajdhani', 'Inter', sans-serif; /* ✅ UNIFIED */
     color: #bb86fc;
     margin-bottom: 15px;
 }
@@ -121,6 +125,7 @@ main {
     line-height: 1.6;
     margin-bottom: 10px;
     font-size: clamp(1rem, 1.1vw, 1.1rem);
+    font-family: 'Inter', sans-serif; /* ✅ UNIFIED */
 }
 
 .content ul {
@@ -143,15 +148,15 @@ footer {
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
+    font-family: 'Inter', sans-serif; /* ✅ UNIFIED */
 }
 
 footer p {
     margin: 0;
+    font-family: 'Inter', sans-serif; /* ✅ UNIFIED */
 }
 
-.pixel {
-    font-family: 'Pixelify Sans', sans-serif;
-}
+/* ❌ REMOVIDO: .pixel class que usava Pixelify Sans */
 
 /* Common Card Styles */
 .card {
@@ -179,6 +184,7 @@ footer p {
     font-weight: normal !important;
     transition: 0.3s !important;
     display: inline-block !important;
+    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
 }
 
 .custom-button:hover {

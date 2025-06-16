@@ -16,6 +16,7 @@ form label {
     margin-bottom: 10px;
     display: block;
     text-align: left;
+    font-family: 'Inter', sans-serif; /* ✅ UNIFIED */
 }
 form input[type="text"],
 form input[type="email"],
@@ -31,7 +32,7 @@ form textarea {
     border: 1px solid #444;
     border-radius: 12px;
     color: #e0e0e0;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Inter', sans-serif; /* ✅ UNIFIED */
     font-size: 1.05em;
     transition: border-color 0.3s, box-shadow 0.3s;
     text-align: left;
@@ -51,6 +52,7 @@ form input[type="file"]::file-selector-button {
     margin-right: 15px;
     cursor: pointer;
     font-weight: 600;
+    font-family: 'Inter', sans-serif; /* ✅ UNIFIED */
 }
 form textarea {
     min-height: 180px;
@@ -78,6 +80,7 @@ form ul li {
     gap: 8px;
     font-size: 1em;
     color: #e0e0e0;
+    font-family: 'Inter', sans-serif; /* ✅ UNIFIED */
 }
 input[type="submit"] {
     align-self: flex-start;
@@ -86,7 +89,7 @@ input[type="submit"] {
     padding: 16px 32px;
     border: none;
     border-radius: 12px;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Inter', sans-serif; /* ✅ UNIFIED */
     font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -106,6 +109,7 @@ input[type="submit"]:hover {
 .error-message p {
     margin: 5px 0;
     font-size: 1.05em;
+    font-family: 'Inter', sans-serif; /* ✅ UNIFIED */
 }
 .form-row {
     width: 100%;

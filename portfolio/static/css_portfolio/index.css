@@ -1,4 +1,4 @@
-/* Index page specific styles */
+/* Index page specific styles - ✅ FONTS UNIFICADAS */
 
 .landing-buttons {
     margin: 20px 0;
@@ -26,11 +26,13 @@
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ UNIFIED */
 }
 
 .stat-label {
     font-size: 0.7rem;
     color: #95a5a6;
+    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
 }
 
 .avatar {
@@ -79,6 +81,15 @@
     animation-delay: 1.2s;
 }
 
+/* ✅ LANDING WRAPPER FONTS */
+.landing-wrapper h2 {
+    font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ UNIFIED */
+}
+
+.landing-wrapper p {
+    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
+}
+
 @media (max-width: 768px) {
     .stats {
         flex-direction: column;
@@ -87,6 +98,11 @@
     
     .landing-wrapper h2 {
         font-size: 2rem;
+        font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ MOBILE TAMBÉM */
+    }
+    
+    .landing-wrapper p {
+        font-family: 'Inter', sans-serif !important; /* ✅ MOBILE TAMBÉM */
     }
     
     .avatar {
@@ -100,5 +116,13 @@
     
     .landing-buttons {
         gap: 10px;
+    }
+    
+    .stat-value {
+        font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ MOBILE TAMBÉM */
+    }
+    
+    .stat-label {
+        font-family: 'Inter', sans-serif !important; /* ✅ MOBILE TAMBÉM */
     }
 }

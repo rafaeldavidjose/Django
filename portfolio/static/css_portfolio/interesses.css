@@ -1,4 +1,4 @@
-/* Interests page specific styles */
+/* Interests page specific styles - ✅ FONTS UNIFICADAS */
 
 .section-header {
     margin-bottom: 30px; /* Espaçamento igual aos projetos */
@@ -6,6 +6,7 @@
 
 .section-header p {
     margin-bottom: 20px; /* Espaçamento igual aos projetos */
+    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
 }
 
 .interests-grid {
@@ -50,12 +51,15 @@
     display: block;
     font-size: 1rem;
     margin-bottom: 5px;
+    font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ UNIFIED TITLES */
+    font-weight: 600 !important;
 }
 
 .interest-item p {
     margin-top: 10px;
     font-size: 0.8rem;
     line-height: 1.6;
+    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED TEXT */
 }
 
 .interest-icon {
@@ -71,5 +75,13 @@
     
     .interest-item {
         padding: 20px;
+    }
+    
+    .interest-item strong {
+        font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ MOBILE TAMBÉM */
+    }
+    
+    .interest-item p {
+        font-family: 'Inter', sans-serif !important; /* ✅ MOBILE TAMBÉM */
     }
 }
