@@ -1,22 +1,4 @@
-/* ✅ TECH CARD - ESPECIFICIDADE MÁXIMA ABSOLUTA */
-.grid .tech-card,
-div.grid .tech-card,
-body .grid .tech-card {
-    background: var(--card-bg) !important;
-    border: 3px solid #34495e !important;
-    border-radius: 15px !important;
-    overflow: hidden !important;
-    transition: all 0.3s !important;
-    max-width: 350px !important;
-    margin: 0 auto !important;
-    cursor: auto !important;
-    width: 100% !important;
-    min-height: 450px !important; /* ✅ AINDA MAIS ALTO */
-    display: flex !important;
-    flex-direction: column !important;
-}
-
-/*/* Gaming Style Portfolio CSS - VERSÃO COMPLETA E SEGURA */
+/* Gaming Style Portfolio CSS - VERSÃO COMPLETA COM HOVER UNIFICADO */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap');
 
@@ -103,7 +85,7 @@ body::after {
     top: 0;
     left: 0;
     width: 100%;
-    height: 200%; /* ← ALTURA DUPLA para cobrir sempre o ecrã */
+    height: 200%;
     background: 
         radial-gradient(2px 2px at 20px 30px, #eee, transparent),
         radial-gradient(2px 2px at 40px 70px, #ddd, transparent),
@@ -139,16 +121,16 @@ body::after {
         transform: translateY(0); 
     }
     100% { 
-        transform: translateY(-300px); /* ← Move exatamente o tamanho do tile */
+        transform: translateY(-300px);
     }
 }
 
 @keyframes starsMove2 {
     0% { 
-        transform: translateY(-150px); /* ← Começa numa posição diferente */
+        transform: translateY(-150px);
     }
     100% { 
-        transform: translateY(-450px); /* ← Move o mesmo valor + offset inicial */
+        transform: translateY(-450px);
     }
 }
 
@@ -199,13 +181,13 @@ body::after {
 header {
     background-color: #1f1b24;
     color: var(--primary-gold);
-    padding: 12px 0; /* Padding fixo e consistente */
+    padding: 12px 0;
     position: sticky;
     top: 0;
     z-index: 100;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    min-height: 60px; /* Altura mínima fixa */
-    max-height: 60px; /* Altura máxima fixa */
+    min-height: 60px;
+    max-height: 60px;
 }
 
 .header-content {
@@ -216,11 +198,11 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100%; /* Ocupa toda a altura do header */
-    min-height: 36px; /* Altura mínima do conteúdo */
+    height: 100%;
+    min-height: 36px;
 }
 
-/* Classe específica para o título do header - COM SOMBRA PRETA DOS TÍTULOS */
+/* Classe específica para o título do header */
 .header-title {
     font-family: 'Rajdhani', 'Inter', sans-serif !important;
     font-size: clamp(1.2rem, 2vw, 1.8rem) !important;
@@ -229,7 +211,7 @@ header {
     line-height: 1 !important;
     display: flex !important;
     align-items: center !important;
-    color: #f39c12 !important; /* ✅ MANTÉM COR DOURADA */
+    color: #f39c12 !important;
     background: none !important;
     border: none !important;
     box-shadow: none !important;
@@ -346,21 +328,21 @@ p {
     line-height: 1.8;
 }
 
-/* Cards and Grid Layout - ✅ ESPAÇAMENTO UNIFORME */
+/* Cards and Grid Layout */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px 30px; /* ✅ ESPAÇAMENTO IGUAL HORIZONTAL E VERTICAL */
+    gap: 30px 30px;
     width: 100%;
     max-width: 1200px;
     margin: 40px auto;
-    padding: 0 20px; /* ✅ ESPAÇAMENTO LATERAL IGUAL */
+    padding: 0 20px;
     box-sizing: border-box;
-    justify-items: center; /* ✅ CENTRALIZA CARDS NA GRID */
-    align-items: start; /* ✅ ALINHA CARDS NO TOPO */
+    justify-items: center;
+    align-items: start;
 }
 
-/* ========== CORRIGIDO: CARDS SEM EFEITO DE BRILHO ========== */
+/* ========== HOVER EFFECTS UNIFICADOS - SÓ BORDER LARANJA ========== */
 .card {
     background: var(--card-bg);
     border: 3px solid #34495e;
@@ -371,7 +353,7 @@ p {
     overflow: hidden;
 }
 
-/* ❌ EFEITO DE BRILHO COMPLETAMENTE REMOVIDO */
+/* ❌ REMOVE COMPLETAMENTE QUALQUER EFEITO DE BRILHO */
 .card::before,
 .card::after {
     display: none !important;
@@ -382,10 +364,11 @@ p {
     visibility: hidden !important;
 }
 
+/* ✅ HOVER UNIFICADO - SÓ BORDER LARANJA, SEM MOVIMENTO */
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border-color: var(--primary-gold);
+    border-color: var(--primary-gold); /* ← SÓ BORDER LARANJA */
+    transform: none; /* ← SEM MOVIMENTO */
+    box-shadow: none; /* ← SEM SOMBRA */
 }
 
 /* ❌ REMOVE QUALQUER ANIMAÇÃO NO HOVER */
@@ -404,15 +387,15 @@ p {
 }
 
 .card p {
-    font-size: clamp(0.6rem, 1vw, 0.8rem); /* ✅ IGUAL AOS TECH CARDS */
-    line-height: 1.7 !important; /* ✅ LINHA MAIS ESPAÇADA */
+    font-size: clamp(0.6rem, 1vw, 0.8rem);
+    line-height: 1.7 !important;
     color: var(--text-light);
     margin-bottom: 15px;
-    text-align: center !important; /* ✅ CENTRALIZADO */
-    max-width: 280px !important; /* ✅ LARGURA CONTROLADA */
+    text-align: center !important;
+    max-width: 280px !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    word-spacing: 0.05em !important; /* ✅ ESPAÇAMENTO SUTIL */
+    word-spacing: 0.05em !important;
 }
 
 /* Buttons */
@@ -454,20 +437,20 @@ p {
     background-color: #c0392b !important;
 }
 
-/* Project specific styles - ✅ TAMANHO UNIFORME */
+/* ========== PROJECT CARDS - HOVER UNIFICADO ========== */
 .project-card {
     background: var(--card-bg);
     border: 3px solid #34495e;
     border-radius: 15px;
     overflow: hidden;
     transition: all 0.3s;
-    max-width: 350px; /* ✅ MESMO TAMANHO QUE TECH CARDS */
+    max-width: 350px;
     margin: 0 auto;
-    cursor: auto; /* Remove pointer cursor - only buttons should be clickable */
-    width: 100%; /* ✅ OCUPA LARGURA TOTAL DISPONÍVEL */
-    min-height: 420px; /* ✅ ALTURA MÍNIMA IGUAL AOS TECH CARDS */
-    display: flex; /* ✅ FLEXBOX PARA LAYOUT CONSISTENTE */
-    flex-direction: column; /* ✅ LAYOUT VERTICAL */
+    cursor: auto;
+    width: 100%;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-image-wrapper {
@@ -483,65 +466,83 @@ p {
     transition: transform 0.3s;
 }
 
-/* Project card hover effect - border changes to orange like tech cards */
+/* ✅ PROJECT CARD HOVER - SÓ BORDER LARANJA, SEM MOVIMENTO */
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border-color: var(--primary-gold);
-}
-
-/* FIXED: Removed image zoom effect on hover - only border should change to orange */
-.project-card:hover img {
-    /* Images should not scale on hover */
+    border-color: var(--primary-gold); /* ← SÓ COR LARANJA */
+    transform: none; /* ← SEM MOVIMENTO */
+    box-shadow: none; /* ← SEM SOMBRA */
 }
 
 .project-card-content {
     padding: 20px;
     text-align: center;
-    max-width: 100%; /* ✅ CONTROLA LARGURA MÁXIMA */
-    margin: 0 auto; /* ✅ CENTRALIZA CONTEÚDO */
-    flex-grow: 1; /* ✅ OCUPA ESPAÇO DISPONÍVEL */
-    display: flex; /* ✅ FLEXBOX PARA LAYOUT CONSISTENTE */
-    flex-direction: column; /* ✅ LAYOUT VERTICAL */
+    max-width: 100%;
+    margin: 0 auto;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-/* ✅ PROJECT CARD TITLE - MESMO TAMANHO DOS TECH CARDS */
 .project-card-title {
-    font-size: clamp(0.9rem, 1.5vw, 1.2rem); /* ✅ IGUAL AOS TECH CARDS */
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
     color: var(--primary-gold);
     margin-bottom: 15px;
     font-family: 'Rajdhani', 'Inter', sans-serif;
 }
 
-/* ✅ PROJECT CARD DESCRIPTION - TEXTO CENTRALIZADO E BALANCEADO */
 .project-card-content p {
-    font-size: clamp(0.6rem, 1vw, 0.8rem); /* ✅ IGUAL AOS TECH CARDS */
-    line-height: 1.7 !important; /* ✅ LINHA MAIS ESPAÇADA PARA MELHOR DISTRIBUIÇÃO */
+    font-size: clamp(0.6rem, 1vw, 0.8rem);
+    line-height: 1.7 !important;
     color: var(--text-light);
     margin-bottom: 15px;
     font-family: 'Inter', sans-serif;
-    text-align: center !important; /* ✅ MANTÉM CENTRALIZADO */
-    max-width: 280px !important; /* ✅ LIMITA LARGURA PARA FORÇAR QUEBRAS MELHORES */
+    text-align: center !important;
+    max-width: 280px !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    word-spacing: 0.05em !important; /* ✅ ESPAÇAMENTO SUTIL ENTRE PALAVRAS */
+    word-spacing: 0.05em !important;
+    flex-grow: 1 !important;
 }
 
-/* Technology specific styles - REMOVIDAS AS REGRAS QUE CONFLITAM */
-/* ✅ TECH CARD - LIGEIRAMENTE MAIS ALTO COM FLEXBOX */
+/* ========== TECH CARDS - HOVER UNIFICADO ========== */
 .tech-card {
     background: var(--card-bg);
     border: 3px solid #34495e;
     border-radius: 15px;
-    overflow: hidden; /* ✅ IGUAL AOS PROJECT CARDS */
+    overflow: hidden;
     transition: all 0.3s;
-    max-width: 350px; /* ✅ MESMO TAMANHO QUE PROJECT CARDS */
+    max-width: 350px;
     margin: 0 auto;
     cursor: auto;
-    width: 100%; /* ✅ OCUPA LARGURA TOTAL DISPONÍVEL */
-    min-height: 420px; /* ✅ ALTURA MÍNIMA LIGEIRAMENTE MAIOR */
+    width: 100%;
+    min-height: 420px;
     display: flex;
-    flex-direction: column; /* ✅ LAYOUT VERTICAL */
+    flex-direction: column;
+}
+
+/* ❌ REMOVE COMPLETAMENTE O EFEITO DE BRILHO DOS TECH CARDS */
+.tech-card::before {
+    display: none !important;
+    content: none !important;
+    animation: none !important;
+    background: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* ✅ TECH CARD HOVER - EXATAMENTE IGUAL AOS PROJECT CARDS - SÓ BORDER */
+.tech-card:hover {
+    border-color: var(--primary-gold); /* ← SÓ COR LARANJA */
+    transform: none; /* ← SEM MOVIMENTO */
+    box-shadow: none; /* ← SEM SOMBRA */
+}
+
+/* ❌ REMOVE QUALQUER ANIMAÇÃO NO HOVER */
+.tech-card:hover::before {
+    display: none !important;
+    animation: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
 }
 
 .tech-card-image-wrapper {
@@ -561,16 +562,14 @@ p {
     object-fit: contain;
 }
 
-/* ✅ TECH CARD CONTENT - DISTRIBUI ESPAÇO VERTICALMENTE */
 .tech-card-content {
     padding: 20px !important;
     text-align: center;
     display: flex;
     flex-direction: column;
-    height: calc(100% - 160px); /* ✅ ALTURA MENOS A IMAGEM E MARGENS */
+    height: calc(100% - 160px);
 }
 
-/* ✅ TECH CARD DESCRIPTION - OCUPA ESPAÇO DISPONÍVEL */
 .tech-card p {
     font-size: clamp(0.6rem, 1vw, 0.8rem);
     line-height: 1.7 !important;
@@ -582,22 +581,20 @@ p {
     margin-left: auto !important;
     margin-right: auto !important;
     word-spacing: 0.05em !important;
-    flex-grow: 1; /* ✅ OCUPA ESPAÇO DISPONÍVEL */
+    flex-grow: 1;
 }
 
-/* ✅ TECH CARD BUTTONS - SEMPRE NO FUNDO */
 .tech-card .card-buttons,
 .project-card .card-buttons {
     display: flex;
     gap: 10px;
     justify-content: center;
-    margin-top: auto !important; /* ✅ EMPURRA PARA O FUNDO */
-    padding: 0 20px 20px !important; /* ✅ MESMO PADDING DOS PROJECT CARDS */
+    margin-top: auto !important;
+    padding: 0 20px 20px !important;
 }
 
-/* ✅ TECH COUNT - SEM MARGEM INFERIOR EXTRA */
 .tech-count-wrapper {
-    margin-bottom: 0px !important; /* ✅ SEM MARGEM EXTRA */
+    margin-bottom: 0px !important;
 }
 
 .tech-count {
@@ -607,10 +604,9 @@ p {
     border-radius: 4px;
     color: white;
     font-family: 'Inter', sans-serif;
-    margin-bottom: 0px !important; /* ✅ SEM MARGEM INFERIOR */
+    margin-bottom: 0px !important;
 }
 
-/* ✅ TECH CARD TITLE - TAMANHO DE REFERÊNCIA */
 .tech-card h3 {
     font-size: clamp(0.9rem, 1.5vw, 1.2rem);
     color: var(--primary-gold);
@@ -618,23 +614,9 @@ p {
     font-family: 'Rajdhani', 'Inter', sans-serif;
 }
 
-/* ✅ TECH CARD DESCRIPTION - TEXTO CENTRALIZADO E BALANCEADO */
-.tech-card p {
-    font-size: clamp(0.6rem, 1vw, 0.8rem);
-    line-height: 1.7 !important; /* ✅ LINHA MAIS ESPAÇADA PARA MELHOR DISTRIBUIÇÃO */
-    color: var(--text-light);
-    margin-bottom: 15px;
-    font-family: 'Inter', sans-serif;
-    text-align: center !important; /* ✅ MANTÉM CENTRALIZADO */
-    max-width: 260px !important; /* ✅ LIMITA LARGURA PARA FORÇAR QUEBRAS MELHORES */
-    margin-left: auto !important;
-    margin-right: auto !important;
-    word-spacing: 0.05em !important; /* ✅ ESPAÇAMENTO SUTIL ENTRE PALAVRAS */
-}
-
 /* Tech tags */
 .tech-tag {
-    font-size: clamp(0.7rem, 1vw, 0.9rem); /* ✅ MESMO TAMANHO QUE "Used in X projects" */
+    font-size: clamp(0.7rem, 1vw, 0.9rem);
     background: var(--accent-teal);
     padding: 5px 10px;
     border-radius: 5px;
@@ -707,23 +689,23 @@ form input:focus, form textarea:focus, form select:focus {
 footer {
     background-color: #1f1b24;
     color: var(--primary-gold);
-    padding: 4px 20px; /* Padding ainda mais pequeno */
+    padding: 4px 20px;
     text-align: center;
-    font-size: clamp(0.6rem, 0.8vw, 0.75rem) !important; /* Letras um pouco menores */
+    font-size: clamp(0.6rem, 0.8vw, 0.75rem) !important;
     margin-top: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 6px;
-    min-height: 35px; /* Altura ainda mais pequena */
-    max-height: 35px; /* Altura ainda mais pequena */
+    min-height: 35px;
+    max-height: 35px;
 }
 
 footer p {
     margin: 0;
     line-height: 1.2;
-    font-size: clamp(0.6rem, 0.8vw, 0.75rem) !important; /* Força tamanho nos parágrafos */
+    font-size: clamp(0.6rem, 0.8vw, 0.75rem) !important;
 }
 
 /* Power-ups / Easter Eggs */
@@ -788,17 +770,17 @@ footer p {
 
 /* ✅ TECH COUNT - "Used in X projects" - ESPAÇAMENTO IGUAL AOS PROJECT CARDS */
 .tech-count {
-    font-size: 0.7rem !important; /* ✅ TAMANHO FIXO PARA REFERÊNCIA */
+    font-size: 0.7rem !important;
     background: var(--accent-teal);
     padding: 4px 8px;
     border-radius: 4px;
     color: white;
     font-family: 'Inter', sans-serif;
-    margin-bottom: 15px !important; /* ✅ MESMO ESPAÇAMENTO QUE TECH TAGS DOS PROJETOS */
+    margin-bottom: 15px !important;
 }
 
 .tech-count-wrapper {
-    margin-bottom: 0px !important; /* ✅ SEM MARGEM EXTRA */
+    margin-bottom: 0px !important;
 }
 
 .no-data {
@@ -826,19 +808,11 @@ footer p {
     margin-top: 20px;
 }
 
-/* ========== ANIMAÇÕES SHINE COMPLETAMENTE DESABILITADAS ========== */
-@keyframes shine {
-    0%, 100% { 
-        opacity: 0 !important; 
-        display: none !important;
-    }
-}
-
 /* Responsive Design - MANTER CONSISTÊNCIA EM MOBILE */
 @media (max-width: 768px) {
     header {
         padding: 10px 0;
-        min-height: 70px; /* Altura maior em mobile para acomodar menu em duas linhas */
+        min-height: 70px;
         max-height: 70px;
     }
     
@@ -851,17 +825,17 @@ footer p {
     }
     
     footer {
-        padding: 3px 15px; /* Padding ainda mais pequeno em mobile */
-        min-height: 30px; /* Altura ainda mais pequena em mobile */
+        padding: 3px 15px;
+        min-height: 30px;
         max-height: 30px;
         flex-direction: column;
         text-align: center;
         gap: 2px;
-        font-size: clamp(0.55rem, 0.7vw, 0.65rem) !important; /* Fonte um pouco menor em mobile */
+        font-size: clamp(0.55rem, 0.7vw, 0.65rem) !important;
     }
     
     footer p {
-        font-size: clamp(0.55rem, 0.7vw, 0.65rem) !important; /* Força tamanho nos parágrafos em mobile */
+        font-size: clamp(0.55rem, 0.7vw, 0.65rem) !important;
     }
     
     header h1 {
@@ -877,8 +851,8 @@ footer p {
     
     .grid {
         grid-template-columns: 1fr;
-        gap: 20px 20px; /* ✅ ESPAÇAMENTO UNIFORME EM MOBILE */
-        padding: 0 15px; /* ✅ PADDING LATERAL EM MOBILE */
+        gap: 20px 20px;
+        padding: 0 15px;
     }
     
     .content {
@@ -957,22 +931,20 @@ footer p {
 }
 
 /* ========== OVERRIDE FINAL - TECH CARDS MAIS ALTOS ========== */
-/* ✅ REGRA FINAL COM MÁXIMA ESPECIFICIDADE */
 body main .content .grid .tech-card,
 body .grid .tech-card,
 .tech-card {
-    min-height: 480px !important; /* ✅ MUITO MAIS ALTO */
+    min-height: 480px !important;
     height: auto !important;
     display: flex !important;
     flex-direction: column !important;
-    padding: 30px 0 30px 0 !important; /* ✅ MAIS PADDING EM CIMA E EM BAIXO */
+    padding: 30px 0 30px 0 !important;
 }
 
-/* ✅ IMAGEM COM MAIS ESPAÇO EM CIMA */
 body main .content .grid .tech-card .tech-card-image-wrapper,
 body .grid .tech-card .tech-card-image-wrapper,
 .tech-card .tech-card-image-wrapper {
-    margin: 20px auto 25px auto !important; /* ✅ MAIS ESPAÇO EM BAIXO DA IMAGEM */
+    margin: 20px auto 25px auto !important;
 }
 
 body main .content .grid .tech-card .tech-card-content,
@@ -981,34 +953,32 @@ body .grid .tech-card .tech-card-content,
     flex-grow: 1 !important;
     display: flex !important;
     flex-direction: column !important;
-    padding: 0 20px !important; /* ✅ SÓ PADDING LATERAL */
-    justify-content: space-between !important; /* ✅ DISTRIBUI ESPAÇO UNIFORMEMENTE */
+    padding: 0 20px !important;
+    justify-content: space-between !important;
 }
 
-/* ✅ TÍTULO COM MAIS ESPAÇO */
 body main .content .grid .tech-card .tech-card-content h3,
 body .grid .tech-card .tech-card-content h3,
 .tech-card .tech-card-content h3 {
-    margin-bottom: 20px !important; /* ✅ MAIS ESPAÇO APÓS TÍTULO */
+    margin-bottom: 20px !important;
 }
 
 body main .content .grid .tech-card .tech-card-content p,
 body .grid .tech-card .tech-card-content p,
 .tech-card .tech-card-content p {
     flex-grow: 1 !important;
-    margin-bottom: 20px !important; /* ✅ MAIS ESPAÇO APÓS DESCRIÇÃO */
+    margin-bottom: 20px !important;
 }
 
-/* ✅ TECH COUNT COM MAIS ESPAÇO */
 body main .content .grid .tech-card .tech-count-wrapper,
 body .grid .tech-card .tech-count-wrapper,
 .tech-card .tech-count-wrapper {
-    margin-bottom: 20px !important; /* ✅ MAIS ESPAÇO APÓS COUNTER */
+    margin-bottom: 20px !important;
 }
 
 body main .content .grid .tech-card .card-buttons,
 body .grid .tech-card .card-buttons,
 .tech-card .card-buttons {
     margin-top: auto !important;
-    padding: 0 20px 0 20px !important; /* ✅ SEM PADDING INFERIOR - JÁ TEM NO CARD */
+    padding: 0 20px 0 20px !important;
 }

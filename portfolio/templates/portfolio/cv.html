@@ -7,25 +7,24 @@
 
 {% block main %}
 <div class="cv-container">
-    <!-- ✅ SECTION HEADER - ESTRUTURA EXATA DOS PROJECTS -->
-    <div class="section-header cv-header">
+    <div class="cv-header section-header">
         <h2>CURRICULUM VITAE</h2>
         <p>Here you can find information about my professional background, projects, and technical skills in game development.</p>
     </div>
 
-    <!-- ✅ CARTÃO PRINCIPAL SEM GRADIENTE -->
+    <!-- ✅ CARTÃO PRINCIPAL SEM ESTILOS INLINE -->
     <div class="main-cv-section">
         <div class="main-cv-icon">📄</div>
         <h3>DOWNLOAD MY CV</h3>
         <p>View or download my complete CV to learn more about my skills, education, and experience in game development.</p>
         
-        <!-- ✅ BOTÃO SEM GRADIENTE -->
+        <!-- ✅ BOTÃO SEM ESTILOS INLINE E SEM GRADIENTE -->
         <a href="{% static 'files/Profile.pdf' %}" target="_blank" class="download-button">
             📥 DOWNLOAD CV
         </a>
     </div>
 
-    <!-- ✅ SEÇÕES DE BAIXO -->
+    <!-- ✅ SEÇÕES DE BAIXO SEM ESTILOS INLINE -->
     <div class="cv-sections-top">
         
         <!-- CARTÃO MY PROJECTS -->
@@ -45,18 +44,6 @@
             <p>Discover the tools, frameworks, and technologies I've mastered to create responsive, efficient, and engaging gameplay systems.</p>
             <div class="cv-button-wrapper">
                 <a href="{% url 'portfolio:tecnologias' %}" class="custom-button">VIEW TOOLS</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- SEÇÃO DE BAIXO (INTERESTS) -->
-    <div class="cv-sections-bottom">
-        <div class="cv-section-card centered-card">
-            <div class="cv-icon">🌟</div>
-            <h3>INTERESTS & SKILLS</h3>
-            <p>Learn about my core interests in game development and the specific areas where I focus my learning and expertise.</p>
-            <div class="cv-button-wrapper">
-                <a href="{% url 'portfolio:interesses' %}" class="custom-button">VIEW INTERESTS</a>
             </div>
         </div>
     </div>

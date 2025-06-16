@@ -1,4 +1,4 @@
-/* Technologies page specific styles - ✅ FONTS UNIFICADAS */
+/* Technologies page specific styles - ✅ FONTS UNIFICADAS + HOVER CORRIGIDO */
 
 .tech-placeholder {
     font-size: 3rem;
@@ -34,7 +34,10 @@
     background: #229954 !important;
 }
 
-/* TECH CARD - ✅ MAIS ALTO COM FORÇA BRUTA */
+/* ========== TECH CARD - FORÇA BRUTA PARA CORRIGIR HOVER ========== */
+/* ✅ OVERRIDE ABSOLUTO COM MÁXIMA ESPECIFICIDADE */
+body .grid .tech-card,
+.grid .tech-card,
 .tech-card {
     background: var(--card-bg) !important;
     border: 3px solid #34495e !important;
@@ -45,32 +48,46 @@
     margin: 0 auto !important;
     position: relative !important;
     cursor: auto !important;
-    min-height: 420px !important; /* ✅ ALTURA AUMENTADA */
-    display: flex !important; /* ✅ FLEXBOX */
-    flex-direction: column !important; /* ✅ LAYOUT VERTICAL */
+    min-height: 420px !important;
+    display: flex !important;
+    flex-direction: column !important;
 }
 
+/* ❌ FORÇA ABSOLUTA - REMOVE QUALQUER EFEITO DE BRILHO */
+body .grid .tech-card::before,
+.grid .tech-card::before,
 .tech-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-    transform: rotate(45deg);
-    transition: all 0.5s;
-    opacity: 0;
+    display: none !important;
+    content: none !important;
+    animation: none !important;
+    background: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
 }
 
+/* ✅ HOVER UNIFICADO - FORÇA ABSOLUTA IGUAL AOS PROJECT CARDS - SÓ BORDER */
+body .grid .tech-card:hover,
+.grid .tech-card:hover,
 .tech-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border-color: var(--primary-gold);
+    border-color: var(--primary-gold) !important; /* ← SÓ BORDER LARANJA, SEM MOVIMENTO */
+    transform: none !important; /* ← SEM MOVIMENTO */
+    box-shadow: none !important; /* ← SEM SOMBRA */
 }
 
+/* ❌ FORÇA ABSOLUTA - REMOVE QUALQUER ANIMAÇÃO NO HOVER */
+body .grid .tech-card:hover::before,
+.grid .tech-card:hover::before,
 .tech-card:hover::before {
-    animation: shine 0.5s ease-in-out;
+    display: none !important;
+    animation: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: none !important;
+    content: none !important;
 }
 
 /* ✅ TECH CARD CONTENT - FLEXBOX PARA DISTRIBUIR ESPAÇO */
@@ -170,4 +187,13 @@
 
 .no-data p {
     font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED TEXT */
+}
+
+/* ❌ DESABILITA COMPLETAMENTE A ANIMAÇÃO SHINE */
+@keyframes shine {
+    0%, 100% { 
+        opacity: 0 !important; 
+        display: none !important;
+        visibility: hidden !important;
+    }
 }
