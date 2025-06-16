@@ -1,4 +1,4 @@
-/* Index page specific styles - ✅ FONTS UNIFICADAS */
+/* Index page specific styles - ✅ FONTS UNIFICADAS + SOMBRA CORRIGIDA */
 
 .landing-buttons {
     margin: 20px 0;
@@ -81,9 +81,17 @@
     animation-delay: 1.2s;
 }
 
-/* ✅ LANDING WRAPPER FONTS */
+/* ✅ LANDING WRAPPER FONTS + SOMBRA SIMPLES MAS BRILHO MANTIDO */
 .landing-wrapper h2 {
     font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ UNIFIED */
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    color: var(--primary-gold); /* ✅ MANTÉM COR DOURADA */
+    margin-bottom: 20px;
+    /* ✅ SOMBRA SIMPLES + BRILHO MANTIDO */
+    text-shadow: 
+        3px 3px 0 #000, /* ← SOMBRA SIMPLES IGUAL AO "MY PROJECTS" */
+        0 0 20px rgba(243, 156, 18, 0.5); /* ← BRILHO MANTIDO */
+    animation: float 3s ease-in-out infinite;
 }
 
 .landing-wrapper p {
@@ -99,6 +107,10 @@
     .landing-wrapper h2 {
         font-size: 2rem;
         font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ MOBILE TAMBÉM */
+        /* ✅ SOMBRA SIMPLES + BRILHO TAMBÉM EM MOBILE */
+        text-shadow: 
+            3px 3px 0 #000, /* ← SOMBRA SIMPLES */
+            0 0 20px rgba(243, 156, 18, 0.5); /* ← BRILHO MANTIDO */
     }
     
     .landing-wrapper p {
