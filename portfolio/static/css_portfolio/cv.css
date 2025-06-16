@@ -1,4 +1,4 @@
-/* CV page specific styles - GAMING THEME with CORRECT FONTS */
+/* CV page specific styles - GAMING THEME with CORRECT FONTS + MOBILE OTIMIZADO */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap');
 
@@ -14,52 +14,48 @@
     --accent-teal: #16a085;
 }
 
-/* CV page specific styles - MAXIMUM SPECIFICITY OVERRIDES */
-
-/* FORÇA O TAMANHO CORRETO DOS CARTÕES CV */
+/* ========== CONTAINER PRINCIPAL - MAIS COMPACTO ========== */
 .cv-container {
-    max-width: 1000px !important;
+    max-width: 900px !important; /* ✅ MENOR QUE ANTES (era 1000px) */
     margin: 0 auto !important;
-    padding: 0 20px !important;
+    padding: 0 15px !important; /* ✅ MENOS PADDING */
     font-family: 'Inter', sans-serif !important;
 }
 
-/* ✅ SECTION HEADER - CÓPIA EXATA DO gaming_style.css */
+/* ========== SECTION HEADER - MANTÉM TAMANHO ORIGINAL + STRONG ========== */
 .cv-header {
     text-align: center !important;
-    margin-bottom: 50px !important;
+    margin-bottom: 50px !important; /* ✅ MANTÉM ORIGINAL */
 }
 
-/* ✅ H2 - CÓPIA EXATA do gaming_style.css h2 */
 .cv-header h2 {
-    font-size: clamp(1.5rem, 3vw, 2.5rem) !important;
+    font-size: clamp(1.5rem, 3vw, 2.5rem) !important; /* ✅ MANTÉM ORIGINAL */
     color: var(--primary-red) !important;
     text-shadow: 3px 3px 0 #000 !important;
-    margin-bottom: 30px !important;
+    margin-bottom: 30px !important; /* ✅ MANTÉM ORIGINAL */
     font-family: 'Rajdhani', 'Inter', sans-serif !important;
-    font-weight: 700 !important; /* ← CORRIGIDO: deve ser bold como MY PROJECTS */
+    font-weight: 700 !important;
 }
 
-/* ✅ P - CÓPIA EXATA do gaming_style.css p */
 .cv-header p {
-    font-size: clamp(0.7rem, 1vw, 0.9rem) !important;
-    line-height: 1.8 !important;
-    margin-bottom: 15px !important;
+    font-size: clamp(0.65rem, 0.9vw, 0.8rem) !important; /* ✅ TEXTO MAIS PEQUENO */
+    line-height: 1.7 !important; /* ✅ LIGEIRAMENTE MAIS COMPACTO */
+    margin-bottom: 15px !important; /* ✅ MANTÉM ORIGINAL */
     color: var(--text-light) !important;
     font-family: 'Inter', sans-serif !important;
-    font-weight: normal !important; /* ← Sem bold */
+    font-weight: normal !important;
 }
 
-/* ========== CARTÃO PRINCIPAL - SEM GRADIENTE ========== */
+/* ========== CARTÃO PRINCIPAL - MAIS COMPACTO ========== */
 .main-cv-section {
     background: var(--card-bg) !important;
-    padding: 40px !important;
-    border-radius: 15px !important;
+    padding: 30px !important; /* ✅ MENOR (era 40px) */
+    border-radius: 12px !important; /* ✅ MENOR (era 15px) */
     border: 3px solid var(--primary-gold) !important;
-    margin-bottom: 40px !important;
+    margin-bottom: 30px !important; /* ✅ MENOR (era 40px) */
     text-align: center !important;
     width: 100% !important;
-    max-width: 1000px !important;
+    max-width: 900px !important; /* ✅ MENOR (era 1000px) */
     margin-left: auto !important;
     margin-right: auto !important;
     position: relative !important;
@@ -68,32 +64,32 @@
 }
 
 .main-cv-icon {
-    font-size: 4rem !important;
-    margin-bottom: 20px !important;
+    font-size: 3rem !important; /* ✅ MENOR (era 4rem) */
+    margin-bottom: 15px !important; /* ✅ MENOR (era 20px) */
     color: var(--primary-gold) !important;
 }
 
 .main-cv-section h3 {
     color: var(--primary-gold) !important;
-    margin-bottom: 20px !important;
-    font-size: clamp(1rem, 2vw, 1.5rem) !important;
+    margin-bottom: 15px !important; /* ✅ MENOR (era 20px) */
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem) !important; /* ✅ MENOR (era 1.5rem) */
     font-family: 'Rajdhani', 'Inter', sans-serif !important;
-    font-weight: 600 !important; /* ← CORRIGIDO para ter peso */
+    font-weight: 700 !important; /* ✅ MAIS STRONG */
 }
 
 .main-cv-section p {
-    margin-bottom: 25px !important;
-    font-size: clamp(0.8rem, 1.2vw, 1.1rem) !important;
-    line-height: 1.6 !important;
+    margin-bottom: 20px !important; /* ✅ MENOR (era 25px) */
+    font-size: clamp(0.7rem, 0.9vw, 0.85rem) !important; /* ✅ TEXTO MAIS PEQUENO */
+    line-height: 1.4 !important; /* ✅ MAIS COMPACTO */
     color: var(--text-light) !important;
     font-family: 'Inter', sans-serif !important;
 }
 
-/* ✅ BOTÃO SEM GRADIENTE - COR SÓLIDA */
+/* ========== BOTÃO PRINCIPAL - MAIS COMPACTO ========== */
 .download-button {
     background: var(--primary-green) !important;
-    font-size: clamp(0.7rem, 1vw, 0.9rem) !important;
-    padding: 15px 30px !important;
+    font-size: clamp(0.65rem, 0.9vw, 0.8rem) !important; /* ✅ MENOR (era 0.9rem) */
+    padding: 12px 25px !important; /* ✅ MENOR (era 15px 30px) */
     color: white !important;
     border: none !important;
     border-radius: 8px !important;
@@ -111,30 +107,30 @@
     transform: scale(1.05) !important;
 }
 
-/* ========== SEÇÕES DE BAIXO - FORÇAR MESMO TAMANHO QUE O CARTÃO PRINCIPAL ========== */
+/* ========== SEÇÕES DE BAIXO - MAIS COMPACTAS ========== */
 .cv-sections-top {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    gap: 20px !important;
-    margin-top: 30px !important;
+    gap: 15px !important; /* ✅ MENOR (era 20px) */
+    margin-top: 25px !important; /* ✅ MENOR (era 30px) */
     width: 100% !important;
-    max-width: 1000px !important;
+    max-width: 900px !important; /* ✅ MENOR (era 1000px) */
     margin-left: auto !important;
     margin-right: auto !important;
     box-sizing: border-box !important;
 }
 
-/* ========== CADA CARTÃO INDIVIDUAL OCUPA METADE DO ESPAÇO ========== */
+/* ========== CADA CARTÃO INDIVIDUAL - MAIS COMPACTO ========== */
 .cv-section-card {
     background: var(--card-bg) !important;
     border: 3px solid #34495e !important;
-    border-radius: 15px !important;
-    padding: 30px !important;
+    border-radius: 12px !important; /* ✅ MENOR (era 15px) */
+    padding: 25px !important; /* ✅ MENOR (era 30px) */
     text-align: center !important;
     transition: all 0.3s !important;
     display: flex !important;
     flex-direction: column !important;
-    min-height: 300px !important;
+    min-height: 250px !important; /* ✅ MENOR (era 300px) */
     position: relative !important;
     overflow: hidden !important;
     width: 100% !important;
@@ -145,8 +141,8 @@
 .cv-sections-bottom {
     display: flex !important;
     justify-content: center !important;
-    margin-top: 30px !important;
-    max-width: 1000px !important;
+    margin-top: 25px !important; /* ✅ MENOR (era 30px) */
+    max-width: 900px !important; /* ✅ MENOR (era 1000px) */
     margin-left: auto !important;
     margin-right: auto !important;
 }
@@ -159,25 +155,25 @@
 }
 
 .cv-section-card h3 {
-    font-size: clamp(1rem, 2vw, 1.5rem) !important;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem) !important; /* ✅ MENOR (era 1.5rem) */
     color: var(--primary-gold) !important;
-    margin-bottom: 15px !important;
+    margin-bottom: 12px !important; /* ✅ MENOR (era 15px) */
     font-family: 'Rajdhani', 'Inter', sans-serif !important;
-    font-weight: 600 !important; /* ← CORRIGIDO para ter peso */
+    font-weight: 700 !important; /* ✅ MAIS STRONG */
 }
 
 .cv-section-card p {
-    font-size: clamp(0.8rem, 1.2vw, 1.1rem) !important;
-    line-height: 1.6 !important;
-    margin-bottom: 20px !important;
+    font-size: clamp(0.7rem, 0.9vw, 0.85rem) !important; /* ✅ TEXTO MAIS PEQUENO */
+    line-height: 1.4 !important; /* ✅ MAIS COMPACTO */
+    margin-bottom: 15px !important; /* ✅ MENOR (era 20px) */
     flex-grow: 1 !important;
     color: var(--text-light) !important;
     font-family: 'Inter', sans-serif !important;
 }
 
 .cv-icon {
-    font-size: 3rem !important;
-    margin-bottom: 20px !important;
+    font-size: 2.5rem !important; /* ✅ MENOR (era 3rem) */
+    margin-bottom: 15px !important; /* ✅ MENOR (era 20px) */
     color: var(--primary-gold) !important;
 }
 
@@ -186,17 +182,17 @@
 }
 
 .centered-card {
-    max-width: 400px !important;
+    max-width: 350px !important; /* ✅ MENOR (era 400px) */
 }
 
-/* ========== BOTÕES ESTILO CORRETO - EXACT COPY from gaming_style.css ========== */
+/* ========== BOTÕES ESTILO CORRETO - MAIS COMPACTOS ========== */
 .cv-container .custom-button {
-    font-size: clamp(0.7rem, 1vw, 0.9rem) !important;
+    font-size: clamp(0.65rem, 0.9vw, 0.8rem) !important; /* ✅ MENOR (era 0.9rem) */
     color: var(--text-light) !important;
     background: #2b2b2b !important;
     border: 2px solid #444 !important;
     cursor: pointer !important;
-    padding: 12px 20px !important;
+    padding: 10px 18px !important; /* ✅ MENOR (era 12px 20px) */
     position: relative !important;
     transition: all 0.3s !important;
     text-decoration: none !important;
@@ -208,7 +204,7 @@
     font-weight: 500 !important;
     text-align: center !important;
     line-height: 1 !important;
-    min-width: 90px !important;
+    min-width: 80px !important; /* ✅ MENOR (era 90px) */
 }
 
 .cv-container .custom-button:hover {
@@ -219,90 +215,96 @@
     text-decoration: none !important;
 }
 
-/* ========== RESPONSIVIDADE MELHORADA ========== */
+/* ========== RESPONSIVIDADE MELHORADA - MOBILE FIRST ========== */
 @media (max-width: 768px) {
     .cv-container {
-        padding: 0 15px !important;
+        padding: 0 10px !important; /* ✅ AINDA MENOR EM MOBILE */
     }
     
     .cv-header {
-        margin-bottom: 40px !important;
+        margin-bottom: 40px !important; /* ✅ MANTÉM RAZOÁVEL EM MOBILE */
     }
     
     .cv-header h2 {
-        font-size: 2rem !important;
+        font-size: 2rem !important; /* ✅ MANTÉM BOM TAMANHO EM MOBILE */
         margin-bottom: 15px !important;
     }
     
     .cv-header p {
-        font-size: 0.9rem !important;
+        font-size: 0.8rem !important; /* ✅ TEXTO MAIS PEQUENO EM MOBILE */
         padding: 0 10px !important;
+        line-height: 1.5 !important;
     }
     
     .cv-section-card {
-        min-height: 250px !important;
-        padding: 25px !important;
+        min-height: 200px !important; /* ✅ MUITO MENOR EM MOBILE */
+        padding: 20px !important; /* ✅ MENOS PADDING EM MOBILE */
     }
     
     .cv-sections-top {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: 1fr !important; /* ✅ COLUNA ÚNICA EM MOBILE */
         max-width: 100% !important;
-        gap: 15px !important;
-        margin-top: 20px !important;
+        gap: 12px !important; /* ✅ GAP MENOR EM MOBILE */
+        margin-top: 15px !important;
     }
     
     .main-cv-section {
-        padding: 30px 20px !important;
+        padding: 25px 15px !important; /* ✅ MUITO MENOR EM MOBILE */
         max-width: 100% !important;
-        margin-bottom: 30px !important;
+        margin-bottom: 25px !important;
     }
     
     .main-cv-icon {
-        font-size: 3rem !important;
-        margin-bottom: 15px !important;
-    }
-    
-    .main-cv-section h3 {
-        font-size: 1.3rem !important;
-        margin-bottom: 15px !important;
-    }
-    
-    .main-cv-section p {
-        font-size: 0.9rem !important;
-        margin-bottom: 20px !important;
-    }
-    
-    .cv-section-card h3 {
-        font-size: 1.2rem !important;
+        font-size: 2.5rem !important; /* ✅ MENOR EM MOBILE */
         margin-bottom: 12px !important;
     }
     
-    .cv-section-card p {
-        font-size: 0.85rem !important;
+    .main-cv-section h3 {
+        font-size: 1.1rem !important; /* ✅ FIXO E MENOR EM MOBILE */
+        margin-bottom: 12px !important;
+        font-weight: 700 !important; /* ✅ STRONG */
+    }
+    
+    .main-cv-section p {
+        font-size: 0.8rem !important; /* ✅ TEXTO MAIS PEQUENO EM MOBILE */
         margin-bottom: 15px !important;
+        line-height: 1.3 !important;
+    }
+    
+    .cv-section-card h3 {
+        font-size: 1rem !important; /* ✅ FIXO E MENOR EM MOBILE */
+        margin-bottom: 10px !important;
+        font-weight: 700 !important; /* ✅ STRONG */
+    }
+    
+    .cv-section-card p {
+        font-size: 0.75rem !important; /* ✅ TEXTO MAIS PEQUENO EM MOBILE */
+        margin-bottom: 12px !important;
+        line-height: 1.3 !important;
     }
     
     .cv-icon {
-        font-size: 2.5rem !important;
-        margin-bottom: 15px !important;
+        font-size: 2rem !important; /* ✅ MENOR EM MOBILE */
+        margin-bottom: 12px !important;
     }
     
     .download-button {
-        font-size: clamp(0.6rem, 0.9vw, 0.8rem) !important;
-        padding: 10px 18px !important;
+        font-size: 0.75rem !important; /* ✅ FIXO E MENOR EM MOBILE */
+        padding: 10px 15px !important;
         font-family: 'Inter', sans-serif !important;
         font-weight: 500 !important;
     }
     
     .cv-container .custom-button {
-        font-size: clamp(0.6rem, 0.9vw, 0.8rem) !important;
-        padding: 10px 18px !important;
+        font-size: 0.75rem !important; /* ✅ FIXO E MENOR EM MOBILE */
+        padding: 8px 15px !important;
         font-family: 'Inter', sans-serif !important;
         font-weight: 500 !important;
+        min-width: 70px !important;
     }
     
     .cv-sections-bottom {
-        margin-top: 20px !important;
+        margin-top: 15px !important;
     }
     
     .centered-card {
@@ -312,63 +314,65 @@
 
 @media (max-width: 480px) {
     .cv-container {
-        padding: 0 10px !important;
+        padding: 0 8px !important; /* ✅ AINDA MENOR */
     }
     
     .cv-header h2 {
-        font-size: 1.8rem !important;
+        font-size: 1.8rem !important; /* ✅ MANTÉM LEGÍVEL */
     }
     
     .cv-header p {
-        font-size: 0.85rem !important;
+        font-size: 0.75rem !important; /* ✅ TEXTO MAIS PEQUENO */
     }
     
     .main-cv-section {
-        padding: 25px 15px !important;
+        padding: 20px 12px !important; /* ✅ MUITO COMPACTO */
     }
     
     .cv-section-card {
-        padding: 20px !important;
-        min-height: 220px !important;
+        padding: 15px !important; /* ✅ MUITO COMPACTO */
+        min-height: 180px !important; /* ✅ MUITO BAIXO */
     }
     
     .main-cv-icon {
-        font-size: 2.5rem !important;
+        font-size: 2rem !important; /* ✅ MUITO PEQUENO */
     }
     
     .cv-icon {
-        font-size: 2rem !important;
+        font-size: 1.8rem !important; /* ✅ MUITO PEQUENO */
     }
     
     .cv-section-card h3 {
-        font-size: 1.1rem !important;
+        font-size: 0.9rem !important; /* ✅ MUITO PEQUENO */
+        font-weight: 700 !important; /* ✅ STRONG */
     }
     
     .cv-section-card p {
-        font-size: 0.8rem !important;
+        font-size: 0.7rem !important; /* ✅ TEXTO MAIS PEQUENO */
     }
     
     .main-cv-section h3 {
-        font-size: 1.2rem !important;
+        font-size: 1rem !important; /* ✅ MUITO PEQUENO */
+        font-weight: 700 !important; /* ✅ STRONG */
     }
     
     .main-cv-section p {
-        font-size: 0.85rem !important;
+        font-size: 0.75rem !important; /* ✅ TEXTO MAIS PEQUENO */
     }
     
     .download-button {
-        font-size: clamp(0.55rem, 0.8vw, 0.75rem) !important;
-        padding: 8px 15px !important;
+        font-size: 0.7rem !important; /* ✅ MUITO PEQUENO */
+        padding: 8px 12px !important;
         font-family: 'Inter', sans-serif !important;
         font-weight: 500 !important;
-        min-width: 80px !important;
+        min-width: 60px !important;
     }
     
     .cv-container .custom-button {
-        font-size: clamp(0.55rem, 0.8vw, 0.75rem) !important;
-        padding: 8px 15px !important;
+        font-size: 0.7rem !important; /* ✅ MUITO PEQUENO */
+        padding: 6px 12px !important;
         font-family: 'Inter', sans-serif !important;
         font-weight: 500 !important;
-        min-width: 80px !important;
+        min-width: 60px !important;
     }
 }
