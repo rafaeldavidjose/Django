@@ -8,7 +8,7 @@
 {% block main %}
 <div class="section-header">
     <h2>MY PROJECTS</h2>
-    <p>A collection of games and interactive experiences that showcase my journey in game development.</p>
+    <p>A collection of games, interactive applications, and prototypes showcasing various development approaches and technologies.</p>
 </div>
 
 <div class="grid">
@@ -25,7 +25,6 @@
                 <h3 class="project-card-title">{{ projeto.titulo }}</h3>
                 <p>{{ projeto.descricao|truncatechars:115 }}</p>
                 
-                <!-- ✅ SEMPRE RENDERIZAR A DIV DAS TECH TAGS, MESMO VAZIA -->
                 <div class="tech-tags">
                     {% if projeto.tecnologias.all %}
                         {% if projeto.tecnologias.count <= 3 %}
@@ -44,26 +43,26 @@
                 <div class="card-buttons">
                     <a href="{% url 'portfolio:projeto_path' projeto_id=projeto.id %}" class="custom-button">DETAILS</a>
                     {% if projeto.link_itch %}
-                        <a href="{{ projeto.link_itch }}" target="_blank" class="project-link">VIEW</a>
+                        <a href="{{ projeto.link_itch }}" target="_blank" class="project-link">PLAY</a>
                     {% endif %}
                     {% if projeto.link_github %}
-                        <a href="{{ projeto.link_github }}" target="_blank" class="project-link">CODE</a>
+                        <a href="{{ projeto.link_github }}" target="_blank" class="project-link">SOURCE</a>
                     {% endif %}
                 </div>
             </div>
         </div>
     {% empty %}
         <div class="no-data">
-            <h3>NO PROJECTS YET</h3>
-            <p>The adventure is just beginning! Check back soon for amazing projects.</p>
-            <div class="no-data-icon">🎮</div>
+            <h3>PROJECTS COMING SOON</h3>
+            <p>Currently working on exciting new projects. Check back soon for updates.</p>
+            <div class="no-data-icon">🚧</div>
         </div>
     {% endfor %}
 </div>
 
 {% if request.user.is_authenticated %}
     <div class="button-wrapper">
-        <a href="{% url 'portfolio:novo_projeto' %}" class="custom-button add-button">+ ADD NEW PROJECT</a>
+        <a href="{% url 'portfolio:novo_projeto' %}" class="custom-button add-button">+ ADD PROJECT</a>
     </div>
 {% endif %}
 {% endblock %}

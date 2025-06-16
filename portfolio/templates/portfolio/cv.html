@@ -7,43 +7,38 @@
 
 {% block main %}
 <div class="cv-container">
-    <div class="cv-header section-header">
+    <div class="section-header cv-header">
         <h2>CURRICULUM VITAE</h2>
-        <p>Here you can find information about my professional background, projects, and technical skills in game development.</p>
+        <p>Overview of my experience, technical skills, and project portfolio in interactive development.</p>
     </div>
 
-    <!-- ✅ CARTÃO PRINCIPAL SEM ESTILOS INLINE -->
     <div class="main-cv-section">
         <div class="main-cv-icon">📄</div>
-        <h3>DOWNLOAD MY CV</h3>
-        <p>View or download my complete CV to learn more about my skills, education, and experience in game development.</p>
+        <h3>PROFESSIONAL RESUME</h3>
+        <p>Download my CV to explore my background in gameplay programming, AI systems, and interactive development.</p>
         
-        <!-- ✅ BOTÃO SEM ESTILOS INLINE E SEM GRADIENTE -->
         <a href="{% static 'files/Profile.pdf' %}" target="_blank" class="download-button">
             📥 DOWNLOAD CV
         </a>
     </div>
 
-    <!-- ✅ SEÇÕES DE BAIXO SEM ESTILOS INLINE -->
     <div class="cv-sections-top">
         
-        <!-- CARTÃO MY PROJECTS -->
         <div class="cv-section-card">
             <div class="cv-icon">🎮</div>
-            <h3>MY PROJECTS</h3>
-            <p>Explore the various game development projects I've worked on throughout my journey, featuring gameplay mechanics, AI systems, and interactive experiences.</p>
+            <h3>PROJECT PORTFOLIO</h3>
+            <p>Explore my collection of games, interactive applications, and experimental prototypes demonstrating various technical skills.</p>
             <div class="cv-button-wrapper">
                 <a href="{% url 'portfolio:projetos' %}" class="custom-button">VIEW PROJECTS</a>
             </div>
         </div>
 
-        <!-- CARTÃO TECHNOLOGIES I USE -->
         <div class="cv-section-card">
             <div class="cv-icon">🛠️</div>
-            <h3>TECHNOLOGIES I USE</h3>
-            <p>Discover the tools, frameworks, and technologies I've mastered to create responsive, efficient, and engaging gameplay systems.</p>
+            <h3>TECHNICAL STACK</h3>
+            <p>Explore the development tools, frameworks, and technologies I use to create gameplay systems and applications.</p>
             <div class="cv-button-wrapper">
-                <a href="{% url 'portfolio:tecnologias' %}" class="custom-button">VIEW TOOLS</a>
+                <a href="{% url 'portfolio:tecnologias' %}" class="custom-button">VIEW STACK</a>
             </div>
         </div>
     </div>

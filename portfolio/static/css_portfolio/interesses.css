@@ -1,4 +1,4 @@
-/* Interests page specific styles - ✅ FONTS UNIFICADAS + CARDS MENORES */
+/* Interests page specific styles - ✅ FONTS UNIFICADAS + CARDS MENORES + HOVER CORRIGIDO */
 
 .section-header {
     margin-bottom: 30px; /* Espaçamento igual aos projetos */
@@ -30,18 +30,19 @@
     min-height: 200px; /* ✅ ALTURA MENOR */
 }
 
-/* FORÇA REMOVER o efeito de brilho do gaming_style.css */
+/* ❌ FORÇA REMOVER o efeito de brilho do gaming_style.css */
 .interest-item::before {
     display: none !important;
 }
 
+/* ✅ HOVER UNIFICADO - SÓ BORDER LARANJA, SEM MOVIMENTO */
 .interest-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    border-color: var(--primary-gold);
+    transform: none !important; /* ← SEM MOVIMENTO */
+    box-shadow: none !important; /* ← SEM SOMBRA */
+    border-color: var(--primary-gold) !important; /* ← SÓ BORDER LARANJA */
 }
 
-/* FORÇA REMOVER animação de brilho no hover */
+/* ❌ FORÇA REMOVER animação de brilho no hover */
 .interest-item:hover::before {
     animation: none !important;
     display: none !important;
