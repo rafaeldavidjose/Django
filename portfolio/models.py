@@ -93,6 +93,13 @@ class Projeto(models.Model):
         related_name = 'projetos',
         blank = True,
     )
+    ordem = models.IntegerField(
+        default=0,
+        help_text='Ordem de exibição (menor número aparece primeiro)'
+    )
+
+    class Meta:
+        ordering = ['ordem', 'titulo']
 
     def __str__(self):
         return self.titulo

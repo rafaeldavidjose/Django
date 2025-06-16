@@ -17,18 +17,34 @@ class FichaTecnicaInline(admin.StackedInline):
     show_change_link = True
 
 class ProjetoAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'disciplina',)
-    ordering = ('titulo', 'disciplina',)
+    list_display = ('titulo', 'disciplina', 'ordem')
+    ordering = ('ordem', 'titulo')
     search_fields = ('titulo', 'disciplina__nome',)
     list_filter = ('disciplina__nome',)
+    list_editable = ('ordem',)  # Permite editar ordem diretamente na lista
     inlines = (ImagemProjetoInline, FichaTecnicaInline)
+    
+    fieldsets = (
+        ('Informações Básicas', {
+            'fields': ('titulo', 'descricao', 'ordem')
+        }),
+        ('Links', {
+            'fields': ('link_itch', 'link_github', 'link_video')
+        }),
+        ('Detalhes Técnicos', {
+            'fields': ('aspetos_tecnicos', 'conceitos_aplicados')
+        }),
+        ('Associações', {
+            'fields': ('disciplina', 'tecnologias')
+        }),
+    )
 
 admin.site.register(Projeto, ProjetoAdmin)
 
 class ProjetoInline(admin.TabularInline):
     model = Projeto
     extra = 0
-    fields = ('titulo',)
+    fields = ('titulo', 'ordem')
     readonly_fields = ('titulo',)
     show_change_link = True
 

@@ -17,6 +17,19 @@ class ProjetoForm(forms.ModelForm):
             'conceitos_aplicados': 'Core Concepts',
             'disciplina': 'Course',
             'tecnologias': 'Technologies Used',
+            'ordem': 'Display Order',
+        }
+        
+        help_texts = {
+            'ordem': 'Lower numbers appear first (0 = highest priority)',
+        }
+        
+        widgets = {
+            'ordem': forms.NumberInput(attrs={
+                'min': 0,
+                'step': 1,
+                'placeholder': 'Enter display order (0-999)'
+            }),
         }
 
 class ImagemProjetoForm(forms.ModelForm):

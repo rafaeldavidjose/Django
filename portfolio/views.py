@@ -21,9 +21,12 @@ def interesses_view(request):
     return render(request, "portfolio/interesses.html", context)
 
 def projetos_view(request):
+    # Projetos ordenados por ordem definida pelo utilizador, depois por título
+    projetos_ordenados = Projeto.objects.all().order_by('ordem', 'titulo')
+    
     context = {
         'data' : date.today().year,
-        'projetos' : Projeto.objects.all(),
+        'projetos' : projetos_ordenados,
     }
     return render(request, 'portfolio/projetos.html', context)
 
@@ -47,9 +50,14 @@ def tecnologias_view(request):
     return render(request, 'portfolio/tecnologias.html', context)
 
 def tecnologia_view(request, tecnologia_id):
+    tecnologia = Tecnologia.objects.get(id=tecnologia_id)
+    # Projetos da tecnologia ordenados pela ordem definida
+    projetos_ordenados = tecnologia.projetos.all().order_by('ordem', 'titulo')
+    
     context = {
         'data' : date.today().year,
-        'tecnologia' : Tecnologia.objects.get(id=tecnologia_id),
+        'tecnologia' : tecnologia,
+        'projetos_da_tecnologia': projetos_ordenados,
     }
     return render(request, 'portfolio/tecnologia.html', context)
 
