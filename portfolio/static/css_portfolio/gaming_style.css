@@ -220,38 +220,22 @@ header {
     min-height: 36px; /* Altura mínima do conteúdo */
 }
 
-/* Classe específica para o título do header - TEXTO FLAT LARANJA */
+/* Classe específica para o título do header - COM SOMBRA PRETA DOS TÍTULOS */
 .header-title {
     font-family: 'Rajdhani', 'Inter', sans-serif !important;
     font-size: clamp(1.2rem, 2vw, 1.8rem) !important;
     font-weight: 600 !important;
-    text-shadow: none !important;
     margin: 0 !important;
     line-height: 1 !important;
     display: flex !important;
     align-items: center !important;
-    color: #f39c12 !important;
+    color: #f39c12 !important; /* ✅ MANTÉM COR DOURADA */
     background: none !important;
     border: none !important;
     box-shadow: none !important;
     filter: none !important;
     transform: none !important;
     animation: none !important;
-}
-
-header h1 {
-    font-family: 'Rajdhani', 'Inter', sans-serif;
-    font-size: clamp(1.2rem, 2vw, 1.8rem);
-    font-weight: 600;
-    text-shadow: 
-        3px 3px 0 #c87f0a,
-        6px 6px 0 #000,
-        6px 6px 20px rgba(243, 156, 18, 0.5);
-    margin: 0;
-    line-height: 1.2;
-    display: flex;
-    align-items: center;
-    vertical-align: middle;
 }
 
 @keyframes float {
@@ -481,6 +465,9 @@ p {
     margin: 0 auto;
     cursor: auto; /* Remove pointer cursor - only buttons should be clickable */
     width: 100%; /* ✅ OCUPA LARGURA TOTAL DISPONÍVEL */
+    min-height: 420px; /* ✅ ALTURA MÍNIMA IGUAL AOS TECH CARDS */
+    display: flex; /* ✅ FLEXBOX PARA LAYOUT CONSISTENTE */
+    flex-direction: column; /* ✅ LAYOUT VERTICAL */
 }
 
 .project-image-wrapper {
@@ -513,6 +500,9 @@ p {
     text-align: center;
     max-width: 100%; /* ✅ CONTROLA LARGURA MÁXIMA */
     margin: 0 auto; /* ✅ CENTRALIZA CONTEÚDO */
+    flex-grow: 1; /* ✅ OCUPA ESPAÇO DISPONÍVEL */
+    display: flex; /* ✅ FLEXBOX PARA LAYOUT CONSISTENTE */
+    flex-direction: column; /* ✅ LAYOUT VERTICAL */
 }
 
 /* ✅ PROJECT CARD TITLE - MESMO TAMANHO DOS TECH CARDS */
@@ -804,7 +794,7 @@ footer p {
     border-radius: 4px;
     color: white;
     font-family: 'Inter', sans-serif;
-    margin-bottom: 15px !important; /* ✅ MESMO ESPAÇAMENTO QUE TECH TAGS */
+    margin-bottom: 15px !important; /* ✅ MESMO ESPAÇAMENTO QUE TECH TAGS DOS PROJETOS */
 }
 
 .tech-count-wrapper {
