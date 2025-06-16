@@ -15,6 +15,58 @@
 
     {% block extra_styles %}
     {% endblock %}
+    
+    <style>
+    /* ========== DESATIVAR SCROLL CAUSADO PELOS POWER-UPS ========== */
+    html {
+        overflow-x: hidden !important;
+        width: 100%;
+        max-width: 100vw;
+    }
+
+    body {
+        overflow-x: hidden !important;
+        width: 100%;
+        max-width: 100vw;
+        position: relative;
+    }
+
+    .power-up {
+        position: fixed !important;
+        font-size: 30px;
+        cursor: pointer;
+        animation: powerUpFloat 5s ease-in-out infinite;
+        z-index: 50;
+        will-change: transform;
+        pointer-events: auto;
+        user-select: none;
+        contain: layout style paint;
+    }
+
+    main, .content {
+        overflow-x: hidden !important;
+        width: 100%;
+        max-width: 100%;
+        position: relative;
+    }
+
+    @media (max-width: 768px) {
+        html, body {
+            overflow-x: hidden !important;
+            width: 100%;
+            max-width: 100vw;
+        }
+        .power-up {
+            font-size: 25px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .power-up {
+            font-size: 20px;
+        }
+    }
+    </style>
 </head>
 <body>
     <header>
@@ -41,7 +93,7 @@
         </div>
     </main>
 
-    <!-- Power-ups / Easter Eggs - POSICIONAMENTO AJUSTADO -->
+    <!-- Power-ups / Easter Eggs - COMPORTAMENTO ORIGINAL MANTIDO -->
     <div class="power-up" id="powerup1" onclick="collectPowerUp(this)">⭐</div>
     <div class="power-up" id="powerup2" onclick="collectPowerUp(this)">💎</div>
 
@@ -67,7 +119,7 @@
             }, 4000);
         }
 
-        // POWER-UP POSICIONAMENTO AJUSTADO
+        // ========== POWER-UP POSICIONAMENTO ORIGINAL MANTIDO ==========
         function getUsableScreenArea() {
             const header = document.querySelector('header');
             const footer = document.querySelector('footer');
@@ -186,7 +238,7 @@
                 achievementFlags.achievement10000 = true;
             }
             
-            // Respawn power-up
+            // ========== RESPAWN ORIGINAL MANTIDO ==========
             setTimeout(() => {
                 element.style.display = 'block';
                 element.style.top = Math.random() * (window.innerHeight - 100) + 'px';
@@ -224,7 +276,7 @@
             }
         });
 
-        // Add hover effects to power-ups
+        // Add hover effects to power-ups - ORIGINAL MANTIDO
         document.addEventListener('mousemove', (e) => {
             const powerUps = document.querySelectorAll('.power-up');
             powerUps.forEach(powerUp => {
