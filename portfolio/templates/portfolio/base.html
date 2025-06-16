@@ -57,8 +57,6 @@
     </footer>
 
     <script>
-        // ❌ LOADING SCREEN REMOVIDO COMPLETAMENTE
-
         // Achievement system
         function showAchievement(text = "Portfolio Explorer") {
             const achievement = document.getElementById('achievement');
@@ -244,33 +242,53 @@
             });
         });
 
-        // Add fade-in animation to content
+        // ========== ANIMAÇÕES CORRIGIDAS - SÓ EXECUTAM UMA VEZ ==========
         document.addEventListener('DOMContentLoaded', () => {
-            const elements = document.querySelectorAll('.card, .project-card, .tech-card');
-            elements.forEach((el, index) => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(30px)';
-                setTimeout(() => {
-                    el.style.transition = 'all 0.6s ease';
-                    el.style.opacity = '1';
-                    el.style.transform = 'translateY(0)';
-                }, index * 100);
-            });
-
-            // CORRIGIDO: Não centrar itens ímpares nas tecnologias
-            const grids = document.querySelectorAll('.grid');
-            grids.forEach(grid => {
-                const items = grid.children;
-                // Só centrar itens ímpares se NÃO tiver tech-card
-                const hasTechCards = grid.querySelector('.tech-card');
+            // Aguarda um pequeno delay para garantir que o DOM está completamente carregado
+            setTimeout(() => {
+                // Seleciona apenas elementos que ainda não foram animados
+                const elements = document.querySelectorAll('.card:not(.animation-applied), .project-card:not(.animation-applied), .tech-card:not(.animation-applied)');
                 
-                if (items.length % 2 === 1 && !hasTechCards) {
-                    // If odd number of items, center the last one (só para projetos)
-                    const lastItem = items[items.length - 1];
-                    lastItem.style.gridColumn = '1 / -1';
-                    lastItem.style.justifySelf = 'center';
+                if (elements.length > 0) {
+                    elements.forEach((el, index) => {
+                        // Marca como animado para evitar repetição
+                        el.classList.add('animation-applied');
+                        
+                        // Define estado inicial (invisível)
+                        el.style.opacity = '0';
+                        el.style.transform = 'translateY(30px)';
+                        el.style.transition = 'all 0.6s ease';
+                        
+                        // Aplica animação com delay progressivo
+                        setTimeout(() => {
+                            el.style.opacity = '1';
+                            el.style.transform = 'translateY(0)';
+                        }, index * 100 + 50); // +50ms de delay extra
+                    });
                 }
-            });
+
+                // ========== CORREÇÃO PARA GRID - NÃO CENTRAR TECH CARDS ==========
+                const grids = document.querySelectorAll('.grid');
+                grids.forEach(grid => {
+                    const items = Array.from(grid.children).filter(child => 
+                        child.classList.contains('card') || 
+                        child.classList.contains('project-card') || 
+                        child.classList.contains('tech-card')
+                    );
+                    
+                    // Só centrar itens ímpares se NÃO tiver tech-card
+                    const hasTechCards = grid.querySelector('.tech-card');
+                    
+                    if (items.length % 2 === 1 && !hasTechCards) {
+                        // If odd number of items, center the last one (só para projetos)
+                        const lastItem = items[items.length - 1];
+                        if (lastItem) {
+                            lastItem.style.gridColumn = '1 / -1';
+                            lastItem.style.justifySelf = 'center';
+                        }
+                    }
+                });
+            }, 100); // Pequeno delay para garantir que tudo está carregado
         });
     </script>
     <script>
@@ -323,6 +341,6 @@
             childList: true,
             subtree: true
         });
-        </script>
+    </script>
 </body>
 </html>
