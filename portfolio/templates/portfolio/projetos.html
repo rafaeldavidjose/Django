@@ -25,8 +25,9 @@
                 <h3 class="project-card-title">{{ projeto.titulo }}</h3>
                 <p>{{ projeto.descricao|truncatechars:115 }}</p>
                 
-                {% if projeto.tecnologias.all %}
-                    <div class="tech-tags">
+                <!-- ✅ SEMPRE RENDERIZAR A DIV DAS TECH TAGS, MESMO VAZIA -->
+                <div class="tech-tags">
+                    {% if projeto.tecnologias.all %}
                         {% if projeto.tecnologias.count <= 3 %}
                             {% for tech in projeto.tecnologias.all %}
                                 <span class="tech-tag">{{ tech.nome }}</span>
@@ -37,8 +38,8 @@
                             {% endfor %}
                             <span class="tech-tag">+{{ projeto.tecnologias.count|add:"-2" }}</span>
                         {% endif %}
-                    </div>
-                {% endif %}
+                    {% endif %}
+                </div>
                 
                 <div class="card-buttons">
                     <a href="{% url 'portfolio:projeto_path' projeto_id=projeto.id %}" class="custom-button">DETAILS</a>

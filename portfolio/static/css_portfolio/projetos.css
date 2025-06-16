@@ -1,4 +1,4 @@
-/* Projects page specific styles - ✅ FONTS E TAMANHOS UNIFICADOS */
+/* Projects page specific styles - ✅ FONTS E TAMANHOS UNIFICADOS + ALTURA FIXA */
 
 .project-placeholder {
     width: 100%;
@@ -12,7 +12,7 @@
     font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
 }
 
-/* ✅ RESET COMPLETO PARA TECH TAGS */
+/* ✅ TECH TAGS COM ALTURA MÍNIMA PARA MANTER CARDS UNIFORMES */
 .tech-tags {
     display: flex;
     flex-wrap: nowrap;
@@ -22,6 +22,8 @@
     overflow: hidden;
     max-width: 100%;
     padding: 0 5px;
+    min-height: 32px; /* ✅ ALTURA MÍNIMA PARA MANTER CONSISTÊNCIA */
+    align-items: center; /* ✅ CENTRALIZA TAGS VERTICALMENTE */
 }
 
 /* ✅ TECH TAG - FORÇA BRUTA PARA IGUALAR TECH-COUNT */
@@ -51,6 +53,21 @@
     vertical-align: baseline !important;
 }
 
+/* ✅ PROJECT CARD DESCRIPTION - FLEX GROW PARA OCUPAR ESPAÇO */
+.project-card-content p {
+    font-size: clamp(0.6rem, 1vw, 0.8rem); /* ✅ IGUAL AOS TECH CARDS */
+    line-height: 1.7 !important; /* ✅ LINHA MAIS ESPAÇADA PARA MELHOR DISTRIBUIÇÃO */
+    color: var(--text-light);
+    margin-bottom: 15px;
+    font-family: 'Inter', sans-serif;
+    text-align: center !important; /* ✅ MANTÉM CENTRALIZADO */
+    max-width: 280px !important; /* ✅ LIMITA LARGURA PARA FORÇAR QUEBRAS MELHORES */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    word-spacing: 0.05em !important; /* ✅ ESPAÇAMENTO SUTIL ENTRE PALAVRAS */
+    flex-grow: 1 !important; /* ✅ OCUPA ESPAÇO DISPONÍVEL */
+}
+
 .no-data-icon {
     font-size: 3rem;
     margin: 20px 0;
@@ -76,6 +93,7 @@
 
 .project-card-title {
     font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ UNIFIED TITLES */
+    margin-bottom: 15px; /* ✅ ESPAÇO CONSISTENTE */
 }
 
 .project-card-content {

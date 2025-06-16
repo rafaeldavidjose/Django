@@ -1,4 +1,4 @@
-/* Interests page specific styles - ✅ FONTS UNIFICADAS */
+/* Interests page specific styles - ✅ FONTS UNIFICADAS + CARDS MENORES */
 
 .section-header {
     margin-bottom: 30px; /* Espaçamento igual aos projetos */
@@ -13,7 +13,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
-    gap: 25px;
+    gap: 20px; /* ✅ MENOR GAP */
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -22,11 +22,12 @@
     background: var(--card-bg);
     border: 3px solid #34495e;
     border-radius: 15px;
-    padding: 25px;
+    padding: 20px; /* ✅ MENOS PADDING */
     transition: all 0.3s;
     text-align: center;
     position: relative;
     overflow: hidden;
+    min-height: 200px; /* ✅ ALTURA MENOR */
 }
 
 /* FORÇA REMOVER o efeito de brilho do gaming_style.css */
@@ -49,39 +50,48 @@
 .interest-item strong {
     color: var(--primary-gold);
     display: block;
-    font-size: 1rem;
-    margin-bottom: 5px;
+    font-size: 1.2rem; /* ✅ FONTE AINDA MAIOR */
+    margin-bottom: 2px; /* ✅ AINDA MENOS ESPAÇO */
     font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ UNIFIED TITLES */
-    font-weight: 600 !important;
+    font-weight: 700 !important; /* ✅ MAIS BOLD */
 }
 
 .interest-item p {
-    margin-top: 10px;
-    font-size: 0.8rem;
-    line-height: 1.6;
+    margin-top: 6px; /* ✅ AINDA MENOS ESPAÇO */
+    font-size: 0.80rem; /* ✅ FONTE AINDA MAIOR */
+    line-height: 1.35; /* ✅ AINDA MAIS COMPACTO */
     font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED TEXT */
 }
 
 .interest-icon {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
+    font-size: 1.6rem; /* ✅ ÍCONE AINDA MENOR PARA COMPENSAR */
+    margin-bottom: 6px; /* ✅ AINDA MENOS ESPAÇO */
 }
 
 @media (max-width: 768px) {
     .interests-grid {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
+        gap: 15px; /* ✅ AINDA MENOR EM MOBILE */
     }
     
     .interest-item {
-        padding: 20px;
+        padding: 18px; /* ✅ MENOS PADDING EM MOBILE */
+        min-height: 180px; /* ✅ ALTURA MENOR EM MOBILE */
     }
     
     .interest-item strong {
         font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ MOBILE TAMBÉM */
+        font-size: 1rem; /* ✅ PROPORCIONALMENTE MAIOR EM MOBILE */
     }
     
     .interest-item p {
         font-family: 'Inter', sans-serif !important; /* ✅ MOBILE TAMBÉM */
+        font-size: 0.8rem; /* ✅ PROPORCIONALMENTE MAIOR EM MOBILE */
+    }
+    
+    .interest-icon {
+        font-size: 1.4rem; /* ✅ PROPORCIONALMENTE MENOR EM MOBILE */
+        margin-bottom: 6px;
     }
 }
