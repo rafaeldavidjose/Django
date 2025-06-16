@@ -81,6 +81,12 @@ class Projeto(models.Model):
         verbose_name = "Aspectos técnicos",
     )
     conceitos_aplicados = models.TextField()
+    my_role = models.TextField(
+        blank=True,
+        null=True,
+        verbose_name='My Role & Contribution',
+        help_text='Describe your specific role and contributions to this project'
+    )
     disciplina = models.ForeignKey(
         Disciplina,
         on_delete = models.CASCADE,

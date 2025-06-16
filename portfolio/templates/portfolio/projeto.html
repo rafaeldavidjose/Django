@@ -49,6 +49,14 @@
         <p style="font-size: 0.9rem; line-height: 1.8;">{{ projeto.descricao }}</p>
     </div>
 
+    <!-- ========== NEW: MY ROLE & CONTRIBUTION ========== -->
+    {% if projeto.my_role %}
+        <div style="background: var(--card-bg); padding: 25px; border-radius: 15px; border: 2px solid var(--primary-red); margin-bottom: 30px;">
+            <h3 style="color: var(--primary-red); margin-bottom: 15px; font-size: 1.2rem;">MY ROLE & CONTRIBUTION</h3>
+            <p style="font-size: 0.9rem; line-height: 1.8;">{{ projeto.my_role }}</p>
+        </div>
+    {% endif %}
+
     <!-- ========== PROJECT GALLERY - SEM LEGENDAS + COM MODAL ========== -->
     {% if projeto.imagens.all %}
         <div style="margin-bottom: 30px;">

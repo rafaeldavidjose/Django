@@ -15,6 +15,7 @@ class ProjetoForm(forms.ModelForm):
             'link_video': 'Link Video',
             'aspetos_tecnicos': 'Technical Aspects',
             'conceitos_aplicados': 'Core Concepts',
+            'my_role': 'My Role & Contribution',
             'disciplina': 'Course',
             'tecnologias': 'Technologies Used',
             'ordem': 'Display Order',
@@ -22,6 +23,7 @@ class ProjetoForm(forms.ModelForm):
         
         help_texts = {
             'ordem': 'Lower numbers appear first (0 = highest priority)',
+            'my_role': 'Describe your specific role and what you contributed to this project',
         }
         
         widgets = {
@@ -29,6 +31,10 @@ class ProjetoForm(forms.ModelForm):
                 'min': 0,
                 'step': 1,
                 'placeholder': 'Enter display order (0-999)'
+            }),
+            'my_role': forms.Textarea(attrs={
+                'rows': 4,
+                'placeholder': 'Example: Lead programmer responsible for gameplay mechanics, AI systems, and player controller implementation...'
             }),
         }
 
