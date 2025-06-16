@@ -686,7 +686,7 @@ footer p {
     position: absolute;
     font-size: 30px;
     cursor: pointer;
-    animation: powerUpFloat 3s ease-in-out infinite;
+    animation: powerUpFloat 5s ease-in-out infinite;
     z-index: 50;
     will-change: transform;
 }
@@ -906,6 +906,7 @@ footer p {
         position: fixed;
         font-size: 20px;
         z-index: 50;
+        animation: powerUpFloat 5s ease-in-out infinite;
     }
     
     header {
