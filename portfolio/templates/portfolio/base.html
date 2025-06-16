@@ -17,14 +17,6 @@
     {% endblock %}
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen" style="display: none;">
-        <div class="loading-text">LOADING...</div>
-        <div class="loading-bar">
-            <div class="loading-progress"></div>
-        </div>
-    </div>
-
     <header>
         <div class="header-content">
             <h1 class="header-title"><strong>RAFAEL JOSÉ</strong></h1>
@@ -65,17 +57,7 @@
     </footer>
 
     <script>
-        // Show loading screen on first visit
-        if (!sessionStorage.getItem('visited')) {
-            document.getElementById('loadingScreen').style.display = 'flex';
-            setTimeout(() => {
-                document.getElementById('loadingScreen').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('loadingScreen').style.display = 'none';
-                }, 500);
-            }, 2000);
-            sessionStorage.setItem('visited', 'true');
-        }
+        // ❌ LOADING SCREEN REMOVIDO COMPLETAMENTE
 
         // Achievement system
         function showAchievement(text = "Portfolio Explorer") {
