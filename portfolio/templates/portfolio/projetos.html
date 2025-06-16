@@ -43,7 +43,7 @@
                 <div class="card-buttons">
                     <a href="{% url 'portfolio:projeto_path' projeto_id=projeto.id %}" class="custom-button">DETAILS</a>
                     {% if projeto.link_itch %}
-                        <a href="{{ projeto.link_itch }}" target="_blank" class="project-link">PLAY</a>
+                        <a href="{{ projeto.link_itch }}" target="_blank" class="project-link">VIEW</a>
                     {% endif %}
                     {% if projeto.link_github %}
                         <a href="{{ projeto.link_github }}" target="_blank" class="project-link">SOURCE</a>
