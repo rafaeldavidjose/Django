@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 # Create your models here.
 
@@ -41,6 +42,10 @@ class Tecnologia(models.Model):
     nome = models.CharField(
         max_length = 100,
     )
+    slug = models.SlugField(
+        unique=True,
+        help_text="URL amigável gerada automaticamente a partir do nome"
+    )
     logotipo = models.ImageField(
         upload_to = 'projetos/logos',
     )
@@ -51,6 +56,11 @@ class Tecnologia(models.Model):
         verbose_name = "Descrição",
     )
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.nome)
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return self.nome
 
@@ -58,6 +68,10 @@ class Tecnologia(models.Model):
 class Projeto(models.Model):
     titulo = models.CharField(
         max_length = 200,
+    )
+    slug = models.SlugField(
+        unique=True,
+        help_text="URL amigável gerada automaticamente a partir do título"
     )
     descricao = models.TextField(
         verbose_name = "Descrição",
@@ -106,6 +120,11 @@ class Projeto(models.Model):
 
     class Meta:
         ordering = ['ordem', 'titulo']
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.titulo)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.titulo

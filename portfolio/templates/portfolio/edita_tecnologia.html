@@ -8,7 +8,7 @@
 {% block main %}
 <h2>Edit Technology</h2>
 
-<form method="post" enctype="multipart/form-data" action="{% url 'portfolio:edita_tecnologia' tecnologia.id %}">
+<form method="post" enctype="multipart/form-data" action="{% url 'portfolio:edita_tecnologia' tecnologia_slug=tecnologia.slug %}">
     {% csrf_token %}
 
     {% if form.errors %}
@@ -34,8 +34,8 @@
 
     <div class="button-wrapper" style="gap: 20px; margin-bottom: 0px;">
         <input type="submit" value="Save" class="custom-button">
-        <a href="{% url 'portfolio:tecnologia_path' tecnologia.id %}" class="custom-button">Cancel</a>
-        <a href="{% url 'portfolio:apaga_tecnologia' tecnologia.id %}" class="custom-button danger-button">Delete Technology</a>
+        <a href="{% url 'portfolio:tecnologia_path' tecnologia_slug=tecnologia.slug %}" class="custom-button">Cancel</a>
+        <a href="{% url 'portfolio:apaga_tecnologia' tecnologia_slug=tecnologia.slug %}" class="custom-button danger-button">Delete Technology</a>
     </div>
 </form>
 {% endblock %}

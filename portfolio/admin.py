@@ -17,22 +17,23 @@ class FichaTecnicaInline(admin.StackedInline):
     show_change_link = True
 
 class ProjetoAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'disciplina', 'ordem')
+    list_display = ('titulo', 'slug', 'disciplina', 'ordem')
     ordering = ('ordem', 'titulo')
     search_fields = ('titulo', 'disciplina__nome',)
     list_filter = ('disciplina__nome',)
     list_editable = ('ordem',)  # Permite editar ordem diretamente na lista
+    prepopulated_fields = {'slug': ('titulo',)}  # Auto-gerar slug a partir do título
     inlines = (ImagemProjetoInline, FichaTecnicaInline)
     
     fieldsets = (
         ('Informações Básicas', {
-            'fields': ('titulo', 'descricao', 'ordem')
+            'fields': ('titulo', 'slug', 'descricao', 'ordem')
         }),
         ('Links', {
             'fields': ('link_itch', 'link_github', 'link_video')
         }),
         ('Detalhes Técnicos', {
-            'fields': ('aspetos_tecnicos', 'conceitos_aplicados')
+            'fields': ('aspetos_tecnicos', 'conceitos_aplicados', 'my_role')
         }),
         ('Associações', {
             'fields': ('disciplina', 'tecnologias')
@@ -44,8 +45,8 @@ admin.site.register(Projeto, ProjetoAdmin)
 class ProjetoInline(admin.TabularInline):
     model = Projeto
     extra = 0
-    fields = ('titulo', 'ordem')
-    readonly_fields = ('titulo',)
+    fields = ('titulo', 'slug', 'ordem')
+    readonly_fields = ('titulo', 'slug')
     show_change_link = True
 
 class DisciplinaAdmin(admin.ModelAdmin):
@@ -71,9 +72,10 @@ class DocenteAdmin(admin.ModelAdmin):
 admin.site.register(Docente, DocenteAdmin)
 
 class TecnologiaAdmin(admin.ModelAdmin):
-    list_display = ('nome',)
+    list_display = ('nome', 'slug')
     ordering = ('nome',)
     search_fields = ('nome',)
+    prepopulated_fields = {'slug': ('nome',)}  # Auto-gerar slug a partir do nome
 
 admin.site.register(Tecnologia, TecnologiaAdmin)
 

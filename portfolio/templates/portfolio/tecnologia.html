@@ -35,7 +35,7 @@
             <h3>PROJECTS USING {{ tecnologia.nome|upper }}</h3>
             <div class="tech-projects-grid">
                 {% for projeto in tecnologia.projetos.all %}
-                    <a href="{% url 'portfolio:projeto_path' projeto_id=projeto.id %}" class="tech-project-card">
+                    <a href="{% url 'portfolio:projeto_path' projeto_slug=projeto.slug %}" class="tech-project-card">
                         {% if projeto.imagens.first %}
                             <img src="{{ projeto.imagens.first.imagem.url }}" alt="{{ projeto.titulo }}">
                         {% else %}
@@ -59,7 +59,7 @@
 
 {% if request.user.is_authenticated %}
     <div class="button-wrapper">
-        <a href="{% url 'portfolio:edita_tecnologia' tecnologia.id %}" class="custom-button edit-button">EDIT TECHNOLOGY</a>
+        <a href="{% url 'portfolio:edita_tecnologia' tecnologia_slug=tecnologia.slug %}" class="custom-button edit-button">EDIT TECHNOLOGY</a>
     </div>
 {% endif %}
 {% endblock %}

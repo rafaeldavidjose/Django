@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from datetime import date
@@ -30,10 +30,11 @@ def projetos_view(request):
     }
     return render(request, 'portfolio/projetos.html', context)
 
-def projeto_view(request, projeto_id):
+def projeto_view(request, projeto_slug):
+    projeto = get_object_or_404(Projeto, slug=projeto_slug)
     context = {
         'data' : date.today().year,
-        'projeto' : Projeto.objects.get(id=projeto_id),
+        'projeto' : projeto,
     }
     return render(request, 'portfolio/projeto.html', context)
 
@@ -49,8 +50,8 @@ def tecnologias_view(request):
     }
     return render(request, 'portfolio/tecnologias.html', context)
 
-def tecnologia_view(request, tecnologia_id):
-    tecnologia = Tecnologia.objects.get(id=tecnologia_id)
+def tecnologia_view(request, tecnologia_slug):
+    tecnologia = get_object_or_404(Tecnologia, slug=tecnologia_slug)
     # Projetos da tecnologia ordenados pela ordem definida
     projetos_ordenados = tecnologia.projetos.all().order_by('ordem', 'titulo')
     
@@ -152,8 +153,8 @@ def novo_docente_view(request):
     return render(request, 'portfolio/novo_docente.html', context)
 
 @login_required
-def edita_projeto_view(request, projeto_id):
-    projeto = Projeto.objects.get(id=projeto_id)
+def edita_projeto_view(request, projeto_slug):
+    projeto = get_object_or_404(Projeto, slug=projeto_slug)
     ficha_tecnica = getattr(projeto, 'ficha_tecnica', None)
 
     projeto_form = ProjetoForm(request.POST or None, request.FILES or None, instance=projeto)
@@ -175,7 +176,7 @@ def edita_projeto_view(request, projeto_id):
             for obj in imagem_formset.deleted_objects:
                 obj.delete()
 
-            return redirect('portfolio:projeto_path', projeto_id=projeto.id)
+            return redirect('portfolio:projeto_path', projeto_slug=projeto.slug)
 
     context = {
         'form': projeto_form,
@@ -187,15 +188,15 @@ def edita_projeto_view(request, projeto_id):
     return render(request, 'portfolio/edita_projeto.html', context)
 
 @login_required
-def edita_tecnologia_view(request, tecnologia_id):
-    tecnologia = Tecnologia.objects.get(id=tecnologia_id)
+def edita_tecnologia_view(request, tecnologia_slug):
+    tecnologia = get_object_or_404(Tecnologia, slug=tecnologia_slug)
 
     form = TecnologiaForm(request.POST or None, request.FILES or None, instance=tecnologia)
 
     if form.is_valid():
         form.save()
 
-        return redirect('portfolio:tecnologia_path', tecnologia_id=tecnologia.id)
+        return redirect('portfolio:tecnologia_path', tecnologia_slug=tecnologia.slug)
 
     context = {
         'form': form,
@@ -206,14 +207,14 @@ def edita_tecnologia_view(request, tecnologia_id):
     return render(request, 'portfolio/edita_tecnologia.html', context)
 
 @login_required
-def apaga_projeto_view(request, projeto_id):
-    projeto = Projeto.objects.get(id=projeto_id)
+def apaga_projeto_view(request, projeto_slug):
+    projeto = get_object_or_404(Projeto, slug=projeto_slug)
     projeto.delete()
     return redirect('portfolio:projetos')
 
 @login_required
-def apaga_tecnologia_view(request, tecnologia_id):
-    tecnologia = Tecnologia.objects.get(id=tecnologia_id)
+def apaga_tecnologia_view(request, tecnologia_slug):
+    tecnologia = get_object_or_404(Tecnologia, slug=tecnologia_slug)
     tecnologia.delete()
     return redirect('portfolio:tecnologias')
 

@@ -133,7 +133,7 @@
                 <p style="font-size: 1rem; color: var(--primary-gold); margin-bottom: 15px;"><strong>TECHNOLOGIES USED:</strong></p>
                 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
                     {% for tech in projeto.tecnologias.all %}
-                        <a href="{% url 'portfolio:tecnologia_path' tecnologia_id=tech.id %}" 
+                        <a href="{% url 'portfolio:tecnologia_path' tecnologia_slug=tech.slug %}" 
                            style="display: flex; align-items: center; background: #2b2b2b; border: 1px solid #444; border-radius: 8px; padding: 10px 15px; text-decoration: none; color: var(--text-light); transition: all 0.3s;"
                            onmouseover="this.style.background='#3a3a3a'; this.style.borderColor='var(--primary-gold)'; this.style.transform='translateY(-3px)'; this.style.color='var(--primary-gold)'"
                            onmouseout="this.style.background='#2b2b2b'; this.style.borderColor='#444'; this.style.transform='translateY(0)'; this.style.color='var(--text-light)'">
@@ -154,7 +154,7 @@
 <!-- Admin Edit Button -->
 {% if request.user.is_authenticated %}
     <div style="text-align: center; margin-top: 40px;">
-        <a href="{% url 'portfolio:edita_projeto' projeto.id %}" class="custom-button" style="background: var(--accent-teal);">EDIT PROJECT</a>
+        <a href="{% url 'portfolio:edita_projeto' projeto_slug=projeto.slug %}" class="custom-button" style="background: var(--accent-teal);">EDIT PROJECT</a>
     </div>
 {% endif %}
 

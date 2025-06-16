@@ -35,7 +35,7 @@
             </div>
             
             <div class="card-buttons">
-                <a href="{% url 'portfolio:tecnologia_path' tecnologia_id=tecnologia.id %}" class="custom-button">VIEW DETAILS</a>
+                <a href="{% url 'portfolio:tecnologia_path' tecnologia_slug=tecnologia.slug %}" class="custom-button">VIEW DETAILS</a>
                 {% if tecnologia.link %}
                     <a href="{{ tecnologia.link }}" target="_blank" class="tech-external-link">WEBSITE</a>
                 {% endif %}
