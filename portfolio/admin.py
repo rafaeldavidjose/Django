@@ -1,8 +1,6 @@
 from django.contrib import admin
 from .models import *
 
-
-
 class ImagemProjetoInline(admin.TabularInline):
     model = ImagemProjeto
     extra = 3
@@ -16,6 +14,14 @@ class FichaTecnicaInline(admin.StackedInline):
     max_num = 1
     show_change_link = True
 
+class ProjetoTecnologiaInline(admin.TabularInline):
+    model = ProjetoTecnologia
+    extra = 0
+    fields = ('tecnologia', 'ordem_no_cartao', 'mostrar_no_cartao')
+    verbose_name = 'Tecnologia'
+    verbose_name_plural = 'Tecnologias (controlo individual para cartão)'
+    ordering = ['ordem_no_cartao', 'tecnologia__nome']
+
 class ProjetoAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'slug', 'disciplina', 'ordem')
     ordering = ('ordem', 'titulo')
@@ -23,7 +29,7 @@ class ProjetoAdmin(admin.ModelAdmin):
     list_filter = ('disciplina__nome',)
     list_editable = ('ordem',)  
     prepopulated_fields = {'slug': ('titulo',)}  
-    inlines = (ImagemProjetoInline, FichaTecnicaInline)
+    inlines = (ImagemProjetoInline, FichaTecnicaInline, ProjetoTecnologiaInline)
     
     fieldsets = (
         ('Informações Básicas', {
@@ -36,7 +42,7 @@ class ProjetoAdmin(admin.ModelAdmin):
             'fields': ('aspetos_tecnicos', 'conceitos_aplicados', 'my_role')
         }),
         ('Associações', {
-            'fields': ('disciplina', 'tecnologias')
+            'fields': ('disciplina',)
         }),
     )
 
@@ -99,3 +105,12 @@ class ContactoAdmin(admin.ModelAdmin):
     )
 
 admin.site.register(Contacto, ContactoAdmin)
+
+class ProjetoTecnologiaAdmin(admin.ModelAdmin):
+    list_display = ('projeto', 'tecnologia', 'ordem_no_cartao', 'mostrar_no_cartao')
+    list_filter = ('mostrar_no_cartao', 'tecnologia')
+    search_fields = ('projeto__titulo', 'tecnologia__nome')
+    ordering = ('projeto__titulo', 'ordem_no_cartao')
+    list_editable = ('ordem_no_cartao', 'mostrar_no_cartao')
+
+admin.site.register(ProjetoTecnologia, ProjetoTecnologiaAdmin)

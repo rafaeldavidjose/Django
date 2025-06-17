@@ -26,18 +26,33 @@
                 <p>{{ projeto.descricao|truncatechars:117 }}</p>
                 
                 <div class="tech-tags">
-                    {% if projeto.tecnologias.all %}
-                        {% if projeto.tecnologias.count <= 3 %}
-                            {% for tech in projeto.tecnologias.all %}
-                                <span class="tech-tag">{{ tech.nome }}</span>
-                            {% endfor %}
+                    {% with tecnologias_cartao=projeto.tecnologias_para_cartao %}
+                        {% if tecnologias_cartao %}
+                            {% if tecnologias_cartao.count <= 3 %}
+                                {% for tech in tecnologias_cartao %}
+                                    <span class="tech-tag">{{ tech.nome }}</span>
+                                {% endfor %}
+                            {% else %}
+                                {% for tech in tecnologias_cartao|slice:":2" %}
+                                    <span class="tech-tag">{{ tech.nome }}</span>
+                                {% endfor %}
+                                <span class="tech-tag">+{{ tecnologias_cartao.count|add:"-2" }}</span>
+                            {% endif %}
                         {% else %}
-                            {% for tech in projeto.tecnologias.all|slice:":2" %}
-                                <span class="tech-tag">{{ tech.nome }}</span>
-                            {% endfor %}
-                            <span class="tech-tag">+{{ projeto.tecnologias.count|add:"-2" }}</span>
+                            {% if projeto.tecnologias.all %}
+                                {% if projeto.tecnologias.count <= 3 %}
+                                    {% for tech in projeto.tecnologias.all %}
+                                        <span class="tech-tag">{{ tech.nome }}</span>
+                                    {% endfor %}
+                                {% else %}
+                                    {% for tech in projeto.tecnologias.all|slice:":2" %}
+                                        <span class="tech-tag">{{ tech.nome }}</span>
+                                    {% endfor %}
+                                    <span class="tech-tag">+{{ projeto.tecnologias.count|add:"-2" }}</span>
+                                {% endif %}
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
+                    {% endwith %}
                 </div>
                 
                 <div class="card-buttons">

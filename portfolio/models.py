@@ -1,8 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
 
-# Create your models here.
-
 class Docente(models.Model):
     nome = models.CharField(
         max_length = 100,
@@ -65,6 +63,34 @@ class Tecnologia(models.Model):
         return self.nome
 
 
+class ProjetoTecnologia(models.Model):
+    projeto = models.ForeignKey(
+        'Projeto',
+        on_delete=models.CASCADE
+    )
+    tecnologia = models.ForeignKey(
+        'Tecnologia', 
+        on_delete=models.CASCADE
+    )
+    ordem_no_cartao = models.IntegerField(
+        default=999,
+        help_text='Ordem de exibição no cartão do projeto (menor número = maior prioridade)'
+    )
+    mostrar_no_cartao = models.BooleanField(
+        default=True,
+        help_text='Se deve aparecer no cartão do projeto'
+    )
+    
+    class Meta:
+        ordering = ['ordem_no_cartao', 'tecnologia__nome']
+        unique_together = ['projeto', 'tecnologia']
+        verbose_name = 'Tecnologia do Projeto'
+        verbose_name_plural = 'Tecnologias do Projeto'
+    
+    def __str__(self):
+        return f"{self.projeto.titulo} - {self.tecnologia.nome}"
+
+
 class Projeto(models.Model):
     titulo = models.CharField(
         max_length = 200,
@@ -110,8 +136,9 @@ class Projeto(models.Model):
     )
     tecnologias = models.ManyToManyField(
         Tecnologia,
-        related_name = 'projetos',
-        blank = True,
+        through='ProjetoTecnologia',
+        related_name='projetos',
+        blank=True,
     )
     ordem = models.IntegerField(
         default=0,
@@ -125,6 +152,14 @@ class Projeto(models.Model):
         if not self.slug:
             self.slug = slugify(self.titulo)
         super().save(*args, **kwargs)
+    
+    def tecnologias_para_cartao(self):
+        return self.tecnologias.filter(
+            projetotecnologia__mostrar_no_cartao=True
+        ).order_by(
+            'projetotecnologia__ordem_no_cartao',
+            'nome'
+        )
 
     def __str__(self):
         return self.titulo

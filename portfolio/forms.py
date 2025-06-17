@@ -5,7 +5,8 @@ from .models import *
 class ProjetoForm(forms.ModelForm):
     class Meta:
         model = Projeto
-        fields = '__all__'
+        fields = ['titulo', 'slug', 'descricao', 'ordem', 'link_itch', 'link_github', 
+                 'link_video', 'aspetos_tecnicos', 'conceitos_aplicados', 'my_role', 'disciplina']
 
         labels = {
             'titulo': 'Title',
@@ -17,7 +18,6 @@ class ProjetoForm(forms.ModelForm):
             'conceitos_aplicados': 'Core Concepts',
             'my_role': 'My Role & Contribution',
             'disciplina': 'Course',
-            'tecnologias': 'Technologies Used',
             'ordem': 'Display Order',
         }
         
@@ -37,6 +37,47 @@ class ProjetoForm(forms.ModelForm):
                 'placeholder': 'Example: Lead programmer responsible for gameplay mechanics, AI systems, and player controller implementation...'
             }),
         }
+
+class ProjetoTecnologiaForm(forms.ModelForm):
+    class Meta:
+        model = ProjetoTecnologia
+        fields = ['tecnologia', 'ordem_no_cartao', 'mostrar_no_cartao']
+        
+        labels = {
+            'tecnologia': 'Technology',
+            'ordem_no_cartao': 'Card Order',
+            'mostrar_no_cartao': 'Show in Card',
+        }
+        
+        help_texts = {
+            'ordem_no_cartao': 'Lower numbers appear first (1, 2, 3...)',
+            'mostrar_no_cartao': 'Uncheck to hide this technology from the project card',
+        }
+        
+        widgets = {
+            'ordem_no_cartao': forms.NumberInput(attrs={
+                'min': 1,
+                'max': 999,
+                'step': 1,
+                'placeholder': '1',
+                'class': 'form-control'
+            }),
+            'tecnologia': forms.Select(attrs={
+                'class': 'form-control'
+            }),
+            'mostrar_no_cartao': forms.CheckboxInput(attrs={
+                'class': 'form-check-input'
+            }),
+        }
+
+ProjetoTecnologiaFormSet = inlineformset_factory(
+    Projeto,
+    ProjetoTecnologia,
+    form=ProjetoTecnologiaForm,
+    extra=3,
+    can_delete=True,
+    fields=['tecnologia', 'ordem_no_cartao', 'mostrar_no_cartao']
+)
 
 class ImagemProjetoForm(forms.ModelForm):
     class Meta:
