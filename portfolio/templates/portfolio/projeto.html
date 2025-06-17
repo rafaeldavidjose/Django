@@ -3,17 +3,17 @@
 {% load static %}
 
 {% block main %}
-<!-- MODAL PARA AMPLIAR IMAGENS -->
+
 <div id="imageModal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); cursor: pointer;">
     <span id="closeModal" style="position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer; z-index: 10000;">&times;</span>
     <img id="modalImage" style="margin: auto; display: block; width: 90%; max-width: 1200px; max-height: 90%; object-fit: contain; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
 </div>
 
 <section class="project-section" style="max-width: 1000px; margin: 0 auto; text-align: left;">
-    <!-- Project Title -->
+    
     <h2 style="text-align: center; font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 30px; text-shadow: 3px 3px 0 #000;">{{ projeto.titulo }}</h2>
 
-    <!-- Project Links -->
+    
     {% if projeto.link_itch or projeto.link_video or projeto.link_github %}
         <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;">
             {% if projeto.link_itch %}
@@ -25,7 +25,7 @@
         </div>
     {% endif %}
 
-    <!-- Project Video -->
+    
     {% if projeto.link_video %}
         {% with projeto.link_video|cut:"https://www.youtube.com/watch?v=" as video_id %}
             <div style="position: relative; width: 100%; max-width: 720px; margin: 0 auto 30px; border: 3px solid var(--primary-gold); border-radius: 10px; overflow: hidden;">
@@ -43,20 +43,20 @@
         {% endwith %}
     {% endif %}
 
-    <!-- Project Description -->
+    
     <div style="background: var(--card-bg); padding: 25px; border-radius: 15px; border: 2px solid var(--primary-gold); margin-bottom: 30px;">
         <h3 style="color: var(--primary-gold); margin-bottom: 15px; font-size: 1.2rem;">DESCRIPTION</h3>
         <p style="font-size: 0.9rem; line-height: 1.8;">{{ projeto.descricao }}</p>
     </div>
 
-    <!-- ========== PROJECT GALLERY - SEM LEGENDAS + COM MODAL ========== -->
+    
     {% if projeto.imagens.all %}
         <div style="margin-bottom: 30px;">
             <h3 style="color: var(--primary-gold); margin-bottom: 20px; font-size: 1.2rem;">SCREENSHOTS</h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
                 {% for imagem in projeto.imagens.all %}
-                    <!-- ❌ REMOVIDO: div com legenda em baixo -->
-                    <!-- ✅ ADICIONADO: onclick para abrir modal + cursor pointer -->
+                    
+                    
                     <img src="{{ imagem.imagem.url }}" 
                          alt="{{ imagem.legenda|default:'Screenshot' }}" 
                          style="width: 100%; 
@@ -74,7 +74,7 @@
         </div>
     {% endif %}
 
-    <!-- ========== NEW: MY ROLE & CONTRIBUTION ========== -->
+    
     {% if projeto.my_role %}
         <div style="background: var(--card-bg); padding: 25px; border-radius: 15px; border: 2px solid var(--primary-red); margin-bottom: 30px;">
             <h3 style="color: var(--primary-red); margin-bottom: 15px; font-size: 1.2rem;">MY ROLE & CONTRIBUTION</h3>
@@ -82,13 +82,13 @@
         </div>
     {% endif %}
 
-    <!-- Core Concepts -->
+    
     <div style="background: var(--card-bg); padding: 25px; border-radius: 15px; border: 2px solid var(--primary-blue); margin-bottom: 30px;">
         <h3 style="color: var(--primary-blue); margin-bottom: 15px; font-size: 1.2rem;">CORE CONCEPTS</h3>
         <p style="font-size: 0.9rem; line-height: 1.8;">{{ projeto.conceitos_aplicados }}</p>
     </div>
 
-    <!-- Technical Aspects -->
+    
     {% if projeto.aspetos_tecnicos %}
         <div style="background: var(--card-bg); padding: 25px; border-radius: 15px; border: 2px solid var(--accent-teal); margin-bottom: 30px;">
             <h3 style="color: var(--accent-teal); margin-bottom: 15px; font-size: 1.2rem;">TECHNICAL ASPECTS</h3>
@@ -96,38 +96,38 @@
         </div>
     {% endif %}
 
-    <!-- Project Information Panel - ORDEM SEQUENCIAL -->
+    
     <div style="background: linear-gradient(135deg, var(--card-bg), #1f2937); padding: 30px; border-radius: 15px; border: 3px solid var(--primary-gold);">
         
-        <!-- 1. COURSE -->
+        
         {% if projeto.disciplina %}
             <div style="margin-bottom: 15px;">
                 <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">COURSE:</strong> "{{ projeto.disciplina.nome }}" – Universidade Lusófona ({{ projeto.disciplina.ano }}º year, {{ projeto.disciplina.semestre }}º semester)</p>
             </div>
         {% endif %}
 
-        <!-- 2. PLATFORM -->
+        
         {% if projeto.ficha_tecnica.plataforma %}
             <div style="margin-bottom: 15px;">
                 <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">PLATFORM:</strong> {{ projeto.ficha_tecnica.plataforma }}</p>
             </div>
         {% endif %}
 
-        <!-- 3. DEVELOPMENT TIME -->
+        
         {% if projeto.ficha_tecnica.duracao_desenvolvimento %}
             <div style="margin-bottom: 15px;">
                 <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">DEVELOPMENT TIME:</strong> {{ projeto.ficha_tecnica.duracao_desenvolvimento }}</p>
             </div>
         {% endif %}
 
-        <!-- 4. TEAM SIZE -->
+        
         {% if projeto.ficha_tecnica.equipa %}
             <div style="margin-bottom: 20px;">
                 <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">TEAM SIZE:</strong> {{ projeto.ficha_tecnica.equipa }} developer{{ projeto.ficha_tecnica.equipa|pluralize }}</p>
             </div>
         {% endif %}
 
-        <!-- 5. TECHNOLOGIES USED -->
+        
         {% if projeto.tecnologias.all %}
             <div>
                 <p style="font-size: 1rem; color: var(--primary-gold); margin-bottom: 15px;"><strong>TECHNOLOGIES USED:</strong></p>
@@ -151,14 +151,14 @@
     </div>
 </section>
 
-<!-- Admin Edit Button -->
+
 {% if request.user.is_authenticated %}
     <div style="text-align: center; margin-top: 40px;">
         <a href="{% url 'portfolio:edita_projeto' projeto_slug=projeto.slug %}" class="custom-button" style="background: var(--accent-teal);">EDIT PROJECT</a>
     </div>
 {% endif %}
 
-<!-- ========== JAVASCRIPT PARA O MODAL ========== -->
+
 <script>
 function openModal(imageSrc) {
     const modal = document.getElementById('imageModal');
@@ -167,7 +167,7 @@ function openModal(imageSrc) {
     modal.style.display = 'block';
     modalImg.src = imageSrc;
     
-    // Previne scroll do body quando modal está aberto
+    
     document.body.style.overflow = 'hidden';
 }
 
@@ -175,27 +175,27 @@ function closeModal() {
     const modal = document.getElementById('imageModal');
     modal.style.display = 'none';
     
-    // Reativa scroll do body
+    
     document.body.style.overflow = 'auto';
 }
 
-// Event listeners
+
 document.getElementById('closeModal').onclick = closeModal;
 document.getElementById('imageModal').onclick = function(event) {
-    // Fecha modal se clicar fora da imagem
+    
     if (event.target === this) {
         closeModal();
     }
 };
 
-// Fecha modal com ESC
+
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         closeModal();
     }
 });
 
-// Adiciona animação de fade-in ao modal
+
 document.getElementById('imageModal').style.transition = 'opacity 0.3s ease-in-out';
 </script>
 
@@ -218,7 +218,7 @@ document.getElementById('imageModal').style.transition = 'opacity 0.3s ease-in-o
     color: white;
 }
 
-/* Animação do modal */
+
 #imageModal {
     animation: fadeIn 0.3s ease-in-out;
 }
@@ -228,7 +228,7 @@ document.getElementById('imageModal').style.transition = 'opacity 0.3s ease-in-o
     to { opacity: 1; }
 }
 
-/* Hover effect no botão de fechar */
+
 #closeModal:hover {
     color: #f39c12 !important;
     transform: scale(1.1);

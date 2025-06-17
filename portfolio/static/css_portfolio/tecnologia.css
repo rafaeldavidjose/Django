@@ -1,4 +1,4 @@
-/* Individual Technology page styles */
+
 
 .tech-section {
     max-width: 1000px;
@@ -19,7 +19,7 @@
     margin-bottom: 30px;
 }
 
-/* LOGO MÉDIO */
+
 .tech-logo-wrapper {
     background: white !important;
     border-radius: 18px !important;
@@ -90,7 +90,7 @@
     font-size: 1.8rem;
 }
 
-/* CARDS DOS PROJETOS 16:9 - SEMPRE CENTRALIZADOS */
+
 .tech-projects-grid {
     display: flex !important;
     flex-wrap: wrap !important;

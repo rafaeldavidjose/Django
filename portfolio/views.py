@@ -7,7 +7,7 @@ from .forms import *
 from django.core.mail import send_mail
 from django.contrib import messages
 
-# Create your views here.
+
 def index_view(request):
     context = {
         'data': date.today().year,
@@ -21,7 +21,7 @@ def interesses_view(request):
     return render(request, "portfolio/interesses.html", context)
 
 def projetos_view(request):
-    # Projetos ordenados por ordem definida pelo utilizador, depois por título
+    
     projetos_ordenados = Projeto.objects.all().order_by('ordem', 'titulo')
     
     context = {
@@ -39,7 +39,7 @@ def projeto_view(request, projeto_slug):
     return render(request, 'portfolio/projeto.html', context)
 
 def tecnologias_view(request):
-    # Ordena tecnologias por número de projetos (descendente) e depois por nome
+    
     tecnologias_ordenadas = Tecnologia.objects.annotate(
         num_projetos=Count('projetos')
     ).order_by('-num_projetos', 'nome')
@@ -52,7 +52,7 @@ def tecnologias_view(request):
 
 def tecnologia_view(request, tecnologia_slug):
     tecnologia = get_object_or_404(Tecnologia, slug=tecnologia_slug)
-    # Projetos da tecnologia ordenados pela ordem definida
+    
     projetos_ordenados = tecnologia.projetos.all().order_by('ordem', 'titulo')
     
     context = {
@@ -226,40 +226,40 @@ def envia_email_contacto(nome, email, assunto, mensagem):
         recipient_list=['rafaeldavidjose.dev@gmail.com']
     )
 
-# VIEW DE CONTACTO SEGUINDO PADRÃO DO TUTORIAL
+
 def contacto_view(request):
     if request.method == 'POST':
         form = ContactoForm(request.POST)
         if form.is_valid():
-            # Guardar na base de dados
+            
             contacto = form.save()
 
-            # Extrair dados
+            
             nome = form.cleaned_data['nome']
             email = form.cleaned_data['email']
             assunto = form.cleaned_data['assunto']
             mensagem = form.cleaned_data['mensagem']
 
-            # ========== SOLUÇÃO HÍBRIDA ==========
-            # 1. Guardar na BD (✅ sempre funciona)
-            # 2. Notificar no admin
-            # 3. Email via serviço externo (opcional)
+            
+            
+            
+            
 
             try:
-                # Tentar enviar email (pode falhar no free tier)
+                
                 from django.core.mail import send_mail
                 send_mail(
                     subject=f'[PORTFOLIO] {assunto}',
                     message=f'Nome: {nome}\nEmail: {email}\n\nMensagem:\n{mensagem}',
                     from_email='noreply@portfolio.com',
                     recipient_list=['rafaeldavidjose.dev@gmail.com'],
-                    fail_silently=True,  # ← Não crashar se falhar
+                    fail_silently=True,  
                 )
                 email_status = "Email enviado!"
             except:
                 email_status = "Email salvo no admin (SMTP indisponível)"
 
-            # Mostrar mensagem de sucesso sempre
+            
             messages.success(request,
                 f'✅ Message received successfully! '
                 f'I can see it in my admin panel and will respond within 24-48 hours. '

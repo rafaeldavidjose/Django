@@ -1,19 +1,19 @@
-/* Interests page specific styles - ✅ FONTS UNIFICADAS + CARDS MENORES + HOVER CORRIGIDO */
+
 
 .section-header {
-    margin-bottom: 30px; /* Espaçamento igual aos projetos */
+    margin-bottom: 30px; 
 }
 
 .section-header p {
-    margin-bottom: 20px; /* Espaçamento igual aos projetos */
-    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
+    margin-bottom: 20px; 
+    font-family: 'Inter', sans-serif !important; 
 }
 
 .interests-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
-    gap: 20px; /* ✅ MENOR GAP */
+    gap: 20px; 
     max-width: 1000px;
     margin: 0 auto;
 }
@@ -22,27 +22,27 @@
     background: var(--card-bg);
     border: 3px solid #34495e;
     border-radius: 15px;
-    padding: 20px; /* ✅ MENOS PADDING */
+    padding: 20px; 
     transition: all 0.3s;
     text-align: center;
     position: relative;
     overflow: hidden;
-    min-height: 200px; /* ✅ ALTURA MENOR */
+    min-height: 200px; 
 }
 
-/* ❌ FORÇA REMOVER o efeito de brilho do gaming_style.css */
+
 .interest-item::before {
     display: none !important;
 }
 
-/* ✅ HOVER UNIFICADO - SÓ BORDER LARANJA, SEM MOVIMENTO */
+
 .interest-item:hover {
-    transform: none !important; /* ← SEM MOVIMENTO */
-    box-shadow: none !important; /* ← SEM SOMBRA */
-    border-color: var(--primary-gold) !important; /* ← SÓ BORDER LARANJA */
+    transform: none !important; 
+    box-shadow: none !important; 
+    border-color: var(--primary-gold) !important; 
 }
 
-/* ❌ FORÇA REMOVER animação de brilho no hover */
+
 .interest-item:hover::before {
     animation: none !important;
     display: none !important;
@@ -51,48 +51,48 @@
 .interest-item strong {
     color: var(--primary-gold);
     display: block;
-    font-size: 1.2rem; /* ✅ FONTE AINDA MAIOR */
-    margin-bottom: 2px; /* ✅ AINDA MENOS ESPAÇO */
-    font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ UNIFIED TITLES */
-    font-weight: 700 !important; /* ✅ MAIS BOLD */
+    font-size: 1.2rem; 
+    margin-bottom: 2px; 
+    font-family: 'Rajdhani', 'Inter', sans-serif !important; 
+    font-weight: 700 !important; 
 }
 
 .interest-item p {
-    margin-top: 6px; /* ✅ AINDA MENOS ESPAÇO */
-    font-size: 0.80rem; /* ✅ FONTE AINDA MAIOR */
-    line-height: 1.35; /* ✅ AINDA MAIS COMPACTO */
-    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED TEXT */
+    margin-top: 6px; 
+    font-size: 0.80rem; 
+    line-height: 1.35; 
+    font-family: 'Inter', sans-serif !important; 
 }
 
 .interest-icon {
-    font-size: 1.6rem; /* ✅ ÍCONE AINDA MENOR PARA COMPENSAR */
-    margin-bottom: 6px; /* ✅ AINDA MENOS ESPAÇO */
+    font-size: 1.6rem; 
+    margin-bottom: 6px; 
 }
 
 @media (max-width: 768px) {
     .interests-grid {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
-        gap: 15px; /* ✅ AINDA MENOR EM MOBILE */
+        gap: 15px; 
     }
     
     .interest-item {
-        padding: 18px; /* ✅ MENOS PADDING EM MOBILE */
-        min-height: 180px; /* ✅ ALTURA MENOR EM MOBILE */
+        padding: 18px; 
+        min-height: 180px; 
     }
     
     .interest-item strong {
-        font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ MOBILE TAMBÉM */
-        font-size: 1rem; /* ✅ PROPORCIONALMENTE MAIOR EM MOBILE */
+        font-family: 'Rajdhani', 'Inter', sans-serif !important; 
+        font-size: 1rem; 
     }
     
     .interest-item p {
-        font-family: 'Inter', sans-serif !important; /* ✅ MOBILE TAMBÉM */
-        font-size: 0.8rem; /* ✅ PROPORCIONALMENTE MAIOR EM MOBILE */
+        font-family: 'Inter', sans-serif !important; 
+        font-size: 0.8rem; 
     }
     
     .interest-icon {
-        font-size: 1.4rem; /* ✅ PROPORCIONALMENTE MENOR EM MOBILE */
+        font-size: 1.4rem; 
         margin-bottom: 6px;
     }
 }

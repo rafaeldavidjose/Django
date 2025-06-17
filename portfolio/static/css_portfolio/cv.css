@@ -1,5 +1,3 @@
-/* CV page specific styles - GAMING THEME with CORRECT FONTS + MOBILE OTIMIZADO */
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap');
 
 :root {
@@ -14,48 +12,47 @@
     --accent-teal: #16a085;
 }
 
-/* ========== CONTAINER PRINCIPAL - MAIS COMPACTO ========== */
 .cv-container {
-    max-width: 900px !important; /* ✅ MENOR QUE ANTES (era 1000px) */
+    max-width: 900px !important;
     margin: 0 auto !important;
-    padding: 0 15px !important; /* ✅ MENOS PADDING */
+    padding: 0 15px !important; 
     font-family: 'Inter', sans-serif !important;
 }
 
-/* ========== SECTION HEADER - MANTÉM TAMANHO ORIGINAL + STRONG ========== */
+
 .cv-header {
     text-align: center !important;
-    margin-bottom: 50px !important; /* ✅ MANTÉM ORIGINAL */
+    margin-bottom: 50px !important; 
 }
 
 .cv-header h2 {
-    font-size: clamp(1.5rem, 3vw, 2.5rem) !important; /* ✅ MANTÉM ORIGINAL */
+    font-size: clamp(1.5rem, 3vw, 2.5rem) !important; 
     color: var(--primary-red) !important;
     text-shadow: 3px 3px 0 #000 !important;
-    margin-bottom: 30px !important; /* ✅ MANTÉM ORIGINAL */
+    margin-bottom: 30px !important; 
     font-family: 'Rajdhani', 'Inter', sans-serif !important;
     font-weight: 700 !important;
 }
 
 .cv-header p {
-    font-size: clamp(0.65rem, 0.9vw, 0.8rem) !important; /* ✅ TEXTO MAIS PEQUENO */
-    line-height: 1.7 !important; /* ✅ LIGEIRAMENTE MAIS COMPACTO */
-    margin-bottom: 15px !important; /* ✅ MANTÉM ORIGINAL */
+    font-size: clamp(0.65rem, 0.9vw, 0.8rem) !important; 
+    line-height: 1.7 !important; 
+    margin-bottom: 15px !important; 
     color: var(--text-light) !important;
     font-family: 'Inter', sans-serif !important;
     font-weight: normal !important;
 }
 
-/* ========== CARTÃO PRINCIPAL - MAIS COMPACTO ========== */
+
 .main-cv-section {
     background: var(--card-bg) !important;
-    padding: 30px !important; /* ✅ MENOR (era 40px) */
-    border-radius: 12px !important; /* ✅ MENOR (era 15px) */
+    padding: 30px !important; 
+    border-radius: 12px !important; 
     border: 3px solid var(--primary-gold) !important;
-    margin-bottom: 30px !important; /* ✅ MENOR (era 40px) */
+    margin-bottom: 30px !important; 
     text-align: center !important;
     width: 100% !important;
-    max-width: 900px !important; /* ✅ MENOR (era 1000px) */
+    max-width: 900px !important; 
     margin-left: auto !important;
     margin-right: auto !important;
     position: relative !important;
@@ -64,32 +61,32 @@
 }
 
 .main-cv-icon {
-    font-size: 3rem !important; /* ✅ MENOR (era 4rem) */
-    margin-bottom: 15px !important; /* ✅ MENOR (era 20px) */
+    font-size: 3rem !important; 
+    margin-bottom: 15px !important; 
     color: var(--primary-gold) !important;
 }
 
 .main-cv-section h3 {
     color: var(--primary-gold) !important;
-    margin-bottom: 15px !important; /* ✅ MENOR (era 20px) */
-    font-size: clamp(0.9rem, 1.5vw, 1.2rem) !important; /* ✅ MENOR (era 1.5rem) */
+    margin-bottom: 15px !important; 
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem) !important; 
     font-family: 'Rajdhani', 'Inter', sans-serif !important;
-    font-weight: 700 !important; /* ✅ MAIS STRONG */
+    font-weight: 700 !important; 
 }
 
 .main-cv-section p {
-    margin-bottom: 20px !important; /* ✅ MENOR (era 25px) */
-    font-size: clamp(0.7rem, 0.9vw, 0.85rem) !important; /* ✅ TEXTO MAIS PEQUENO */
-    line-height: 1.4 !important; /* ✅ MAIS COMPACTO */
+    margin-bottom: 20px !important; 
+    font-size: clamp(0.7rem, 0.9vw, 0.85rem) !important; 
+    line-height: 1.4 !important; 
     color: var(--text-light) !important;
     font-family: 'Inter', sans-serif !important;
 }
 
-/* ========== BOTÃO PRINCIPAL - MAIS COMPACTO ========== */
+
 .download-button {
     background: var(--primary-green) !important;
-    font-size: clamp(0.65rem, 0.9vw, 0.8rem) !important; /* ✅ MENOR (era 0.9rem) */
-    padding: 12px 25px !important; /* ✅ MENOR (era 15px 30px) */
+    font-size: clamp(0.65rem, 0.9vw, 0.8rem) !important; 
+    padding: 12px 25px !important; 
     color: white !important;
     border: none !important;
     border-radius: 8px !important;
@@ -107,30 +104,30 @@
     transform: scale(1.05) !important;
 }
 
-/* ========== SEÇÕES DE BAIXO - MAIS COMPACTAS ========== */
+
 .cv-sections-top {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    gap: 15px !important; /* ✅ MENOR (era 20px) */
-    margin-top: 25px !important; /* ✅ MENOR (era 30px) */
+    gap: 15px !important; 
+    margin-top: 25px !important; 
     width: 100% !important;
-    max-width: 900px !important; /* ✅ MENOR (era 1000px) */
+    max-width: 900px !important; 
     margin-left: auto !important;
     margin-right: auto !important;
     box-sizing: border-box !important;
 }
 
-/* ========== CADA CARTÃO INDIVIDUAL - MAIS COMPACTO ========== */
+
 .cv-section-card {
     background: var(--card-bg) !important;
     border: 3px solid #34495e !important;
-    border-radius: 12px !important; /* ✅ MENOR (era 15px) */
-    padding: 25px !important; /* ✅ MENOR (era 30px) */
+    border-radius: 12px !important; 
+    padding: 25px !important; 
     text-align: center !important;
     transition: all 0.3s !important;
     display: flex !important;
     flex-direction: column !important;
-    min-height: 250px !important; /* ✅ MENOR (era 300px) */
+    min-height: 250px !important; 
     position: relative !important;
     overflow: hidden !important;
     width: 100% !important;
@@ -141,13 +138,13 @@
 .cv-sections-bottom {
     display: flex !important;
     justify-content: center !important;
-    margin-top: 25px !important; /* ✅ MENOR (era 30px) */
-    max-width: 900px !important; /* ✅ MENOR (era 1000px) */
+    margin-top: 25px !important; 
+    max-width: 900px !important; 
     margin-left: auto !important;
     margin-right: auto !important;
 }
 
-/* ========== HOVER SEM EFEITO DE BRILHO ========== */
+
 .cv-section-card:hover {
     transform: translateY(-8px) !important;
     box-shadow: 0 10px 25px rgba(0,0,0,0.4) !important;
@@ -155,25 +152,25 @@
 }
 
 .cv-section-card h3 {
-    font-size: clamp(0.9rem, 1.5vw, 1.2rem) !important; /* ✅ MENOR (era 1.5rem) */
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem) !important; 
     color: var(--primary-gold) !important;
-    margin-bottom: 12px !important; /* ✅ MENOR (era 15px) */
+    margin-bottom: 12px !important; 
     font-family: 'Rajdhani', 'Inter', sans-serif !important;
-    font-weight: 700 !important; /* ✅ MAIS STRONG */
+    font-weight: 700 !important; 
 }
 
 .cv-section-card p {
-    font-size: clamp(0.7rem, 0.9vw, 0.85rem) !important; /* ✅ TEXTO MAIS PEQUENO */
-    line-height: 1.4 !important; /* ✅ MAIS COMPACTO */
-    margin-bottom: 15px !important; /* ✅ MENOR (era 20px) */
+    font-size: clamp(0.7rem, 0.9vw, 0.85rem) !important; 
+    line-height: 1.4 !important; 
+    margin-bottom: 15px !important; 
     flex-grow: 1 !important;
     color: var(--text-light) !important;
     font-family: 'Inter', sans-serif !important;
 }
 
 .cv-icon {
-    font-size: 2.5rem !important; /* ✅ MENOR (era 3rem) */
-    margin-bottom: 15px !important; /* ✅ MENOR (era 20px) */
+    font-size: 2.5rem !important; 
+    margin-bottom: 15px !important; 
     color: var(--primary-gold) !important;
 }
 
@@ -182,17 +179,17 @@
 }
 
 .centered-card {
-    max-width: 350px !important; /* ✅ MENOR (era 400px) */
+    max-width: 350px !important; 
 }
 
-/* ========== BOTÕES ESTILO CORRETO - MAIS COMPACTOS ========== */
+
 .cv-container .custom-button {
-    font-size: clamp(0.65rem, 0.9vw, 0.8rem) !important; /* ✅ MENOR (era 0.9rem) */
+    font-size: clamp(0.65rem, 0.9vw, 0.8rem) !important; 
     color: var(--text-light) !important;
     background: #2b2b2b !important;
     border: 2px solid #444 !important;
     cursor: pointer !important;
-    padding: 10px 18px !important; /* ✅ MENOR (era 12px 20px) */
+    padding: 10px 18px !important; 
     position: relative !important;
     transition: all 0.3s !important;
     text-decoration: none !important;
@@ -204,7 +201,7 @@
     font-weight: 500 !important;
     text-align: center !important;
     line-height: 1 !important;
-    min-width: 80px !important; /* ✅ MENOR (era 90px) */
+    min-width: 80px !important; 
 }
 
 .cv-container .custom-button:hover {
@@ -215,88 +212,88 @@
     text-decoration: none !important;
 }
 
-/* ========== RESPONSIVIDADE MELHORADA - MOBILE FIRST ========== */
+
 @media (max-width: 768px) {
     .cv-container {
-        padding: 0 10px !important; /* ✅ AINDA MENOR EM MOBILE */
+        padding: 0 10px !important; 
     }
     
     .cv-header {
-        margin-bottom: 40px !important; /* ✅ MANTÉM RAZOÁVEL EM MOBILE */
+        margin-bottom: 40px !important; 
     }
     
     .cv-header h2 {
-        font-size: 2rem !important; /* ✅ MANTÉM BOM TAMANHO EM MOBILE */
+        font-size: 2rem !important; 
         margin-bottom: 15px !important;
     }
     
     .cv-header p {
-        font-size: 0.8rem !important; /* ✅ TEXTO MAIS PEQUENO EM MOBILE */
+        font-size: 0.8rem !important; 
         padding: 0 10px !important;
         line-height: 1.5 !important;
     }
     
     .cv-section-card {
-        min-height: 200px !important; /* ✅ MUITO MENOR EM MOBILE */
-        padding: 20px !important; /* ✅ MENOS PADDING EM MOBILE */
+        min-height: 200px !important; 
+        padding: 20px !important; 
     }
     
     .cv-sections-top {
-        grid-template-columns: 1fr !important; /* ✅ COLUNA ÚNICA EM MOBILE */
+        grid-template-columns: 1fr !important; 
         max-width: 100% !important;
-        gap: 12px !important; /* ✅ GAP MENOR EM MOBILE */
+        gap: 12px !important; 
         margin-top: 15px !important;
     }
     
     .main-cv-section {
-        padding: 25px 15px !important; /* ✅ MUITO MENOR EM MOBILE */
+        padding: 25px 15px !important; 
         max-width: 100% !important;
         margin-bottom: 25px !important;
     }
     
     .main-cv-icon {
-        font-size: 2.5rem !important; /* ✅ MENOR EM MOBILE */
+        font-size: 2.5rem !important; 
         margin-bottom: 12px !important;
     }
     
     .main-cv-section h3 {
-        font-size: 1.1rem !important; /* ✅ FIXO E MENOR EM MOBILE */
+        font-size: 1.1rem !important; 
         margin-bottom: 12px !important;
-        font-weight: 700 !important; /* ✅ STRONG */
+        font-weight: 700 !important; 
     }
     
     .main-cv-section p {
-        font-size: 0.8rem !important; /* ✅ TEXTO MAIS PEQUENO EM MOBILE */
+        font-size: 0.8rem !important; 
         margin-bottom: 15px !important;
         line-height: 1.3 !important;
     }
     
     .cv-section-card h3 {
-        font-size: 1rem !important; /* ✅ FIXO E MENOR EM MOBILE */
+        font-size: 1rem !important; 
         margin-bottom: 10px !important;
-        font-weight: 700 !important; /* ✅ STRONG */
+        font-weight: 700 !important; 
     }
     
     .cv-section-card p {
-        font-size: 0.75rem !important; /* ✅ TEXTO MAIS PEQUENO EM MOBILE */
+        font-size: 0.75rem !important; 
         margin-bottom: 12px !important;
         line-height: 1.3 !important;
     }
     
     .cv-icon {
-        font-size: 2rem !important; /* ✅ MENOR EM MOBILE */
+        font-size: 2rem !important; 
         margin-bottom: 12px !important;
     }
     
     .download-button {
-        font-size: 0.75rem !important; /* ✅ FIXO E MENOR EM MOBILE */
+        font-size: 0.75rem !important; 
         padding: 10px 15px !important;
         font-family: 'Inter', sans-serif !important;
         font-weight: 500 !important;
     }
     
     .cv-container .custom-button {
-        font-size: 0.75rem !important; /* ✅ FIXO E MENOR EM MOBILE */
+        font-size: 0.75rem !important; 
         padding: 8px 15px !important;
         font-family: 'Inter', sans-serif !important;
         font-weight: 500 !important;
@@ -314,54 +311,54 @@
 
 @media (max-width: 480px) {
     .cv-container {
-        padding: 0 8px !important; /* ✅ AINDA MENOR */
+        padding: 0 8px !important; 
     }
     
     .cv-header h2 {
-        font-size: 1.8rem !important; /* ✅ MANTÉM LEGÍVEL */
+        font-size: 1.8rem !important; 
     }
     
     .cv-header p {
-        font-size: 0.75rem !important; /* ✅ TEXTO MAIS PEQUENO */
+        font-size: 0.75rem !important; 
     }
     
     .main-cv-section {
-        padding: 20px 12px !important; /* ✅ MUITO COMPACTO */
+        padding: 20px 12px !important; 
     }
     
     .cv-section-card {
-        padding: 15px !important; /* ✅ MUITO COMPACTO */
-        min-height: 180px !important; /* ✅ MUITO BAIXO */
+        padding: 15px !important; 
+        min-height: 180px !important; 
     }
     
     .main-cv-icon {
-        font-size: 2rem !important; /* ✅ MUITO PEQUENO */
+        font-size: 2rem !important;
     }
     
     .cv-icon {
-        font-size: 1.8rem !important; /* ✅ MUITO PEQUENO */
+        font-size: 1.8rem !important;
     }
     
     .cv-section-card h3 {
-        font-size: 0.9rem !important; /* ✅ MUITO PEQUENO */
-        font-weight: 700 !important; /* ✅ STRONG */
+        font-size: 0.9rem !important;
+        font-weight: 700 !important; 
     }
     
     .cv-section-card p {
-        font-size: 0.7rem !important; /* ✅ TEXTO MAIS PEQUENO */
+        font-size: 0.7rem !important; 
     }
     
     .main-cv-section h3 {
-        font-size: 1rem !important; /* ✅ MUITO PEQUENO */
-        font-weight: 700 !important; /* ✅ STRONG */
+        font-size: 1rem !important;
+        font-weight: 700 !important; 
     }
     
     .main-cv-section p {
-        font-size: 0.75rem !important; /* ✅ TEXTO MAIS PEQUENO */
+        font-size: 0.75rem !important; 
     }
     
     .download-button {
-        font-size: 0.7rem !important; /* ✅ MUITO PEQUENO */
+        font-size: 0.7rem !important;
         padding: 8px 12px !important;
         font-family: 'Inter', sans-serif !important;
         font-weight: 500 !important;
@@ -369,7 +366,7 @@
     }
     
     .cv-container .custom-button {
-        font-size: 0.7rem !important; /* ✅ MUITO PEQUENO */
+        font-size: 0.7rem !important;
         padding: 6px 12px !important;
         font-family: 'Inter', sans-serif !important;
         font-weight: 500 !important;

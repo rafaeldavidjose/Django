@@ -3,10 +3,9 @@
 {% load static %}
 {% block extra_styles %}
 <link rel="stylesheet" href="{% static 'css_portfolio/form.css' %}">
-<!-- EmailJS -->
+
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
-/* Contact page specific styles - SÓ O QUE É ÚNICO DA PÁGINA */
 .contact-wrapper {
     max-width: 1000px;
     margin: 0 auto;
@@ -35,7 +34,6 @@
     margin-right: auto;
 }
 
-/* Contact info section */
 .contact-info {
     background: var(--card-bg);
     padding: 35px;
@@ -106,7 +104,6 @@
     color: var(--primary-gold);
 }
 
-/* MOBILE RESPONSIVE - CONTACTO */
 @media (max-width: 768px) {
     .contact-wrapper {
         padding: 0 15px;
@@ -208,7 +205,7 @@
         </p>
     </div>
 
-    <!-- Success/Error Messages -->
+    
     <div id="successMessage" class="success-message">
         ✅ Message sent successfully! I'll get back to you as soon as I can.
     </div>
@@ -217,9 +214,9 @@
         ❌ Failed to send message. Please try again or email me directly at rafaeldavidjose.dev@gmail.com
     </div>
 
-    <!-- Contact Form with EmailJS -->
+    
     <form id="contactForm" class="contact-form">
-        <!-- Loading Overlay -->
+        
         <div id="loadingOverlay" class="loading-overlay">
             <div class="loading-spinner"></div>
             <span>Sending your message...</span>
@@ -256,7 +253,7 @@
         </div>
     </form>
 
-    <!-- Alternative Contact Methods -->
+    
     <div class="contact-info">
         <h3>Other Ways to Reach Me</h3>
         <div class="contact-methods">
@@ -280,23 +277,23 @@
 </div>
 
 <script>
-// EmailJS configuration
+
 (function() {
     emailjs.init('-d1CqqN7eBvpN4Gbz');
 })();
 
-// Form submission
+
 document.getElementById('contactForm').addEventListener('submit', function(event) {
     event.preventDefault();
     
-    // Get elements
+    
     const submitBtn = document.getElementById('submitBtn');
     const successMsg = document.getElementById('successMessage');
     const errorMsg = document.getElementById('errorMessage');
     const loadingOverlay = document.getElementById('loadingOverlay');
     const form = this;
     
-    // Validate form
+    
     const name = document.getElementById('from_name').value.trim();
     const email = document.getElementById('reply_to').value.trim();
     const subject = document.getElementById('subject').value.trim();
@@ -307,21 +304,21 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         return;
     }
     
-    // Email validation
+    
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         showError('Please enter a valid email address.');
         return;
     }
     
-    // Reset messages
+    
     hideMessages();
     
-    // Show loading
+    
     loadingOverlay.style.display = 'flex';
     submitBtn.disabled = true;
     
-    // Send email via EmailJS
+    
     emailjs.sendForm(
         'service_s4agymn',
         'template_tsijrr4',
@@ -339,7 +336,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
     });
 });
 
-// Utility functions
+
 function showSuccess() {
     const successMsg = document.getElementById('successMessage');
     successMsg.style.display = 'block';
@@ -363,7 +360,7 @@ function hideLoading() {
     document.getElementById('submitBtn').disabled = false;
 }
 
-// Enhanced focus effects for inputs
+
 document.querySelectorAll('input, textarea').forEach(input => {
     input.addEventListener('focus', function() {
         this.style.borderColor = 'var(--primary-gold)';

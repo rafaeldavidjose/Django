@@ -1,4 +1,4 @@
-/* Index page specific styles - ✅ FONTS UNIFICADAS + SOMBRA CORRIGIDA + IMAGEM PERFIL */
+
 
 .landing-buttons {
     margin: 20px 0;
@@ -26,18 +26,17 @@
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ UNIFIED */
+    font-family: 'Rajdhani', 'Inter', sans-serif !important;
 }
 
 .stat-label {
     font-size: 0.7rem;
     color: #95a5a6;
-    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
+    font-family: 'Inter', sans-serif !important;
 }
 
-/* ========== PROFILE IMAGE - SIMPLES E GAMING + LINK ========== */
 .profile-image-wrapper {
-    display: block; /* ✅ PARA FUNCIONAR COMO LINK */
+    display: block;
     width: 150px;
     height: 150px;
     margin: 0 auto 30px auto;
@@ -47,14 +46,14 @@
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     background: linear-gradient(135deg, #2c3e50, #34495e);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer; /* ✅ INDICA QUE É CLICÁVEL */
-    text-decoration: none; /* ✅ REMOVE UNDERLINE DO LINK */
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .profile-image-wrapper:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 30px rgba(243, 156, 18, 0.3);
-    text-decoration: none; /* ✅ GARANTE QUE NÃO HÁ UNDERLINE NO HOVER */
+    text-decoration: none;
 }
 
 .profile-image {
@@ -94,66 +93,63 @@
     50% { transform: translateY(-20px); }
 }
 
-/* Animações sequenciais para os elementos - ORDEM CORRETA */
 .slide-up {
-    animation-delay: 0.3s; /* Imagem primeiro */
+    animation-delay: 0.3s;
 }
 
 .slide-up:nth-child(2) {
-    animation-delay: 0.6s; /* Título h2 */
+    animation-delay: 0.6s;
 }
 
 .slide-up:nth-child(3) {
-    animation-delay: 0.9s; /* Primeiro parágrafo */
+    animation-delay: 0.9s;
 }
 
 .slide-up:nth-child(4) {
-    animation-delay: 1.2s; /* Segundo parágrafo */
+    animation-delay: 1.2s;
 }
 
 .slide-up:nth-child(5) {
-    animation-delay: 1.5s; /* Terceiro parágrafo */
+    animation-delay: 1.5s;
 }
 
 .slide-up:nth-child(6) {
-    animation-delay: 1.8s; /* Botões (último elemento) */
+    animation-delay: 1.8s;
 }
 
-/* ✅ LANDING WRAPPER FONTS + SOMBRA SIMPLES MAS BRILHO MANTIDO */
 .landing-wrapper h2 {
-    font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ UNIFIED */
-    font-size: clamp(1.5rem, 3.5vw, 2.5rem); /* ✅ VOLTA AO TAMANHO ANTERIOR */
-    color: var(--primary-gold); /* ✅ MANTÉM COR DOURADA */
+    font-family: 'Rajdhani', 'Inter', sans-serif !important;
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    color: var(--primary-gold);
     margin-bottom: 20px;
-    /* ✅ SOMBRA SIMPLES + BRILHO MANTIDO */
+
     text-shadow: 
-        3px 3px 0 #000, /* ← SOMBRA SIMPLES IGUAL AO "MY PROJECTS" */
-        0 0 20px rgba(243, 156, 18, 0.5); /* ← BRILHO MANTIDO */
+        3px 3px 0 #000,
+        0 0 20px rgba(243, 156, 18, 0.5);
 }
 
-/* ✅ H2 COM SLIDE-UP TEM PRIORIDADE SOBRE FLOAT */
 .landing-wrapper h2.slide-up {
     animation: slideUp 0.8s forwards, float 3s ease-in-out infinite 0.8s;
 }
 
 .landing-wrapper {
     text-align: center;
-    max-width: 750px; /* ✅ AINDA MAIS ESTREITO PARA MELHOR DISTRIBUIÇÃO */
+    max-width: 750px;
     margin: 0 auto;
     padding: 20px;
-    /* ✅ CENTRALIZAÇÃO VERTICAL CONSIDERANDO HEADER E FOOTER */
-    min-height: calc(100vh - 140px); /* Header ~60px + Footer ~80px */
+
+    min-height: calc(100vh - 140px);
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .landing-wrapper p {
-    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
-    font-size: clamp(0.8rem, 0.9vw, 0.88rem); /* ✅ MAIS PEQUENO */
-    line-height: 1.65; /* ✅ MELHOR ESPAÇAMENTO ENTRE LINHAS */
-    margin-bottom: 20px; /* ✅ MAIS ESPAÇO ENTRE PARÁGRAFOS */
-    max-width: 650px; /* ✅ LIMITA LARGURA PARA EVITAR PALAVRAS ÓRFÃS */
+    font-family: 'Inter', sans-serif !important;
+    font-size: clamp(0.8rem, 0.9vw, 0.88rem);
+    line-height: 1.65;
+    margin-bottom: 20px;
+    max-width: 650px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -165,18 +161,18 @@
     }
     
     .landing-wrapper h2 {
-        font-size: 1.8rem; /* ✅ VOLTA AO TAMANHO ANTERIOR */
-        font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ MOBILE TAMBÉM */
-        /* ✅ SOMBRA SIMPLES + BRILHO TAMBÉM EM MOBILE */
+        font-size: 1.8rem;
+        font-family: 'Rajdhani', 'Inter', sans-serif !important;
+    
         text-shadow: 
-            3px 3px 0 #000, /* ← SOMBRA SIMPLES */
-            0 0 20px rgba(243, 156, 18, 0.5); /* ← BRILHO MANTIDO */
+            3px 3px 0 #000,
+            0 0 20px rgba(243, 156, 18, 0.5);
     }
     
     .landing-wrapper p {
-        font-family: 'Inter', sans-serif !important; /* ✅ MOBILE TAMBÉM */
-        font-size: 0.85rem; /* ✅ TEXTO MAIS PEQUENO EM MOBILE */
-        line-height: 1.5; /* ✅ LINHA MAIS COMPACTA EM MOBILE */
+        font-family: 'Inter', sans-serif !important;
+        font-size: 0.85rem;
+        line-height: 1.5;
     }
     
     .profile-image-wrapper {
@@ -199,25 +195,25 @@
     }
     
     .stat-value {
-        font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ MOBILE TAMBÉM */
+        font-family: 'Rajdhani', 'Inter', sans-serif !important;
     }
     
     .stat-label {
-        font-family: 'Inter', sans-serif !important; /* ✅ MOBILE TAMBÉM */
+        font-family: 'Inter', sans-serif !important;
     }
 }
 
 @media (max-width: 480px) {
     .landing-wrapper {
-        min-height: calc(100vh - 100px); /* ✅ AJUSTE PARA MOBILE PEQUENO */
+        min-height: calc(100vh - 100px);
         padding: 10px;
     }
     
     .landing-wrapper p {
-        font-size: 0.8rem; /* ✅ MAIS PEQUENO */
+        font-size: 0.8rem;
         line-height: 1.5;
         margin-bottom: 16px;
-        padding: 0 8px; /* ✅ MARGEM AJUSTADA */
+        padding: 0 8px;
     }
     
     .profile-image-wrapper {

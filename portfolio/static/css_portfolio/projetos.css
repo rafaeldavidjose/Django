@@ -1,4 +1,4 @@
-/* Projects page specific styles - ✅ FONTS E TAMANHOS UNIFICADOS + ALTURA FIXA */
+
 
 .project-placeholder {
     width: 100%;
@@ -9,10 +9,10 @@
     justify-content: center;
     color: var(--primary-gold);
     font-size: 2rem;
-    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
+    font-family: 'Inter', sans-serif !important; 
 }
 
-/* ✅ TECH TAGS COM ALTURA MÍNIMA PARA MANTER CARDS UNIFORMES */
+
 .tech-tags {
     display: flex;
     flex-wrap: nowrap;
@@ -22,11 +22,11 @@
     overflow: hidden;
     max-width: 100%;
     padding: 0 5px;
-    min-height: 32px; /* ✅ ALTURA MÍNIMA PARA MANTER CONSISTÊNCIA */
-    align-items: center; /* ✅ CENTRALIZA TAGS VERTICALMENTE */
+    min-height: 32px; 
+    align-items: center; 
 }
 
-/* ✅ TECH TAG - FORÇA BRUTA PARA IGUALAR TECH-COUNT */
+
 .tech-tags .tech-tag,
 .project-card .tech-tag,
 .project-card-content .tech-tag {
@@ -53,19 +53,19 @@
     vertical-align: baseline !important;
 }
 
-/* ✅ PROJECT CARD DESCRIPTION - FLEX GROW PARA OCUPAR ESPAÇO */
+
 .project-card-content p {
-    font-size: clamp(0.6rem, 1vw, 0.8rem); /* ✅ IGUAL AOS TECH CARDS */
-    line-height: 1.7 !important; /* ✅ LINHA MAIS ESPAÇADA PARA MELHOR DISTRIBUIÇÃO */
+    font-size: clamp(0.6rem, 1vw, 0.8rem); 
+    line-height: 1.7 !important; 
     color: var(--text-light);
     margin-bottom: 15px;
     font-family: 'Inter', sans-serif;
-    text-align: center !important; /* ✅ MANTÉM CENTRALIZADO */
-    max-width: 280px !important; /* ✅ LIMITA LARGURA PARA FORÇAR QUEBRAS MELHORES */
+    text-align: center !important; 
+    max-width: 280px !important; 
     margin-left: auto !important;
     margin-right: auto !important;
-    word-spacing: 0.05em !important; /* ✅ ESPAÇAMENTO SUTIL ENTRE PALAVRAS */
-    flex-grow: 1 !important; /* ✅ OCUPA ESPAÇO DISPONÍVEL */
+    word-spacing: 0.05em !important; 
+    flex-grow: 1 !important; 
 }
 
 .no-data-icon {
@@ -75,36 +75,36 @@
 
 .add-button {
     background: var(--primary-green) !important;
-    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
+    font-family: 'Inter', sans-serif !important; 
 }
 
 .add-button:hover {
     background: #229954 !important;
 }
 
-/* ✅ PROJECT CARDS FONTS */
+
 .project-card h3 {
-    font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ UNIFIED TITLES */
+    font-family: 'Rajdhani', 'Inter', sans-serif !important; 
 }
 
 .project-card p {
-    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED TEXT */
+    font-family: 'Inter', sans-serif !important; 
 }
 
 .project-card-title {
-    font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ UNIFIED TITLES */
-    margin-bottom: 15px; /* ✅ ESPAÇO CONSISTENTE */
+    font-family: 'Rajdhani', 'Inter', sans-serif !important; 
+    margin-bottom: 15px; 
 }
 
 .project-card-content {
-    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED */
+    font-family: 'Inter', sans-serif !important; 
 }
 
-/* ✅ NO DATA SECTION FONTS */
+
 .no-data h3 {
-    font-family: 'Rajdhani', 'Inter', sans-serif !important; /* ✅ UNIFIED TITLES */
+    font-family: 'Rajdhani', 'Inter', sans-serif !important; 
 }
 
 .no-data p {
-    font-family: 'Inter', sans-serif !important; /* ✅ UNIFIED TEXT */
+    font-family: 'Inter', sans-serif !important; 
 }

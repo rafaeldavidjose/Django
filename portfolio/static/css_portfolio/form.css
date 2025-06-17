@@ -1,6 +1,3 @@
-/* ========== FORMULÁRIOS UNIFICADOS - TEMA LARANJA ========== */
-
-/* Contact form - ESTILO BASE PARA TODOS OS FORMS */
 form {
     max-width: 800px;
     margin: 20px auto;
@@ -16,7 +13,6 @@ form {
     gap: 20px;
 }
 
-/* Contact form labels */
 form label {
     font-size: clamp(0.7rem, 1vw, 0.9rem);
     color: var(--primary-gold);
@@ -26,7 +22,6 @@ form label {
     font-weight: 500;
 }
 
-/* Contact form inputs */
 form input,
 form textarea,
 form select {
@@ -50,7 +45,7 @@ form select:focus {
     box-shadow: 0 0 10px rgba(243, 156, 18, 0.3);
 }
 
-/* File input styling */
+
 form input[type="file"] {
     display: block;
     width: 100%;
@@ -79,7 +74,7 @@ form textarea {
     resize: vertical;
 }
 
-/* Select styling */
+
 form select {
     cursor: pointer;
     appearance: none;
@@ -90,7 +85,7 @@ form select {
     padding-right: 40px;
 }
 
-/* Checkbox and radio styling */
+
 form ul {
     list-style: none;
     padding: 0;
@@ -130,7 +125,7 @@ form ul li input[type="radio"] {
     accent-color: var(--primary-gold);
 }
 
-/* Submit button */
+
 form .custom-button {
     font-size: clamp(0.7rem, 1vw, 0.9rem);
     color: var(--text-light);
@@ -160,7 +155,7 @@ form .custom-button:hover {
     text-decoration: none;
 }
 
-/* Input submit button */
+
 input[type="submit"] {
     align-self: center;
     background-color: var(--primary-gold);
@@ -183,7 +178,7 @@ input[type="submit"]:hover {
     box-shadow: 0 0 20px rgba(243, 156, 18, 0.5);
 }
 
-/* Success/Error messages */
+
 .success-message {
     background: linear-gradient(135deg, var(--primary-green), #229954);
     color: white;
@@ -235,7 +230,7 @@ input[type="submit"]:hover {
     }
 }
 
-/* Loading overlay */
+
 .loading-overlay {
     position: absolute;
     top: 0;
@@ -281,7 +276,7 @@ input[type="submit"]:hover {
     }
 }
 
-/* Form rows */
+
 .form-row {
     width: 100%;
     text-align: left;
@@ -307,7 +302,7 @@ input[type="submit"]:hover {
     background: rgba(243, 156, 18, 0.05);
 }
 
-/* Danger button */
+
 .danger-button {
     background-color: #c74c4c !important;
     color: white !important;
@@ -319,7 +314,7 @@ input[type="submit"]:hover {
     box-shadow: 0 0 20px rgba(231, 76, 60, 0.5) !important;
 }
 
-/* Button wrapper */
+
 .button-wrapper {
     display: flex;
     justify-content: center;
@@ -329,7 +324,7 @@ input[type="submit"]:hover {
     flex-wrap: wrap;
 }
 
-/* MOBILE RESPONSIVE */
+
 @media (max-width: 768px) {
     form {
         padding: 20px;

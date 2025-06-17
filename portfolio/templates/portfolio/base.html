@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rafael José | Game Developer Portfolio</title>
+    <title>Rafael José | Portfolio</title>
 
-    <!-- ✅ FONTS UNIFICADAS - APENAS INTER + RAJDHANI -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     {% load static %}
     <link rel="stylesheet" href="{% static 'css_portfolio/gaming_style.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
 
     {% block extra_styles %}
     {% endblock %}
     
     <style>
-    /* ========== DESATIVAR SCROLL CAUSADO PELOS POWER-UPS ========== */
     html {
         overflow-x: hidden !important;
         width: 100%;
@@ -93,11 +92,9 @@
         </div>
     </main>
 
-    <!-- Power-ups / Easter Eggs - COMPORTAMENTO ORIGINAL MANTIDO -->
     <div class="power-up" id="powerup1" onclick="collectPowerUp(this)">⭐</div>
     <div class="power-up" id="powerup2" onclick="collectPowerUp(this)">💎</div>
 
-    <!-- Achievement Popup -->
     <div class="achievement" id="achievement">
         🏆 ACHIEVEMENT UNLOCKED!<br>
         "Portfolio Explorer"
@@ -109,7 +106,7 @@
     </footer>
 
     <script>
-        // Achievement system
+        
         function showAchievement(text = "Portfolio Explorer") {
             const achievement = document.getElementById('achievement');
             achievement.innerHTML = `🏆 ACHIEVEMENT UNLOCKED!<br>"${text}"`;
@@ -119,7 +116,7 @@
             }, 4000);
         }
 
-        // ========== POWER-UP POSICIONAMENTO ORIGINAL MANTIDO ==========
+        
         function getUsableScreenArea() {
             const header = document.querySelector('header');
             const footer = document.querySelector('footer');
@@ -150,14 +147,14 @@
             }
         }
 
-        // Inicializar posicionamento
+        
         document.addEventListener('DOMContentLoaded', positionPowerUps);
         window.addEventListener('resize', positionPowerUps);
 
-        // ========== SISTEMA DE ACHIEVEMENTS EXPANDIDO ========== 
+        
         let score = parseInt(localStorage.getItem('portfolioScore') || '0');
         
-        // Tracking de achievements já mostrados
+        
         const achievementFlags = {
             achievement100: localStorage.getItem('achievement100') === 'true',
             achievement300: localStorage.getItem('achievement300') === 'true',
@@ -181,7 +178,7 @@
             document.getElementById('score').textContent = score;
             element.style.display = 'none';
             
-            // ========== ACHIEVEMENTS BASEADOS NO SCORE ========== 
+            
             if (score === 100 && !achievementFlags.achievement100) {
                 showAchievement("First Steps!");
                 localStorage.setItem('achievement100', 'true');
@@ -238,7 +235,7 @@
                 achievementFlags.achievement10000 = true;
             }
             
-            // ========== RESPAWN ORIGINAL MANTIDO ==========
+            
             setTimeout(() => {
                 element.style.display = 'block';
                 element.style.top = Math.random() * (window.innerHeight - 100) + 'px';
@@ -246,7 +243,7 @@
             }, 5000);
         }
 
-        // Konami code easter egg
+        
         let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
         let konamiIndex = 0;
 
@@ -265,7 +262,7 @@
                     document.getElementById('score').textContent = score;
                     konamiIndex = 0;
                     
-                    // Add special visual effect
+                    
                     document.body.style.filter = 'hue-rotate(360deg)';
                     setTimeout(() => {
                         document.body.style.filter = 'none';
@@ -276,7 +273,7 @@
             }
         });
 
-        // Add hover effects to power-ups - ORIGINAL MANTIDO
+        
         document.addEventListener('mousemove', (e) => {
             const powerUps = document.querySelectorAll('.power-up');
             powerUps.forEach(powerUp => {
@@ -294,32 +291,32 @@
             });
         });
 
-        // ========== ANIMAÇÕES CORRIGIDAS - SÓ EXECUTAM UMA VEZ ==========
+        
         document.addEventListener('DOMContentLoaded', () => {
-            // Aguarda um pequeno delay para garantir que o DOM está completamente carregado
+            
             setTimeout(() => {
-                // Seleciona apenas elementos que ainda não foram animados
+                
                 const elements = document.querySelectorAll('.card:not(.animation-applied), .project-card:not(.animation-applied), .tech-card:not(.animation-applied)');
                 
                 if (elements.length > 0) {
                     elements.forEach((el, index) => {
-                        // Marca como animado para evitar repetição
+                        
                         el.classList.add('animation-applied');
                         
-                        // Define estado inicial (invisível)
+                        
                         el.style.opacity = '0';
                         el.style.transform = 'translateY(30px)';
                         el.style.transition = 'all 0.6s ease';
                         
-                        // Aplica animação com delay progressivo
+                        
                         setTimeout(() => {
                             el.style.opacity = '1';
                             el.style.transform = 'translateY(0)';
-                        }, index * 100 + 50); // +50ms de delay extra
+                        }, index * 100 + 50); 
                     });
                 }
 
-                // ========== CORREÇÃO PARA GRID - NÃO CENTRAR TECH CARDS ==========
+                
                 const grids = document.querySelectorAll('.grid');
                 grids.forEach(grid => {
                     const items = Array.from(grid.children).filter(child => 
@@ -328,11 +325,11 @@
                         child.classList.contains('tech-card')
                     );
                     
-                    // Só centrar itens ímpares se NÃO tiver tech-card
+                    
                     const hasTechCards = grid.querySelector('.tech-card');
                     
                     if (items.length % 2 === 1 && !hasTechCards) {
-                        // If odd number of items, center the last one (só para projetos)
+                        
                         const lastItem = items[items.length - 1];
                         if (lastItem) {
                             lastItem.style.gridColumn = '1 / -1';
@@ -340,16 +337,16 @@
                         }
                     }
                 });
-            }, 100); // Pequeno delay para garantir que tudo está carregado
+            }, 100); 
         });
     </script>
     <script>
         function forceImageRenderingSmooth() {
-            // Encontra TODAS as imagens na página
+            
             const allImages = document.querySelectorAll('img, [src], [style*="background-image"]');
             
             allImages.forEach(function(element) {
-                // Remove qualquer image-rendering pixelated
+                
                 element.style.imageRendering = 'auto';
                 element.style.imageRendering = 'smooth';
                 element.style.setProperty('image-rendering', 'auto', 'important');
@@ -358,7 +355,7 @@
                 element.style.setProperty('-webkit-image-rendering', 'smooth', 'important');
             });
             
-            // Também aplica a todos os elementos que podem ter background-image
+            
             const allElements = document.querySelectorAll('*');
             allElements.forEach(function(element) {
                 const computedStyle = window.getComputedStyle(element);
@@ -371,16 +368,16 @@
             console.log('✅ Image rendering forçado para smooth em todas as imagens');
         }
 
-        // Executa quando a página carrega
+        
         document.addEventListener('DOMContentLoaded', forceImageRenderingSmooth);
 
-        // Executa novamente quando o conteúdo muda (para imagens carregadas dinamicamente)
+        
         window.addEventListener('load', forceImageRenderingSmooth);
 
-        // Executa periodicamente para capturar qualquer imagem nova
+        
         setInterval(forceImageRenderingSmooth, 2000);
 
-        // Observer para mudanças no DOM
+        
         const observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
                 if (mutation.addedNodes.length > 0) {

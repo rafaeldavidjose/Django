@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import *
 
-# Register your models here.
+
 
 class ImagemProjetoInline(admin.TabularInline):
     model = ImagemProjeto
@@ -21,8 +21,8 @@ class ProjetoAdmin(admin.ModelAdmin):
     ordering = ('ordem', 'titulo')
     search_fields = ('titulo', 'disciplina__nome',)
     list_filter = ('disciplina__nome',)
-    list_editable = ('ordem',)  # Permite editar ordem diretamente na lista
-    prepopulated_fields = {'slug': ('titulo',)}  # Auto-gerar slug a partir do título
+    list_editable = ('ordem',)  
+    prepopulated_fields = {'slug': ('titulo',)}  
     inlines = (ImagemProjetoInline, FichaTecnicaInline)
     
     fieldsets = (
@@ -75,7 +75,7 @@ class TecnologiaAdmin(admin.ModelAdmin):
     list_display = ('nome', 'slug')
     ordering = ('nome',)
     search_fields = ('nome',)
-    prepopulated_fields = {'slug': ('nome',)}  # Auto-gerar slug a partir do nome
+    prepopulated_fields = {'slug': ('nome',)}  
 
 admin.site.register(Tecnologia, TecnologiaAdmin)
 
