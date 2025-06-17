@@ -174,3 +174,33 @@ class ContactoForm(forms.ModelForm):
                 'class': 'form-control'
             }),
         }
+        
+class AwardForm(forms.ModelForm):
+    class Meta:
+        model = Award
+        fields = ('titulo', 'ordem')
+        
+        labels = {
+            'titulo': 'Award Title',
+            'ordem': 'Order',
+        }
+        
+        widgets = {
+            'titulo': forms.TextInput(attrs={
+                'placeholder': 'e.g., SPECIAL 42 - Over And Out 2023'
+            }),
+            'ordem': forms.NumberInput(attrs={
+                'min': 0,
+                'step': 1,
+                'placeholder': '0'
+            }),
+        }
+
+AwardFormSet = inlineformset_factory(
+    Projeto,
+    Award,
+    form=AwardForm,
+    extra=2,
+    max_num=10,
+    can_delete=True,
+)

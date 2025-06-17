@@ -74,42 +74,37 @@ def novo_projeto_view(request):
         projeto_form = ProjetoForm(request.POST, request.FILES)
         ficha_form = FichaTecnicaForm(request.POST)
         imagem_formset = ImagemProjetoFormSet(request.POST, request.FILES, prefix='imagens')
-        tecnologia_formset = ProjetoTecnologiaFormSet(request.POST, prefix='tecnologias')
+        award_formset = AwardFormSet(request.POST, prefix='awards')
 
-        if (projeto_form.is_valid() and ficha_form.is_valid() and 
-            imagem_formset.is_valid() and tecnologia_formset.is_valid()):
-            
+        if projeto_form.is_valid() and ficha_form.is_valid() and imagem_formset.is_valid() and award_formset.is_valid():
             projeto = projeto_form.save()
             
-            # Salvar ficha técnica
             ficha = ficha_form.save(commit=False)
             ficha.projeto = projeto
             ficha.save()
             
-            # Salvar imagens
             imagens = imagem_formset.save(commit=False)
             for imagem in imagens:
                 imagem.projeto = projeto
                 imagem.save()
             
-            # Salvar tecnologias
-            tecnologias = tecnologia_formset.save(commit=False)
-            for tecnologia in tecnologias:
-                tecnologia.projeto = projeto
-                tecnologia.save()
-            
+            awards = award_formset.save(commit=False)
+            for award in awards:
+                award.projeto = projeto
+                award.save()
+                
             return redirect('portfolio:projetos')
     else:
         projeto_form = ProjetoForm()
         ficha_form = FichaTecnicaForm()
         imagem_formset = ImagemProjetoFormSet(prefix='imagens')
-        tecnologia_formset = ProjetoTecnologiaFormSet(prefix='tecnologias')
+        award_formset = AwardFormSet(prefix='awards')
 
     context = {
         'form': projeto_form,
         'ficha_form': ficha_form,
         'imagens': imagem_formset,
-        'tecnologias': tecnologia_formset,
+        'awards': award_formset,
         'data': date.today().year,
     }
     return render(request, 'portfolio/novo_projeto.html', context)
@@ -173,54 +168,40 @@ def edita_projeto_view(request, projeto_slug):
     projeto = get_object_or_404(Projeto, slug=projeto_slug)
     ficha_tecnica = getattr(projeto, 'ficha_tecnica', None)
 
-    if request.method == 'POST':
-        projeto_form = ProjetoForm(request.POST, request.FILES, instance=projeto)
-        ficha_form = FichaTecnicaForm(request.POST, instance=ficha_tecnica)
-        imagem_formset = ImagemProjetoFormSet(request.POST, request.FILES, instance=projeto, prefix='imagens')
-        tecnologia_formset = ProjetoTecnologiaFormSet(request.POST, instance=projeto, prefix='tecnologias')
+    projeto_form = ProjetoForm(request.POST or None, request.FILES or None, instance=projeto)
+    ficha_form = FichaTecnicaForm(request.POST or None, instance=ficha_tecnica)
+    imagem_formset = ImagemProjetoFormSet(request.POST or None, request.FILES or None, instance=projeto, prefix='imagens')
+    award_formset = AwardFormSet(request.POST or None, instance=projeto, prefix='awards')
 
-        if (projeto_form.is_valid() and ficha_form.is_valid() and 
-            imagem_formset.is_valid() and tecnologia_formset.is_valid()):
-            
+    if request.method == 'POST':
+        if projeto_form.is_valid() and ficha_form.is_valid() and imagem_formset.is_valid() and award_formset.is_valid():
             projeto = projeto_form.save()
             
-            # Salvar ficha técnica
             ficha = ficha_form.save(commit=False)
             ficha.projeto = projeto
             ficha.save()
 
-            # Salvar imagens
             imagens = imagem_formset.save(commit=False)
             for imagem in imagens:
                 imagem.projeto = projeto
                 imagem.save()
-
-            # Processar imagens a deletar
             for obj in imagem_formset.deleted_objects:
                 obj.delete()
 
-            # Salvar tecnologias
-            tecnologias = tecnologia_formset.save(commit=False)
-            for tecnologia in tecnologias:
-                tecnologia.projeto = projeto
-                tecnologia.save()
-
-            # Processar tecnologias a deletar
-            for obj in tecnologia_formset.deleted_objects:
+            awards = award_formset.save(commit=False)
+            for award in awards:
+                award.projeto = projeto
+                award.save()
+            for obj in award_formset.deleted_objects:
                 obj.delete()
 
             return redirect('portfolio:projeto_path', projeto_slug=projeto.slug)
-    else:
-        projeto_form = ProjetoForm(instance=projeto)
-        ficha_form = FichaTecnicaForm(instance=ficha_tecnica)
-        imagem_formset = ImagemProjetoFormSet(instance=projeto, prefix='imagens')
-        tecnologia_formset = ProjetoTecnologiaFormSet(instance=projeto, prefix='tecnologias')
 
     context = {
         'form': projeto_form,
         'ficha_form': ficha_form,
         'imagens': imagem_formset,
-        'tecnologias': tecnologia_formset,
+        'awards': award_formset,
         'projeto': projeto,
         'data': date.today().year,
     }

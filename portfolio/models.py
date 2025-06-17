@@ -225,3 +225,24 @@ class Contacto(models.Model):
 
     def __str__(self):
         return f"{self.nome} - {self.assunto}"
+    
+class Award(models.Model):
+    projeto = models.ForeignKey(
+        Projeto,
+        on_delete=models.CASCADE,
+        related_name='awards'
+    )
+    titulo = models.CharField(
+        max_length=200,
+        help_text="Nome do prémio/reconhecimento do projeto"
+    )
+    ordem = models.IntegerField(
+        default=0,
+        help_text="Ordem de exibição"
+    )
+
+    class Meta:
+        ordering = ['ordem', 'titulo']
+
+    def __str__(self):
+        return f"{self.projeto.titulo} - {self.titulo}"

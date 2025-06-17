@@ -21,6 +21,12 @@ class ProjetoTecnologiaInline(admin.TabularInline):
     verbose_name = 'Tecnologia'
     verbose_name_plural = 'Tecnologias (controlo individual para cartão)'
     ordering = ['ordem_no_cartao', 'tecnologia__nome']
+    
+class AwardInline(admin.TabularInline):
+    model = Award
+    extra = 2
+    fields = ('titulo', 'ordem')
+    show_change_link = True
 
 class ProjetoAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'slug', 'disciplina', 'ordem')
@@ -29,7 +35,7 @@ class ProjetoAdmin(admin.ModelAdmin):
     list_filter = ('disciplina__nome',)
     list_editable = ('ordem',)  
     prepopulated_fields = {'slug': ('titulo',)}  
-    inlines = (ImagemProjetoInline, FichaTecnicaInline, ProjetoTecnologiaInline)
+    inlines = (ImagemProjetoInline, FichaTecnicaInline, AwardInline)
     
     fieldsets = (
         ('Informações Básicas', {

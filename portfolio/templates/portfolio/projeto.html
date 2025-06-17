@@ -96,6 +96,20 @@
         </div>
     {% endif %}
 
+    {% if projeto.awards.all %}
+    <div style="background: var(--card-bg); padding: 25px; border-radius: 15px; border: 2px solid #ffeb3b; margin-bottom: 30px;">
+        <h3 style="color: #ffeb3b; margin-bottom: 20px; font-size: 1.2rem;">HONORS & AWARDS</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            {% for award in projeto.awards.all %}
+                <div style="display: flex; align-items: center; gap: 12px; background: rgba(255,235,59,0.1); padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,235,59,0.3);">
+                    <span style="font-size: 1.2rem;">🏆</span>
+                    <span style="font-size: 0.9rem; color: var(--text-light); font-weight: 500;">{{ award.titulo }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
     
     <div style="background: linear-gradient(135deg, var(--card-bg), #1f2937); padding: 30px; border-radius: 15px; border: 3px solid var(--primary-gold);">
         
@@ -232,6 +246,18 @@ document.getElementById('imageModal').style.transition = 'opacity 0.3s ease-in-o
 #closeModal:hover {
     color: #f39c12 !important;
     transform: scale(1.1);
+}
+
+
+@keyframes trophy-glow {
+    0% { 
+        text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        transform: scale(1);
+    }
+    100% { 
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+        transform: scale(1.05);
+    }
 }
 
 @media (max-width: 768px) {
