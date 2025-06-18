@@ -135,15 +135,18 @@
             const area = getUsableScreenArea();
             const powerup1 = document.getElementById('powerup1');
             const powerup2 = document.getElementById('powerup2');
-            
+            const verticalMargin = 250;
+
             if (powerup1) {
-                powerup1.style.top = Math.random() * (area.bottom - area.top) + area.top + 'px';
-                powerup1.style.right = Math.random() * 100 + 50 + 'px';
+                const top = Math.random() * (window.innerHeight - 2 * verticalMargin) + verticalMargin;
+                powerup1.style.top = top + 'px';
+                powerup1.style.right = (Math.random() * 40 + 100) + 'px';
             }
-            
+
             if (powerup2) {
-                powerup2.style.bottom = Math.random() * (area.bottom - area.top - 100) + 100 + 'px';
-                powerup2.style.left = Math.random() * 100 + 50 + 'px';
+                const top = Math.random() * (window.innerHeight - 2 * verticalMargin) + verticalMargin;
+                powerup2.style.top = top + 'px';
+                powerup2.style.left = (Math.random() * 40 + 100) + 'px';
             }
         }
 
