@@ -101,13 +101,11 @@ USE_TZ = True
 
 # ========== STATIC FILES PYTHONANYWHERE ==========
 STATIC_URL = '/static/'
-STATIC_ROOT = '/home/rafaeljose/portfolio/static'
+STATIC_ROOT = '/home/rafaeljose/portfolio/Django/portfolio/static'
 
 STATICFILES_DIRS = [
     BASE_DIR / 'portfolio' / 'static',
 ]
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # ========== MEDIA FILES ==========
 MEDIA_URL = '/media/'
