@@ -108,7 +108,6 @@
     aspect-ratio: 16 / 9 !important;
     width: 280px !important;
     max-width: 280px !important;
-    min-height: 158px !important;
     box-shadow: 0 6px 20px rgba(0,0,0,0.25) !important;
 }
 
@@ -122,6 +121,8 @@
 .tech-project-card img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: center;
     transition: transform 0.4s ease;
 }
 
@@ -202,6 +203,7 @@
     background: #138f7a !important;
 }
 
+/* MOBILE OPTIMIZATIONS */
 @media (max-width: 768px) {
     .tech-section {
         font-family: 'Inter', sans-serif;
@@ -247,7 +249,7 @@
     .tech-project-card {
         width: calc(50% - 12.5px) !important;
         max-width: none !important;
-        min-height: 140px !important;
+        aspect-ratio: 16 / 9 !important;
         border-width: 2px !important;
         border-radius: 12px !important;
     }
@@ -293,7 +295,7 @@
     
     .tech-project-card {
         width: calc(50% - 10px) !important;
-        min-height: 120px !important;
+        aspect-ratio: 16 / 9 !important;
         border-radius: 10px !important;
     }
     
@@ -355,7 +357,7 @@
     
     .tech-project-card {
         width: calc(50% - 7.5px) !important;
-        min-height: 110px !important;
+        aspect-ratio: 16 / 9 !important;
         border-radius: 8px !important;
     }
     
@@ -390,7 +392,7 @@
     
     .tech-project-card {
         width: calc(50% - 6px) !important;
-        min-height: 100px !important;
+        aspect-ratio: 16 / 9 !important;
     }
     
     .tech-project-title {
