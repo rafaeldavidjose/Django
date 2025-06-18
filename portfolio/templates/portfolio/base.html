@@ -342,31 +342,22 @@
     </script>
     <script>
         function forceImageRenderingSmooth() {
-            
-            const allImages = document.querySelectorAll('img, [src], [style*="background-image"]');
-            
-            allImages.forEach(function(element) {
-                
-                element.style.imageRendering = 'auto';
-                element.style.imageRendering = 'smooth';
-                element.style.setProperty('image-rendering', 'auto', 'important');
-                element.style.setProperty('image-rendering', 'smooth', 'important');
-                element.style.setProperty('-ms-interpolation-mode', 'bicubic', 'important');
-                element.style.setProperty('-webkit-image-rendering', 'smooth', 'important');
-            });
-            
-            
-            const allElements = document.querySelectorAll('*');
-            allElements.forEach(function(element) {
-                const computedStyle = window.getComputedStyle(element);
-                if (computedStyle.backgroundImage && computedStyle.backgroundImage !== 'none') {
-                    element.style.setProperty('image-rendering', 'auto', 'important');
-                    element.style.setProperty('image-rendering', 'smooth', 'important');
-                }
-            });
-            
-            console.log('✅ Image rendering forçado para smooth em todas as imagens');
-        }
+        const allImages = document.querySelectorAll('img');
+
+        allImages.forEach(img => {
+            img.style.setProperty('image-rendering', 'auto', 'important');
+            img.style.maxWidth = '100%';
+            img.style.height = 'auto';
+        });
+
+        const allElements = document.querySelectorAll('*');
+        allElements.forEach(el => {
+            const computedStyle = window.getComputedStyle(el);
+            if (computedStyle.backgroundImage && computedStyle.backgroundImage !== 'none') {
+                el.style.setProperty('image-rendering', 'auto', 'important');
+            }
+        });
+    }
 
         
         document.addEventListener('DOMContentLoaded', forceImageRenderingSmooth);
