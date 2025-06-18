@@ -1,5 +1,3 @@
-
-
 .tech-section {
     font-family: 'Inter', sans-serif;
     max-width: 1000px;
@@ -19,7 +17,6 @@
     justify-content: center;
     margin-bottom: 30px;
 }
-
 
 .tech-logo-wrapper {
     background: white !important;
@@ -90,7 +87,6 @@
     margin-bottom: 30px;
     font-size: 1.8rem;
 }
-
 
 .tech-projects-grid {
     display: flex !important;
@@ -209,6 +205,66 @@
 @media (max-width: 768px) {
     .tech-section {
         font-family: 'Inter', sans-serif;
+        padding: 0 20px;
+    }
+    
+    .tech-title {
+        font-size: 2rem;
+        margin-bottom: 25px;
+    }
+    
+    .tech-logo-wrapper {
+        width: 240px !important;
+        height: 240px !important;
+        padding: 40px !important;
+        border-width: 3px !important;
+    }
+    
+    .tech-logo-placeholder {
+        font-size: 4rem !important;
+    }
+    
+    .tech-description-box {
+        padding: 25px;
+        margin-bottom: 25px;
+    }
+    
+    .tech-description-box h3 {
+        font-size: 1.2rem;
+    }
+    
+    .tech-projects-section h3 {
+        font-size: 1.6rem;
+        margin-bottom: 25px;
+    }
+    
+    .tech-projects-grid {
+        gap: 25px !important;
+        margin-top: 25px !important;
+        padding: 0 10px !important;
+    }
+    
+    .tech-project-card {
+        width: calc(50% - 12.5px) !important;
+        max-width: none !important;
+        min-height: 140px !important;
+        border-width: 2px !important;
+        border-radius: 12px !important;
+    }
+    
+    .tech-project-title {
+        font-size: 0.8rem !important;
+        padding: 20px 10px 8px !important;
+        letter-spacing: 0.2px !important;
+    }
+    
+    .tech-project-placeholder {
+        font-size: 2.2rem !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .tech-section {
         padding: 0 15px;
     }
     
@@ -217,14 +273,13 @@
     }
     
     .tech-logo-wrapper {
-        width: 220px !important;
-        height: 220px !important;
-        padding: 35px !important;
-        border-width: 3px !important;
+        width: 200px !important;
+        height: 200px !important;
+        padding: 30px !important;
     }
     
     .tech-logo-placeholder {
-        font-size: 3.5rem !important;
+        font-size: 3.2rem !important;
     }
     
     .tech-description-box {
@@ -232,33 +287,36 @@
     }
     
     .tech-projects-grid {
-        flex-direction: column !important;
-        align-items: center !important;
         gap: 20px !important;
+        padding: 0 5px !important;
     }
     
-    .tech-project-card,
-    .tech-project-card * {
-        font-family: 'Inter', sans-serif !important;
-        width: 100% !important;
-        max-width: 320px !important;
-        min-height: 180px !important;
-        border-width: 2px !important;
+    .tech-project-card {
+        width: calc(50% - 10px) !important;
+        min-height: 120px !important;
+        border-radius: 10px !important;
     }
-
     
     .tech-project-title {
-        font-size: 0.85rem !important;
-        padding: 20px 12px 10px !important;
+        font-size: 0.75rem !important;
+        padding: 15px 8px 6px !important;
     }
     
     .tech-project-placeholder {
-        font-family: 'Inter', sans-serif !important;
-        font-size: 2.5rem !important;
+        font-size: 1.8rem !important;
     }
 }
 
 @media (max-width: 480px) {
+    .tech-section {
+        padding: 0 12px;
+    }
+    
+    .tech-title {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+    
     .tech-logo-wrapper {
         width: 180px !important;
         height: 180px !important;
@@ -266,21 +324,81 @@
     }
     
     .tech-logo-placeholder {
-        font-size: 2.5rem !important;
+        font-size: 2.8rem !important;
+    }
+    
+    .tech-description-box {
+        padding: 18px;
+        border-radius: 12px;
+    }
+    
+    .tech-description-box h3 {
+        font-size: 1.1rem;
+        margin-bottom: 15px;
+    }
+    
+    .tech-description-box p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .tech-projects-section h3 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+    
+    .tech-projects-grid {
+        gap: 15px !important;
+        margin-top: 20px !important;
+        padding: 0 !important;
     }
     
     .tech-project-card {
-        width: 100% !important;
-        max-width: 280px !important;
-        min-height: 158px !important;
-    }
-    
-    .tech-project-placeholder {
-        font-size: 2rem !important;
+        width: calc(50% - 7.5px) !important;
+        min-height: 110px !important;
+        border-radius: 8px !important;
     }
     
     .tech-project-title {
-        font-size: 0.8rem !important;
-        padding: 18px 10px 8px !important;
+        font-size: 0.7rem !important;
+        padding: 12px 6px 4px !important;
+        letter-spacing: 0.1px !important;
+    }
+    
+    .tech-project-placeholder {
+        font-size: 1.5rem !important;
+    }
+    
+    .tech-no-projects {
+        padding: 25px 15px;
+        border-radius: 12px;
+    }
+    
+    .tech-no-projects h3 {
+        font-size: 1.1rem;
+    }
+    
+    .tech-no-projects p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .tech-projects-grid {
+        gap: 12px !important;
+    }
+    
+    .tech-project-card {
+        width: calc(50% - 6px) !important;
+        min-height: 100px !important;
+    }
+    
+    .tech-project-title {
+        font-size: 0.65rem !important;
+        padding: 10px 5px 3px !important;
+    }
+    
+    .tech-project-placeholder {
+        font-size: 1.3rem !important;
     }
 }
