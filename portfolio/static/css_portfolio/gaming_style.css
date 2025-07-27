@@ -14,7 +14,7 @@ img,
 .tech-card img,
 .card img,
 *[src*=".jpg"],
-*[src*=".jpeg"], 
+*[src*=".jpeg"],
 *[src*=".png"],
 *[src*=".gif"],
 *[src*=".webp"],
@@ -71,7 +71,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    min-height: 100dvh; 
+    min-height: 100dvh;
     position: relative;
 }
 
@@ -84,7 +84,7 @@ body::after {
     width: 100%;
     height: 100vh;
     height: 100dvh;
-    background: 
+    background:
         radial-gradient(2px 2px at 20px 30px, #eee, transparent),
         radial-gradient(2px 2px at 40px 70px, #ddd, transparent),
         radial-gradient(1px 1px at 50px 90px, #fff, transparent),
@@ -100,7 +100,7 @@ body::before {
 }
 
 body::after {
-    background: 
+    background:
         radial-gradient(1px 1px at 80px 120px, #fff, transparent),
         radial-gradient(2px 2px at 150px 50px, #ddd, transparent),
         radial-gradient(1px 1px at 30px 200px, #eee, transparent),
@@ -113,19 +113,19 @@ body::after {
 }
 
 @keyframes starsMove1 {
-    0% { 
-        transform: translateY(0); 
+    0% {
+        transform: translateY(0);
     }
-    100% { 
+    100% {
         transform: translateY(-150px);
     }
 }
 
 @keyframes starsMove2 {
-    0% { 
+    0% {
         transform: translateY(-75px);
     }
-    100% { 
+    100% {
         transform: translateY(-225px);
     }
 }
@@ -305,7 +305,7 @@ p {
     font-size: clamp(1.8rem, 4vw, 3rem);
     color: var(--primary-gold);
     margin-bottom: 20px;
-    text-shadow: 
+    text-shadow:
         3px 3px 0 #c87f0a,
         6px 6px 0 #000,
         6px 6px 20px rgba(243, 156, 18, 0.5);
@@ -787,7 +787,7 @@ footer p {
         width: 100%;
         overflow: hidden;
     }
-    
+
     body {
         position: fixed;
         top: 0;
@@ -799,19 +799,19 @@ footer p {
         overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
     }
-    
+
     body::before,
     body::after {
         position: fixed;
         height: 100vh;
         height: 100dvh;
     }
-    
+
     .power-up {
         position: fixed;
         z-index: 50;
     }
-    
+
     header {
         padding: 8px 0;
         min-height: auto;
@@ -821,7 +821,7 @@ footer p {
         width: 100%;
         z-index: 100;
     }
-    
+
     .header-content {
         flex-direction: column;
         gap: 10px;
@@ -829,14 +829,14 @@ footer p {
         text-align: center;
         justify-content: center;
     }
-    
+
     header h1,
     .header-title {
         margin-bottom: 8px !important;
         justify-content: center;
         font-size: 1.4rem !important;
     }
-    
+
     nav {
         justify-content: center;
         width: 100%;
@@ -844,7 +844,7 @@ footer p {
         flex-wrap: wrap;
         gap: 6px;
     }
-    
+
     nav a {
         font-size: 0.7rem !important;
         padding: 8px 12px !important;
@@ -852,7 +852,7 @@ footer p {
         white-space: nowrap;
         border-radius: 6px;
     }
-    
+
     footer {
         padding: 8px 15px !important;
         min-height: auto !important;
@@ -865,19 +865,19 @@ footer p {
         position: relative;
         width: 100%;
     }
-    
+
     footer p {
         font-size: 0.8rem !important;
         margin: 0 !important;
         line-height: 1.3 !important;
     }
-    
+
     .grid {
         grid-template-columns: 1fr;
         gap: 20px 20px;
         padding: 0 15px;
     }
-    
+
     .content {
         padding: 0 15px;
     }
@@ -889,7 +889,7 @@ footer p {
         width: 100%;
         overflow: hidden;
     }
-    
+
     body {
         position: fixed;
         top: 0;
@@ -902,14 +902,14 @@ footer p {
         -webkit-overflow-scrolling: touch;
         font-size: 10px;
     }
-    
+
     .power-up {
         position: fixed;
         font-size: 20px;
         z-index: 50;
         animation: powerUpFloat 5s ease-in-out infinite;
     }
-    
+
     header {
         padding: 6px 0;
         position: sticky;
@@ -917,25 +917,25 @@ footer p {
         width: 100%;
         z-index: 100;
     }
-    
+
     .header-content {
         padding: 3px 10px;
         gap: 8px;
     }
-    
+
     .header-title {
         font-size: 1.2rem !important;
     }
-    
+
     nav {
         gap: 4px;
     }
-    
+
     nav a {
         font-size: 0.65rem !important;
         padding: 6px 10px !important;
     }
-    
+
     footer {
         padding: 6px 10px !important;
         font-size: 0.75rem !important;
@@ -943,15 +943,15 @@ footer p {
         position: relative;
         width: 100%;
     }
-    
+
     footer p {
         font-size: 0.75rem !important;
     }
-    
+
     .card {
         padding: 15px;
     }
-    
+
     form {
         padding: 20px;
     }

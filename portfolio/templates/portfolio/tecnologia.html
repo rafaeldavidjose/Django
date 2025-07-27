@@ -7,7 +7,7 @@
 
 {% block main %}
 <section class="tech-section">
-    <h2 class="tech-title">{{ tecnologia.nome }}</h2>
+    <h2 style="text-align: center; font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 10px; text-shadow: 3px 3px 0 #000;">{{ tecnologia.nome }}</h2>
 
     <div class="tech-logo-container">
         <div class="tech-logo-wrapper">
@@ -41,7 +41,7 @@
                         {% else %}
                             <div class="tech-project-placeholder">🎮</div>
                         {% endif %}
-                        
+
                         <div class="tech-project-title">{{ projeto.titulo }}</div>
                         <div class="tech-project-overlay"></div>
                     </a>
