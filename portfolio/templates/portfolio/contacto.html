@@ -108,41 +108,41 @@
     .contact-wrapper {
         padding: 0 15px;
     }
-    
+
     .contact-header {
         margin-bottom: 30px;
     }
-    
+
     .contact-header h2 {
         font-size: 2rem;
         margin-bottom: 20px;
     }
-    
+
     .contact-intro {
         font-size: 0.9rem;
         padding: 0 10px;
         line-height: 1.6;
         margin-bottom: 20px;
     }
-    
+
     .contact-info {
         padding: 25px;
         margin-top: 30px;
         border-radius: 12px;
     }
-    
+
     .contact-info h3 {
         font-size: 1.1rem;
         margin-bottom: 20px;
     }
-    
+
     .contact-methods {
         flex-direction: column;
         gap: 15px;
         align-items: center;
         margin-top: 20px;
     }
-    
+
     .contact-method {
         width: 100%;
         max-width: 280px;
@@ -151,7 +151,7 @@
         font-size: 0.85rem;
         border-radius: 10px;
     }
-    
+
     .contact-method span {
         font-size: 1.1rem;
     }
@@ -161,34 +161,34 @@
     .contact-wrapper {
         padding: 0 10px;
     }
-    
+
     .contact-header h2 {
         font-size: 1.6rem;
         margin-bottom: 15px;
     }
-    
+
     .contact-intro {
         font-size: 0.8rem;
         padding: 0 5px;
         line-height: 1.5;
     }
-    
+
     .contact-info {
         padding: 20px;
         margin-top: 25px;
     }
-    
+
     .contact-info h3 {
         font-size: 1rem;
         margin-bottom: 15px;
     }
-    
+
     .contact-method {
         max-width: 100%;
         padding: 10px 12px;
         font-size: 0.8rem;
     }
-    
+
     .contact-method span {
         font-size: 1rem;
     }
@@ -205,18 +205,18 @@
         </p>
     </div>
 
-    
+
     <div id="successMessage" class="success-message">
         ✅ Message sent successfully! I'll get back to you as soon as I can.
     </div>
-    
+
     <div id="errorMessage" class="error-message">
         ❌ Failed to send message. Please try again or email me directly at rafaeldavidjose.dev@gmail.com
     </div>
 
-    
+
     <form id="contactForm" class="contact-form">
-        
+
         <div id="loadingOverlay" class="loading-overlay">
             <div class="loading-spinner"></div>
             <span>Sending your message...</span>
@@ -224,25 +224,25 @@
 
         <div class="form-row">
             <label for="from_name">Your Name</label>
-            <input type="text" id="from_name" name="from_name" required 
+            <input type="text" id="from_name" name="from_name" required
                    placeholder="Enter your full name...">
         </div>
 
         <div class="form-row">
             <label for="reply_to">Your Email</label>
-            <input type="email" id="reply_to" name="reply_to" required 
+            <input type="email" id="reply_to" name="reply_to" required
                    placeholder="your.email@example.com">
         </div>
 
         <div class="form-row">
             <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" required 
+            <input type="text" id="subject" name="subject" required
                    placeholder="What would you like to discuss?">
         </div>
 
         <div class="form-row">
             <label for="message">Message</label>
-            <textarea id="message" name="message" rows="6" required 
+            <textarea id="message" name="message" rows="6" required
                       placeholder="Write your message here..."></textarea>
         </div>
 
@@ -253,7 +253,7 @@
         </div>
     </form>
 
-    
+
     <div class="contact-info">
         <h3>Other Ways to Reach Me</h3>
         <div class="contact-methods">
@@ -264,10 +264,6 @@
             <a href="https://linkedin.com/in/rafaeldavidjose" target="_blank" class="contact-method">
                 <span>💼</span>
                 <span class="contact-text">LinkedIn</span>
-            </a>
-            <a href="https://github.com/rafaeldavidjose" target="_blank" class="contact-method">
-                <span>💻</span>
-                <span class="contact-text">GitHub</span>
             </a>
         </div>
         <p style="margin-top: 25px; font-size: 0.9rem; color: var(--text-light); line-height: 1.6;">
@@ -285,40 +281,40 @@
 
 document.getElementById('contactForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    
-    
+
+
     const submitBtn = document.getElementById('submitBtn');
     const successMsg = document.getElementById('successMessage');
     const errorMsg = document.getElementById('errorMessage');
     const loadingOverlay = document.getElementById('loadingOverlay');
     const form = this;
-    
-    
+
+
     const name = document.getElementById('from_name').value.trim();
     const email = document.getElementById('reply_to').value.trim();
     const subject = document.getElementById('subject').value.trim();
     const message = document.getElementById('message').value.trim();
-    
+
     if (!name || !email || !subject || !message) {
         showError('Please fill in all fields.');
         return;
     }
-    
-    
+
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         showError('Please enter a valid email address.');
         return;
     }
-    
-    
+
+
     hideMessages();
-    
-    
+
+
     loadingOverlay.style.display = 'flex';
     submitBtn.disabled = true;
-    
-    
+
+
     emailjs.sendForm(
         'service_s4agymn',
         'template_tsijrr4',
@@ -328,7 +324,7 @@ document.getElementById('contactForm').addEventListener('submit', function(event
         hideLoading();
         showSuccess();
         form.reset();
-        
+
     }).catch(function(error) {
         console.error('EmailJS error:', error);
         hideLoading();
@@ -366,7 +362,7 @@ document.querySelectorAll('input, textarea').forEach(input => {
         this.style.borderColor = 'var(--primary-gold)';
         this.style.boxShadow = '0 0 10px rgba(243, 156, 18, 0.3)';
     });
-    
+
     input.addEventListener('blur', function() {
         this.style.borderColor = '#444';
         this.style.boxShadow = 'none';
