@@ -1096,3 +1096,51 @@ body .grid .tech-card .card-buttons,
     opacity: 1 !important;
     transform: translateY(0) !important;
 }
+
+.section-header {
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    color: var(--primary-red);
+    text-shadow: 3px 3px 0 #000;
+    margin-bottom: 15px; /* Reduzido para diminuir espaço entre título e parágrafo */
+    font-family: 'Rajdhani', 'Inter', sans-serif;
+}
+
+.section-header p {
+    margin-bottom: 10px; /* Padrão consistente para todas as páginas */
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-light);
+}
+
+/* Media queries para manter consistência em mobile */
+@media (max-width: 768px) {
+    .section-header {
+        margin-bottom: 15px;
+    }
+
+    .section-header h2 {
+        margin-bottom: 12px;
+    }
+
+    .section-header p {
+        margin-bottom: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-header {
+        margin-bottom: 12px;
+    }
+
+    .section-header h2 {
+        margin-bottom: 10px;
+    }
+
+    .section-header p {
+        margin-bottom: 6px;
+    }
+}

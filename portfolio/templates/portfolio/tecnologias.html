@@ -8,7 +8,7 @@
 {% block main %}
 <div class="section-header">
     <h2>DEVELOPMENT STACK</h2>
-    <p>The tools, frameworks, and technologies I use to build interactive experiences and systems.</p>
+    <p style="margin-bottom: -25px">The tools, frameworks, and technologies I use to build interactive experiences and systems.</p>
 </div>
 
 <div class="grid">
@@ -24,7 +24,7 @@
             <div class="tech-card-content">
                 <h3 class="tech-card-title">{{ tecnologia.nome }}</h3>
                 <p>{{ tecnologia.descricao|truncatechars:145 }}</p>
-                
+
                 {% if tecnologia.projetos.count > 0 %}
                     <div class="tech-count-wrapper">
                         <span class="tech-count">
@@ -33,7 +33,7 @@
                     </div>
                 {% endif %}
             </div>
-            
+
             <div class="card-buttons">
                 <a href="{% url 'portfolio:tecnologia_path' tecnologia_slug=tecnologia.slug %}" class="custom-button">VIEW DETAILS</a>
                 {% if tecnologia.link %}

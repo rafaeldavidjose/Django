@@ -8,7 +8,7 @@
 {% block main %}
 <div class="section-header">
     <h2>MY PROJECTS</h2>
-    <p>A collection of games, interactive applications, and prototypes showcasing various development approaches and technologies.</p>
+    <p style="margin-bottom: -25px">A collection of games, interactive applications, and prototypes showcasing various development approaches and technologies.</p>
 </div>
 
 <div class="grid">
@@ -24,7 +24,7 @@
             <div class="project-card-content">
                 <h3 class="project-card-title">{{ projeto.titulo }}</h3>
                 <p>{{ projeto.descricao|truncatechars:117 }}</p>
-                
+
                 <div class="tech-tags">
                     {% with tecnologias_cartao=projeto.tecnologias_para_cartao %}
                         {% if tecnologias_cartao %}
@@ -54,7 +54,7 @@
                         {% endif %}
                     {% endwith %}
                 </div>
-                
+
                 <div class="card-buttons">
                     <a href="{% url 'portfolio:projeto_path' projeto_slug=projeto.slug %}" class="custom-button">DETAILS</a>
                     {% if projeto.link_itch %}
