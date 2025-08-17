@@ -45,7 +45,6 @@ form select:focus {
     box-shadow: 0 0 10px rgba(243, 156, 18, 0.3);
 }
 
-
 form input[type="file"] {
     display: block;
     width: 100%;
@@ -74,7 +73,6 @@ form textarea {
     resize: vertical;
 }
 
-
 form select {
     cursor: pointer;
     appearance: none;
@@ -84,7 +82,6 @@ form select {
     background-size: 16px;
     padding-right: 40px;
 }
-
 
 form ul {
     list-style: none;
@@ -125,7 +122,6 @@ form ul li input[type="radio"] {
     accent-color: var(--primary-gold);
 }
 
-
 form .custom-button {
     font-size: clamp(0.7rem, 1vw, 0.9rem);
     color: var(--text-light);
@@ -155,7 +151,6 @@ form .custom-button:hover {
     text-decoration: none;
 }
 
-
 input[type="submit"] {
     align-self: center;
     background-color: var(--primary-gold);
@@ -178,7 +173,6 @@ input[type="submit"]:hover {
     box-shadow: 0 0 20px rgba(243, 156, 18, 0.5);
 }
 
-
 .success-message {
     background: linear-gradient(135deg, var(--primary-green), #229954);
     color: white;
@@ -193,6 +187,7 @@ input[type="submit"]:hover {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    font-family: 'Inter', sans-serif;
 }
 
 .error-message {
@@ -209,6 +204,7 @@ input[type="submit"]:hover {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    font-family: 'Inter', sans-serif;
 }
 
 .error-message p {
@@ -229,7 +225,6 @@ input[type="submit"]:hover {
         box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
     }
 }
-
 
 .loading-overlay {
     position: absolute;
@@ -276,7 +271,6 @@ input[type="submit"]:hover {
     }
 }
 
-
 .form-row {
     width: 100%;
     text-align: left;
@@ -302,7 +296,6 @@ input[type="submit"]:hover {
     background: rgba(243, 156, 18, 0.05);
 }
 
-
 .danger-button {
     background-color: #c74c4c !important;
     color: white !important;
@@ -314,7 +307,6 @@ input[type="submit"]:hover {
     box-shadow: 0 0 20px rgba(231, 76, 60, 0.5) !important;
 }
 
-
 .button-wrapper {
     display: flex;
     justify-content: center;
@@ -323,7 +315,6 @@ input[type="submit"]:hover {
     margin-top: 20px;
     flex-wrap: wrap;
 }
-
 
 @media (max-width: 768px) {
     form {

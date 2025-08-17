@@ -15,7 +15,7 @@
 
     {% block extra_styles %}
     {% endblock %}
-    
+
     <style>
     html {
         overflow-x: hidden !important;
@@ -76,7 +76,7 @@
                 <a href="{% url 'portfolio:interesses' %}">INTERESTS</a>
                 <a href="{% url 'portfolio:projetos' %}">PROJECTS</a>
                 <a href="{% url 'portfolio:tecnologias' %}">TOOLS</a>
-                <a href="{% url 'portfolio:cv' %}">CV</a>
+                <a href="{% url 'portfolio:cv' %}">RESUME</a>
                 <a href="{% url 'portfolio:contacto' %}">CONTACT</a>
                 {% if request.user.is_authenticated %}
                     <a href="{% url 'admin:logout' %}">LOGOUT 👤{{request.user.username}}</a>
@@ -106,7 +106,7 @@
     </footer>
 
     <script>
-        
+
         function showAchievement(text = "Portfolio Explorer") {
             const achievement = document.getElementById('achievement');
             achievement.innerHTML = `🏆 ACHIEVEMENT UNLOCKED!<br>"${text}"`;
@@ -116,13 +116,13 @@
             }, 4000);
         }
 
-        
+
         function getUsableScreenArea() {
             const header = document.querySelector('header');
             const footer = document.querySelector('footer');
             const headerHeight = header ? header.offsetHeight : 60;
             const footerHeight = footer ? footer.offsetHeight : 40;
-            
+
             return {
                 top: headerHeight + 20,
                 bottom: window.innerHeight - footerHeight - 60,
@@ -150,14 +150,14 @@
             }
         }
 
-        
+
         document.addEventListener('DOMContentLoaded', positionPowerUps);
         window.addEventListener('resize', positionPowerUps);
 
-        
+
         let score = parseInt(localStorage.getItem('portfolioScore') || '0');
-        
-        
+
+
         const achievementFlags = {
             achievement100: localStorage.getItem('achievement100') === 'true',
             achievement300: localStorage.getItem('achievement300') === 'true',
@@ -180,13 +180,13 @@
             localStorage.setItem('portfolioScore', score);
             document.getElementById('score').textContent = score;
             element.style.display = 'none';
-            
-            
+
+
             if (score === 100 && !achievementFlags.achievement100) {
                 showAchievement("First Steps!");
                 localStorage.setItem('achievement100', 'true');
                 achievementFlags.achievement100 = true;
-            } 
+            }
             else if (score === 300 && !achievementFlags.achievement300) {
                 showAchievement("Getting Started!");
                 localStorage.setItem('achievement300', 'true');
@@ -237,8 +237,8 @@
                 localStorage.setItem('achievement10000', 'true');
                 achievementFlags.achievement10000 = true;
             }
-            
-            
+
+
             setTimeout(() => {
                 element.style.display = 'block';
                 element.style.top = Math.random() * (window.innerHeight - 100) + 'px';
@@ -246,7 +246,7 @@
             }, 5000);
         }
 
-        
+
         let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
         let konamiIndex = 0;
 
@@ -259,13 +259,13 @@
                         localStorage.setItem('konamiMaster', 'true');
                         achievementFlags.konamiMaster = true;
                     }
-                    
+
                     score += 1000;
                     localStorage.setItem('portfolioScore', score);
                     document.getElementById('score').textContent = score;
                     konamiIndex = 0;
-                    
-                    
+
+
                     document.body.style.filter = 'hue-rotate(360deg)';
                     setTimeout(() => {
                         document.body.style.filter = 'none';
@@ -276,7 +276,7 @@
             }
         });
 
-        
+
         document.addEventListener('mousemove', (e) => {
             const powerUps = document.querySelectorAll('.power-up');
             powerUps.forEach(powerUp => {
@@ -285,7 +285,7 @@
                     Math.pow(e.clientX - (rect.left + rect.width / 2), 2) +
                     Math.pow(e.clientY - (rect.top + rect.height / 2), 2)
                 );
-                
+
                 if (distance < 100) {
                     powerUp.style.transform = `scale(${1.5 - distance / 100})`;
                 } else {
@@ -294,45 +294,45 @@
             });
         });
 
-        
+
         document.addEventListener('DOMContentLoaded', () => {
-            
+
             setTimeout(() => {
-                
+
                 const elements = document.querySelectorAll('.card:not(.animation-applied), .project-card:not(.animation-applied), .tech-card:not(.animation-applied)');
-                
+
                 if (elements.length > 0) {
                     elements.forEach((el, index) => {
-                        
+
                         el.classList.add('animation-applied');
-                        
-                        
+
+
                         el.style.opacity = '0';
                         el.style.transform = 'translateY(30px)';
                         el.style.transition = 'all 0.6s ease';
-                        
-                        
+
+
                         setTimeout(() => {
                             el.style.opacity = '1';
                             el.style.transform = 'translateY(0)';
-                        }, index * 100 + 50); 
+                        }, index * 100 + 50);
                     });
                 }
 
-                
+
                 const grids = document.querySelectorAll('.grid');
                 grids.forEach(grid => {
-                    const items = Array.from(grid.children).filter(child => 
-                        child.classList.contains('card') || 
-                        child.classList.contains('project-card') || 
+                    const items = Array.from(grid.children).filter(child =>
+                        child.classList.contains('card') ||
+                        child.classList.contains('project-card') ||
                         child.classList.contains('tech-card')
                     );
-                    
-                    
+
+
                     const hasTechCards = grid.querySelector('.tech-card');
-                    
+
                     if (items.length % 2 === 1 && !hasTechCards) {
-                        
+
                         const lastItem = items[items.length - 1];
                         if (lastItem) {
                             lastItem.style.gridColumn = '1 / -1';
@@ -340,7 +340,7 @@
                         }
                     }
                 });
-            }, 100); 
+            }, 100);
         });
     </script>
     <script>
@@ -362,16 +362,16 @@
         });
     }
 
-        
+
         document.addEventListener('DOMContentLoaded', forceImageRenderingSmooth);
 
-        
+
         window.addEventListener('load', forceImageRenderingSmooth);
 
-        
+
         setInterval(forceImageRenderingSmooth, 2000);
 
-        
+
         const observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
                 if (mutation.addedNodes.length > 0) {
