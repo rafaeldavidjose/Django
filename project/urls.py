@@ -22,9 +22,8 @@ from django.conf.urls.static import static
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    path('', RedirectView.as_view(url='/portfolio/', permanent=True), name='home'),
     path("admin/", admin.site.urls),
-    path("portfolio/", include("portfolio.urls")),
+    path("", include("portfolio.urls")),
 ]
 
 urlpatterns += static(

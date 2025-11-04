@@ -65,6 +65,13 @@
             font-size: 20px;
         }
     }
+
+    /* Esconder mini-jogo e score em mobile/touch */
+    @media (hover: none) and (pointer: coarse), (max-width: 768px) {
+      .power-up,
+      .achievement,
+      .score-line { display: none !important; }
+    }
     </style>
 </head>
 <body>
@@ -101,13 +108,21 @@
     </div>
 
     <footer>
-        <p>&copy; {{ data }} Rafael José, Junior Gameplay Developer.</p>
-        <p>Score: <span id="score">0</span> points</p>
+        <p>&copy; {{ data }} Rafael José, Gameplay Progammer.</p>
+        <p class="score-line">Score: <span id="score">0</span> points</p>
     </footer>
 
     <script>
+        /* Neutralizar mini-jogo em mobile/touch */
+        const IS_MOBILE = window.matchMedia('(hover: none) and (pointer: coarse), (max-width: 768px)').matches;
+        if (IS_MOBILE) {
+          document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.power-up, #achievement').forEach(el => el.style.display = 'none');
+          });
+        }
 
         function showAchievement(text = "Portfolio Explorer") {
+            if (IS_MOBILE) return;
             const achievement = document.getElementById('achievement');
             achievement.innerHTML = `🏆 ACHIEVEMENT UNLOCKED!<br>"${text}"`;
             achievement.classList.add('show');
@@ -115,7 +130,6 @@
                 achievement.classList.remove('show');
             }, 4000);
         }
-
 
         function getUsableScreenArea() {
             const header = document.querySelector('header');
@@ -132,6 +146,7 @@
         }
 
         function positionPowerUps() {
+            if (IS_MOBILE) return;
             const area = getUsableScreenArea();
             const powerup1 = document.getElementById('powerup1');
             const powerup2 = document.getElementById('powerup2');
@@ -150,13 +165,12 @@
             }
         }
 
-
-        document.addEventListener('DOMContentLoaded', positionPowerUps);
-        window.addEventListener('resize', positionPowerUps);
-
+        if (!IS_MOBILE) {
+            document.addEventListener('DOMContentLoaded', positionPowerUps);
+            window.addEventListener('resize', positionPowerUps);
+        }
 
         let score = parseInt(localStorage.getItem('portfolioScore') || '0');
-
 
         const achievementFlags = {
             achievement100: localStorage.getItem('achievement100') === 'true',
@@ -173,14 +187,15 @@
             konamiMaster: localStorage.getItem('konamiMaster') === 'true'
         };
 
-        document.getElementById('score').textContent = score;
+        const scoreEl = document.getElementById('score');
+        if (scoreEl) scoreEl.textContent = score;
 
         function collectPowerUp(element) {
+            if (IS_MOBILE) return;
             score += 100;
             localStorage.setItem('portfolioScore', score);
-            document.getElementById('score').textContent = score;
+            if (scoreEl) scoreEl.textContent = score;
             element.style.display = 'none';
-
 
             if (score === 100 && !achievementFlags.achievement100) {
                 showAchievement("First Steps!");
@@ -238,7 +253,6 @@
                 achievementFlags.achievement10000 = true;
             }
 
-
             setTimeout(() => {
                 element.style.display = 'block';
                 element.style.top = Math.random() * (window.innerHeight - 100) + 'px';
@@ -246,79 +260,69 @@
             }, 5000);
         }
 
-
         let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
         let konamiIndex = 0;
 
-        document.addEventListener('keydown', (e) => {
-            if (e.code === konamiCode[konamiIndex]) {
-                konamiIndex++;
-                if (konamiIndex === konamiCode.length) {
-                    if (!achievementFlags.konamiMaster) {
-                        showAchievement("Konami Code Master!");
-                        localStorage.setItem('konamiMaster', 'true');
-                        achievementFlags.konamiMaster = true;
+        if (!IS_MOBILE) {
+            document.addEventListener('keydown', (e) => {
+                if (e.code === konamiCode[konamiIndex]) {
+                    konamiIndex++;
+                    if (konamiIndex === konamiCode.length) {
+                        if (!achievementFlags.konamiMaster) {
+                            showAchievement("Konami Code Master!");
+                            localStorage.setItem('konamiMaster', 'true');
+                            achievementFlags.konamiMaster = true;
+                        }
+
+                        score += 1000;
+                        localStorage.setItem('portfolioScore', score);
+                        if (scoreEl) scoreEl.textContent = score;
+                        konamiIndex = 0;
+
+                        document.body.style.filter = 'hue-rotate(360deg)';
+                        setTimeout(() => {
+                            document.body.style.filter = 'none';
+                        }, 2000);
                     }
-
-                    score += 1000;
-                    localStorage.setItem('portfolioScore', score);
-                    document.getElementById('score').textContent = score;
-                    konamiIndex = 0;
-
-
-                    document.body.style.filter = 'hue-rotate(360deg)';
-                    setTimeout(() => {
-                        document.body.style.filter = 'none';
-                    }, 2000);
-                }
-            } else {
-                konamiIndex = 0;
-            }
-        });
-
-
-        document.addEventListener('mousemove', (e) => {
-            const powerUps = document.querySelectorAll('.power-up');
-            powerUps.forEach(powerUp => {
-                const rect = powerUp.getBoundingClientRect();
-                const distance = Math.sqrt(
-                    Math.pow(e.clientX - (rect.left + rect.width / 2), 2) +
-                    Math.pow(e.clientY - (rect.top + rect.height / 2), 2)
-                );
-
-                if (distance < 100) {
-                    powerUp.style.transform = `scale(${1.5 - distance / 100})`;
                 } else {
-                    powerUp.style.transform = 'scale(1)';
+                    konamiIndex = 0;
                 }
             });
-        });
 
+            document.addEventListener('mousemove', (e) => {
+                const powerUps = document.querySelectorAll('.power-up');
+                powerUps.forEach(powerUp => {
+                    const rect = powerUp.getBoundingClientRect();
+                    const distance = Math.sqrt(
+                        Math.pow(e.clientX - (rect.left + rect.width / 2), 2) +
+                        Math.pow(e.clientY - (rect.top + (rect.height / 2)), 2)
+                    );
+
+                    if (distance < 100) {
+                        powerUp.style.transform = `scale(${1.5 - distance / 100})`;
+                    } else {
+                        powerUp.style.transform = 'scale(1)';
+                    }
+                });
+            });
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
-
             setTimeout(() => {
-
                 const elements = document.querySelectorAll('.card:not(.animation-applied), .project-card:not(.animation-applied), .tech-card:not(.animation-applied)');
 
                 if (elements.length > 0) {
                     elements.forEach((el, index) => {
-
                         el.classList.add('animation-applied');
-
-
                         el.style.opacity = '0';
                         el.style.transform = 'translateY(30px)';
                         el.style.transition = 'all 0.6s ease';
-
-
                         setTimeout(() => {
                             el.style.opacity = '1';
                             el.style.transform = 'translateY(0)';
                         }, index * 100 + 50);
                     });
                 }
-
 
                 const grids = document.querySelectorAll('.grid');
                 grids.forEach(grid => {
@@ -328,11 +332,9 @@
                         child.classList.contains('tech-card')
                     );
 
-
                     const hasTechCards = grid.querySelector('.tech-card');
 
                     if (items.length % 2 === 1 && !hasTechCards) {
-
                         const lastItem = items[items.length - 1];
                         if (lastItem) {
                             lastItem.style.gridColumn = '1 / -1';
@@ -362,15 +364,9 @@
         });
     }
 
-
         document.addEventListener('DOMContentLoaded', forceImageRenderingSmooth);
-
-
         window.addEventListener('load', forceImageRenderingSmooth);
-
-
         setInterval(forceImageRenderingSmooth, 2000);
-
 
         const observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {

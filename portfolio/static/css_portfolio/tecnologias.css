@@ -6,7 +6,7 @@
 }
 
 .tech-count-wrapper {
-    margin-bottom: 0px !important; 
+    margin-bottom: 0px !important;
 }
 
 
@@ -16,8 +16,8 @@
     padding: 4px 8px;
     border-radius: 4px;
     color: white;
-    font-family: 'Inter', sans-serif !important; 
-    margin-bottom: 15px !important; 
+    font-family: 'Inter', sans-serif !important;
+    margin-bottom: 15px !important;
 }
 
 .no-data-icon {
@@ -27,7 +27,7 @@
 
 .add-button {
     background: var(--primary-green) !important;
-    font-family: 'Inter', sans-serif !important; 
+    font-family: 'Inter', sans-serif !important;
 }
 
 .add-button:hover {
@@ -71,9 +71,9 @@ body .grid .tech-card::before,
 body .grid .tech-card:hover,
 .grid .tech-card:hover,
 .tech-card:hover {
-    border-color: var(--primary-gold) !important; 
-    transform: none !important; 
-    box-shadow: none !important; 
+    border-color: var(--primary-gold) !important;
+    transform: none !important;
+    box-shadow: none !important;
 }
 
 
@@ -96,7 +96,7 @@ body .grid .tech-card:hover::before,
     text-align: center !important;
     display: flex !important;
     flex-direction: column !important;
-    flex-grow: 1 !important; 
+    flex-grow: 1 !important;
 }
 
 .tech-card h3 {
@@ -113,7 +113,7 @@ body .grid .tech-card:hover::before,
     color: var(--text-light) !important;
     margin-bottom: 15px !important;
     font-family: 'Inter', sans-serif !important;
-    flex-grow: 1 !important; 
+    flex-grow: 1 !important;
 }
 
 
@@ -126,7 +126,7 @@ body .grid .tech-card:hover::before,
     justify-content: center !important;
     align-items: center !important;
     margin: 20px auto !important;
-    flex-shrink: 0 !important; 
+    flex-shrink: 0 !important;
 }
 
 .tech-card img {
@@ -139,7 +139,7 @@ body .grid .tech-card:hover::before,
     font-size: clamp(0.8rem, 1.2vw, 1rem);
     color: var(--primary-gold);
     margin-bottom: 15px;
-    font-family: 'Rajdhani', 'Inter', sans-serif !important; 
+    font-family: 'Rajdhani', 'Inter', sans-serif !important;
 }
 
 
@@ -147,7 +147,7 @@ body .grid .tech-card:hover::before,
     display: flex !important;
     gap: 10px !important;
     justify-content: center !important;
-    margin-top: auto !important; 
+    margin-top: auto !important;
     padding: 0 20px 20px !important;
 }
 
@@ -169,7 +169,7 @@ body .grid .tech-card:hover::before,
     pointer-events: auto !important;
     position: relative;
     z-index: 10;
-    font-family: 'Inter', sans-serif !important; 
+    font-family: 'Inter', sans-serif !important;
 }
 
 .tech-external-link:hover {
@@ -182,17 +182,17 @@ body .grid .tech-card:hover::before,
 
 
 .no-data h3 {
-    font-family: 'Rajdhani', 'Inter', sans-serif !important; 
+    font-family: 'Rajdhani', 'Inter', sans-serif !important;
 }
 
 .no-data p {
-    font-family: 'Inter', sans-serif !important; 
+    font-family: 'Inter', sans-serif !important;
 }
 
 
 @keyframes shine {
-    0%, 100% { 
-        opacity: 0 !important; 
+    0%, 100% {
+        opacity: 0 !important;
         display: none !important;
         visibility: hidden !important;
     }

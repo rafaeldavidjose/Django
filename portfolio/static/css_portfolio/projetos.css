@@ -65,6 +65,7 @@
 }
 
 .project-image-wrapper {
+    font-family: 'Rajdhani', sans-serif;
     width: 100%;
     aspect-ratio: 16 / 9;
     overflow: hidden;
@@ -129,6 +130,7 @@
 
 @supports not (aspect-ratio: 1 / 1) {
     .project-image-wrapper {
+        font-family: 'Rajdhani', sans-serif;
         height: 0;
         padding-top: 56.25%;
         position: relative;

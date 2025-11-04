@@ -105,7 +105,7 @@ main {
 }
 
 .content h2, .content h3 {
-    font-family: 'Rajdhani', 'Inter', sans-serif; 
+    font-family: 'Rajdhani', 'Inter', sans-serif;
     color: #bb86fc;
     margin-bottom: 15px;
 }
@@ -124,7 +124,7 @@ main {
     line-height: 1.6;
     margin-bottom: 10px;
     font-size: clamp(1rem, 1.1vw, 1.1rem);
-    font-family: 'Inter', sans-serif; 
+    font-family: 'Inter', sans-serif;
 }
 
 .content ul {
@@ -147,12 +147,12 @@ footer {
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
-    font-family: 'Inter', sans-serif; 
+    font-family: 'Inter', sans-serif;
 }
 
 footer p {
     margin: 0;
-    font-family: 'Inter', sans-serif; 
+    font-family: 'Inter', sans-serif;
 }
 
 /* Common Card Styles */
@@ -181,7 +181,7 @@ footer p {
     font-weight: normal !important;
     transition: 0.3s !important;
     display: inline-block !important;
-    font-family: 'Inter', sans-serif !important; 
+    font-family: 'Inter', sans-serif !important;
 }
 
 .custom-button:hover {
@@ -223,12 +223,12 @@ footer p {
         gap: 10px;
         padding: 10px;
     }
-    
+
     nav {
         justify-content: center;
         width: 100%;
     }
-    
+
     .content {
         padding: 0 15px;
     }

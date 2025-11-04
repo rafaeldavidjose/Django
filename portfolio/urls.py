@@ -18,6 +18,6 @@ urlpatterns = [
     path('technologies/new/', views.nova_tecnologia_view, name="nova_tecnologia"),
     path('technologies/<slug:tecnologia_slug>/edit/', views.edita_tecnologia_view, name="edita_tecnologia"),
     path('technologies/<slug:tecnologia_slug>/delete/', views.apaga_tecnologia_view, name="apaga_tecnologia"),
-    path('cv/', views.cv_view, name='cv'),
+    path('resume/', views.cv_view, name='cv'),
     path('contact/', views.contacto_view, name='contacto'),
 ]
