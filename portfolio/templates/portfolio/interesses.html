@@ -1,0 +1,51 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/interesses.css' %}">
+{% endblock %}
+
+{% block main %}
+<div class="section-header">
+    <h2>CORE INTERESTS</h2>
+    <p style="margin-bottom: 30px; margin-top: 25px">The technical areas and development approaches that motivate my work in interactive development.</p>
+</div>
+
+<div class="interests-grid">
+    <div class="interest-item">
+        <div class="interest-icon">⚙️</div>
+        <strong>Gameplay Programming</strong>
+        <p>Building responsive game mechanics, player controllers, and interaction systems that create engaging experiences.</p>
+    </div>
+
+    <div class="interest-item">
+        <div class="interest-icon">🧠</div>
+        <strong>AI & Behavior Systems</strong>
+        <p>Creating intelligent NPCs, pathfinding solutions, and adaptive behaviors that challenge players.</p>
+    </div>
+
+    <div class="interest-item">
+        <div class="interest-icon">🎯</div>
+        <strong>Systems Design</strong>
+        <p>Designing scalable game systems and finding elegant solutions for gameplay requirements.</p>
+    </div>
+
+    <div class="interest-item">
+        <div class="interest-icon">🔧</div>
+        <strong>Technical Problem-Solving</strong>
+        <p>Translating game concepts into clean, maintainable code with focus on performance.</p>
+    </div>
+
+    <div class="interest-item">
+        <div class="interest-icon">🎮</div>
+        <strong>Game Mechanics</strong>
+        <p>Understanding how different game elements work together to create engaging player experiences.</p>
+    </div>
+
+    <div class="interest-item">
+        <div class="interest-icon">🚀</div>
+        <strong>Cross-Platform Development</strong>
+        <p>Building applications that work seamlessly across different platforms and input methods.</p>
+    </div>
+</div>
+{% endblock %}

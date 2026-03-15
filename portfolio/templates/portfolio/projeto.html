@@ -1,0 +1,288 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+
+{% block main %}
+
+<div id="imageModal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); cursor: pointer;">
+    <span id="closeModal" style="position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; cursor: pointer; z-index: 10000;">&times;</span>
+    <img id="modalImage" style="margin: auto; display: block; width: 90%; max-width: 1200px; max-height: 90%; object-fit: contain; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+</div>
+
+<section class="project-section" style="max-width: 1000px; margin: 0 auto; text-align: left;">
+
+    <h2 style="text-align: center; font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 10px; text-shadow: 3px 3px 0 #000;">{{ projeto.titulo }}</h2>
+
+
+    {% if projeto.link_itch or projeto.link_video or projeto.link_github %}
+        <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; flex-wrap: wrap;">
+            {% if projeto.link_itch %}
+                <a href="{{ projeto.link_itch }}" target="_blank" class="project-link" style="background: var(--primary-green);">VIEW ON ITCH.IO</a>
+            {% endif %}
+            {% if projeto.link_github %}
+                <a href="{{ projeto.link_github }}" target="_blank" class="project-link" style="background: #333;">SOURCE CODE</a>
+            {% endif %}
+        </div>
+    {% endif %}
+
+
+    {% if projeto.link_video %}
+        {% with projeto.link_video|cut:"https://www.youtube.com/watch?v=" as video_id %}
+            <div style="position: relative; width: 100%; max-width: 720px; margin: 0 auto 30px; border: 3px solid var(--primary-gold); border-radius: 10px; overflow: hidden;">
+            <div style="padding-top: 56.25%; position: relative;">
+                <iframe
+                    src="https://www.youtube-nocookie.com/embed/{{ projeto.link_video|cut:'https://www.youtube.com/watch?v=' }}"
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            </div>
+
+        {% endwith %}
+    {% endif %}
+
+
+    <div style="background: var(--card-bg); padding: 25px; border-radius: 15px; border: 2px solid var(--primary-gold); margin-bottom: 30px;">
+        <h3 style="color: var(--primary-gold); margin-bottom: 15px; font-size: 1.2rem;">DESCRIPTION</h3>
+        <p style="font-size: 0.9rem; line-height: 1.8;">{{ projeto.descricao }}</p>
+    </div>
+
+
+    {% if projeto.imagens.all %}
+        <div style="margin-bottom: 30px;">
+            <h3 style="color: var(--primary-gold); margin-bottom: 20px; font-size: 1.2rem;">SCREENSHOTS</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                {% for imagem in projeto.imagens.all %}
+
+
+                    <img src="{{ imagem.imagem.url }}"
+                         alt="{{ imagem.legenda|default:'Screenshot' }}"
+                         style="width: 100%;
+                                aspect-ratio: 16/9;
+                                object-fit: cover;
+                                transition: transform 0.3s, box-shadow 0.3s;
+                                border-radius: 10px;
+                                border: 2px solid #444;
+                                cursor: pointer;"
+                         onclick="openModal('{{ imagem.imagem.url }}')"
+                         onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 25px rgba(0,0,0,0.4)'; this.style.borderColor='var(--primary-gold)';"
+                         onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none'; this.style.borderColor='#444';">
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+
+    {% if projeto.my_role %}
+        <div style="background: var(--card-bg); padding: 25px; border-radius: 15px; border: 2px solid var(--primary-red); margin-bottom: 30px;">
+            <h3 style="color: var(--primary-red); margin-bottom: 15px; font-size: 1.2rem;">MY ROLE & CONTRIBUTION</h3>
+            <p style="font-size: 0.9rem; line-height: 1.8;">{{ projeto.my_role }}</p>
+        </div>
+    {% endif %}
+
+
+    <div style="background: var(--card-bg); padding: 25px; border-radius: 15px; border: 2px solid var(--primary-blue); margin-bottom: 30px;">
+        <h3 style="color: var(--primary-blue); margin-bottom: 15px; font-size: 1.2rem;">CORE CONCEPTS</h3>
+        <p style="font-size: 0.9rem; line-height: 1.8;">{{ projeto.conceitos_aplicados }}</p>
+    </div>
+
+
+    {% if projeto.aspetos_tecnicos %}
+        <div style="background: var(--card-bg); padding: 25px; border-radius: 15px; border: 2px solid var(--accent-teal); margin-bottom: 30px;">
+            <h3 style="color: var(--accent-teal); margin-bottom: 15px; font-size: 1.2rem;">TECHNICAL ASPECTS</h3>
+            <p style="font-size: 0.9rem; line-height: 1.8;">{{ projeto.aspetos_tecnicos }}</p>
+        </div>
+    {% endif %}
+
+    {% if projeto.awards.all %}
+    <div style="background: var(--card-bg); padding: 25px; border-radius: 15px; border: 2px solid #ffeb3b; margin-bottom: 30px;">
+        <h3 style="color: #ffeb3b; margin-bottom: 20px; font-size: 1.2rem;">HONORS & AWARDS</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            {% for award in projeto.awards.all %}
+                <div style="display: flex; align-items: center; gap: 12px; background: rgba(255,235,59,0.1); padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,235,59,0.3);">
+                    <span style="font-size: 1.2rem;">🏆</span>
+                    <span style="font-size: 0.9rem; color: var(--text-light); font-weight: 500;">{{ award.titulo }}</span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+
+    <div style="background: linear-gradient(135deg, var(--card-bg), #1f2937); padding: 30px; border-radius: 15px; border: 3px solid var(--primary-gold);">
+
+
+        {% if projeto.disciplina %}
+            <div style="margin-bottom: 15px;">
+                <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">COURSE:</strong> "{{ projeto.disciplina.nome }}" – {{ projeto.disciplina.get_curso_display }}, Universidade Lusófona ({{ projeto.disciplina.ano }}º year, {{ projeto.disciplina.semestre }}º semester)</p>
+            </div>
+        {% endif %}
+
+
+        {% if projeto.ficha_tecnica.plataforma %}
+            <div style="margin-bottom: 15px;">
+                <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">PLATFORM:</strong> {{ projeto.ficha_tecnica.plataforma }}</p>
+            </div>
+        {% endif %}
+
+
+        {% if projeto.ficha_tecnica.duracao_desenvolvimento %}
+            <div style="margin-bottom: 15px;">
+                <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">DEVELOPMENT TIME:</strong> {{ projeto.ficha_tecnica.duracao_desenvolvimento }}</p>
+            </div>
+        {% endif %}
+
+
+        {% if projeto.ficha_tecnica.equipa %}
+            <div style="margin-bottom: 20px;">
+                <p style="font-size: 0.9rem;"><strong style="color: var(--primary-gold);">TEAM SIZE:</strong> {{ projeto.ficha_tecnica.equipa }} developer{{ projeto.ficha_tecnica.equipa|pluralize }}</p>
+            </div>
+        {% endif %}
+
+
+        {% if projeto.tecnologias.all %}
+            <div>
+                <p style="font-size: 1rem; color: var(--primary-gold); margin-bottom: 15px;"><strong>TECHNOLOGIES USED:</strong></p>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    {% for tech in projeto.tecnologias.all %}
+                        <a href="{% url 'portfolio:tecnologia_path' tecnologia_slug=tech.slug %}"
+                           style="display: flex; align-items: center; background: #2b2b2b; border: 1px solid #444; border-radius: 8px; padding: 10px 15px; text-decoration: none; color: var(--text-light); transition: all 0.3s;"
+                           onmouseover="this.style.background='#3a3a3a'; this.style.borderColor='var(--primary-gold)'; this.style.transform='translateY(-3px)'; this.style.color='var(--primary-gold)'"
+                           onmouseout="this.style.background='#2b2b2b'; this.style.borderColor='#444'; this.style.transform='translateY(0)'; this.style.color='var(--text-light)'">
+                            {% if tech.logotipo %}
+                                <div style="width: 30px; height: 30px; background: white; border-radius: 5px; display: flex; justify-content: center; align-items: center; margin-right: 10px; overflow: hidden;">
+                                    <img src="{{ tech.logotipo.url }}" alt="{{ tech.nome }}" style="max-width: 90%; max-height: 90%; object-fit: contain;">
+                                </div>
+                            {% endif %}
+                            <span style="font-size: 0.8rem; font-weight: 500;">{{ tech.nome }}</span>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+
+{% if request.user.is_authenticated %}
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="{% url 'portfolio:edita_projeto' projeto_slug=projeto.slug %}" class="custom-button" style="background: var(--accent-teal);">EDIT PROJECT</a>
+    </div>
+{% endif %}
+
+
+<script>
+function openModal(imageSrc) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+
+    modal.style.display = 'block';
+    modalImg.src = imageSrc;
+
+
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.style.display = 'none';
+
+
+    document.body.style.overflow = 'auto';
+}
+
+
+document.getElementById('closeModal').onclick = closeModal;
+document.getElementById('imageModal').onclick = function(event) {
+
+    if (event.target === this) {
+        closeModal();
+    }
+};
+
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+});
+
+
+document.getElementById('imageModal').style.transition = 'opacity 0.3s ease-in-out';
+</script>
+
+<style>
+.project-link {
+    font-size: 0.8rem;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: all 0.3s;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.project-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    text-decoration: none;
+    color: white;
+}
+
+
+#imageModal {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+#closeModal:hover {
+    color: #f39c12 !important;
+    transform: scale(1.1);
+}
+
+
+@keyframes trophy-glow {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        transform: scale(1);
+    }
+    100% {
+        text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+        transform: scale(1.05);
+    }
+}
+
+@media (max-width: 768px) {
+    .project-section {
+        padding: 0 15px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    iframe {
+        height: 250px;
+    }
+
+    #modalImage {
+        width: 95% !important;
+        max-height: 85% !important;
+    }
+
+    #closeModal {
+        font-size: 30px !important;
+        top: 10px !important;
+        right: 20px !important;
+    }
+}
+</style>
+{% endblock %}

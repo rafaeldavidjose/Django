@@ -1,0 +1,83 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/projetos.css' %}">
+{% endblock %}
+
+{% block main %}
+<div class="section-header">
+    <h2>MY PROJECTS</h2>
+    <p style="margin-bottom: -25px">A collection of games, interactive applications, and prototypes showcasing various development approaches and technologies.</p>
+</div>
+
+<div class="grid">
+    {% for projeto in projetos %}
+        <div class="project-card">
+            <div class="project-image-wrapper">
+                {% if projeto.imagens.first %}
+                    <img src="{{ projeto.imagens.first.imagem.url }}" alt="{{ projeto.titulo }}">
+                {% else %}
+                    <div class="project-placeholder">🎮</div>
+                {% endif %}
+            </div>
+            <div class="project-card-content">
+                <h3 class="project-card-title">{{ projeto.titulo }}</h3>
+                <p>{{ projeto.descricao|truncatechars:117 }}</p>
+
+                <div class="tech-tags">
+                    {% with tecnologias_cartao=projeto.tecnologias_para_cartao %}
+                        {% if tecnologias_cartao %}
+                            {% if tecnologias_cartao.count <= 3 %}
+                                {% for tech in tecnologias_cartao %}
+                                    <span class="tech-tag">{{ tech.nome }}</span>
+                                {% endfor %}
+                            {% else %}
+                                {% for tech in tecnologias_cartao|slice:":2" %}
+                                    <span class="tech-tag">{{ tech.nome }}</span>
+                                {% endfor %}
+                                <span class="tech-tag">+{{ tecnologias_cartao.count|add:"-2" }}</span>
+                            {% endif %}
+                        {% else %}
+                            {% if projeto.tecnologias.all %}
+                                {% if projeto.tecnologias.count <= 3 %}
+                                    {% for tech in projeto.tecnologias.all %}
+                                        <span class="tech-tag">{{ tech.nome }}</span>
+                                    {% endfor %}
+                                {% else %}
+                                    {% for tech in projeto.tecnologias.all|slice:":2" %}
+                                        <span class="tech-tag">{{ tech.nome }}</span>
+                                    {% endfor %}
+                                    <span class="tech-tag">+{{ projeto.tecnologias.count|add:"-2" }}</span>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    {% endwith %}
+                </div>
+
+                <div class="card-buttons">
+                    <a href="{% url 'portfolio:projeto_path' projeto_slug=projeto.slug %}" class="custom-button">DETAILS</a>
+                    {% if projeto.link_itch %}
+                        <a href="{{ projeto.link_itch }}" target="_blank" class="project-link">VIEW</a>
+                    {% endif %}
+                    {% if projeto.link_github %}
+                        <a href="{{ projeto.link_github }}" target="_blank" class="project-link">SOURCE</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <div class="no-data">
+            <h3>PROJECTS COMING SOON</h3>
+            <p>Currently working on exciting new projects. Check back soon for updates.</p>
+            <div class="no-data-icon">🚧</div>
+        </div>
+    {% endfor %}
+</div>
+
+{% if request.user.is_authenticated %}
+    <div class="button-wrapper">
+        <a href="{% url 'portfolio:novo_projeto' %}" class="custom-button add-button">+ ADD PROJECT</a>
+    </div>
+{% endif %}
+{% endblock %}

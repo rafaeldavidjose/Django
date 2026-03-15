@@ -1,0 +1,46 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/cv.css' %}">
+{% endblock %}
+
+{% block main %}
+<div class="cv-container">
+    <div class="section-header">
+        <h2>PROFESSIONAL RESUME</h2>
+        <p style="margin-bottom: 35px"> Overview of my experience, technical skills, and project portfolio in interactive development.</p>
+    </div>
+
+    <div class="main-cv-section">
+        <div class="main-cv-icon">📄</div>
+        <h3>My Resume</h3>
+        <p>Download my resume to explore my background in gameplay developing, AI systems, and interactive development.</p>
+
+        <a href="{% static 'files/CV.pdf' %}" target="_blank" class="download-button">
+            📥 DOWNLOAD RESUME
+        </a>
+    </div>
+
+    <div class="cv-sections-top">
+
+        <div class="cv-section-card">
+            <div class="cv-icon">🎮</div>
+            <h3>Project Portfolio</h3>
+            <p>Explore my collection of games, interactive applications, and experimental prototypes demonstrating various technical skills.</p>
+            <div class="cv-button-wrapper">
+                <a href="{% url 'portfolio:projetos' %}" class="custom-button">VIEW PROJECTS</a>
+            </div>
+        </div>
+
+        <div class="cv-section-card">
+            <div class="cv-icon">🛠️</div>
+            <h3>Technical Stack</h3>
+            <p>Explore the development tools, frameworks, and technologies I use to create gameplay systems and applications.</p>
+            <div class="cv-button-wrapper">
+                <a href="{% url 'portfolio:tecnologias' %}" class="custom-button">VIEW STACK</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafael David José | Portfolio</title>
+    
+    <link rel="canonical" href="https://rafaeldavidjose.com/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css_portfolio/gaming_style.css' %}">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+
+    {% block extra_styles %}
+    {% endblock %}
+
+    <style>
+    html {
+        overflow-x: hidden !important;
+        width: 100%;
+        max-width: 100vw;
+    }
+
+    body {
+        overflow-x: hidden !important;
+        width: 100%;
+        max-width: 100vw;
+        position: relative;
+    }
+
+    .power-up {
+        position: fixed !important;
+        font-size: 30px;
+        cursor: pointer;
+        animation: powerUpFloat 5s ease-in-out infinite;
+        z-index: 50;
+        will-change: transform;
+        pointer-events: auto;
+        user-select: none;
+        contain: layout style paint;
+    }
+
+    main, .content {
+        overflow-x: hidden !important;
+        width: 100%;
+        max-width: 100%;
+        position: relative;
+    }
+
+    @media (max-width: 768px) {
+        html, body {
+            overflow-x: hidden !important;
+            width: 100%;
+            max-width: 100vw;
+        }
+        .power-up {
+            font-size: 25px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .power-up {
+            font-size: 20px;
+        }
+    }
+
+    /* Esconder mini-jogo e score em mobile/touch */
+    @media (hover: none) and (pointer: coarse), (max-width: 768px) {
+      .power-up,
+      .achievement,
+      .score-line { display: none !important; }
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1 class="header-title"><strong>RAFAEL DAVID JOSÉ</strong></h1>
+            <nav>
+                <a href="{% url 'portfolio:index' %}">HOME</a>
+                <a href="{% url 'portfolio:interesses' %}">INTERESTS</a>
+                <a href="{% url 'portfolio:projetos' %}">PROJECTS</a>
+                <a href="{% url 'portfolio:tecnologias' %}">TOOLS</a>
+                <a href="{% url 'portfolio:cv' %}">RESUME</a>
+                <a href="{% url 'portfolio:contacto' %}">CONTACT</a>
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'admin:logout' %}">LOGOUT 👤{{request.user.username}}</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="content">
+            {% block main %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <div class="power-up" id="powerup1" onclick="collectPowerUp(this)">⭐</div>
+    <div class="power-up" id="powerup2" onclick="collectPowerUp(this)">💎</div>
+
+    <div class="achievement" id="achievement">
+        🏆 ACHIEVEMENT UNLOCKED!<br>
+        "Portfolio Explorer"
+    </div>
+
+    <footer>
+        <p>&copy; {{ data }} Rafael David José, Gameplay Developer.</p>
+        <p class="score-line">Score: <span id="score">0</span> points</p>
+    </footer>
+
+    <script>
+        /* Neutralizar mini-jogo em mobile/touch */
+        const IS_MOBILE = window.matchMedia('(hover: none) and (pointer: coarse), (max-width: 768px)').matches;
+        if (IS_MOBILE) {
+          document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.power-up, #achievement').forEach(el => el.style.display = 'none');
+          });
+        }
+
+        function showAchievement(text = "Portfolio Explorer") {
+            if (IS_MOBILE) return;
+            const achievement = document.getElementById('achievement');
+            achievement.innerHTML = `🏆 ACHIEVEMENT UNLOCKED!<br>"${text}"`;
+            achievement.classList.add('show');
+            setTimeout(() => {
+                achievement.classList.remove('show');
+            }, 4000);
+        }
+
+        function getUsableScreenArea() {
+            const header = document.querySelector('header');
+            const footer = document.querySelector('footer');
+            const headerHeight = header ? header.offsetHeight : 60;
+            const footerHeight = footer ? footer.offsetHeight : 40;
+
+            return {
+                top: headerHeight + 20,
+                bottom: window.innerHeight - footerHeight - 60,
+                left: 20,
+                right: window.innerWidth - 80
+            };
+        }
+
+        function positionPowerUps() {
+            if (IS_MOBILE) return;
+            const area = getUsableScreenArea();
+            const powerup1 = document.getElementById('powerup1');
+            const powerup2 = document.getElementById('powerup2');
+            const verticalMargin = 250;
+
+            if (powerup1) {
+                const top = Math.random() * (window.innerHeight - 2 * verticalMargin) + verticalMargin;
+                powerup1.style.top = top + 'px';
+                powerup1.style.right = (Math.random() * 40 + 100) + 'px';
+            }
+
+            if (powerup2) {
+                const top = Math.random() * (window.innerHeight - 2 * verticalMargin) + verticalMargin;
+                powerup2.style.top = top + 'px';
+                powerup2.style.left = (Math.random() * 40 + 100) + 'px';
+            }
+        }
+
+        if (!IS_MOBILE) {
+            document.addEventListener('DOMContentLoaded', positionPowerUps);
+            window.addEventListener('resize', positionPowerUps);
+        }
+
+        let score = parseInt(localStorage.getItem('portfolioScore') || '0');
+
+        const achievementFlags = {
+            achievement100: localStorage.getItem('achievement100') === 'true',
+            achievement300: localStorage.getItem('achievement300') === 'true',
+            achievement500: localStorage.getItem('achievement500') === 'true',
+            achievement750: localStorage.getItem('achievement750') === 'true',
+            achievement1000: localStorage.getItem('achievement1000') === 'true',
+            achievement1500: localStorage.getItem('achievement1500') === 'true',
+            achievement2000: localStorage.getItem('achievement2000') === 'true',
+            achievement3000: localStorage.getItem('achievement3000') === 'true',
+            achievement5000: localStorage.getItem('achievement5000') === 'true',
+            achievement7500: localStorage.getItem('achievement7500') === 'true',
+            achievement10000: localStorage.getItem('achievement10000') === 'true',
+            konamiMaster: localStorage.getItem('konamiMaster') === 'true'
+        };
+
+        const scoreEl = document.getElementById('score');
+        if (scoreEl) scoreEl.textContent = score;
+
+        function collectPowerUp(element) {
+            if (IS_MOBILE) return;
+            score += 100;
+            localStorage.setItem('portfolioScore', score);
+            if (scoreEl) scoreEl.textContent = score;
+            element.style.display = 'none';
+
+            if (score === 100 && !achievementFlags.achievement100) {
+                showAchievement("First Steps!");
+                localStorage.setItem('achievement100', 'true');
+                achievementFlags.achievement100 = true;
+            }
+            else if (score === 300 && !achievementFlags.achievement300) {
+                showAchievement("Getting Started!");
+                localStorage.setItem('achievement300', 'true');
+                achievementFlags.achievement300 = true;
+            }
+            else if (score === 500 && !achievementFlags.achievement500) {
+                showAchievement("Power-up Collector!");
+                localStorage.setItem('achievement500', 'true');
+                achievementFlags.achievement500 = true;
+            }
+            else if (score === 750 && !achievementFlags.achievement750) {
+                showAchievement("Rising Star!");
+                localStorage.setItem('achievement750', 'true');
+                achievementFlags.achievement750 = true;
+            }
+            else if (score === 1000 && !achievementFlags.achievement1000) {
+                showAchievement("Power-up Master!");
+                localStorage.setItem('achievement1000', 'true');
+                achievementFlags.achievement1000 = true;
+            }
+            else if (score === 1500 && !achievementFlags.achievement1500) {
+                showAchievement("Dedicated Explorer!");
+                localStorage.setItem('achievement1500', 'true');
+                achievementFlags.achievement1500 = true;
+            }
+            else if (score === 2000 && !achievementFlags.achievement2000) {
+                showAchievement("Portfolio Veteran!");
+                localStorage.setItem('achievement2000', 'true');
+                achievementFlags.achievement2000 = true;
+            }
+            else if (score === 3000 && !achievementFlags.achievement3000) {
+                showAchievement("Click Champion!");
+                localStorage.setItem('achievement3000', 'true');
+                achievementFlags.achievement3000 = true;
+            }
+            else if (score === 5000 && !achievementFlags.achievement5000) {
+                showAchievement("Ultimate Gamer!");
+                localStorage.setItem('achievement5000', 'true');
+                achievementFlags.achievement5000 = true;
+            }
+            else if (score === 7500 && !achievementFlags.achievement7500) {
+                showAchievement("Score Destroyer!");
+                localStorage.setItem('achievement7500', 'true');
+                achievementFlags.achievement7500 = true;
+            }
+            else if (score >= 10000 && !achievementFlags.achievement10000) {
+                showAchievement("LEGENDARY MASTER!");
+                localStorage.setItem('achievement10000', 'true');
+                achievementFlags.achievement10000 = true;
+            }
+
+            setTimeout(() => {
+                element.style.display = 'block';
+                element.style.top = Math.random() * (window.innerHeight - 100) + 'px';
+                element.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+            }, 5000);
+        }
+
+        let konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+        let konamiIndex = 0;
+
+        if (!IS_MOBILE) {
+            document.addEventListener('keydown', (e) => {
+                if (e.code === konamiCode[konamiIndex]) {
+                    konamiIndex++;
+                    if (konamiIndex === konamiCode.length) {
+                        if (!achievementFlags.konamiMaster) {
+                            showAchievement("Konami Code Master!");
+                            localStorage.setItem('konamiMaster', 'true');
+                            achievementFlags.konamiMaster = true;
+                        }
+
+                        score += 1000;
+                        localStorage.setItem('portfolioScore', score);
+                        if (scoreEl) scoreEl.textContent = score;
+                        konamiIndex = 0;
+
+                        document.body.style.filter = 'hue-rotate(360deg)';
+                        setTimeout(() => {
+                            document.body.style.filter = 'none';
+                        }, 2000);
+                    }
+                } else {
+                    konamiIndex = 0;
+                }
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                const powerUps = document.querySelectorAll('.power-up');
+                powerUps.forEach(powerUp => {
+                    const rect = powerUp.getBoundingClientRect();
+                    const distance = Math.sqrt(
+                        Math.pow(e.clientX - (rect.left + rect.width / 2), 2) +
+                        Math.pow(e.clientY - (rect.top + (rect.height / 2)), 2)
+                    );
+
+                    if (distance < 100) {
+                        powerUp.style.transform = `scale(${1.5 - distance / 100})`;
+                    } else {
+                        powerUp.style.transform = 'scale(1)';
+                    }
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const elements = document.querySelectorAll('.card:not(.animation-applied), .project-card:not(.animation-applied), .tech-card:not(.animation-applied)');
+
+                if (elements.length > 0) {
+                    elements.forEach((el, index) => {
+                        el.classList.add('animation-applied');
+                        el.style.opacity = '0';
+                        el.style.transform = 'translateY(30px)';
+                        el.style.transition = 'all 0.6s ease';
+                        setTimeout(() => {
+                            el.style.opacity = '1';
+                            el.style.transform = 'translateY(0)';
+                        }, index * 100 + 50);
+                    });
+                }
+
+                const grids = document.querySelectorAll('.grid');
+                grids.forEach(grid => {
+                    const items = Array.from(grid.children).filter(child =>
+                        child.classList.contains('card') ||
+                        child.classList.contains('project-card') ||
+                        child.classList.contains('tech-card')
+                    );
+
+                    const hasTechCards = grid.querySelector('.tech-card');
+
+                    if (items.length % 2 === 1 && !hasTechCards) {
+                        const lastItem = items[items.length - 1];
+                        if (lastItem) {
+                            lastItem.style.gridColumn = '1 / -1';
+                            lastItem.style.justifySelf = 'center';
+                        }
+                    }
+                });
+            }, 100);
+        });
+    </script>
+    <script>
+        function forceImageRenderingSmooth() {
+        const allImages = document.querySelectorAll('img');
+
+        allImages.forEach(img => {
+            img.style.setProperty('image-rendering', 'auto', 'important');
+            img.style.maxWidth = '100%';
+            img.style.height = 'auto';
+        });
+
+        const allElements = document.querySelectorAll('*');
+        allElements.forEach(el => {
+            const computedStyle = window.getComputedStyle(el);
+            if (computedStyle.backgroundImage && computedStyle.backgroundImage !== 'none') {
+                el.style.setProperty('image-rendering', 'auto', 'important');
+            }
+        });
+    }
+
+        document.addEventListener('DOMContentLoaded', forceImageRenderingSmooth);
+        window.addEventListener('load', forceImageRenderingSmooth);
+        setInterval(forceImageRenderingSmooth, 2000);
+
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.addedNodes.length > 0) {
+                    forceImageRenderingSmooth();
+                }
+            });
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    </script>
+</body>
+</html>

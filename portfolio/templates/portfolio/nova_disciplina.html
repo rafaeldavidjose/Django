@@ -1,0 +1,49 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/form.css' %}">
+{% endblock %}
+
+{% block main %}
+
+<h2>New Course</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {% if form.errors %}
+    <div class="error-message">
+        <p><strong>Please correct the following errors</strong></p>
+        {% for field in form %}
+            {% for error in field.errors %}
+                <p>{{ field.label }}: {{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% for field in form %}
+        <div class="form-row">
+            {{ field.label_tag }}
+
+            {% if field.name == "docentes" %}
+                {{ field }}
+                <div class="button-wrapper" style="margin-bottom: 0;">
+                    <a href="{% url 'portfolio:novo_docente' %}" class="custom-button">Add New Teacher</a>
+                </div>
+            {% else %}
+                {{ field }}
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    <div class="button-wrapper" style="margin-bottom: 0px;">
+        <input type="submit" value="Save" class="custom-button">
+    </div>
+</form>
+
+{% endblock %}

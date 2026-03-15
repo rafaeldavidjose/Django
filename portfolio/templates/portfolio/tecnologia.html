@@ -1,0 +1,65 @@
+{% extends 'portfolio/base.html' %}
+
+{% load static %}
+{% block extra_styles %}
+<link rel="stylesheet" href="{% static 'css_portfolio/tecnologia.css' %}">
+{% endblock %}
+
+{% block main %}
+<section class="tech-section">
+    <h2 style="text-align: center; font-size: 2.5rem; color: var(--primary-gold); margin-bottom: 10px; text-shadow: 3px 3px 0 #000;">{{ tecnologia.nome }}</h2>
+
+    <div class="tech-logo-container">
+        <div class="tech-logo-wrapper">
+            {% if tecnologia.logotipo %}
+                <img src="{{ tecnologia.logotipo.url }}" alt="{{ tecnologia.nome }}">
+            {% else %}
+                <div class="tech-logo-placeholder">🛠️</div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="tech-description-box">
+        <h3>ABOUT THIS TECHNOLOGY</h3>
+        <p>{{ tecnologia.descricao }}</p>
+    </div>
+
+    {% if tecnologia.link %}
+        <div class="tech-website-button">
+            <a href="{{ tecnologia.link }}" target="_blank" class="custom-button website-button">VISIT OFFICIAL WEBSITE</a>
+        </div>
+    {% endif %}
+
+    {% if tecnologia.projetos.all %}
+        <div class="tech-projects-section">
+            <h3>PROJECTS USING {{ tecnologia.nome|upper }}</h3>
+            <div class="tech-projects-grid">
+                {% for projeto in tecnologia.projetos.all %}
+                    <a href="{% url 'portfolio:projeto_path' projeto_slug=projeto.slug %}" class="tech-project-card">
+                        {% if projeto.imagens.first %}
+                            <img src="{{ projeto.imagens.first.imagem.url }}" alt="{{ projeto.titulo }}">
+                        {% else %}
+                            <div class="tech-project-placeholder">🎮</div>
+                        {% endif %}
+
+                        <div class="tech-project-title">{{ projeto.titulo }}</div>
+                        <div class="tech-project-overlay"></div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div class="tech-no-projects">
+            <h3>NO PROJECTS YET</h3>
+            <p>This technology hasn't been used in any projects yet, but stay tuned!</p>
+            <div class="tech-no-projects-icon">🚧</div>
+        </div>
+    {% endif %}
+</section>
+
+{% if request.user.is_authenticated %}
+    <div class="button-wrapper">
+        <a href="{% url 'portfolio:edita_tecnologia' tecnologia_slug=tecnologia.slug %}" class="custom-button edit-button">EDIT TECHNOLOGY</a>
+    </div>
+{% endif %}
+{% endblock %}
