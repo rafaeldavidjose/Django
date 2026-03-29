@@ -4,7 +4,7 @@ from django.db.models import Count
 from datetime import date
 from .models import *
 from .forms import *
-
+from django.conf import settings
 
 def index_view(request):
     context = {
@@ -238,5 +238,10 @@ def apaga_tecnologia_view(request, tecnologia_slug):
 
 
 def contacto_view(request):
-    context = {'data': date.today().year}
+    context = {
+        'data': date.today().year,
+        'emailjs_public_key': settings.EMAILJS_PUBLIC_KEY,
+        'emailjs_service_id': settings.EMAILJS_SERVICE_ID,
+        'emailjs_template_id': settings.EMAILJS_TEMPLATE_ID,
+    }
     return render(request, 'portfolio/contacto.html', context)

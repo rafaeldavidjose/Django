@@ -2,6 +2,16 @@
 
 {% load static %}
 
+{% block meta %}
+<meta property="og:title" content="{{ projeto.titulo }} – Rafael David José" />
+<meta property="og:description" content="{{ projeto.descricao|truncatechars:200 }}" />
+<meta property="og:url" content="https://rafaeldavidjose.com{{ request.path }}" />
+<meta property="og:type" content="website" />
+{% if projeto.imagens.all %}
+<meta property="og:image" content="https://rafaeldavidjose.com{{ projeto.imagens.first.imagem.url }}" />
+{% endif %}
+{% endblock %}
+
 {% block main %}
 
 <div id="imageModal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); cursor: pointer;">

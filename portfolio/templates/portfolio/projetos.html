@@ -1,6 +1,15 @@
 {% extends 'portfolio/base.html' %}
 
 {% load static %}
+
+{% block meta %}
+<meta property="og:title" content="Projects | Rafael David José" />
+<meta property="og:description" content="A collection of personal and academic projects developed over the years, spanning different areas and technologies." />
+<meta property="og:url" content="https://rafaeldavidjose.com/projects/" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://rafaeldavidjose.com/static/images/profile.jpeg" />
+{% endblock %}
+
 {% block extra_styles %}
 <link rel="stylesheet" href="{% static 'css_portfolio/projetos.css' %}">
 {% endblock %}
@@ -8,7 +17,7 @@
 {% block main %}
 <div class="section-header">
     <h2>MY PROJECTS</h2>
-    <p style="margin-bottom: -25px">A collection of games, interactive applications, and prototypes showcasing various development approaches and technologies.</p>
+    <p style="margin-bottom: -25px">A collection of games, interactive experiences, and technical projects built across different platforms, tools, and challenges.</p>
 </div>
 
 <div class="grid">

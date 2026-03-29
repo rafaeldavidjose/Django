@@ -1,6 +1,15 @@
 {% extends 'portfolio/base.html' %}
 
 {% load static %}
+
+{% block meta %}
+<meta property="og:title" content="Rafael David José" />
+<meta property="og:description" content="Personal portfolio of Rafael David José — projects, tools, and everything in between." />
+<meta property="og:url" content="https://rafaeldavidjose.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://rafaeldavidjose.com/static/images/profile.jpeg" />
+{% endblock %}
+
 {% block extra_styles %}
 <link rel="stylesheet" href="{% static 'css_portfolio/index.css' %}">
 {% endblock %}

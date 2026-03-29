@@ -1,6 +1,15 @@
 {% extends 'portfolio/base.html' %}
 
 {% load static %}
+
+{% block meta %}
+<meta property="og:title" content="Resume | Rafael David José" />
+<meta property="og:description" content="A summary of my education, experience, and technical skills accumulated over the years." />
+<meta property="og:url" content="https://rafaeldavidjose.com/resume/" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://rafaeldavidjose.com/static/images/profile.jpeg" />
+{% endblock %}
+
 {% block extra_styles %}
 <link rel="stylesheet" href="{% static 'css_portfolio/cv.css' %}">
 {% endblock %}
@@ -9,13 +18,13 @@
 <div class="cv-container">
     <div class="section-header">
         <h2>PROFESSIONAL RESUME</h2>
-        <p style="margin-bottom: 35px"> Overview of my experience, technical skills, and project portfolio in interactive development.</p>
+        <p style="margin-bottom: 35px">A summary of my work, background, and the projects I've built throughout my academic and professional journey.</p>
     </div>
 
     <div class="main-cv-section">
         <div class="main-cv-icon">📄</div>
         <h3>My Resume</h3>
-        <p>Download my resume to explore my background in gameplay developing, AI systems, and interactive development.</p>
+        <p>Download my resume for a complete overview of my experience and academic background in interactive development.</p>
 
         <a href="{% static 'files/CV.pdf' %}" target="_blank" class="download-button">
             📥 DOWNLOAD RESUME
@@ -27,7 +36,7 @@
         <div class="cv-section-card">
             <div class="cv-icon">🎮</div>
             <h3>Project Portfolio</h3>
-            <p>Explore my collection of games, interactive applications, and experimental prototypes demonstrating various technical skills.</p>
+            <p>A collection of projects built across different platforms, technologies, and areas of game development.</p>
             <div class="cv-button-wrapper">
                 <a href="{% url 'portfolio:projetos' %}" class="custom-button">VIEW PROJECTS</a>
             </div>
@@ -36,7 +45,7 @@
         <div class="cv-section-card">
             <div class="cv-icon">🛠️</div>
             <h3>Technical Stack</h3>
-            <p>Explore the development tools, frameworks, and technologies I use to create gameplay systems and applications.</p>
+            <p>The tools and technologies I've worked with across my projects and coursework.</p>
             <div class="cv-button-wrapper">
                 <a href="{% url 'portfolio:tecnologias' %}" class="custom-button">VIEW STACK</a>
             </div>

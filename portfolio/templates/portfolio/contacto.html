@@ -1,6 +1,15 @@
 {% extends 'portfolio/base.html' %}
 
 {% load static %}
+
+{% block meta %}
+<meta property="og:title" content="Contact | Rafael David José" />
+<meta property="og:description" content="Interested in working together or just want to say hello? Feel free to get in touch." />
+<meta property="og:url" content="https://rafaeldavidjose.com/contact/" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://rafaeldavidjose.com/static/images/profile.jpeg" />
+{% endblock %}
+
 {% block extra_styles %}
 <link rel="stylesheet" href="{% static 'css_portfolio/form.css' %}">
 
@@ -225,7 +234,7 @@
 <script>
 
 (function() {
-    emailjs.init('EMAILJS_KEY_REMOVED');
+    emailjs.init('{{ emailjs_public_key }}');
 })();
 
 
@@ -266,8 +275,8 @@ document.getElementById('contactForm').addEventListener('submit', function(event
 
 
     emailjs.sendForm(
-        'SERVICE_ID_REMOVED',
-        'TEMPLATE_ID_REMOVED',
+        '{{ emailjs_service_id }}',
+        '{{ emailjs_template_id }}',
         form
     ).then(function(response) {
         console.log('Email sent successfully!', response);
